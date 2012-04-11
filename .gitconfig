@@ -1,6 +1,6 @@
 [user]
-    name = ballmerpeak 
-	email = xkcd.ballmer@gmail.com
+    name = ballmerpeak
+    email = xkcd.ballmer@gmail.com
     editor = vim
 [merge]
     tool = vimdiff
