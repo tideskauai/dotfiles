@@ -1,0 +1,27 @@
+alias -s png=mirage
+alias -s jpg=mirage
+alias -s gif=mirage
+alias -s html=firefox
+alias -s pdf=epdfview
+alias -s gz='tar -xzvf'
+alias -s bz2='tar -xjvf'
+alias -g L='| less'
+
+alias ls='ls --color=auto'
+alias ls-l='ls -lah'
+alias ls-d='ls -lhrt' # sort by date
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias mv='mv -i'
+alias rm='rm -I'
+alias du='du -h'
+alias diff='colordiff'
+alias cdcs='cd ~/Archives/eLearn/cs51-Hrvr'
+alias cdman='cd ~/.config/owncfg/man'
+alias cd.dot='cd ~/.dotfiles && git status'
+alias notes="cat ~/.config/owncfg/txt/NOTES"
+alias notess="vim ~/.config/owncfg/txt/NOTES"
+alias pacu="sudo pacman -Syu"
+alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
+alias myip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"

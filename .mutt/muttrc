@@ -1,0 +1,61 @@
+# [colors]
+source ~/.mutt/colors.muttrc
+
+# [external]
+set editor="vim -c \"set spell spelllang=en,es\""
+set ispell = "aspell -e -c" # use aspell as ispell
+
+# [Gmail]
+source ~/.mutt/gmail
+#set from = ""
+#set realname = ""
+#set imap_user = ""
+#set imap_pass = ""
+#set smtp_url = "smtp://email-address@smtp.gmail.com:587/"
+#set smtp_pass = ""
+
+# [bindings]
+bind pager d noop
+bind pager D noop
+bind pager i toggle-quoted
+bind pager / search
+bind pager <up> previous-line
+bind pager <down> next-line
+bind pager k previous-line
+bind pager j next-line
+bind pager gg top
+bind pager G bottom
+bind index d noop
+bind index D delete-message
+bind index q noop
+bind index Q quit
+bind index gg first-entry
+bind index G last-entry
+bind index K previous-unread
+bind index J next-unread
+bind index f imap-fetch-mail
+bind index \# noop
+
+# [headers]
+ignore * # ignore all headers
+unignore from: to: cc: date: subject: # show only these
+hdr_order from: to: cc: date: subject: # and in this order
+
+set folder = "imaps://imap.gmail.com:993"
+set record="/dev/null" # where to save sent messages
+set spoolfile = "+INBOX"
+set postponed ="+[Gmail]/Drafts"
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+set imap_keepalive = 300
+set mail_check = 120
+set beep_new # bell on new mail
+set move = no # stop asking to move read messages to mbox
+set sort = 'threads'
+set pager_stop # don't go to next message automatically
+set tilde # show tilde like in vim
+#set sort_aux = 'last-date-received'
+unset markers # no ugly plus signs
+unset mark_old # read/new is good enough for me
+unset sort_re # always thread

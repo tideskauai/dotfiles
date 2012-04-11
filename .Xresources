@@ -1,0 +1,60 @@
+! --[ Font Rendering ]-------------------------------------
+Xft.dpi: 91.79
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.autohint: false
+Xft.lcdfilter: lcddefault
+
+! --[ URxvt - General ]-------------------------------------
+URxvt.pointerBlank: true
+URxvt.scrollBar:false
+URxvt.saveLines:5000
+URxvt.cursorColor:  #370074
+URxvt.cursorColor2: #ff00f6
+URxvt.colorIT:  #FFFFFF
+URxvt.colorBD:  #FFFFFF
+URxvt.colorUL:  #5e468c
+URxvt.colorRV:  #333333
+URxvt.fading:   25%
+URxvt.dynamicColors: on
+URxvt.internalborder: 0
+URxvt.font: -*-dina-medium-r-*-*-13-*-*-*-*-*-*-*
+URxvt.boldFont: -*-dina-bold-r-*-*-13-*-*-*-*-*-*-*
+URxvt.cutchars: "()*,<>[]{}|'"
+URxvt.print-pipe: cat >/tmp/xxx
+URxvt.visualBell: false
+URxvt.urgentOnBell: true
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
+
+! --[ URxvt - Change fonts on the fly ]---------------------
+URxvt.keysym.M-C-1: command:\033]710;-*-dina-medium-r-*-*-13-*-*-*-*-*-*-*\007\033]711;-*-dina-bold-r-*-*-13-*-*-*-*-*-*-*\007
+URxvt.keysym.M-C-2: command:\033]710;-*-terminus-*-*-*-*-20-*-*-*-*-*-*-*\007\033]711;-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*\007
+URxvt.keysym.M-C-3: command:\033]710;xft:DejaVuSansMono:pixelsize=18\007\033]711;xft:DejaVuSansMono:pixelsize=18:bold\007
+
+! --[ URxvt - URL/Clipboard Handling ]----------------------
+URxvt.perl-ext-common: default,url-select
+URxvt.keysym.M-u:      perl:url-select:select_next
+URxvt.urlLauncher:     firefox
+URxvt.underlineURLs:   true
+
+! --[ URxvt - colors ]--------------------------------------
+URxvt.depth: 32
+URxvt.background: #0A0A0A
+URxvt.foreground: #999999
+#include ".config/xcolors/who"
+!#include ".config/xcolors/dwmrob"
+!#include ".config/xcolors/derp"
+!#include ".config/xcolors/digerati"
+!#include ".config/xcolors/gnometerm"
+!#include ".config/xcolors/jasonwryan"
+!#include ".config/xcolors/phrak1"
+!#include ".config/xcolors/rezza"
+!#include ".config/xcolors/rydgel"
+!#include ".config/xcolors/tango"
+!#include ".config/xcolors/zenburn"

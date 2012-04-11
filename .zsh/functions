@@ -1,0 +1,53 @@
+cd() {
+    builtin cd $@; ls
+}
+
+pacs() {
+    echo -e "$(pacman -Ss $@ | sed \
+        -e 's#core/.*#\\033[1;31m&\\033[0;37m#g' \
+        -e 's#extra/.*#\\033[0;32m&\\033[0;37m#g' \
+        -e 's#community/.*#\\033[1;35m&\\033[0;37m#g' \
+        -e 's#^.*/.* [0-9].*#\\033[0;36m&\\033[0;37m#g' )"
+}
+
+rcd() {
+    if (($# == 0)); then
+        ls --color /etc/rc.d
+        echo "Running daemons:"
+        ls /run/daemons
+    elif (($# == 1)); then
+        /etc/rc.d/$1
+    elif (($# == 2)); then
+        sudo /etc/rc.d/$1 $2
+    else
+        echo "Invalid number of arguments"
+    fi
+}
+
+fans() {
+    if [ $1 ] ; then
+        aticonfig --adapter=0 --od-gettemperature | tail -n1 | awk '{print "Current temp: " $5}' ;
+        aticonfig --pplib-cmd "set fanspeed 0 $1" ;
+    else
+        aticonfig --adapter=0 --od-gettemperature | tail -n1 | awk '{print "Current temp: " $5}' ;
+        aticonfig --pplib-cmd "set fanspeed 0 auto" ;
+    fi
+}
+
+ff() {
+    if (($# == 0)); then
+        lsof -c plugin-co |grep 'tmp/Flash' | awk '{ print "/proc/" $2 "/fd/" $4 }' | sed 's/[rwu]$//' | xargs mplayer
+    elif [[ $1 = "-l" ]]; then
+        lsof -c plugin-co |grep 'tmp/Flash' | awk '{ print "/proc/" $2 "/fd/" $4 }' | sed 's/[rwu]$//'
+    fi
+}
+
+share() {
+    if (($# == 1)); then
+        dir=${TMPDIR:-/tmp}/share-$$; mkdir "$dir" || error
+        cp "$1" $dir
+        pushd $dir && python -m http.server 65001; popd && rm -ri "$dir"
+    else
+        echo "Usage: share file-to-share"
+    fi
+}
