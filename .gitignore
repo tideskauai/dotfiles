@@ -16,7 +16,7 @@
 .mutt/cache
 .mutt/gmail
 
-.xmonad
+.xmonad/*
 !.xmonad/xmonad.hs
 
 .config/*
