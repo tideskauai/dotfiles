@@ -87,15 +87,16 @@ urgentConfig = UrgencyConfig { suppressWhen = Focused, remindWhen = Dont }
 
 --hooks
 myManageHook = composeAll
-            [ className =? "Firefox"    --> doShift "1:web"
-            , className =? "Chromium"   --> doShift "1:web"
-            , className =? "Pavucontrol" --> doShift "2:im"
-            , className =? "Pidgin" --> doShift "2:im"
-            , className =? "Skype" --> doShift "2:im"
-            , className =? "Epdfview"   --> doShift "4:doc"
+            [ className =? "Firefox"    --> doShift "web"
+            , className =? "Chromium"   --> doShift "web"
+            , className =? "Pavucontrol" --> doShift "im"
+            , className =? "Pidgin" --> doShift "im"
+            , className =? "Skype" --> doShift "im"
+            , className =? "Epdfview"   --> doShift "doc"
             , className =? "VirtualBox" --> doShift "8"
             , className =? "MPlayer"    --> doShift "8"
             , className =? "Vlc"    --> doShift "8"
+            , className =? "Hamster-time-tracker" --> doShift "bg"
             , className =? "trayer" --> doIgnore
             , className =? "URxvt" --> insertPosition Below Newer
             , className =? "Gtkdialog" --> doFloat
@@ -114,19 +115,19 @@ myPP = xmobarPP { ppCurrent = xmobarColor colorBlueAlt ""
 
 --topics
 myTopics :: [Topic]
-myTopics = [ "1:web", "2:im", "3:dev", "4:doc", "5", "6", "7", "8", "9"]
+myTopics = [ "web", "im", "dev", "doc", "5", "6", "7", "8", "9", "bg"]
 
 myTopicConfig :: TopicConfig
 myTopicConfig = defaultTopicConfig
-                { topicDirs = M.fromList $ [ ("1:web", "~/Downloads")
-                                           , ("2:im", "~/Downloads")
-                                           , ("3:dev", "~/dev")
-                                           , ("4:doc", "~/Archives/eLearn")
+                { topicDirs = M.fromList $ [ ("web", "~/Downloads")
+                                           , ("im", "~/Downloads")
+                                           , ("dev", "~/dev")
+                                           , ("doc", "~/Archives/eLearn")
                                            , ("8", "~/Downloads/torrente/multimedia")
                                            ]
                 , defaultTopicAction = const $ spawnShell >*> 1
-                , topicActions = M.fromList $ [ ("1:web", spawn "firefox")
-                                              , ("2:im", spawn "skype" >> spawn "pavucontrol" >> spawn "urxvtc")
+                , topicActions = M.fromList $ [ ("web", spawn "firefox")
+                                              , ("im", spawn "skype" >> spawn "pavucontrol" >> spawn "urxvtc")
                                               , ("8", spawn "VirtualBox")
                                               , ("9", spawn "urxvtc -e ssh eee")
                                               ]
@@ -140,9 +141,9 @@ spawnShellIn dir = asks (terminal . config) >>= \t -> spawn $ "cd " ++ dir ++ " 
 
 --layouts
 myLayout = customLayout
-customLayout =  onWorkspace "1:web" fsLayout $
-                onWorkspace "2:im" imLayout $
-                onWorkspace "4:doc" fsLayout $
+customLayout =  onWorkspace "web" fsLayout $
+                onWorkspace "im" imLayout $
+                onWorkspace "doc" fsLayout $
                 onWorkspace "8" fsLayout $
                 standardLayouts
     where
