@@ -6,7 +6,7 @@ import System.Exit
 -- utilities
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.WorkspaceCompare --to use getSortByIndex in ppSort
-import XMonad.Util.NamedScratchpad --to use namedScratchpadFilterOutWorkspace
+import XMonad.Util.Scratchpad --to use scratchpadFilterOutWorkspace&scratchpad
 
 -- actions and prompts
 import XMonad.Actions.GridSelect
@@ -88,8 +88,9 @@ myModMask = mod4Mask
 urgentConfig = UrgencyConfig { suppressWhen = Focused, remindWhen = Dont }
 
 --hooks
-myManageHook = composeAll
-            [ className =? "Firefox"    --> doShift "web"
+myManageHook :: ManageHook
+myManageHook = (composeAll . concat $
+            [[ className =? "Firefox"    --> doShift "web"
             , className =? "Chromium"   --> doShift "web"
             , className =? "Pavucontrol" --> doShift "im"
             , className =? "Pidgin" --> doShift "im"
@@ -105,7 +106,10 @@ myManageHook = composeAll
             , className =? "V4l2ucp" --> doFloat
             , className =? "Firefox" <&&> resource =? "Download" --> doFloat
             , title =? "Skype Full-Screen Video" --> doFloat
-            ]
+            ]]) <+> manageScratchPad
+
+manageScratchPad :: ManageHook
+manageScratchPad = scratchpadManageHook (W.RationalRect (1/4) (1/4) (1/2) (1/2))
 
 
 --bar looks (xmobar)
@@ -113,7 +117,7 @@ myPP = xmobarPP { ppCurrent = xmobarColor colorBlueAlt ""
                   , ppTitle =  shorten 50
                   , ppSep =  " <fc=#a488d9>:</fc> "
                   , ppUrgent = xmobarColor "" colorPink
-                  , ppSort = fmap (.namedScratchpadFilterOutWorkspace) getSortByIndex
+                  , ppSort = fmap (.scratchpadFilterOutWorkspace) getSortByIndex
                 }
 
 --topics
@@ -196,9 +200,13 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm,               xK_x), spawn "sh ~/.config/owncfg/clipsync/dmenu.sh")
     , ((modm .|. shiftMask, xK_x), spawn "python2 ~/.config/owncfg/clipsync/sync.py")
     , ((modm,               xK_z), appendFilePrompt myXPConfig "/home/shivalva/.config/owncfg/txt/NOTES")
+    
     --Making Caps Lock useful
     --editing of .xmodmap is required
-    , ((mod3Mask, xK_Return), currentTopicAction myTopicConfig) -- launch topic action
+    -- launch topic action
+    , ((mod3Mask, xK_BackSpace), currentTopicAction myTopicConfig)
+    -- scratchpad
+    , ((mod3Mask, xK_Return), scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     , ((mod3Mask, xK_s), toggleWS) -- toggle between workspaces
     , ((mod3Mask, xK_f), focusUrgent) -- go to urgent window
     , ((mod3Mask, xK_z), goToSelected defaultGSConfig { gs_cellwidth = 250 })
@@ -209,38 +217,48 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((mod3Mask, xK_0), spawn "ncmpcpp toggle"  ) -- toggle song in ncmpcpp
     , ((mod3Mask, xK_v ), windows copyToAll) -- Make focused window always visible
     , ((mod3Mask .|. shiftMask, xK_v ),  killAllOtherCopies) -- Toggle window state back
+    
     --Multimedia extra keys
     , ((0, 0x1008ff1d), spawn "xlock -mode blank -geometry 1x1" ) -- lock screen
     , ((0, 0x1008ff2f), spawn "pwrman suspend" ) -- suspend computer
     , ((0, 0x1008ff12), spawn "amixer -q set Master toggle"  ) -- toggle mute
     , ((0, 0x1008ff11), spawn "amixer -q set Master 1%-"  ) -- vol down 
     , ((0, 0x1008ff13), spawn "amixer -q set Master 1%+"  ) -- vol up
+    
     --killing
     , ((modm .|. shiftMask, xK_c     ), kill)
+    
     --layouts
     , ((modm,               xK_space ), sendMessage NextLayout)
     , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+    
     --floating layer stuff
     , ((modm,               xK_t     ), withFocused $ windows . W.sink)
+    
     --refresh
     , ((modm,               xK_n     ), refresh)
+    
     --focus
     , ((modm,               xK_Tab   ), windows W.focusDown)
     , ((modm,               xK_j     ), windows W.focusDown)
     , ((modm,               xK_k     ), windows W.focusUp)
     , ((modm,               xK_m     ), windows W.focusMaster)
+    
     --swapping
     , ((modm .|. shiftMask, xK_Return), windows W.shiftMaster)
     , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
     , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
+    
     --increase or decrease number of windows in the master area
     , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
+    
     --resizing
     , ((modm,               xK_h     ), sendMessage Shrink)
     , ((modm,               xK_l     ), sendMessage Expand)
     , ((modm .|. shiftMask, xK_h     ), sendMessage MirrorShrink)
     , ((modm .|. shiftMask, xK_l     ), sendMessage MirrorExpand)
+    
     --quit, or restart
     , ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess))
     , ((modm              , xK_q), spawn "xmonad --recompile; xmonad --restart")
