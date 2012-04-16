@@ -201,8 +201,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_x), spawn "python2 ~/.config/owncfg/clipsync/sync.py")
     , ((modm,               xK_z), appendFilePrompt myXPConfig "/home/shivalva/.config/owncfg/txt/NOTES")
     
-    --Making Caps Lock useful
-    --editing of .xmodmap is required
+    --Making Caps Lock useful editing of .xmodmap is required
     -- launch topic action
     , ((mod3Mask, xK_BackSpace), currentTopicAction myTopicConfig)
     -- scratchpad
