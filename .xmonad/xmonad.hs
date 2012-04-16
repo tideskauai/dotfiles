@@ -5,6 +5,8 @@ import System.Exit
 
 -- utilities
 import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.WorkspaceCompare --to use getSortByIndex in ppSort
+import XMonad.Util.NamedScratchpad --to use namedScratchpadFilterOutWorkspace
 
 -- actions and prompts
 import XMonad.Actions.GridSelect
@@ -96,7 +98,7 @@ myManageHook = composeAll
             , className =? "VirtualBox" --> doShift "8"
             , className =? "MPlayer"    --> doShift "8"
             , className =? "Vlc"    --> doShift "8"
-            , className =? "Hamster-time-tracker" --> doShift "bg"
+            , className =? "Hamster-time-tracker" --> doShift "NSP"
             , className =? "trayer" --> doIgnore
             , className =? "URxvt" --> insertPosition Below Newer
             , className =? "Gtkdialog" --> doFloat
@@ -111,11 +113,12 @@ myPP = xmobarPP { ppCurrent = xmobarColor colorBlueAlt ""
                   , ppTitle =  shorten 50
                   , ppSep =  " <fc=#a488d9>:</fc> "
                   , ppUrgent = xmobarColor "" colorPink
+                  , ppSort = fmap (.namedScratchpadFilterOutWorkspace) getSortByIndex
                 }
 
 --topics
 myTopics :: [Topic]
-myTopics = [ "web", "im", "dev", "doc", "5", "6", "7", "8", "9", "bg"]
+myTopics = [ "web", "im", "dev", "doc", "5", "6", "7", "8", "9", "NSP"]
 
 myTopicConfig :: TopicConfig
 myTopicConfig = defaultTopicConfig
@@ -127,7 +130,7 @@ myTopicConfig = defaultTopicConfig
                                            ]
                 , defaultTopicAction = const $ spawnShell >*> 1
                 , topicActions = M.fromList $ [ ("web", spawn "firefox")
-                                              , ("im", spawn "skype" >> spawn "pavucontrol" >> spawn "urxvtc")
+                                              , ("im", spawn "skype" >> spawn "pavucontrol" >> spawn "v4l2ucp")
                                               , ("8", spawn "VirtualBox")
                                               , ("9", spawn "urxvtc -e ssh eee")
                                               ]
