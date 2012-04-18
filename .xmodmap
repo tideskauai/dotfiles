@@ -1,6 +1,32 @@
-clear lock
+!mod1 used to be mod1 Alt_L,Alt_R,Meta_L
+!Change mod1 to only be Alt_L
+clear mod1
+add mod1 = Alt_L
+
+!control used to have Control_L, Control_R
+!Change control only to have Control_L
+clear control
+add control = Control_L
+
+!Clear mod4 and mod5 to do something with them later.
 clear mod4
+clear mod5
+
+!Clear capslock
+!Change Caps_Lock to Hyper_L (just because Hyper_L was available)
+!And finally assign Hyper_L to mod3
+clear lock
 keycode 66 = Hyper_L
 add mod3 = Hyper_L
-add mod4 = Super_L Super_R
+
+!Swapping buttons in my mouse
 !pointer = 1 10 3 4 5 6 7 8 9 2 11 12 13 14 15 16
+
+!Change KP_Subtract to F7
+keycode 82 = F7
+!Change KP_Add to F8
+keycode 86 = F8
+!Change Alt_R (right alt)
+keycode 108 = dead_acute NoSymbol NoSymbol NoSymbol NoSymbol NoSymbol
+!Change Ctrl_R (right ctrl)
+keycode 105 = dead_tilde dead_diaeresis NoSymbol NoSymbol NoSymbol NoSymbol
