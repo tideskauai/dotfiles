@@ -100,6 +100,7 @@ myManageHook = (composeAll . concat $
             , className =? "MPlayer"    --> doShift "8"
             , className =? "Vlc"    --> doShift "8"
             , className =? "Hamster-time-tracker" --> doShift "NSP"
+            , className =? "Osmo" --> doShift "NSP"
             , className =? "trayer" --> doIgnore
             , className =? "URxvt" --> insertPosition Below Newer
             , className =? "Gtkdialog" --> doFloat
@@ -159,10 +160,11 @@ customLayout =  onWorkspace "web" fsLayout $
     rt = ResizableTall 1 (2/100) (1/2) []
     tiled = named "[]=" $ smartBorders rt    
     mtiled = named "M[]=" $ smartBorders $ Mirror rt
+    rmtiled = named "RM[]=" $ noBorders $ reflectVert $ mtiled
     full = named "[]" $ noBorders Full
     
     fsLayout = full ||| tiled
-    imLayout = reflectVert $ mtiled ||| full
+    imLayout = full ||| rmtiled
 
 --prompt theme
 myXPConfig = defaultXPConfig {  font = "terminus"
