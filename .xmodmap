@@ -1,6 +1,13 @@
+!Clear all the mods for later usage
+clear lock
+clear mod1
+clear mod2
+clear mod3
+clear mod4
+clear mod5
+
 !mod1 used to be mod1 Alt_L,Alt_R,Meta_L
 !Change mod1 to only be Alt_L
-clear mod1
 add mod1 = Alt_L
 
 !control used to have Control_L, Control_R
@@ -8,10 +15,8 @@ add mod1 = Alt_L
 clear control
 add control = Control_L
 
-!Clear capslock
 !Change Caps_Lock to Hyper_L (just because Hyper_L was available)
 !And finally assign Hyper_L to mod3
-clear lock
 keycode 66 = Hyper_L
 add mod3 = Hyper_L
 
@@ -24,12 +29,10 @@ keycode 86 = F8
 !Change Alt_R (right alt)
 keycode 108 = dead_acute dead_tilde
 
-!Clear mod4
 !Change CTRL_R to Hyper_R (just because Hyper_R was available)
 !And finally assign Hyper_R to mod4
-clear mod4
 keycode 105 = Hyper_R
-add mod4 = Hyper_R
+add mod5 = Hyper_R
 
 !Swapping buttons in my mouse
 !pointer = 1 10 3 4 5 6 7 8 9 2 11 12 13 14 15 16
