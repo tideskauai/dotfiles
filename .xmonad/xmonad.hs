@@ -7,6 +7,7 @@ import System.Exit
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.WorkspaceCompare --to use getSortByIndex in ppSort
 import XMonad.Util.Scratchpad --to use scratchpadFilterOutWorkspace&scratchpad
+import XMonad.Util.EZConfig --easy M-key like bindings
 
 -- actions and prompts
 import XMonad.Actions.GridSelect
@@ -133,12 +134,7 @@ myTopicConfig = defaultTopicConfig
                                            , ("doc", "~/Archives/eLearn")
                                            , ("8", "~/Downloads/torrente/multimedia")
                                            ]
-                , defaultTopicAction = const $ spawnShell >*> 1
-                , topicActions = M.fromList $ [ ("web", spawn "firefox")
-                                              , ("im", spawn "skype" >> spawn "pavucontrol" >> spawn "v4l2ucp")
-                                              , ("8", spawn "VirtualBox")
-                                              , ("9", spawn "urxvtc -e ssh eee")
-                                              ]
+                , defaultTopicAction = const $ spawnShell
                 }
 
 spawnShell :: X ()
@@ -195,84 +191,77 @@ searchEngineMap method = M.fromList $
 
 
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
-myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+myKeys conf = mkKeymap conf $ [
+    --Making Caps Lock useful, editing of .xmodmap required
+      ("M3-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
+    , ("M3-s", toggleWS) -- toggle between workspaces
+    , ("M3-f", focusUrgent) -- go to urgent window
+    , ("M3-q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig) --query the web
+    , ("M3-v", windows copyToAll) -- Make focused window always visible
+    , ("M3-S-v", killAllOtherCopies) -- Toggle window state back
+    , ("M3-=", spawn "amixer -q set Master toggle")
+    , ("M3--", spawn "amixer -q set Master 4%-")
+    , ("M3-S--", spawn "amixer -q set Master 4%+")
+    , ("M3-z", goToSelected defaultGSConfig { gs_cellwidth = 250 })
+    --Making Ctrl_R useful, editing of .xmodmap required
+    , ("M5-=", spawn "ncmpcpp toggle")
+    , ("M5--", spawn "ncmpcpp next")
+    , ("M5-S--", spawn "ncmpcpp prev")
+    , ("M5-f", spawn "firefox")
+    , ("M5-c", spawn "chromium --incognito")
+    , ("M5-w", spawn "v4l2ucp" >> spawn "skype")
+    , ("M5-l", spawn "xlock -mode blank -geometry 1x1" )
+    , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch) --query the web(selected text)
+    
     --launching
-    [ ((modm,               xK_Return), spawnShell) -- launch shell in topic
-    , ((modm,               xK_p), shellPrompt myXPConfig)
-    , ((modm,               xK_x), spawn "sh ~/.config/owncfg/clipsync/dmenu.sh")
-    , ((modm .|. shiftMask, xK_x), spawn "python2 ~/.config/owncfg/clipsync/sync.py")
-    , ((modm,               xK_z), appendFilePrompt myXPConfig "/home/shivalva/.config/owncfg/txt/NOTES")
-    
-    --Making Caps Lock useful editing of .xmodmap is required
-    -- launch topic action
-    , ((mod3Mask, xK_BackSpace), currentTopicAction myTopicConfig)
-    -- scratchpad
-    , ((mod3Mask, xK_Return), scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
-    , ((mod3Mask, xK_s), toggleWS) -- toggle between workspaces
-    , ((mod3Mask, xK_f), focusUrgent) -- go to urgent window
-    , ((mod3Mask, xK_z), goToSelected defaultGSConfig { gs_cellwidth = 250 })
-    , ((mod3Mask, xK_q), SM.submap $ searchEngineMap $ S.promptSearch myXPConfig) --query the web
-    , ((mod3Mask .|. shiftMask, xK_q), SM.submap $ searchEngineMap $ S.selectSearch) --query the web
-    , ((mod3Mask, xK_minus), spawn "ncmpcpp prev"  ) -- prev song in ncmpcpp
-    , ((mod3Mask, xK_equal), spawn "ncmpcpp next"  ) -- next song in ncmpcpp
-    , ((mod3Mask, xK_0), spawn "ncmpcpp toggle"  ) -- toggle song in ncmpcpp
-    , ((mod3Mask, xK_v ), windows copyToAll) -- Make focused window always visible
-    , ((mod3Mask .|. shiftMask, xK_v ),  killAllOtherCopies) -- Toggle window state back
-    
-    --Multimedia extra keys
-    , ((0, 0x1008ff1d), spawn "xlock -mode blank -geometry 1x1" ) -- lock screen
-    , ((0, 0x1008ff2f), spawn "pwrman suspend" ) -- suspend computer
-    , ((0, 0x1008ff12), spawn "amixer -q set Master toggle"  ) -- toggle mute
-    , ((0, 0x1008ff11), spawn "amixer -q set Master 1%-"  ) -- vol down 
-    , ((0, 0x1008ff13), spawn "amixer -q set Master 1%+"  ) -- vol up
+    , ("M-<Return>", spawnShell) -- launch shell in topic
+    , ("M-p", shellPrompt myXPConfig)
+    , ("M-x", spawn "sh ~/.config/owncfg/clipsync/dmenu.sh")
+    , ("M-S-x", spawn "python2 ~/.config/owncfg/clipsync/sync.py")
+    , ("M-z", appendFilePrompt myXPConfig "/home/shivalva/.config/owncfg/txt/NOTES")
     
     --killing
-    , ((modm .|. shiftMask, xK_c     ), kill)
+    , ("M-S-c", kill)
     
     --layouts
-    , ((modm,               xK_space ), sendMessage NextLayout)
-    , ((modm .|. shiftMask, xK_space ), setLayout $ XMonad.layoutHook conf)
+    , ("M-<Space>", sendMessage NextLayout)
+    , ("M-S-<Space>", sendMessage FirstLayout)
     
     --floating layer stuff
-    , ((modm,               xK_t     ), withFocused $ windows . W.sink)
+    , ("M-t", withFocused $ windows . W.sink)
     
     --refresh
-    , ((modm,               xK_n     ), refresh)
+    , ("M-n", refresh)
     
     --focus
-    , ((modm,               xK_Tab   ), windows W.focusDown)
-    , ((modm,               xK_j     ), windows W.focusDown)
-    , ((modm,               xK_k     ), windows W.focusUp)
-    , ((modm,               xK_m     ), windows W.focusMaster)
+    , ("M-<Tab>", windows W.focusDown)
+    , ("M-j", windows W.focusDown)
+    , ("M-k", windows W.focusUp)
+    , ("M-m", windows W.focusMaster)
     
     --swapping
-    , ((modm .|. shiftMask, xK_Return), windows W.shiftMaster)
-    , ((modm .|. shiftMask, xK_j     ), windows W.swapDown  )
-    , ((modm .|. shiftMask, xK_k     ), windows W.swapUp    )
+    , ("M-S-<Return>", windows W.shiftMaster)
+    , ("M-S-j", windows W.swapDown  )
+    , ("M-S-k", windows W.swapUp    )
     
     --increase or decrease number of windows in the master area
-    , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
-    , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
+    , ("M-,", sendMessage (IncMasterN 1))
+    , ("M-.", sendMessage (IncMasterN (-1)))
     
     --resizing
-    , ((modm,               xK_h     ), sendMessage Shrink)
-    , ((modm,               xK_l     ), sendMessage Expand)
-    , ((modm .|. shiftMask, xK_h     ), sendMessage MirrorShrink)
-    , ((modm .|. shiftMask, xK_l     ), sendMessage MirrorExpand)
+    , ("M-h", sendMessage Shrink)
+    , ("M-l", sendMessage Expand)
+    , ("M-S-h", sendMessage MirrorShrink)
+    , ("M-S-l", sendMessage MirrorExpand)
     
     --quit, or restart
-    , ((modm .|. shiftMask, xK_q), io (exitWith ExitSuccess))
-    , ((modm              , xK_q), spawn "xmonad --recompile; xmonad --restart")
+    , ("M-S-q", io (exitWith ExitSuccess))
+    , ("M-q", spawn "xmonad --recompile; xmonad --restart")
     ]
+
+    -- mod-[1..],       Switch to workspace N
+    -- mod-shift-[1..], Move client to workspace N
     ++
-     -- mod-[1..9] %! Switch to workspace N
-     -- mod-shift-[1..9] %! Move client to workspace N
-    [((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-    ++
-    -- mod-[w,e] %! switch to twinview screen 1/2
-    -- mod-shift-[w,e] %! move window to screen 1/2
-    [((m .|. modm, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_e, xK_w] [0..]
-        , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+    [ (m ++ k, windows $ f i) | (i, k) <- zip (XMonad.workspaces conf) $ map show [1..]
+                              , (f, m) <- [(W.greedyView, "M-"), (W.shift, "M-S-")]
+    ]
