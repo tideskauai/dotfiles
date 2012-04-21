@@ -4,7 +4,7 @@ import qualified Data.Map as M
 import System.Exit
 
 -- utilities
-import XMonad.Util.Run (spawnPipe)
+import XMonad.Util.Run --to use safespawn
 import XMonad.Util.WorkspaceCompare --to use getSortByIndex in ppSort
 import XMonad.Util.Scratchpad --to use scratchpadFilterOutWorkspace&scratchpad
 import XMonad.Util.EZConfig --easy M-key like bindings
@@ -199,25 +199,25 @@ myKeys conf = mkKeymap conf $ [
     , ("M3-q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig) --query the web
     , ("M3-v", windows copyToAll) -- Make focused window always visible
     , ("M3-S-v", killAllOtherCopies) -- Toggle window state back
-    , ("M3-=", spawn "amixer -q set Master toggle")
-    , ("M3--", spawn "amixer -q set Master 4%-")
-    , ("M3-S--", spawn "amixer -q set Master 4%+")
+    , ("M3-=", safeSpawn "amixer" ["-q","set","Master","toggle"])
+    , ("M3--", safeSpawn "amixer" ["-q","set","Master","4%-"])
+    , ("M3-S--", safeSpawn "amixer" ["-q","set","Master","4%+"])
     , ("M3-z", goToSelected defaultGSConfig { gs_cellwidth = 250 })
     --Making Ctrl_R useful, editing of .xmodmap required
-    , ("M5-=", spawn "ncmpcpp toggle")
-    , ("M5--", spawn "ncmpcpp next")
-    , ("M5-S--", spawn "ncmpcpp prev")
-    , ("M5-f", spawn "firefox")
-    , ("M5-c", spawn "chromium --incognito")
+    , ("M5-=", safeSpawn "ncmpcpp" ["toggle"])
+    , ("M5--", safeSpawn "ncmpcpp" ["next"])
+    , ("M5-S--", safeSpawn "ncmpcpp" ["prev"])
+    , ("M5-f", safeSpawn "firefox" [])
+    , ("M5-c", safeSpawn "chromium" ["--incognito"])
     , ("M5-w", spawn "v4l2ucp" >> spawn "skype")
-    , ("M5-l", spawn "xlock -mode blank -geometry 1x1" )
+    , ("M5-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
     , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch) --query the web(selected text)
     
     --launching
     , ("M-<Return>", spawnShell) -- launch shell in topic
     , ("M-p", shellPrompt myXPConfig)
-    , ("M-x", spawn "sh ~/.config/owncfg/clipsync/dmenu.sh")
-    , ("M-S-x", spawn "python2 ~/.config/owncfg/clipsync/sync.py")
+    , ("M-x", safeSpawn "bash" ["/home/shivalva/.config/owncfg/clipsync/dmenu.sh"])
+    , ("M-S-x", safeSpawn "python2" ["/home/shivalva/.config/owncfg/clipsync/sync.py"])
     , ("M-z", appendFilePrompt myXPConfig "/home/shivalva/.config/owncfg/txt/NOTES")
     
     --killing
@@ -256,7 +256,7 @@ myKeys conf = mkKeymap conf $ [
     
     --quit, or restart
     , ("M-S-q", io (exitWith ExitSuccess))
-    , ("M-q", spawn "xmonad --recompile; xmonad --restart")
+    , ("M-q", restart "xmonad" True)
     ]
 
     -- mod-[1..],       Switch to workspace N
