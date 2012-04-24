@@ -1,7 +1,8 @@
 !Clear all the mods for later usage
 clear lock
+clear control
 clear mod1
-clear mod2
+!clear mod2
 clear mod3
 clear mod4
 clear mod5
@@ -12,7 +13,6 @@ add mod1 = Alt_L
 
 !control used to have Control_L, Control_R
 !Change control only to have Control_L
-clear control
 add control = Control_L
 
 !Change Caps_Lock to Hyper_L (just because Hyper_L was available)
