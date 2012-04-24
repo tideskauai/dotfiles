@@ -37,16 +37,20 @@ MAILCHECK=0                 # Disable mail checking
 HISTFILE=~/.histfile        # The file to store the history
 HISTSIZE=1000               # The internal history's size
 SAVEHIST=1000               # The file history's size
-setopt COMPLETE_IN_WORD     # - Allow tab completition in the
-setopt CORRECT              # middle of a word -
+#setopt COMPLETE_IN_WORD     # If unset, the cursor is set to the end of the word
+                            # if completion is started. Otherwise it stays there
+                            # and completion is done from both ends.
+setopt CORRECT              # Try  to  correct the spelling of commands
 setopt hist_ignore_dups     # Don't save same line in the history
 setopt hist_verify          # Verify when using history
 setopt hist_no_store        # Don't store the `history` command
 setopt hist_ignore_space    # Don't store commands starting with a space
 setopt NO_BEEP              # Don't beep
-setopt nonomatch            # Don't print error on non matched patterns
-setopt extendedglob 
-setopt nomatch 
+setopt extendedglob         # Treat  the  `#',  `~' and `^' characters as part
+                            # of patterns for filename generation, etc
+setopt nomatch              # Print error when pattern for filename generates
+                            # no matches
+#setopt nonomatch            # Don't print error on non matched patterns
 setopt notify               # Report status of background jobs immediately
 
 # Don't store commands with sudo in the history
