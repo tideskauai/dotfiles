@@ -13,7 +13,6 @@ import XMonad.Util.EZConfig --easy M-key like bindings
 import XMonad.Actions.GridSelect
 import XMonad.Actions.CycleWS
 import XMonad.Actions.CopyWindow --copy win to all workspaces
-import XMonad.Actions.TopicSpace --change working directory
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.AppendFile
@@ -33,6 +32,8 @@ import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Named
 import XMonad.Layout.Reflect
 
+import DynamicTopic -- (1)
+
 -------------------------------------------------------------------------------
 ---- Main ---
 -------------------------------------------------------------------------------
@@ -50,7 +51,7 @@ main = xmonad =<< statusBar cmd pp kb conf
 -------------------------------------------------------------------------------
 myConfig = defaultConfig { focusFollowsMouse = False
                            , terminal      = myTerminal
-                           , workspaces    = myTopics
+                           , workspaces    = myWorkspaces
                            , modMask       = myModMask
                            , borderWidth   = myBorderWidth
                            , normalBorderColor = colorNormalBorder 
@@ -99,6 +100,7 @@ myManageHook = (composeAll . concat $
             , className =? "Epdfview"   --> doShift "doc"
             , className =? "VirtualBox" --> doShift "8"
             , className =? "MPlayer"    --> doShift "8"
+            , className =? "mplayer2"    --> doShift "8"
             , className =? "Vlc"    --> doShift "8"
             , className =? "Hamster-time-tracker" --> doShift "NSP"
             , className =? "Osmo" --> doShift "NSP"
@@ -122,26 +124,9 @@ myPP = xmobarPP { ppCurrent = xmobarColor colorBlueAlt ""
                   , ppSort = fmap (.scratchpadFilterOutWorkspace) getSortByIndex
                 }
 
---topics
-myTopics :: [Topic]
-myTopics = [ "web", "im", "dev", "doc", "5", "6", "7", "8", "9", "NSP"]
-
-myTopicConfig :: TopicConfig
-myTopicConfig = defaultTopicConfig
-                { topicDirs = M.fromList $ [ ("web", "~/Downloads")
-                                           , ("im", "~/Downloads")
-                                           , ("dev", "~/dev")
-                                           , ("doc", "~/Archives/eLearn")
-                                           , ("8", "~/Downloads/torrente/multimedia")
-                                           ]
-                , defaultTopicAction = const $ spawnShell
-                }
-
-spawnShell :: X ()
-spawnShell = currentTopicDir myTopicConfig >>= spawnShellIn
-
-spawnShellIn :: Dir -> X ()
-spawnShellIn dir = asks (terminal . config) >>= \t -> spawn $ "cd " ++ dir ++ " && exec " ++ t
+--topics or workspaces
+myWorkspaces :: [WorkspaceId]
+myWorkspaces = [ "web", "im", "dev", "doc", "5", "6", "7", "8", "9", "NSP"]
 
 --layouts
 myLayout = customLayout
@@ -151,12 +136,12 @@ customLayout =  onWorkspace "web" fsLayout $
                 onWorkspace "8" fsLayout $
                 standardLayouts
     where
-    standardLayouts = tiled ||| (Mirror tiled) ||| full
+    standardLayouts = tiled ||| Mirror tiled ||| full
 
     rt = ResizableTall 1 (2/100) (1/2) []
     tiled = named "[]=" $ smartBorders rt    
     mtiled = named "M[]=" $ smartBorders $ Mirror rt
-    rmtiled = named "RM[]=" $ noBorders $ reflectVert $ mtiled
+    rmtiled = named "RM[]=" $ noBorders $ reflectVert mtiled
     full = named "[]" $ noBorders Full
     
     fsLayout = full ||| tiled
@@ -181,18 +166,18 @@ myXPConfig = defaultXPConfig {  font = "terminus"
 -------------------------------------------------------------------------------
 --Search the web: M + q + search engine
 searchEngineMap method = M.fromList $
-    [ ((0, xK_q), method S.multi)
-    , ((0, xK_d), method S.dictionary)
+    [ ((0, xK_d), method S.dictionary)
     , ((0, xK_t), method S.thesaurus)
     , ((0, xK_w), method $ S.searchEngine "wordReference" "http://www.wordreference.com/es/translation.asp?tranword=")
     , ((0, xK_b), method $ S.searchEngine "BBS" "http://bbs.archlinux.org/search.php?action=search&sort_dir=DESC&keywords=")
     , ((0, xK_a), method $ S.searchEngine "archwiki" "http://wiki.archlinux.org/index.php/Special:Search?search=")
+    , ((0, xK_q), method $ S.searchEngine "duckduckgo" "https://duckduckgo.com/?q=")
     ]
 
 
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myKeys conf = mkKeymap conf $ [
-    --Making Caps Lock useful, editing of .xmodmap required
+    --Making Caps Lock useful, editing of ~/.xmodmap required
       ("M3-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     , ("M3-s", toggleWS) -- toggle between workspaces
     , ("M3-f", focusUrgent) -- go to urgent window
@@ -203,7 +188,8 @@ myKeys conf = mkKeymap conf $ [
     , ("M3--", safeSpawn "amixer" ["-q","set","Master","4%-"])
     , ("M3-S--", safeSpawn "amixer" ["-q","set","Master","4%+"])
     , ("M3-z", goToSelected defaultGSConfig { gs_cellwidth = 250 })
-    --Making Ctrl_R useful, editing of .xmodmap required
+    --Making Ctrl_R useful, editing of ~/.xmodmap required
+    , ("M5-<Return>", changeDir myXPConfig) --change the dir of the topic (1)
     , ("M5-=", safeSpawn "ncmpcpp" ["toggle"])
     , ("M5--", safeSpawn "ncmpcpp" ["next"])
     , ("M5-S--", safeSpawn "ncmpcpp" ["prev"])
@@ -214,7 +200,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch) --query the web(selected text)
     
     --launching
-    , ("M-<Return>", spawnShell) -- launch shell in topic
+    , ("M-<Return>", spawnShell) -- launch shell in topic (1)
     , ("M-p", shellPrompt myXPConfig)
     , ("M-x", safeSpawn "bash" ["/home/shivalva/.config/owncfg/clipsync/dmenu.sh"])
     , ("M-S-x", safeSpawn "python2" ["/home/shivalva/.config/owncfg/clipsync/sync.py"])
@@ -262,6 +248,6 @@ myKeys conf = mkKeymap conf $ [
     -- mod-[1..],       Switch to workspace N
     -- mod-shift-[1..], Move client to workspace N
     ++
-    [ (m ++ k, windows $ f i) | (i, k) <- zip (XMonad.workspaces conf) $ map show [1..]
+    [ (m ++ k, windows $ f i) | (i, k) <- zip (XMonad.workspaces conf) $ map show [1..9]
                               , (f, m) <- [(W.greedyView, "M-"), (W.shift, "M-S-")]
     ]
