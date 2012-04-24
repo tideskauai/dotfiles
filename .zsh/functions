@@ -24,24 +24,6 @@ rcd() {
     fi
 }
 
-fans() {
-    if [ $1 ] ; then
-        aticonfig --adapter=0 --od-gettemperature | tail -n1 | awk '{print "Current temp: " $5}' ;
-        aticonfig --pplib-cmd "set fanspeed 0 $1" ;
-    else
-        aticonfig --adapter=0 --od-gettemperature | tail -n1 | awk '{print "Current temp: " $5}' ;
-        aticonfig --pplib-cmd "set fanspeed 0 auto" ;
-    fi
-}
-
-ff() {
-    if (($# == 0)); then
-        lsof -c plugin-co |grep 'tmp/Flash' | awk '{ print "/proc/" $2 "/fd/" $4 }' | sed 's/[rwu]$//' | xargs mplayer
-    elif [[ $1 = "-l" ]]; then
-        lsof -c plugin-co |grep 'tmp/Flash' | awk '{ print "/proc/" $2 "/fd/" $4 }' | sed 's/[rwu]$//'
-    fi
-}
-
 share() {
     if (($# == 1)); then
         dir=${TMPDIR:-/tmp}/share-$$; mkdir "$dir" || error
