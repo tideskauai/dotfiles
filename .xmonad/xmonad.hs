@@ -187,6 +187,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M3-=", safeSpawn "amixer" ["-q","set","Master","toggle"])
     , ("M3--", safeSpawn "amixer" ["-q","set","Master","4%-"])
     , ("M3-S--", safeSpawn "amixer" ["-q","set","Master","4%+"])
+    , ("M3-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
     , ("M3-z", goToSelected defaultGSConfig { gs_cellwidth = 250 })
     --Making Ctrl_R useful, editing of ~/.xmodmap required
     , ("M5-<Return>", changeDir myXPConfig) --change the dir of the topic (1)
@@ -196,7 +197,6 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-f", safeSpawn "firefox" [])
     , ("M5-c", safeSpawn "chromium" ["--incognito"])
     , ("M5-w", spawn "v4l2ucp" >> spawn "skype")
-    , ("M5-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
     , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch) --query the web(selected text)
     
     --launching
