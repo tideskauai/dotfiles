@@ -1,5 +1,7 @@
 *.swp
 *.pyc
+*.hi
+*.o
 
 .mpd/mpd.db
 .mpd/mpd.log
@@ -18,6 +20,7 @@
 
 .xmonad/*
 !.xmonad/xmonad.hs
+!.xmonad/lib
 
 .config/*
 !.config/xcolors
