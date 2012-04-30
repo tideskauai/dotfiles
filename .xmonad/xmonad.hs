@@ -12,7 +12,7 @@ import XMonad.Util.EZConfig --easy M-key like bindings
 -- actions and prompts
 import XMonad.Actions.GridSelect
 import XMonad.Actions.CycleWS
-import XMonad.Actions.CopyWindow --copy win to all workspaces
+import XMonad.Actions.CopyWindow --copy win to workspaces (1)
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.AppendFile
@@ -32,7 +32,7 @@ import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Named
 import XMonad.Layout.Reflect
 
-import DynamicTopic -- (1)
+import DynamicTopic -- (2)
 
 -------------------------------------------------------------------------------
 ---- Main ---
@@ -182,15 +182,14 @@ myKeys conf = mkKeymap conf $ [
     , ("M3-s", toggleWS) -- toggle between workspaces
     , ("M3-f", focusUrgent) -- go to urgent window
     , ("M3-q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig) --query the web
-    , ("M3-v", windows copyToAll) -- Make focused window always visible
-    , ("M3-S-v", killAllOtherCopies) -- Toggle window state back
+    , ("M3-k", killAllOtherCopies) -- Kill all copied windows (1)
     , ("M3-=", safeSpawn "amixer" ["-q","set","Master","toggle"])
     , ("M3--", safeSpawn "amixer" ["-q","set","Master","4%-"])
     , ("M3-S--", safeSpawn "amixer" ["-q","set","Master","4%+"])
     , ("M3-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
     , ("M3-z", goToSelected defaultGSConfig { gs_cellwidth = 250 })
     --Making Ctrl_R useful, editing of ~/.xmodmap required
-    , ("M5-<Return>", changeDir myXPConfig) --change the dir of the topic (1)
+    , ("M5-<Return>", changeDir myXPConfig) --change the dir of the topic (2)
     , ("M5-=", safeSpawn "ncmpcpp" ["toggle"])
     , ("M5--", safeSpawn "ncmpcpp" ["next"])
     , ("M5-S--", safeSpawn "ncmpcpp" ["prev"])
@@ -200,7 +199,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch) --query the web(selected text)
     
     --launching
-    , ("M-<Return>", spawnShell) -- launch shell in topic (1)
+    , ("M-<Return>", spawnShell) -- launch shell in topic (2)
     , ("M-p", shellPrompt myXPConfig)
     , ("M-x", safeSpawn "bash" ["/home/shivalva/.config/owncfg/clipsync/dmenu.sh"])
     , ("M-S-x", safeSpawn "python2" ["/home/shivalva/.config/owncfg/clipsync/sync.py"])
@@ -245,9 +244,11 @@ myKeys conf = mkKeymap conf $ [
     , ("M-q", restart "xmonad" True)
     ]
 
-    -- mod-[1..],       Switch to workspace N
-    -- mod-shift-[1..], Move client to workspace N
+    -- mod-[1..9],       Switch to workspace N
+    -- mod-shift-[1..9], Move client to workspace N
+    -- mod3-[1..9],      Copy windows to workspace N (1)
     ++
-    [ (m ++ k, windows $ f i) | (i, k) <- zip (XMonad.workspaces conf) $ map show [1..9]
-                              , (f, m) <- [(W.greedyView, "M-"), (W.shift, "M-S-")]
+    [ (m ++ k, windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) $ map show [1..9]
+        , (f, m) <- [(W.greedyView, "M-"), (W.shift, "M-S-"), (copy, "M3-")]
     ]
