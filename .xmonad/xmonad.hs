@@ -94,7 +94,7 @@ urgentConfig = UrgencyConfig { suppressWhen = Focused, remindWhen = Dont }
 myManageHook :: ManageHook
 myManageHook = (composeAll . concat $
             [[ className =? "Firefox"    --> doShift "web"
-            , className =? "Chromium"   --> doShift "web"
+            , className =? "Chromium"   --> insertPosition End Older <+> doShift "web" -- (4)
             , className =? "Pavucontrol" --> insertPosition End Older <+> doShift "im" -- (4)
             , className =? "Pidgin" --> insertPosition End Older <+> doShift "im" -- (4)
             , className =? "Skype" --> insertPosition End Older <+> doShift "im" -- (4)
@@ -223,9 +223,6 @@ myKeys conf = mkKeymap conf $ [
     
     --focus
     , ("M-<Tab>", windows W.focusDown)
-    , ("M-j", windows W.focusDown)
-    , ("M-k", windows W.focusUp)
-    , ("M-m", windows W.focusMaster)
     
     --swapping
     , ("M-S-<Return>", windows W.shiftMaster)
@@ -239,8 +236,8 @@ myKeys conf = mkKeymap conf $ [
     --resizing
     , ("M-h", sendMessage Shrink)
     , ("M-l", sendMessage Expand)
-    , ("M-S-h", sendMessage MirrorShrink)
-    , ("M-S-l", sendMessage MirrorExpand)
+    , ("M-j", sendMessage MirrorShrink)
+    , ("M-k", sendMessage MirrorExpand)
     
     --quit, or restart
     , ("M-S-q", io (exitWith ExitSuccess))
