@@ -15,10 +15,8 @@ rcd() {
         ls --color /etc/rc.d
         echo "Running daemons:"
         ls /run/daemons
-    elif (($# == 1)); then
-        /etc/rc.d/$1
     elif (($# == 2)); then
-        sudo /etc/rc.d/$1 $2
+        sudo /etc/rc.d/$2 $1
     else
         echo "Invalid number of arguments"
     fi
