@@ -218,9 +218,6 @@ myKeys conf = mkKeymap conf $ [
     --floating layer stuff
     , ("M-t", withFocused $ windows . W.sink)
     
-    --refresh
-    , ("M-n", refresh)
-    
     --focus
     , ("M-<Tab>", windows W.focusDown)
     
@@ -229,15 +226,14 @@ myKeys conf = mkKeymap conf $ [
     , ("M-S-j", windows W.swapDown  )
     , ("M-S-k", windows W.swapUp    )
     
-    --increase or decrease number of windows in the master area
-    , ("M-,", sendMessage (IncMasterN 1))
-    , ("M-.", sendMessage (IncMasterN (-1)))
     
     --resizing
     , ("M-h", sendMessage Shrink)
     , ("M-l", sendMessage Expand)
     , ("M-j", sendMessage MirrorShrink)
     , ("M-k", sendMessage MirrorExpand)
+    , ("M-,", sendMessage (IncMasterN 1)) -- inc win # in master area
+    , ("M-.", sendMessage (IncMasterN (-1))) -- dec win # in master area
     
     --quit, or restart
     , ("M-S-q", io (exitWith ExitSuccess))
