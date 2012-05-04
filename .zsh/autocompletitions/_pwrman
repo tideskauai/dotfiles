@@ -1,0 +1,5 @@
+#compdef pwrman
+
+_arguments "1:Options:(shutdown restart suspend hibernate)"
+
+# vim: set ts=2 sw=2 ft=sh noet:
