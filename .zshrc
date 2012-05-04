@@ -14,6 +14,9 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+# Add custom completition scripts
+fpath=(~/.zsh/autocompletitions $fpath)
+
 #-----------------------------
 # Dircolors
 #-----------------------------
@@ -52,6 +55,7 @@ setopt nomatch              # Print error when pattern for filename generates
                             # no matches
 #setopt nonomatch            # Don't print error on non matched patterns
 setopt notify               # Report status of background jobs immediately
+setopt noclobber            # Requires >! to overwrite existing files
 
 # Don't store commands with sudo in the history
 function zshaddhistory() { [[ $1 != *sudo* ]] }
@@ -64,8 +68,15 @@ source $HOME/.zsh/completition
 #------------------------------
 # Alias stuff
 #------------------------------
-source $HOME/.zsh/alias
-source $HOME/.zsh/functions
+case $OSTYPE in
+    linux*)
+        source $HOME/.zsh/alias
+        source $HOME/.zsh/functions
+        ;;
+    freebsd*)
+        source $HOME/.zsh/fbsd
+        ;;
+esac
 
 #------------------------------
 # Window title
@@ -98,4 +109,5 @@ precmd(){
     fi
 }
 
-PROMPT='%F{green}%n%F{blue} in [${PR_PWDCOLOR}%~$PR_RESET%F{blue}] %F{red}>> $PR_RESET'
+PROMPT='%F{green}%n%F{blue} in [${PR_PWDCOLOR}%~$PR_RESET%F{blue}] %F{red}→$PR_RESET '
+RPROMPT='%F{black}[%T]$PR_RESET'
