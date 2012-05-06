@@ -14,9 +14,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-# Add custom completition scripts
-fpath=(~/.zsh/autocompletitions $fpath)
-
 #-----------------------------
 # Dircolors
 #-----------------------------
@@ -71,9 +68,11 @@ case $OSTYPE in
         source $HOME/.zsh/functions
         # Don't store commands with sudo in the history
         function zshaddhistory() { [[ $1 != *sudo* ]] }
+        # Add custom completition scripts
+        fpath=(~/.zsh/autocompletitions $fpath)
         ;;
     freebsd*)
-        source $HOME/.zsh/fbsd
+        source $HOME/.zsh/alias-fbsd
         ;;
 esac
 
