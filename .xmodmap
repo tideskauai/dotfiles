@@ -20,12 +20,6 @@ add control = Control_L
 keycode 66 = Hyper_L
 add mod3 = Hyper_L
 
-!Change KP_Subtract to F7
-keycode 82 = F7
-
-!Change KP_Add to F8
-keycode 86 = F8
-
 !Change Alt_R (right alt)
 keycode 108 = dead_acute dead_tilde
 
