@@ -57,9 +57,6 @@ setopt nomatch              # Print error when pattern for filename generates
 setopt notify               # Report status of background jobs immediately
 setopt noclobber            # Requires >! to overwrite existing files
 
-# Don't store commands with sudo in the history
-function zshaddhistory() { [[ $1 != *sudo* ]] }
-
 #------------------------------
 # Completition 
 #------------------------------
@@ -72,6 +69,8 @@ case $OSTYPE in
     linux*)
         source $HOME/.zsh/alias
         source $HOME/.zsh/functions
+        # Don't store commands with sudo in the history
+        function zshaddhistory() { [[ $1 != *sudo* ]] }
         ;;
     freebsd*)
         source $HOME/.zsh/fbsd
