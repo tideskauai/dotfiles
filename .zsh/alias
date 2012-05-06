@@ -8,7 +8,7 @@ alias -s bz2='tar -xjvf'
 alias -g L='| less'
 
 alias ls='ls -FNh --tabsize=0 --color=auto --show-control-chars --group-directories-first'
-alias ls-l='ls -lah'
+alias ls-l='ls -lha'
 alias ls-d='ls -lhrt' # sort by date
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
