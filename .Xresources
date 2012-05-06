@@ -20,8 +20,10 @@ URxvt.colorRV:  #333333
 URxvt.fading:   25%
 URxvt.dynamicColors: on
 URxvt.internalborder: 0
-URxvt.font: -*-dina-medium-r-*-*-13-*-*-*-*-*-*-*
-URxvt.boldFont: -*-dina-bold-r-*-*-13-*-*-*-*-*-*-*
+!URxvt.font: -*-dina-medium-r-*-*-13-*-*-*-*-*-*-*
+!URxvt.boldFont: -*-dina-bold-r-*-*-13-*-*-*-*-*-*-*
+URxvt.font: xft:DejaVuSansMono:pixelsize=18
+URxvt.boldFont: xft:DejaVuSansMono:pixelsize=18:bold
 URxvt.cutchars: "()*,<>[]{}|'"
 URxvt.print-pipe: cat >/tmp/xxx
 URxvt.visualBell: false
