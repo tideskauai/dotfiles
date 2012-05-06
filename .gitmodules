@@ -1,0 +1,20 @@
+[submodule ".vim/bundle/a"]
+    path = .vim/bundle/a
+    url = https://github.com/vim-scripts/a.vim
+    ignore = dirty
+[submodule ".vim/bundle/snipmate"]
+    path = .vim/bundle/snipmate
+    url = https://github.com/garbas/vim-snipmate.git
+    ignore = dirty
+[submodule ".vim/bundle/nerdtree"]
+    path = .vim/bundle/nerdtree
+    url = https://github.com/scrooloose/nerdtree.git
+    ignore = dirty
+[submodule ".vim/bundle/gist-vim"]
+    path = .vim/bundle/gist-vim
+    url = https://github.com/mattn/gist-vim.git
+    ignore = dirty
+[submodule ".vim/bundle/tabular"]
+    path = .vim/bundle/tabular
+    url = https://github.com/godlygeek/tabular.git
+    ignore = dirty
