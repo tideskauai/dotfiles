@@ -16,8 +16,8 @@
     p = push
     s = status
     d = diff
-    l = log -p --pretty=format:'%C(cyan reverse)%h%Creset (%ar - %C(black)%an%Creset), %s%C(cyan)%d%Creset%n'
-    ll = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -n 10
+    ll = log -p --pretty=format:'%C(cyan reverse)%h%Creset (%ar - %C(black)%an%Creset), %s%C(cyan)%d%Creset%n'
 [branch "master"]
     remote = origin
     merge = refs/heads/master
