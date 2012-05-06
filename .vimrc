@@ -43,3 +43,11 @@ map <F10> :NERDTreeToggle<CR>
 let mapleader = "`"
 map <leader>1 "+y
 map <leader>2 "+p
+
+"Calling pathogen
+call pathogen#infect()
+
+"gist settings
+let g:gist_detect_filetype = 1
+let g:gist_show_privates = 1
+let g:gist_post_private = 1
