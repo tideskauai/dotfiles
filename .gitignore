@@ -28,4 +28,7 @@
 !.config/openbox
 !.config/cower
 
+.vim/.netrwhist
+.vim/backup
+.vim/swap
 .vim/bundle
