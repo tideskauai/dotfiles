@@ -73,6 +73,7 @@ case $OSTYPE in
         ;;
     freebsd*)
         source $HOME/.zsh/alias-fbsd
+        source $HOME/.zsh/functions-fbsd
         ;;
 esac
 
