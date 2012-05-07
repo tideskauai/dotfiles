@@ -1,4 +1,5 @@
 #!/bin/bash
+# script based off vodik's
 
 dotfiles=$PWD
 
@@ -8,9 +9,18 @@ die() {
 
 link() {
     echo "ln -fs "$dotfiles/$1" "$HOME/$1""
+    if [ -f "$HOME/$1" ]; then
+        echo "File "$1" already exists in filesystem, do you wish to delete it?"
+        # action
+
+    elif [ -d "$HOME/$1" ]; then
+        echo "Dir "$1" already exists in filesystem, do you wish to delete it?"
+        # action
+    fi
 #    ln -fs "$dotfiles/$1" "$HOME/$1"
 }
 
+# Deploy scriptlets {{{
 dotfiles_mpd() {
     link .mpd
     link .ncmpcpp
@@ -49,7 +59,6 @@ dotfiles_vim() {
 
 dotfiles_git() {
     link .gitconfig
-    link .gitignore
 }
 
 dotfiles_X() {
@@ -67,6 +76,7 @@ dotfiles_rtorrent() {
 dotfiles_config() {
     link .config
 }
+# }}}
 
 deploy() {
     while (( $# )); do
@@ -75,23 +85,21 @@ deploy() {
     done
 }
 
+usage() {
+    cat << HERE
+Automated deploy function for dotfiles syncronization.
+
+Supported:
+HERE
+
+    for iter in $(compgen -A function dotfiles_); do
+        echo " ${iter#*_}"
+    done
+    exit "${1:-0}"
+}
+
 if [[ $# == 1 ]]; then
-    if [[ $1 = "all" ]]; then
-        deploy mpd \
-            mplayer \
-            mutt \
-            newsbeuter \
-            xmonad \
-            zsh \
-            tmux \
-            vim \
-            git \
-            X \
-            rtorrent \
-            config
-    else
         deploy $*
-    fi
 else
-    echo "I don't know what to do"
+    usage 0
 fi
