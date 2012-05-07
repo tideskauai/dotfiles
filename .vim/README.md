@@ -23,7 +23,7 @@ cd ~/.vim/autoload && \
 wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 cd ~/.vim/bundle && \
-git clone git://github.com/garbas/vim-snipmate.git && \
+git clone git://github.com/msanders/snipmate.vim.git && \
 git clone git://github.com/scrooloose/nerdtree.git && \
 git clone git://github.com/mattn/gist-vim && \
 git clone git://github.com/mattn/webapi-vim && \
