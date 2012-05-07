@@ -8,6 +8,7 @@ List of plugins I use:
 - [NERDtree](https://github.com/vim-scripts/The-NERD-tree)
 - [gist-vim](https://github.com/mattn/gist-vim)
 - [tabular](https://github.com/godlygeek/tabular.git)
+- [commentary](https://github.com/tpope/vim-commentary)
 
 Install
 -------
@@ -22,5 +23,6 @@ git clone git://github.com/msanders/snipmate.vim.git && \
 git clone git://github.com/scrooloose/nerdtree.git && \
 git clone git://github.com/mattn/gist-vim && \
 git clone git://github.com/mattn/webapi-vim && \
-git clone git://github.com/godlygeek/tabular.git
+git clone git://github.com/godlygeek/tabular.git && \
+git clone git://github.com/tpope/vim-commentary.git
 ````
