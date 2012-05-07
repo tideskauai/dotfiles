@@ -5,6 +5,8 @@ export EDITOR="vim"
 export VISUAL="vim"
 export PATH="${PATH}:${HOME}/.config/owncfg/bin"
 export PAGER="less"
+# Add custom completition scripts
+fpath=(~/.zsh/autocompletitions $fpath)
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -68,8 +70,6 @@ case $OSTYPE in
         source $HOME/.zsh/functions
         # Don't store commands with sudo in the history
         function zshaddhistory() { [[ $1 != *sudo* ]] }
-        # Add custom completition scripts
-        fpath=(~/.zsh/autocompletitions $fpath)
         ;;
     freebsd*)
         source $HOME/.zsh/alias-fbsd
