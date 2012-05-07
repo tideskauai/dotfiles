@@ -4,15 +4,10 @@ Plugins
 -------
 
 List of plugins I use:
-- [snipmate] []
-- [NERDtree] []
-- [gist-vim] []
-- [tabular] []
-
-    [snipmate]: https://github.com/garbas/vim-snipmate
-    [NERDtree]: https://github.com/vim-scripts/The-NERD-tree
-    [gist-vim]: https://github.com/mattn/gist-vim
-    [tabular]: https://github.com/godlygeek/tabular.git
+- [snipmate] [https://github.com/garbas/vim-snipmate]
+- [NERDtree] [https://github.com/vim-scripts/The-NERD-tree]
+- [gist-vim] [https://github.com/mattn/gist-vim]
+- [tabular] [https://github.com/godlygeek/tabular.git]
 
 Install
 -------
