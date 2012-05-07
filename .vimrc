@@ -7,7 +7,6 @@ call pathogen#infect()
 
 colorscheme dc2
 syntax on
-set t_Co=256
 set number
 set cursorline
 "The VIM software has had several remote vulnerabilities
@@ -37,32 +36,71 @@ set ofu=syntaxcomplete#Complete
 "templates
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
 
-"binds
+"keep attributes of original file
+set backupcopy=yes
+"store backups under ~/.vim/backup
+set backupdir=$HOME/.vim/backup
+"keep swaps under ~/.vim/swap
+set directory=~/.vim/swap
+
+" Code folding
+"--------------------------
+if has ('folding')
+  set foldenable
+  set foldmethod=marker
+  set foldmarker={{{,}}}
+  set foldcolumn=0
+endif
+
+" Mail
+"--------------------------
+autocmd FileType mail,human set formatoptions+=t textwidth=72
+" Python stuff
+"--------------------------
+autocmd FileType python let python_highlight_all = 1
+autocmd FileType python let python_slow_sync = 1
+autocmd FileType python set expandtab shiftwidth=4 softtabstop=4
+autocmd FileType python set completeopt=preview
+
+" Binds
+"--------------------------
 inoremap <F1> <C-O>b
 nnoremap <F1> b
 inoremap <F2> <C-O>w
 nnoremap <F2> w
-nnoremap <F3> :set hlsearch! hlsearch?<CR>
+nnoremap <F5> :set hlsearch! hlsearch?<CR>
 nnoremap <F9> <C-^>
+"nnoremap <silent> <F10> :TlistToggle<CR>
 
-"mapleader
+" Mapleader
+"--------------------------
 let mapleader = "`"
 map <leader>1 "+y
 map <leader>2 "+p
 nmap <leader>l :set list!<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 
-"invisible chars
-set listchars=tab:▸\ ,eol:¬
+" Invisible chars
+"--------------------------
+set listchars=tab:→\ ,trail:·\,eol:¬
 highlight NonText ctermfg=237
-highlight SpecialKey ctermfg=233
+highlight SpecialKey ctermfg=234
 
-"gist settings
+" Gist settings
+"--------------------------
 let g:gist_detect_filetype = 1
 let g:gist_show_privates   = 1
 let g:gist_post_private    = 1
 
-"NERDtree settings
+" NERDtree settings
+"--------------------------
 let g:NERDTreeChDirMode = 2
 let g:NERDTreeIgnore    = ['\~$', '\.swp$', '\.o$', '\.hi$']
 let g:NERDTreeMinimalUI = 1
+
+" Taglist settings
+"--------------------------
+"let Tlist_Use_Right_Window = 1
+"let Tlist_Compart_Format   = 1
+"let Tlist_Show_Menu        = 1
+"let Tlist_Exit_OnlyWindow  = 1
