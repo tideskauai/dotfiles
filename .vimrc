@@ -70,7 +70,6 @@ inoremap <F2> <C-O>w
 nnoremap <F2> w
 nnoremap <F5> :set hlsearch! hlsearch?<CR>
 nnoremap <F9> <C-^>
-"nnoremap <silent> <F10> :TlistToggle<CR>
 
 " Mapleader
 "--------------------------
@@ -98,9 +97,9 @@ let g:NERDTreeChDirMode = 2
 let g:NERDTreeIgnore    = ['\~$', '\.swp$', '\.o$', '\.hi$']
 let g:NERDTreeMinimalUI = 1
 
-" Taglist settings
+" Ultisnip settings
 "--------------------------
-"let Tlist_Use_Right_Window = 1
-"let Tlist_Compart_Format   = 1
-"let Tlist_Show_Menu        = 1
-"let Tlist_Exit_OnlyWindow  = 1
+let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsSnippetDirectories  = ["my_snippets"]
