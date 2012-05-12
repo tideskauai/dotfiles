@@ -70,8 +70,8 @@
 /set weechat.bar.nicklist.hidden on
 /set weechat.bar.status.position top
 /set weechat.look.prefix_align_max 10
-/set weechat.look.hotlist_count_max 0                                                              
-/set weechat.look.buffer_time_format "${235}%H${236}%M"                  
+/set weechat.look.hotlist_count_max 0
+/set weechat.look.buffer_time_format "${235}%H${236}%M"
 /set weechat.bar.title.color_bg default
 /set weechat.bar.title.color_fg darkgray
 /set weechat.bar.status.color_bg default

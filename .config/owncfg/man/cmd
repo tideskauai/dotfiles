@@ -12,7 +12,7 @@
 ####################################
 ## Trace and view network traffic ##
 ####################################
-tcpdump -s 0 -w - port <port> | tcpdump -r - -A  
+tcpdump -s 0 -w - port <port> | tcpdump -r - -A
 
 ####################################
 ## Reverse SSH                   ###

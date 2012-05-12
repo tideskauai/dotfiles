@@ -17,7 +17,7 @@
     - make install clean
 
 # Ports updating:
-#   Run extract after fetch if being run for the first time.    
+#   Run extract after fetch if being run for the first time.
     - portsnap fetch update
 
 # Update all ports (Asks and tells which packages need updating):
@@ -26,7 +26,7 @@
 # To list all processes that are viewing files in a dir
     - fstat -f /var/log
 
-# Show ports and their processes: 
+# Show ports and their processes:
     - sockstat
 
 #####################################

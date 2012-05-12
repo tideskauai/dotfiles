@@ -11,7 +11,7 @@ usage ()
 
     alarm 1m 5m
     \tWill make alarm1 sound in 1 minute, and then, after 5 minutes
-    \talarm2 will sound. This runs and a loop 9999 times. 
+    \talarm2 will sound. This runs and a loop 9999 times.
 
     alarm kill
     \tWill kill the script when it goes into the 9999 repetitions loop

@@ -91,7 +91,7 @@ elif [ -n "$1" ] && [ -f "$1" ]; then
         echo "$back_up_dir Does not exist"
     fi
 
-# No valid arguments were given, so display a help    
+# No valid arguments were given, so display a help
 else 
     printf "Usage:\n \
         $script_name --internalhdd (-i) \tTo sync files with internal hdd.\n \
