@@ -1,0 +1,21 @@
+#!/bin/bash
+
+script_name=$(basename "$0")
+
+if (($# == 1)) && [[ $1 = *[smhd] ]]; then
+    xset s off && xset -dpms && sleep "$1" || xset s on && xset +dpms
+
+elif (($# == 1)) && [[ $1 = "-r" ]]; then
+    xset s on && xset +dpms
+
+elif (($# == 2)) && [[ $1 = "-s" ]] && [[ $2 = *[smhd] ]]; then
+    xset s off && xset -dpms && sleep "$1" || xset s on && xset +dpms
+    pwrman suspend
+    xlock -mode blank >/dev/null 2>&1
+
+else
+    printf "Use h for hours, m for minutes, and s for seconds.\n\n \
+        $script_name 1h \tTo turn off power saving for one hour. \n \
+        $script_name -s 1h \tTo turn off power saving for one hour, then suspend computer.\n \
+        $script_name -r \tRestores power savings to normal state.\n"
+fi

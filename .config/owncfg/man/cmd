@@ -1,0 +1,35 @@
+# Disable touchpad
+    synclient TouchpadOff=1
+# Windows file sharing stuff
+    sudo mount -t cifs //ip/folder /mnt
+    nbtscan 192.168.0.2-9
+    smbtree
+# Send an email from command line
+    echo "Sending file" | mutt -a pleh.zip -s "attachment" recipientemail@gmail.com
+# Get output of command in English
+    LC_ALL=C <command>
+
+####################################
+## Trace and view network traffic ##
+####################################
+tcpdump -s 0 -w - port <port> | tcpdump -r - -A  
+
+####################################
+## Reverse SSH                   ###
+####################################
+# (A) = peks (B) = nico
+(A) ssh -f -N -R 65001:localhost:22 nico@nico-ip-address
+(B) ssh peka@localhost -p 8888
+
+####################################
+## Kill tcp/udp ports            ###
+####################################
+fuser -k <port>/tcp
+fuser -k <port>/udp
+
+####################################
+## sshfs                         ###
+####################################
+sshfs user@192.168.1.103:/M1 .m1 
+thunar ~/.m1
+fusermount -u .m1

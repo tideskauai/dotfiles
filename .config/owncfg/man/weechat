@@ -1,0 +1,162 @@
+######################
+### Behaviour      ###
+######################
+# Behavior {{{
+/set weechat.plugin.autoload "*,!logger,!tcl,!lua,!ruby,!xfer,!relay,!fifo"
+/set irc.network.lag_min_show 1000
+/set weechat.look.day_change on
+/set weechat.look.jump_current_to_previous_buffer off
+/set irc.look.smart_filter on
+/set weechat.completion.partial_completion_command_arg on
+/filter add irc_smart *,!*&bitlbee* irc_smart_filter *
+/filter add irc_clean * irc_470,irc_324,irc_328,irc_329,irc_332,irc_333,irc_372,irc_376 *
+/filter add bitlbee irc.znc.msn.&bitlbee irc_mode *
+/filter add noise * nick_phrik,nick_nathan28,nick_masterkorp,nick_rabbitear,nick_Nuked *
+/set aspell.check.default_dict "en,es" 
+/set weechat.look.paste_bracketed on
+/set weechat.look.paste_max_lines 0
+/key unbind meta-m
+/key unbind meta-=
+/key unbind ctrl-J
+/key unbind ctrl-N
+/key unbind ctrl-P
+/unalias AAWAY
+/unalias AME
+/unalias AMSG
+/unalias ANICK
+/unalias CHAT
+/unalias KB
+/unalias MUB
+/unalias UB
+/unalias BYE
+/unalias EXIT
+/unalias LEAVE
+/unalias SAY
+/unalias SIGNOFF
+/unalias UMODE
+/unalias W
+/unalias K
+/unalias WI
+/unalias WII
+/unalias WW
+/unalias C
+/unalias IG
+/unalias M
+/unalias N
+/unalias T
+/alias su /window scroll_unread
+/set irc.ctcp.version = ""
+#/set irc.look.buffer_switch_autojoin off
+/set irc.look.display_old_topic off
+# }}}
+
+######################
+### Look settings  ###
+######################
+# /set weechat.look.prefix_same_nick "⋯"
+/set weechat.look.prefix_join "→"
+/set weechat.look.prefix_quit "←"
+/set weechat.look.item_buffer_filter "⚑"
+/set weechat.look.prefix_action "⚡"
+/set weechat.look.prefix_suffix "╡"
+/set weechat.look.read_marker_string "─"
+/set weechat.color.chat_prefix_suffix "234"
+/set weechat.color.chat_read_marker "236"
+/set weechat.look.color_inactive_buffer "on"
+/set weechat.color.chat_inactive_buffer "235"
+/set weechat.look.hotlist_sort  group_number_asc
+/set weechat.look.buffer_notify_default highlight
+/set weechat.bar.title.hidden on
+/set weechat.bar.nicklist.hidden on
+/set weechat.bar.status.position top
+/set weechat.look.prefix_align_max 10
+/set weechat.look.hotlist_count_max 0                                                              
+/set weechat.look.buffer_time_format "${235}%H${236}%M"                  
+/set weechat.bar.title.color_bg default
+/set weechat.bar.title.color_fg darkgray
+/set weechat.bar.status.color_bg default
+/set weechat.bar.status.color_fg darkgray
+/set weechat.bar.status.color_delim blue
+# /set weechat.color.chat_nick_colors "cyan,001,002,004,005,012,025,060,065,069,096"
+/set weechat.color.chat_nick_colors "001,002,003,004,005,006,012,013,025,059,060,065,069,096"
+# /set weechat.color.status_data_msg !blue
+/set weechat.color.status_data_msg darkgray
+/set weechat.color.status_count_highlight red
+/set weechat.color.status_name darkgray
+/set weechat.color.status_number blue
+/set weechat.color.status_data_other darkgray
+/set weechat.color.chat_prefix_action 185
+/set weechat.color.chat_host black
+/set weechat.color.chat_nick_self darkgray
+/set weechat.color.chat_time black
+/set weechat.color.chat_time_delimiters black
+/set weechat.color.chat_buffer black
+/set weechat.color.chat_channel black
+/set weechat.color.chat_highlight_bg lightmagenta
+/set weechat.color.chat_highlight_bg black
+/set weechat.color.chat_prefix_buffer black
+/set irc.color.reason_quit black
+/set irc.color.topic_new 36
+/set irc.color.topic_old darkgray
+/set irc.color.item_channel_modes black
+/set irc.color.input_nick black
+/set weechat.color.separator 60
+/set irc.look.nick_color_force "MrElendig:3;falconindy:4;gffa:4;peks:5;thestinger:60;phrik:96;weebot:96"
+
+######################
+### Server configs ###
+######################
+# Server {{{
+/set weechat.network.gnutls_ca_file "/etc/ssl/certs/ca-certificates.crt"
+/server add fn "chat.freenode.net/7000"
+/set irc.server.fn.nicks "ldvx,|dvx"
+/set irc.server.fn.username "user"
+/set irc.server.fn.ssl "on"
+/set irc.server.fn.ssl_dhkey_size "1024"
+
+/server add znc.fn 192.168.0.5/1122
+/set irc.server.znc.fn.nicks "ldvx,|dvx"
+/set irc.server.znc.fn.username "fn"
+/set irc.server.znc.fn.ssl "on"
+/set irc.server.znc.fn.ssl_cert "znc.pem"
+/set irc.server.znc.fn.ssl_verify "off"
+
+/server add znc.msn 192.168.0.5/1122
+/set irc.server.znc.msn.nicks "IPoAC,IPoAC_"
+/set irc.server.znc.msn.username "msn"
+/set irc.server.znc.msn.ssl "on"
+/set irc.server.znc.msn.ssl_cert "znc.pem"
+/set irc.server.znc.msn.ssl_verify "off"
+# }}}
+########################
+### PLUGINS   config ###
+########################
+# cd ~/.weechat/python/autoload/ && wget http://www.weechat.org/files/scripts/weeget.py
+/weeget install colorize_lines
+/weeget install colorize_nicks 
+/weeget install beep
+/weeget install text_replace.py
+/weeget install toggle_nicklist.py
+/weeget install go.py
+/set plugins.var.python.toggle_nicklist.action "show"
+# while on the channel -> /toggle_nicklist add
+/set plugins.var.python.colorize_nicks.min_nick_length 4
+/set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part,irc_smart_filter"
+/set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way"
+/set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,lmao=laughing my ass off so hard my sombrero fell off and I dropped my taco,brb=be right back,ty=thank you,wtf=what the freckles,alo=actual laughter occurred,iirc=if I remember correctly,<-=←,->=→"
+/set plugins.var.perl.colorize_lines.own_lines on
+/set plugins.var.perl.colorize_lines.nicks "znc.msn.peks,znc.fn.phrik,znc.fn.falconindy,znc.fn.MrElendig,znc.fn.thestinger,znc.fn.Zhivago,znc.fn.FlashCode,znc.fn.weebot,znc.fn.vodik"
+/set plugins.var.perl.colorize_lines.highlight off
+/set plugins.var.perl.beep.beep_command_pv "mpg123 ~/Archives/Audio/OST/GuiltyCrown/17-Genesis.mp3"
+/set plugins.var.perl.beep.beep_dcc "off"
+/set plugins.var.perl.beep.whitelist_channels "znc.fn.#weechat,znc.fn.##freebsd"
+/set plugins.var.perl.beep.beep_trigger_pv "beep"
+/set plugins.var.perl.beep.whitelist_nicks "znc.msn.peks"
+/set plugins.var.perl.beep.bell_always "pv"
+/set plugins.var.python.go.color_name "black,default"
+/set plugins.var.python.go.color_name_highlight "red,default"
+/set plugins.var.python.go.color_name_highlight_selected "red,default"
+/set plugins.var.python.go.color_name_selected "red,default"
+/set plugins.var.python.go.color_number "yellow,default"
+/set plugins.var.python.go.color_number_selected "yellow,default"
+/set plugins.var.python.go.short_name "on"

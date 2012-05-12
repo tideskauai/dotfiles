@@ -1,0 +1,53 @@
+#####################################
+### FreeBSD management            ###
+#####################################
+# Package system:
+    - pkg_add -r $package
+    - pkg_delete $package
+# List files owned by $package
+    - pkg_info -L $package
+# Check for updates: 
+    - pkg_version -vl '<'
+# List which package owns a file.
+    - pkg_info -W $file
+
+# Ports: 
+    - whereis $package
+    - cd /usr/ports/whatever
+    - make install clean
+
+# Ports updating:
+#   Run extract after fetch if being run for the first time.    
+    - portsnap fetch update
+
+# Update all ports (Asks and tells which packages need updating):
+    - portmaster -a
+
+# To list all processes that are viewing files in a dir
+    - fstat -f /var/log
+
+# Show ports and their processes: 
+    - sockstat
+
+#####################################
+### List of Linux equivalents     ###
+#####################################
+chflags schg #This is like chattr -i
+pciconf -l -v #This is like lspci
+usbconfig #This is like lsusb
+kldload ./module.ko  #This is like modprobe
+
+#####################################
+### Wireless stuff for my netbook ###
+#####################################
+ifconfig wlan0 create wlandev rt28600
+ifconfig wlan0 up scan
+ifconfig wlan0 192.168.0.5 netmask 255.255.255.0 ssid Susano
+wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf
+route change default -ifp wlan0
+
+#####################################
+### Port Audit: check 3rd party vul #
+#####################################
+    - portaudit -a
+    - mail -u root

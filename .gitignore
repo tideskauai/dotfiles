@@ -27,6 +27,11 @@
 !.config/gtk-3.0
 !.config/openbox
 !.config/cower
+!.config/owncfg
+.config/owncfg/*
+!.config/owncfg/man
+!.config/owncfg/bin
+!.config/owncfg/xmobar
 
 .vim/.netrwhist
 .vim/backup

@@ -1,0 +1,16 @@
+#### extracting sound from video ####
+    ffmpeg -i video.avi -vn -ar 44100 -ac 2 -ab 192 -f mp3 sound.mp3
+#### getting info from a video file #### 
+    ffmpeg -i video.avi
+#### Record desktop ####
+
+    # Record desktop without sound
+    ffmpeg -f x11grab -s cif -s 1920x1050 -r 25 -i :0.0 -vcodec libx264 -vpre slow -threads 0 o1.mkv  
+    
+    # Encode
+    -- ffmpeg -i o1.mkv -vcodec libx264 -preset slower -crf 22 -threads 0 final.mp4
+    -- ffmpeg -i o1.mkv -acodec aac -ab 128k -ac 2 -vcodec libx264 -preset slow -crf 22 -threads 0 final.mp4
+    -- ffmpeg -ss 00:00:10 -t 00:07:22 -i o1.mkv -acodec libvorbis -ab 128k -ac 2 -vcodec libx264 \
+        -preset slow -crf 22 -threads 0 final.mkv
+
+    presets: ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow and placebo

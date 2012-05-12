@@ -1,0 +1,51 @@
+####################################
+###### Gist plug-in            ######
+####################################
+:Gist -p (private pastes)
+:Gist -l (list my gists)
+:Gist -a (post as anonymous)
+
+####################################
+###### Vim commands           ######
+####################################
+- delete all lines containing text pattern
+    :g/text pattern/d 
+- delete all blank lines
+    :g/^\s*$/d 
+- insert a blank line every 5 lines
+    :%s/\v(.*\n){5}/&\r 
+- save file if root permissions are required
+    :w !sudo tee % 
+- to edit a file
+    :e <filename>
+- to tabularize ':'
+    :Tabularize /:\zs
+
+####################################
+###### Vim keybings           ######
+####################################
+- Go back and forth to misspelled words
+    [s 
+    ]s 
+
+- Completition
+    ctrl+n:         insert the next matching word
+    ctrl+p:         insert the previous matching word
+    ctrl+x ctrl+l:  line completition
+    ctrl+x ctrl+o:  omni completition
+    ctrl+x ctrl+n:  keyword local completition (beginning)
+    ctrl+x ctrl+p:  keyword local completition (ending)
+
+- To unfold
+    zi:     Unfold
+    zc:     Fold
+    za:     Toggle
+    
+####################################
+###### NERDtree               ######
+####################################
+- open file in new buffer or open/close dir : o
+- go to parent dir                          : p
+- refresh current dir                       : r
+
+Check plugin-ins: a.vim

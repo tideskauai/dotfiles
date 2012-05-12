@@ -1,0 +1,26 @@
+################################
+########## PACKAGE SIGNING #####
+################################
+- pacman -Syu archlinux-keyring
+- pacman-key --init
+- pacman-key --populate archlinux
+
+################################
+##### OWN  PACKAGE SIGNING #####
+################################
+
+$key = last 4 numbers of gpg --fingerprint
+
+    - gpg --gen-key
+    - gpg --export -a > temp-file
+    - submit contents of temp-file to http://keys.gnupg.net/
+    - pacman-key -r 0x$your_key
+    - pacman-key --edit-key $your_key
+        gpg> lsign
+        gpg> trust
+        gpg> save
+
+To export your secret keys:
+    gpg --export-secret-key -a > secret.key
+To import your secret keys:
+    gpg --import secret.key

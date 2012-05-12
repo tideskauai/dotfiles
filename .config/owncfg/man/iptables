@@ -1,0 +1,13 @@
+############################
+### iptables tips        ###
+############################
+
+INPUT:    packets coming from the network and going to your server.
+OUTPUT:   packets originating from your server and going to the network.
+FORWARD:  packets forwarded by your server, if/when it acts as a router between different networks.
+
+# redirects 123 to 124
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 123 -j REDIRECT --to-port 124
+
+# redirects incoming packets to another host
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 8888 -j DNAT --to-destination 192.168.0.4:8888

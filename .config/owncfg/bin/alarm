@@ -1,0 +1,72 @@
+#!/bin/bash
+
+usage ()
+{
+    echo -e "Usage:\n
+    alarm 1m
+    \tWill make the alarm sound in one minute.
+
+    alarm -v 1m
+    \tWill make a visual alert in 1 minute.
+
+    alarm 1m 5m
+    \tWill make alarm1 sound in 1 minute, and then, after 5 minutes
+    \talarm2 will sound. This runs and a loop 9999 times. 
+
+    alarm kill
+    \tWill kill the script when it goes into the 9999 repetitions loop
+    \tafter using the alarm 1m 5m option."
+}
+
+
+alarm()
+{
+    d1=$1
+    d2=$2
+
+    while true; do
+
+        sleep $d1 && mplayer -really-quiet ~/.config/owncfg/sounds/alert1.mp3 \
+            && sleep $d2 && mplayer -really-quiet ~/.config/owncfg/sounds/alert2.mp3
+
+    done
+}
+
+
+if (($# == 1)); then
+
+    if [[ $1 = "kill" ]]; then
+        pid=$(pgrep -f "$0 ")
+        if [ -n "$pid" ]; then
+            echo "killing pids: $pid"
+            kill $pid
+        else
+            echo "script wasn't running"
+        fi
+
+
+    elif [[ $1 = *[smhd] ]]; then
+        delay=$1
+        sleep $delay && mplayer -loop 9999 \
+            -really-quiet ~/.config/owncfg/sounds/alert1.mp3
+
+    else
+        usage
+    fi
+
+elif (($# == 2)); then
+
+    if [[ $1 = "-v" ]]; then
+        delay=$2
+        sleep $delay && echo -e \\a
+
+    elif [[ $1 = *[smhd] && $2 = *[smhd] ]]; then
+        alarm $1 $2 &
+
+    else
+        usage
+    fi
+
+else
+    usage
+fi

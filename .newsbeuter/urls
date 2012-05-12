@@ -22,7 +22,16 @@ http://planet.archlinux.org/atom.xml "open source"
 http://feeds.feedburner.com/TheGeekStuff "open source"
 http://www.ibm.com/developerworks/views/linux/rss/libraryview.jsp?site_id=1&contentarea_by=Linux&topic_by=&product_by=&type_by=Tutorials&search_by=&industry_by=&sort_by=Date&series_title_by= "open source"
 
+http://feeds.feedburner.com/darknethackers security
+
 http://feeds.feedburner.com/catonmat programming
+http://terrytao.wordpress.com/feed/ programming CS
+http://blog.computationalcomplexity.org/feeds/posts/default?alt=rss programming CS
+http://feeds.feedburner.com/daniel-lemire/atom programming CS
+http://rjlipton.wordpress.com/feed/ programming CS
+http://lambda-the-ultimate.org/rss.xml programming CS
+http://cacm.acm.org/blogs/blog-cacm.rss programming CS
+http://feeds.feedburner.com/blogspot/gJZg programming CS
 
 http://e.meneame.net/rss2.php?meta=0 news
 #http://feeds.feedburner.com/obamaworld "world news"
@@ -43,5 +52,3 @@ http://www.quo.es/rss/feed/ciencia science
 http://blogs.eldiariomontanes.es/scientia-mater/feed/ science
 http://feeds2.feedburner.com/ElTamiz science
 http://lapizarradeyuri.blogspot.com/feeds/posts/default science
-
-http://feeds.feedburner.com/darknethackers security

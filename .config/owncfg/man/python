@@ -1,0 +1,38 @@
+#############################
+### Data structures       ###
+#############################
+
+Scalar:      Can hold one element at a time
+Non-scalar:  Can hold many elements at a time
+Scalar:      int, float, bool, None
+Non-scalar:  list, tuple, dictionary, sets
+
+Dictionary: Non-scalar, immutable keys
+syntax: my_dic = {'Spaghetti': 1500.5, 'Meat': 2000}
+- 'key:value' pairs, keys are unique
+- to check if key is in dic, use the 'in' keyword
+
+List: Non-scalar, mutable, heterogeneous
+syntax: my_list = ['fun','over',9000]
+
+Tuple: Non-scalar, immutable, heterogeneous 
+syntax: my_tuple = (3.14, 'hello', 2, 'world')
+
+Sets: Non-scalar, (im)mutable, homogeneous
+syntax: my_set = ['Claudia','Lucia','Peks']
+
+
+#############################
+### Notes                 ###
+#############################
+
+- dir(my_list): Gives me a list of all methods avail for the object.
+- break: To get out of the most inner loop
+- It is safe to think of a method as a function
+- Overloaded operator: When an operator has different meaning depending on the operand
+    2 + 4
+    │ │ └─╼ operand
+    │ └───╼ overloaded operator. Here it means summation.
+    └─────╼ operand
+- Quotes denotes string: type('1') vs type(1)
+- 
