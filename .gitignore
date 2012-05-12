@@ -2,6 +2,7 @@
 *.pyc
 *.hi
 *.o
+*.zcache
 
 .mpd/mpd.db
 .mpd/mpd.log

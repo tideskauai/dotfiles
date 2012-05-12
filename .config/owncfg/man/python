@@ -30,7 +30,7 @@ syntax: my_set = ['Claudia','Lucia','Peks']
 - break: To get out of the most inner loop
 - It is safe to think of a method as a function
 - Overloaded operator: When an operator has different meaning depending on the operand
-    2 + 4
+    2 + 4 ───────────────╼ compare to '2' + '4' ─╼ What does the operator do here?
     │ │ └─╼ operand
     │ └───╼ overloaded operator. Here it means summation.
     └─────╼ operand
