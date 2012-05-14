@@ -195,7 +195,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M5--", safeSpawn "ncmpcpp" ["next"])
     , ("M5-S--", safeSpawn "ncmpcpp" ["prev"])
     , ("M5-f", safeSpawn "firefox" [])
-    , ("M5-v", safeSpawn "VirtualBox" [])
+    , ("M5-S-v", safeSpawn "VirtualBox" [])
     , ("M5-c", safeSpawn "chromium" ["--incognito"])
     , ("M5-w", safeSpawn "v4l2ucp" [])
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
