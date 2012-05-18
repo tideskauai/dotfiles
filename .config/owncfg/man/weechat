@@ -6,9 +6,7 @@
 /set irc.network.lag_min_show 1000
 /set weechat.look.day_change on
 /set weechat.look.jump_current_to_previous_buffer off
-#/set irc.look.smart_filter on
 /set weechat.completion.partial_completion_command_arg on
-#/filter add irc_smart *,!*&bitlbee* irc_smart_filter *
 /filter add join_quit * irc_quit,irc_join,irc_part *
 /filter add irc_clean * irc_470,irc_324,irc_328,irc_329,irc_332,irc_333,irc_372,irc_376 *
 /filter add bitlbee irc.znc.msn.&bitlbee irc_mode *
@@ -78,7 +76,6 @@
 /set weechat.bar.status.color_bg default
 /set weechat.bar.status.color_fg darkgray
 /set weechat.bar.status.color_delim blue
-# /set weechat.color.chat_nick_colors "cyan,001,002,004,005,012,025,060,065,069,096"
 /set weechat.color.chat_nick_colors "001,002,003,004,005,006,012,013,025,059,060,065,069,096"
 # /set weechat.color.status_data_msg !blue
 /set weechat.color.status_data_msg darkgray
@@ -144,7 +141,7 @@
 /set plugins.var.python.colorize_nicks.min_nick_length 4
 /set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part,irc_smart_filter"
 /set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way"
-/set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,lmao=laughing my ass off so hard my sombrero fell off and I dropped my taco,brb=be right back,ty=thank you,wtf=what the freckles,alo=actual laughter occurred,iirc=if I remember correctly,<-=←,->=→"
+/set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,ty=thank you,wtf=what the freckles,alo=actual laughter occurred,iirc=if I remember correctly,<-=←,->=→"
 /set plugins.var.perl.colorize_lines.own_lines on
 /set plugins.var.perl.colorize_lines.nicks "znc.msn.peks,znc.fn.phrik,znc.fn.falconindy,znc.fn.MrElendig,znc.fn.thestinger,znc.fn.Zhivago,znc.fn.FlashCode,znc.fn.weebot,znc.fn.vodik"
 /set plugins.var.perl.colorize_lines.highlight off
