@@ -8,20 +8,16 @@ Xft.autohint: false
 Xft.lcdfilter: lcddefault
 
 ! --[ URxvt - General ]-------------------------------------
-URxvt.pointerBlank: true
+URxvt.loginShell:false
 URxvt.scrollBar:false
 URxvt.saveLines:5000
 URxvt.cursorColor:  #370074
 URxvt.cursorColor2: #ff00f6
-URxvt.colorIT:  #FFFFFF
-URxvt.colorBD:  #FFFFFF
-URxvt.colorUL:  #5e468c
-URxvt.colorRV:  #333333
+URxvt.highlightColor:#444444
+URxvt.underlinecolor: #999999
 URxvt.fading:   25%
 URxvt.dynamicColors: on
 URxvt.internalborder: 0
-!URxvt.font: -*-dina-medium-r-*-*-13-*-*-*-*-*-*-*
-!URxvt.boldFont: -*-dina-bold-r-*-*-13-*-*-*-*-*-*-*
 URxvt.font: xft:DejaVuSansMono:pixelsize=18
 URxvt.boldFont: xft:DejaVuSansMono:pixelsize=18:bold
 URxvt.cutchars: "()*,<>[]{}|'"
@@ -43,7 +39,7 @@ URxvt.keysym.M-C-3: command:\033]710;xft:DejaVuSansMono:pixelsize=18\007\033]711
 URxvt.perl-ext-common: default,url-select
 URxvt.keysym.M-u:      perl:url-select:select_next
 URxvt.urlLauncher:     firefox
-URxvt.underlineURLs:   true
+!URxvt.underlineURLs:   true
 
 ! --[ URxvt - colors ]--------------------------------------
 URxvt.depth: 32
