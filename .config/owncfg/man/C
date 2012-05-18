@@ -1,0 +1,22 @@
+- strcmp (string1,string2) == 0
+  └─╼ Compare two strings. Returns 0 is both strings are equal, 1 if they're not.
+
+- while(1) { if (item==0) {break;} }
+
+- int *variable_ptr; → Example of pointer
+  │─╼ * Returns the data what's pointed to
+  │─╼ & Returns the memory address of variable pointed to. 
+  └─╼ var_ptr = &var;
+
+- int array[4] = {0, 1, 2, 3};
+  └─╼ Same as: int array[] = {0, 1, 2, 3};
+
+- Pass by reference of by value
+  │─╼ By value: We pass the value of the var, not the actual variable.
+  └─╼ By reference: We pass the pointer of a var.
+
+- When you create a pointer and don't initialize it, then it's uninitialized and it points to nothing.
+
+- Rewt → And if you use calloc() instead of malloc(), it'll initialized all the bits in the struct to 0, so then you'll be sure that it's pointing to 0 (which is a NULL pointer in all cases I've come across)
+
+- For historical reasons, printing characters was computational expensive, so for chars to be printed on screen, the computer waited for a \n, which is why we need to flush when we have something such as a progress bar. 
