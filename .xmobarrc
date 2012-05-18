@@ -7,8 +7,8 @@ Config { font = "-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*"
 					, Run MultiCpu ["-t","Cpu:<total0> <total1>","-L","10","-H","50","--normal","#429942","--high","#A36666"] 10
 	   				, Run Memory ["-t", "Mem:<usedratio>%"] 10
 	   				, Run Date "%H:%M" "date" 10
-					, Run Com "sh" ["~/.config/owncfg/xmobar/temperature.sh"] "temp" 100
-					, Run Com "sh" ["~/.config/owncfg/xmobar/netstats.sh"] "netstat" 100
+					, Run Com "sh" ["~/.config/owncfg/xmobar/temperature"] "temp" 100
+					, Run Com "sh" ["~/.config/owncfg/xmobar/netstats"] "netstat" 100
 					, Run StdinReader
                     ]
        , sepChar = "%"
