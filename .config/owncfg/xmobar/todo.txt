@@ -1,4 +1,4 @@
-ast=0
-it=0
-nook=0
 med=0
+bio=0
+com=0
+prog=0
