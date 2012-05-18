@@ -1,0 +1,4 @@
+ast=0
+it=0
+nook=0
+med=0
