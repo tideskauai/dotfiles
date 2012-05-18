@@ -20,8 +20,8 @@ alias diff='colordiff'
 alias cdcs='cd ~/Archives/eLearn'
 alias cdman='cd ~/.config/owncfg/man'
 alias cd.dot='cd ~/.dotfiles && git status'
-alias notes="cat ~/.config/owncfg/txt/NOTES"
-alias notess="vim ~/.config/owncfg/txt/NOTES"
+alias notes="vim ~/.config/owncfg/txt/NOTES"
+alias todo="vim ~/.config/owncfg/xmobar/todo.txt"
 alias pacu="sudo pacman -Syu"
 alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias myip="curl ifconfig.me/ip"
