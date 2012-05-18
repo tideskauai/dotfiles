@@ -11,6 +11,8 @@ Dictionary: Non-scalar, immutable keys
 syntax: my_dic = {'Spaghetti': 1500.5, 'Meat': 2000}
 - 'key:value' pairs, keys are unique
 - to check if key is in dic, use the 'in' keyword
+- hashes the keys, choosing a big enough table so that looking if something is in a dic
+    can be done in constant time. That's why they have to me immutable.
 
 List: Non-scalar, mutable, heterogeneous
 syntax: my_list = ['fun','over',9000]
@@ -30,9 +32,14 @@ syntax: my_set = ['Claudia','Lucia','Peks']
 - break: To get out of the most inner loop
 - It is safe to think of a method as a function
 - Overloaded operator: When an operator has different meaning depending on the operand
-    2 + 4 ───────────────╼ compare to '2' + '4' ─╼ What does the operator do here?
+    2 + 4 ──╼ compare to '2' + '4' ─╼ What does the operator do here?
     │ │ └─╼ operand
     │ └───╼ overloaded operator. Here it means summation.
     └─────╼ operand
 - Quotes denotes string: type('1') vs type(1)
-- 
+
+#############################
+### OOP                   ###
+#############################
+
+- Class: Collection of data and functions; functions that operate on that data.
