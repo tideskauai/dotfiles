@@ -7,7 +7,7 @@
 /set weechat.look.day_change on
 /set weechat.look.jump_current_to_previous_buffer off
 /set weechat.completion.partial_completion_command_arg on
-/filter add join_quit * irc_quit,irc_join,irc_part *
+/filter add join_quit *,!irc.znc.msn.* irc_quit,irc_join,irc_part *
 /filter add irc_clean * irc_470,irc_324,irc_328,irc_329,irc_332,irc_333,irc_372,irc_376 *
 /filter add bitlbee irc.znc.msn.&bitlbee irc_mode *
 /filter add noise * nick_phrik,nick_nathan28,nick_masterkorp,nick_rabbitear,nick_Nuked *
@@ -52,6 +52,8 @@
 ######################
 ### Look settings  ###
 ######################
+/set irc.look.item_nick_modes off
+/set irc.look.item_channel_modes off
 # /set weechat.look.prefix_same_nick "⋯"
 /set weechat.look.prefix_join "→"
 /set weechat.look.prefix_quit "←"
