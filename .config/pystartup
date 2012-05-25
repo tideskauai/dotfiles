@@ -1,4 +1,4 @@
-# Store the file in ~/.config/pystartup, and set an environment variable to 
+# Store the file in ~/.config/pystartup, and set an environment variable to
 # point to it. In ~/.zshrc:
 # export PYTHONSTARTUP="$HOME/.config/pystartup"
 
