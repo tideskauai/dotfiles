@@ -3,6 +3,7 @@
 *.hi
 *.o
 *.zcache
+*todo.txt
 
 .mpd/mpd.db
 .mpd/mpd.log
