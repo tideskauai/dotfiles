@@ -19,34 +19,12 @@
 /key unbind ctrl-J
 /key unbind ctrl-N
 /key unbind ctrl-P
-/unalias AAWAY
-/unalias AME
-/unalias AMSG
-/unalias ANICK
-/unalias CHAT
-/unalias KB
-/unalias MUB
-/unalias UB
-/unalias BYE
-/unalias EXIT
-/unalias LEAVE
-/unalias SAY
-/unalias SIGNOFF
-/unalias UMODE
-/unalias W
-/unalias K
-/unalias WI
-/unalias WII
-/unalias WW
-/unalias C
-/unalias IG
-/unalias M
-/unalias N
-/unalias T
 /alias su /window scroll_unread
 /set irc.ctcp.version = ""
-#/set irc.look.buffer_switch_autojoin off
+# /set irc.look.buffer_switch_autojoin off
 /set irc.look.display_old_topic off
+/set weechat.look.buffer_notify_default highlight
+# Write /buffer notify message if want normal behavior on that buffer
 # }}}
 
 ######################
@@ -54,7 +32,6 @@
 ######################
 /set irc.look.item_nick_modes off
 /set irc.look.item_channel_modes off
-# /set weechat.look.prefix_same_nick "⋯"
 /set weechat.look.prefix_join "→"
 /set weechat.look.prefix_quit "←"
 /set weechat.look.item_buffer_filter "⚑"
@@ -66,7 +43,6 @@
 /set weechat.look.color_inactive_buffer "on"
 /set weechat.color.chat_inactive_buffer "235"
 /set weechat.look.hotlist_sort  group_number_asc
-/set weechat.look.buffer_notify_default highlight
 /set weechat.bar.title.hidden on
 /set weechat.bar.nicklist.hidden on
 /set weechat.bar.status.position top
@@ -139,9 +115,9 @@
 /weeget install toggle_nicklist.py
 /weeget install go.py
 /set plugins.var.python.toggle_nicklist.action "show"
-# while on the channel -> /toggle_nicklist add
+# while on the channel → /toggle_nicklist add
 /set plugins.var.python.colorize_nicks.min_nick_length 4
-/set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part,irc_smart_filter"
+/set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part"
 /set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way"
 /set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,ty=thank you,wtf=what the freckles,alo=actual laughter occurred,iirc=if I remember correctly,<-=←,->=→"
 /set plugins.var.perl.colorize_lines.own_lines on
