@@ -21,10 +21,10 @@
 /key unbind ctrl-P
 /alias su /window scroll_unread
 /set irc.ctcp.version = ""
-# /set irc.look.buffer_switch_autojoin off
+/set irc.look.buffer_switch_autojoin off
 /set irc.look.display_old_topic off
 /set weechat.look.buffer_notify_default highlight
-# Write /buffer notify message if want normal behavior on that buffer
+/set weechat.look.save_config_on_exit off
 # }}}
 
 ######################
