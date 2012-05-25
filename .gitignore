@@ -25,6 +25,7 @@
 !.xmonad/lib
 
 .config/*
+!.config/pystartup
 !.config/xcolors
 !.config/gtk-3.0
 !.config/openbox
