@@ -1,5 +1,0 @@
-med=0
-gnc=0
-bio=0
-com=0
-prog=0
