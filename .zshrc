@@ -7,6 +7,8 @@ export PATH="${PATH}:${HOME}/.config/owncfg/bin"
 export PAGER="less"
 # Add custom completition scripts
 fpath=(~/.zsh/autocompletitions $fpath)
+# For the interactive python interpreter
+export PYTHONSTARTUP="${HOME}/.config/pystartup"
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
