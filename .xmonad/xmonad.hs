@@ -195,6 +195,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M5--", safeSpawn "ncmpcpp" ["next"])
     , ("M5-S--", safeSpawn "ncmpcpp" ["prev"])
     , ("M5-f", safeSpawn "firefox" [])
+    , ("M5-S-f", safeSpawn "pcmanfm" [])
     , ("M5-S-v", safeSpawn "VirtualBox" [])
     , ("M5-c", safeSpawn "chromium" ["--incognito"])
     , ("M5-w", safeSpawn "v4l2ucp" [])
