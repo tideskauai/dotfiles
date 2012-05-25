@@ -12,7 +12,7 @@
 
 # To add files.
 	git add f files_to_add 
-# To untrack files.
+# To untrack files (does not delete the file)
 	git rm --cached files_to_untrack
 # Throw away all changes before even committing
 	git reset --hard
