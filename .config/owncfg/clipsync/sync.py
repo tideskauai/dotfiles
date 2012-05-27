@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, os
+import os
 import subprocess
 
 # As the str and bytes types cannot be mixed, you must always explicitly 
