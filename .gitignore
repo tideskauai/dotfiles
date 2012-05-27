@@ -11,12 +11,6 @@
 .mpd/mpdstate
 .ncmpcpp/error.log
 
-.newsbeuter/cache.db.lock
-.newsbeuter/history.cmdline
-.newsbeuter/history.search
-.newsbeuter/queue
-.newsbeuter/cache.db
-
 .mutt/cache
 .mutt/gmail
 
@@ -30,6 +24,7 @@
 !.config/gtk-3.0
 !.config/openbox
 !.config/cower
+!.config/newsbeuter
 !.config/owncfg
 .config/owncfg/*
 !.config/owncfg/man
