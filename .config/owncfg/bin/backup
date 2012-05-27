@@ -2,7 +2,7 @@
 
 back_up_files=(~/Archives ~/Downloads ~/build ~/dev ~/themes ~/VMs \
     ~/.ssh ~/.config/owncfg ~/.themes ~/.icons ~/.mozilla \
-    ~/.newsbeuter/cache.db ~/.gist-vim)
+    ~/.local/share ~/.gist-vim)
 back_up_dir="/home/shivalva/Archives/backup"
 back_up_internalhdd="/media/sdc1"
 back_up_externalhdd="/mnt/backup/rsync"
