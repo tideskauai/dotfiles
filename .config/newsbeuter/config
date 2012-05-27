@@ -1,0 +1,72 @@
+#################################################################################
+### http://www.readwriteweb.com/archives/6_ways_to_filter_your_rss_feeds.php  ###
+#################################################################################
+feed-sort-order firsttag
+feedlist-format "%3i %n %10u - %t"
+articlelist-format "%f %3i - %t"
+
+max-items 100
+browser firefox
+save-path ~/Downloads/articles
+download-path ~/Downloads
+
+show-read-articles yes
+show-read-feeds no
+display-article-progress no
+
+auto-reload yes
+reload-time 120
+suppress-first-reload yes
+
+#################################################################################
+### Keybinds                                                                  ###
+#################################################################################
+# {{{
+unbind-key ,
+unbind-key v
+unbind-key ^V
+unbind-key ^G
+unbind-key :
+unbind-key O
+unbind-key o
+unbind-key s
+unbind-key j
+unbind-key J
+unbind-key k
+unbind-key K
+unbind-key n
+unbind-key p
+unbind-key C
+unbind-key f
+unbind-key F
+unbind-key ^F
+unbind-key g
+unbind-key G
+bind-key j down
+bind-key k up
+bind-key S save
+bind-key o open-in-browser-and-mark-read
+bind-key \ cmdline
+# }}}
+
+#################################################################################
+### Ignore articles settings                                                  ###
+#################################################################################
+# {{{
+ignore-mode "download"
+ignore-article "*" "( title =~ \"emacs\" or title =~ \"Linux desktop\" )"
+ignore-article "http://lwn.net/headlines/newrss" "title =~ \"[$]\""
+ignore-article "http://feeds2.feedburner.com/AllJupiterVideos" "( title !# \"TechSNAP\" and title !# \"SciByte\" )"
+ignore-article "http://feeds2.feedburner.com/braingle/all" "( title !# \"Vocabulary\" and title !# \"Memory\" )"
+ignore-article "http://www.linuxtoday.com/biglt.rss" "link !~ \"developer\""
+ignore-article "http://feeds.feedburner.com/amazings" "( title =~ \"Amazings en Ràdio\" or title =~ \"\#SinCiencia\" )"
+# }}}
+
+#################################################################################
+### Color settings                                                            ###
+#################################################################################
+color info cyan default
+color listnormal color244 default
+color listfocus red default
+highlight article "^(Feed|Title|Author|Link|Date):.+" black default
+highlight all "https?://[^ ]+" color235 default
