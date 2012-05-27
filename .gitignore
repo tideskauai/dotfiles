@@ -35,6 +35,7 @@
 !.config/owncfg/man
 !.config/owncfg/bin
 !.config/owncfg/xmobar
+!.config/owncfg/clipsync
 
 .vim/.netrwhist
 .vim/backup
