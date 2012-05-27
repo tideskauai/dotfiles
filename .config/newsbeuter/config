@@ -2,8 +2,9 @@
 ### http://www.readwriteweb.com/archives/6_ways_to_filter_your_rss_feeds.php  ###
 #################################################################################
 feed-sort-order firsttag
-feedlist-format "%3i %n %10u - %t"
+feedlist-format "%3i %n - %t"
 articlelist-format "%f %3i - %t"
+articlelist-title-format  "%N %V - Articles in feed %T (%u unread, %t total)"
 
 max-items 100
 browser firefox
@@ -42,8 +43,8 @@ unbind-key F
 unbind-key ^F
 unbind-key g
 unbind-key G
-bind-key j down
-bind-key k up
+bind-key j next-unread
+bind-key k prev-unread
 bind-key S save
 bind-key o open-in-browser-and-mark-read
 bind-key \ cmdline
@@ -68,5 +69,7 @@ ignore-article "http://feeds.feedburner.com/amazings" "( title =~ \"Amazings en 
 color info cyan default
 color listnormal color244 default
 color listfocus red default
+highlight all "https?://[^ ]+" blue default
 highlight article "^(Feed|Title|Author|Link|Date):.+" black default
-highlight all "https?://[^ ]+" color235 default
+highlight-article "link =~ \"reddit.com/r/programming\"" blue default
+highlight-article "link =~ \"reddit.com/r/(linuxquestions|techsnap|archlinux|opensource|linux4noobs|xmonad)/\"" black default invis
