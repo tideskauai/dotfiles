@@ -206,7 +206,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M-<Return>", spawnShell) -- launch shell in topic (1)
     , ("M-p", shellPrompt myXPConfig)
     , ("M-x", safeSpawn "bash" ["/home/shivalva/.config/owncfg/clipsync/dmenu.sh"])
-    , ("M-S-x", safeSpawn "python2" ["/home/shivalva/.config/owncfg/clipsync/sync.py"])
+    , ("M-S-x", safeSpawn "python" ["/home/shivalva/.config/owncfg/clipsync/sync.py"])
     , ("M-z", appendFilePrompt myXPConfig "/home/shivalva/.config/owncfg/txt/NOTES")
     
     --killing
