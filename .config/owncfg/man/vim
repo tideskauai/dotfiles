@@ -1,9 +1,16 @@
 ####################################
-###### Gist plug-in            ######
+###### Plug-ins               ######
 ####################################
+# {{{
 :Gist -p (private pastes)
 :Gist -l (list my gists)
 :Gist -a (post as anonymous)
+
+# NERDtree
+- open file in new buffer or open/close dir : o
+- go to parent dir                          : p
+- refresh current dir                       : r
+# }}}
 
 ####################################
 ###### Vim commands           ######
@@ -45,11 +52,4 @@
 - To fix text wrapping
     qqip
     
-####################################
-###### NERDtree               ######
-####################################
-- open file in new buffer or open/close dir : o
-- go to parent dir                          : p
-- refresh current dir                       : r
-
 Check plugin-ins: a.vim
