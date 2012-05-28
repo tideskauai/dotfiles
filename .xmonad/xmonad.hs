@@ -241,14 +241,14 @@ myKeys conf = mkKeymap conf $ [
     , ("M-q", restart "xmonad" True)
     ]
 
-    -- mod5-[1..9],       Switch to workspace N
-    -- mod5-shift-[1..9], Move client to workspace N
+    -- mod-[1..9],       Switch to workspace N
+    -- mod-shift-[1..9], Move client to workspace N
     -- mod3-[1..9],      Copy windows to workspace N (1)
     ++ [(m ++ k, windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) $ map show [1..9]
-        , (f, m) <- [(W.greedyView, "M5-"), (W.shift, "M5-S-"), (copy, "M3-")]
+        , (f, m) <- [(W.greedyView, "M-"), (W.shift, "M-S-"), (copy, "M3-")]
     ]
-    -- mod-[1..9],     Switch to window N (3)
-    ++ [(("M-" ++ show k), focusNth i)
+    -- mod5-[1..9],     Switch to window N (3)
+    ++ [(("M5-" ++ show k), focusNth i)
         | (i, k) <- zip [0 .. 8] [1..9]
     ]
