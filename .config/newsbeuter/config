@@ -72,4 +72,4 @@ color listfocus red default
 highlight all "https?://[^ ]+" blue default
 highlight article "^(Feed|Title|Author|Link|Date):.+" black default
 highlight-article "link =~ \"reddit.com/r/programming\"" blue default
-highlight-article "link =~ \"reddit.com/r/(linuxquestions|techsnap|archlinux|opensource|linux4noobs|xmonad)/\"" black default invis
+highlight-article "link =~ \"reddit.com/r/(linuxquestions|techsnap|archlinux|opensource|linux4noobs|xmonad)/\"" black default
