@@ -60,7 +60,8 @@ ignore-article "http://lwn.net/headlines/newrss" "title =~ \"[$]\""
 ignore-article "http://feeds2.feedburner.com/AllJupiterVideos" "( title !# \"TechSNAP\" and title !# \"SciByte\" )"
 ignore-article "http://feeds2.feedburner.com/braingle/all" "( title !# \"Vocabulary\" and title !# \"Memory\" )"
 ignore-article "http://www.linuxtoday.com/biglt.rss" "link !~ \"developer\""
-ignore-article "http://feeds.feedburner.com/amazings" "( title =~ \"Amazings en Ràdio\" or title =~ \"\#SinCiencia\" )"
+ignore-article "http://feeds.feedburner.com/amazings" "title =~ \"\#SinCiencia\""
+ignore-article "http://feeds.feedburner.com/amazings" "title =~ \"Amazings en Ràdio\""
 # }}}
 
 #################################################################################
