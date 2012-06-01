@@ -83,7 +83,7 @@ colorGranate    = "#410039"
 colorPink       = "#ff6ffa"
 colorNormalBorder   = colorDarkGray
 colorFocusedBorder  = colorGranate
-myTerminal      = "urxvtc"
+myTerminal      = "urxvt"
 myBorderWidth   = 1
 myModMask = mod4Mask
 

@@ -19,12 +19,6 @@ trayer --edge top \
     --alpha 0 \
     --tint '0x161616' &
 
-# Start urxvt in daemon mode
-# This waits till the control socket is available, opens the current
-# display and forks into the background.
-# When you log-out, the server is reset and urxvtd is killed.
-(sleep 2 && urxvtd -q -f -o) &
-
 # Let's set a pointer
 xsetroot -cursor_name left_ptr
 
