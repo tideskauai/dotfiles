@@ -1,0 +1,26 @@
+#compdef todo
+
+_todo() {
+    local curcontext="$curcontext" state line
+    typeset -A opts_args
+
+    _arguments \
+        "1: :->action"\
+        "2: :->activities"
+
+    case $state in
+        action)
+            _arguments "1:Action:(reset undone done)"
+            ;;
+        activities)
+            # TODO: Make it intelligent in the future,
+            # grab activities from todo.txt, rather than 
+            # hardcode them
+            _arguments "2:Activities:(med gnc bio com prog)"
+            ;;
+    esac
+}
+
+_todo "$@"
+
+# vim: set ts=2 sw=2 ft=sh noet:
