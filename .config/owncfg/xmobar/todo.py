@@ -49,7 +49,10 @@ def update_todo_file(conditional, original, replaced):
 
 # Get dir path of where this script resides, so that todo.txt
 # can be opened when script is run from another dir.
-directory = os.path.dirname(__file__)
+# Also, strip the basename.
+directory = os.path.realpath(__file__)
+directory = directory[:directory.rfind('/')]
+
 activities_completed = []
 activities_uncompleted = []
 initialize_activities()
