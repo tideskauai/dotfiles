@@ -43,12 +43,12 @@ uncolor index "~T"
 uncolor index "~D"
 
 # and recolor them appropriately
-color index     brightblack     default "~P"     # message from me
+color index     color237        default "~C mutt" # messages to mutt...
+color index     brightcyan      default "~f nico" # message from me
 color index     brightcyan      default "~N ~u"  # new ML mail
 color index     brightyellow    default "~N !~u" # new non-ML mail
 color index     brightgreen     default "~T"     # tagged messages
 color index     brightred       default "~D"     # deleted messages
-color index     color237        default "~C mutt" # messages to mutt...
 
 # set up the headers
 color header     blue           default "^date:"
