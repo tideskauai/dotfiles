@@ -45,7 +45,7 @@ URxvt.urlLauncher:     firefox
 URxvt.depth: 32
 URxvt.background: #0A0A0A
 URxvt.foreground: #999999
-#include ".config/xcolors/who"
+#include ".config/xcolors/jwr-dark"
 !#include ".config/xcolors/dwmrob"
 !#include ".config/xcolors/derp"
 !#include ".config/xcolors/digerati"
