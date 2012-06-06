@@ -5,6 +5,7 @@
 :Gist -p (private pastes)
 :Gist -l (list my gists)
 :Gist -a (post as anonymous)
+:Tabularize /:\zs (tabularize: like so)
 
 # NERDtree
 - open file in new buffer or open/close dir : o
@@ -27,8 +28,8 @@
     :w !sudo tee % 
 - to edit a file
     :e <filename>
-- to tabularize ':'
-    :Tabularize /:\zs
+- to close other windows
+    :only
 
 ####################################
 ###### Vim keybings           ######
@@ -52,4 +53,4 @@
 - To fix text wrapping
     qqip
     
-Check plugin-ins: a.vim
+Check plugin-ins: a.vim, vim-conque
