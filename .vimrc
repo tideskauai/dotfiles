@@ -33,15 +33,17 @@ set hidden
 "completition
 set ofu=syntaxcomplete#Complete
 
-"templates
-autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
-
 "keep attributes of original file
 set backupcopy=yes
 "store backups under ~/.vim/backup
 set backupdir=$HOME/.vim/backup
 "keep swaps under ~/.vim/swap
 set directory=~/.vim/swap
+"disable beeps
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+      autocmd GUIEnter * set visualbell t_vb=
+endif
 
 " Code folding
 "--------------------------
