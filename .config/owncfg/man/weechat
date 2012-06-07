@@ -4,7 +4,7 @@
 # Behavior {{{
 /set weechat.plugin.autoload "*,!logger,!tcl,!lua,!ruby,!xfer,!relay,!fifo"
 /set irc.network.lag_min_show 1000
-/set weechat.look.day_change on
+/set weechat.look.day_change off
 /set weechat.look.jump_current_to_previous_buffer off
 /set weechat.completion.partial_completion_command_arg on
 /filter add join_quit *,!irc.znc.msn.* irc_quit,irc_join,irc_part *
@@ -121,7 +121,7 @@
 /set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way"
 /set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,ty=thank you,wtf=what the freckles,alo=actual laughter occurred,iirc=if I remember correctly,<-=←,->=→"
 /set plugins.var.perl.colorize_lines.own_lines on
-/set plugins.var.perl.colorize_lines.nicks "znc.msn.peks,znc.fn.phrik,znc.fn.falconindy,znc.fn.MrElendig,znc.fn.thestinger,znc.fn.Zhivago,znc.fn.FlashCode,znc.fn.weebot,znc.fn.vodik"
+/set plugins.var.perl.colorize_lines.nicks "znc.msn.peks,znc.fn.phrik,znc.fn.falconindy,znc.fn.MrElendig,znc.fn.thestinger,znc.fn.Zhivago,znc.fn.FlashCode,znc.fn.weebot,znc.fn.vodik,znc.fn.tasidus"
 /set plugins.var.perl.colorize_lines.highlight off
 /set plugins.var.perl.beep.beep_command_pv "mpg123 ~/Archives/Audio/OST/GuiltyCrown/17-Genesis.mp3"
 /set plugins.var.perl.beep.beep_dcc "off"
