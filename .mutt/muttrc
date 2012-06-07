@@ -14,6 +14,10 @@ source ~/.mutt/gmail
 #set smtp_url = "smtp://email-address@smtp.gmail.com:587/"
 #set smtp_pass = ""
 
+# [Mailing lists]
+subscribe arch-dev arch-dev-public
+mailboxes "=peka"
+
 # [headers]
 ignore * # ignore all headers
 unignore from: to: cc: date: subject: # show only these
@@ -45,12 +49,15 @@ set index_format = "%2C %Z %{%b %d} %-15.15F (%4c) %?M?[%M] ?%s"
 set quote_regexp = "^([ \t]*[>])+"
 
 # [bindings]
+bind pager,index ! noop
+bind pager,index <F1> noop
 bind pager d noop
 bind pager D noop
 bind index d noop
 bind index q noop
 bind index h noop
-bind index \# noop
+bind index \# noop # breaks subthread
+bind index \& noop # rejoin threads
 bind index v noop
 bind editor <space> noop
 
@@ -60,23 +67,18 @@ bind pager <up> previous-line
 bind pager <down> next-line
 bind pager k previous-line
 bind pager j next-line
-bind pager gg top
-bind pager G bottom
 
 bind index D delete-message
 bind index Q quit
-bind index gg first-entry
-bind index G last-entry
 bind index k previous-thread    # In index, go to prev thread 
 bind index j next-thread        # In index, go to next thread
 bind index K previous-unread
 bind index J next-unread
 bind index f imap-fetch-mail    # In index, fetch new mail
-bind index - collapse-thread    # In index, collapse current thread
-bind index _ collapse-all       # In index, collapse all threads
+bind index _ collapse-thread    # In index, collapse current thread
+bind index - collapse-all       # In index, collapse all threads
 
 # [macros]
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index,pager gp "<change-folder>=peka<enter>" "Go to peka"
 macro index,pager gA "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
-macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
-macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"

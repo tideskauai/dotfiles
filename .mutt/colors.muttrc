@@ -7,7 +7,7 @@ color normal     white         default
 
 # main colors
 color status     blue           default # status line
-color indicator  blue           default # actual message
+color indicator  cyan           default # actual message
 color tree       blue           default # thread arrows
 color error      brightred      default # errors
 color message    brightyellow   default # info messages
@@ -45,8 +45,8 @@ uncolor index "~D"
 # and recolor them appropriately
 color index     color237        default "~C mutt" # messages to mutt...
 color index     brightcyan      default "~f nico" # message from me
-color index     brightcyan      default "~N ~u"  # new ML mail
-color index     brightyellow    default "~N !~u" # new non-ML mail
+# color index     cyan            default "~N ~u" # new ML mail
+# color index     brightyellow    default "~N !~u" # new non-ML mail
 color index     brightgreen     default "~T"     # tagged messages
 color index     brightred       default "~D"     # deleted messages
 
@@ -74,6 +74,3 @@ color body yellow       default "^[\+]{3} .*"
 color body green        default "^[\+][^\+]+.*"
 color body red          default "^\-[^\-]+.*"
 color body brightblue   default "^@@ .*"
-
-# User with silly email client trying to "quote"
-color body black default "^-*Original Message-*"
