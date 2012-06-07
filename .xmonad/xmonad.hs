@@ -237,8 +237,8 @@ myKeys conf = mkKeymap conf $ [
     , ("M-.", sendMessage (IncMasterN (-1))) -- dec win # in master area
     
     --quit, or restart
-    , ("M-S-q", io (exitWith ExitSuccess))
-    , ("M-q", restart "xmonad" True)
+    , ("M-S-e", io (exitWith ExitSuccess)) -- exit WM
+    , ("M-S-r", restart "xmonad" True) -- restart WM
     ]
 
     -- mod-[1..9],       Switch to workspace N
