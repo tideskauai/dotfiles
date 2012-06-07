@@ -47,3 +47,5 @@ fusermount -u .m1
     echo "Sending file" | mutt -a pleh.zip -s "attachment" recipientemail@gmail.com
 # Get output of command in English
     LC_ALL=C <command>
+# Find files larger than 1G in current dir
+    find . -type f -size +1G
