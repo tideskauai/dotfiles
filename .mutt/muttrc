@@ -15,7 +15,7 @@ source ~/.mutt/gmail
 #set smtp_pass = ""
 
 # [Mailing lists]
-subscribe arch-dev arch-dev-public
+subscribe arch-dev-public arch-general
 mailboxes "=peka"
 
 # [headers]
