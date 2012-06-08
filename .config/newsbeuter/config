@@ -61,7 +61,7 @@ ignore-article "http://feeds2.feedburner.com/AllJupiterVideos" "( title !# \"Tec
 ignore-article "http://feeds2.feedburner.com/braingle/all" "( title !# \"Vocabulary\" and title !# \"Memory\" )"
 ignore-article "http://www.linuxtoday.com/biglt.rss" "link !~ \"developer\""
 ignore-article "http://feeds.feedburner.com/amazings" "title =~ \"\#SinCiencia\""
-ignore-article "http://feeds.feedburner.com/amazings" "title =~ \"Amazings en Ràdio\""
+ignore-article "http://feeds.feedburner.com/amazings" "title =~ \"Amazings\""
 # }}}
 
 #################################################################################
