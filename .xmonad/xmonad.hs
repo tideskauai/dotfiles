@@ -186,6 +186,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M3-q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig) --query the web
     , ("M3-k", killAllOtherCopies) -- Kill all copied windows (2)
     , ("M3-=", safeSpawn "amixer" ["-q","set","Master","toggle"])
+    , ("M3-0", safeSpawn "amixer" ["-c0","set","Beep", "toggle"])
     , ("M3--", safeSpawn "amixer" ["-q","set","Master","4%-"])
     , ("M3-S--", safeSpawn "amixer" ["-q","set","Master","4%+"])
     , ("M3-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
