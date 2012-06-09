@@ -67,6 +67,8 @@ bind pager <up> previous-line
 bind pager <down> next-line
 bind pager k previous-line
 bind pager j next-line
+bind pager gg top
+bind pager G bottom
 
 bind index D delete-message
 bind index Q quit
@@ -77,6 +79,8 @@ bind index J next-unread
 bind index f imap-fetch-mail    # In index, fetch new mail
 bind index _ collapse-thread    # In index, collapse current thread
 bind index - collapse-all       # In index, collapse all threads
+bind index gg first-entry
+bind index G last-entry
 
 # [macros]
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
