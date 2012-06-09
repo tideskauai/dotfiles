@@ -11,7 +11,7 @@ import XMonad.Util.EZConfig --easy M-key like bindings
 
 -- actions and prompts
 import XMonad.Actions.GridSelect
-import XMonad.Actions.CycleWS
+import XMonad.Actions.CycleWS --toggleWS (5)
 import XMonad.Actions.CopyWindow --copy win to workspaces (2)
 import XMonad.Actions.FocusNth --focus nth window in current workspace (3)
 import XMonad.Prompt
@@ -99,6 +99,7 @@ myManageHook = (composeAll . concat $
             , className =? "Pidgin" --> insertPosition End Older <+> doShift "im" -- (4)
             , className =? "Skype" --> insertPosition End Older <+> doShift "im" -- (4)
             , className =? "Epdfview"   --> doShift "doc"
+            , className =? "Okular"   --> doShift "doc"
             , className =? "VirtualBox" --> doShift "8"
             , className =? "MPlayer"    --> doShift "8"
             , className =? "mplayer2"    --> doShift "8"
@@ -180,7 +181,7 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myKeys conf = mkKeymap conf $ [
     --Making Caps Lock useful, editing of ~/.xmodmap required
       ("M3-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
-    , ("M3-s", toggleWS) -- toggle between workspaces
+    , ("M3-s", toggleWS' ["NSP"]) -- toggle between workspaces (5)
     , ("M3-f", focusUrgent) -- go to urgent window
     , ("M3-q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig) --query the web
     , ("M3-k", killAllOtherCopies) -- Kill all copied windows (2)
