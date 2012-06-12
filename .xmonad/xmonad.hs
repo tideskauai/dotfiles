@@ -1,3 +1,6 @@
+-- haskell
+import Data.List -- (6)
+
 import XMonad
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
@@ -33,6 +36,7 @@ import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Named
 import XMonad.Layout.Reflect
 
+-- local libs
 import DynamicTopic -- (1)
 
 -------------------------------------------------------------------------------
@@ -98,6 +102,7 @@ myManageHook = (composeAll . concat $
             , className =? "Pavucontrol" --> insertPosition End Older <+> doShift "im" -- (4)
             , className =? "Pidgin" --> insertPosition End Older <+> doShift "im" -- (4)
             , className =? "Skype" --> insertPosition End Older <+> doShift "im" -- (4)
+            , fmap ("LibreOffice" `isInfixOf`) className --> doShift "doc" -- (6)
             , className =? "Epdfview"   --> doShift "doc"
             , className =? "Okular"   --> doShift "doc"
             , className =? "VirtualBox" --> doShift "8"
