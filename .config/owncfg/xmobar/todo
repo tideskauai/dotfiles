@@ -3,7 +3,7 @@
 dir_name=$(dirname "$0")
 tasks_raw=$(cat $dir_name/todo.txt)
 tasks_array=();
-done_code="<fc=#B2FBA4>x</fc>"
+done_code="x"
 undone_code="<fc=#FBA4A8>x</fc>"
 
 for i in $tasks_raw; do
