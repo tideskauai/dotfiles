@@ -116,7 +116,7 @@ myManageHook = (composeAll . concat $
             , className =? "Gtkdialog" --> doFloat
             , className =? "V4l2ucp" --> doFloat
             , className =? "Firefox" <&&> resource =? "Download" --> doFloat
-            , title =? "Skype Full-Screen Video" --> doFloat
+            , fmap ("Call with" `isInfixOf`) title --> doFloat -- (6)
             ]]) <+> manageScratchPad
 
 manageScratchPad :: ManageHook
