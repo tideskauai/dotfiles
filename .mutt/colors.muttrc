@@ -44,7 +44,6 @@ uncolor index "~D"
 
 # and recolor them appropriately
 color index     color237        default "~C mutt" # messages to mutt...
-color index     brightcyan      default "~f nico" # message from me
 # color index     cyan            default "~N ~u" # new ML mail
 # color index     brightyellow    default "~N !~u" # new non-ML mail
 color index     brightgreen     default "~T"     # tagged messages
