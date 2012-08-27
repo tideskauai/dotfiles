@@ -26,6 +26,8 @@
 /set weechat.look.buffer_notify_default highlight
 /set weechat.look.save_config_on_exit off
 /set weechat.look.color_nick_offline on
+/set weechat.look.window_separator_vertical off
+/set weechat.look.window_separator_horizontal off
 # }}}
 
 ######################
@@ -42,6 +44,7 @@
 /set weechat.color.chat_prefix_suffix "234"
 /set weechat.color.chat_read_marker "236"
 /set weechat.color.chat_nick_offline "234"
+/set weechat.color.chat_nick_offline_highlight "234"
 /set weechat.look.color_inactive_buffer "on"
 /set weechat.color.chat_inactive_buffer "235"
 /set weechat.look.hotlist_sort  group_number_asc
@@ -118,7 +121,7 @@
 /weeget install go.py
 /set plugins.var.python.toggle_nicklist.action "show"
 # while on the channel → /toggle_nicklist add
-/set plugins.var.python.colorize_nicks.min_nick_length 4
+/set plugins.var.python.colorize_nicks.min_nick_length 3
 /set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part"
 /set plugins.var.python.colorize_nicks.less_aggressive "on"
 /set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way"

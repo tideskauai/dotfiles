@@ -44,3 +44,6 @@ syntax: my_set = ['Claudia','Lucia','Peks']
 - Quotes denotes string: type('1') vs type(1)
 - 'test string\n'.rstrip() → Return a copy of string with trailing chars removed (Or any specified char)
 - print("I am {} years old".format(var_age)) → replace {} with what's in var_age
+- pass statement:
+- continue statement: Used to skip the rest of the statements in the current loop block and continue to next iteration
+- break statement: Used to break out of a loop statement

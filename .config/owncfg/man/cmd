@@ -6,9 +6,9 @@ tcpdump -s 0 -w - port <port> | tcpdump -r - -A
 ####################################
 ## Reverse SSH                   ###
 ####################################
-# (A) = peks (B) = nico
-(A) ssh -f -N -R 65001:localhost:22 nico@nico-ip-address
-(B) ssh peka@localhost -p 8888
+# (A) = Alice (B) = Ballmerpeak
+(A) ssh -f -N -R 65001:localhost:22 bpeak@bpeak-ip
+(B) ssh alice@localhost -p 8888
 
 ####################################
 ## Kill tcp/udp ports            ###

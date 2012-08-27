@@ -26,8 +26,8 @@ alarm()
 
     while true; do
 
-        sleep $d1 && mplayer -really-quiet ~/.config/owncfg/sounds/alert1.mp3 \
-            && sleep $d2 && mplayer -really-quiet ~/.config/owncfg/sounds/alert2.mp3
+        sleep $d1 && mplayer -really-quiet ~/.config/owncfg/sounds/monsterkill.mp3 \
+            && sleep $d2 && mplayer -really-quiet ~/.config/owncfg/sounds/ludicrouskill.mp3
 
     done
 }
