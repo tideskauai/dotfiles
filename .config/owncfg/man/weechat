@@ -89,6 +89,7 @@
 ######################
 # Server {{{
 /set weechat.network.gnutls_ca_file "/etc/ssl/certs/ca-certificates.crt"
+
 /server add fn "chat.freenode.net/7000"
 /set irc.server.fn.nicks "ldvx,|dvx"
 /set irc.server.fn.username "user"
@@ -108,6 +109,9 @@
 /set irc.server.znc.msn.ssl "on"
 /set irc.server.znc.msn.ssl_cert "znc.pem"
 /set irc.server.znc.msn.ssl_verify "off"
+
+/server add jb irc.geekshed.net
+/set irc.server.jb.autojoin "#jupiterbroadcasting"
 # }}}
 ########################
 ### PLUGINS   config ###
