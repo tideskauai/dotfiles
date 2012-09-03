@@ -1,0 +1,4 @@
+about:config
+
+plugins.click_to_play -> true
+browser.search.defaulenginename -> DuckDuckGo
