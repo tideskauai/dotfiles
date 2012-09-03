@@ -19,6 +19,7 @@
 !.xmonad/lib
 
 .config/*
+!.config/termite.cfg
 !.config/pystartup
 !.config/xcolors
 !.config/gtk-3.0
