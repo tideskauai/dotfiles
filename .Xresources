@@ -38,7 +38,7 @@ URxvt.keysym.M-C-3: command:\033]710;xft:DejaVuSansMono:pixelsize=18\007\033]711
 ! --[ URxvt - URL/Clipboard Handling ]----------------------
 URxvt.perl-ext-common: default,url-select
 URxvt.keysym.M-u:      perl:url-select:select_next
-URxvt.urlLauncher:     firefox
+URxvt.url-select.launcher: firefox
 !URxvt.underlineURLs:   true
 
 ! --[ URxvt - colors ]--------------------------------------
