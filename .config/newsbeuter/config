@@ -48,6 +48,7 @@ bind-key k prev-unread
 bind-key S save
 bind-key o open-in-browser-and-mark-read
 bind-key \ cmdline
+bind-key ^Q quit
 # }}}
 
 #################################################################################
@@ -57,7 +58,7 @@ bind-key \ cmdline
 ignore-mode "download"
 ignore-article "*" "( title =~ \"emacs\" or title =~ \"Linux desktop\" )"
 ignore-article "http://lwn.net/headlines/newrss" "title =~ \"[$]\""
-ignore-article "http://feeds2.feedburner.com/AllJupiterVideos" "( title !# \"TechSNAP\" and title !# \"SciByte\" and title !# \"Unfilter\" and title !# \"CR\")"
+ignore-article "http://feeds2.feedburner.com/AllJupiterVideos" "( title !# \"TechSNAP\" and title !# \"SciByte\" and title !# \"CR\")"
 ignore-article "http://feeds2.feedburner.com/braingle/all" "( title !# \"Vocabulary\" and title !# \"Memory\" )"
 ignore-article "http://www.linuxtoday.com/biglt.rss" "link !~ \"developer\""
 ignore-article "http://feeds.feedburner.com/amazings" "title =~ \"\#SinCiencia\""
