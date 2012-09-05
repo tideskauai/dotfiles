@@ -28,6 +28,8 @@
 /set weechat.look.color_nick_offline on
 /set weechat.look.window_separator_vertical off
 /set weechat.look.window_separator_horizontal off
+/set weechat.bar.input.size 0
+/set weechat.bar.input.size_max 2
 # }}}
 
 ######################
