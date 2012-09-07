@@ -28,5 +28,8 @@ keycode 108 = dead_acute dead_tilde
 keycode 105 = Hyper_R
 add mod5 = Hyper_R
 
+!Change 'menu' key functionality to that of 'windows key'
+keycode 135 = Super_L
+
 !Swapping buttons in my mouse
 !pointer = 1 10 3 4 5 6 7 8 9 2 11 12 13 14 15 16
