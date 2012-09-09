@@ -85,4 +85,5 @@ bind index G last-entry
 # [macros]
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager gp "<change-folder>=peka<enter>" "Go to peka"
-macro index,pager gA "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index,pager gA "<change-folder>=Arch/Arch-dev<enter>" "Go to all arch-dev"
+macro index,pager ga "<change-folder>=Arch/Arch-general<enter>" "Go to arch-general"
