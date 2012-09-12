@@ -13,10 +13,7 @@ _todo() {
             _arguments "1:Action:(reset undone done)"
             ;;
         activities)
-            # TODO: Make it intelligent in the future,
-            # grab activities from todo.txt, rather than 
-            # hardcode them
-            _arguments "2:Activities:(med gnc bio com prog)"
+            _arguments "2:Activities:($(cut -d= -f1 $HOME/.config/owncfg/xmobar/todo.txt))"
             ;;
     esac
 }
