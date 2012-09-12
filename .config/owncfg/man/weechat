@@ -51,7 +51,6 @@
 /set weechat.color.chat_inactive_buffer "235"
 /set weechat.look.hotlist_sort  group_number_asc
 /set weechat.bar.title.hidden on
-/set weechat.bar.nicklist.hidden on
 /set weechat.bar.status.position top
 /set weechat.look.prefix_align_max 10
 /set weechat.look.hotlist_count_max 0
@@ -61,6 +60,7 @@
 /set weechat.bar.status.color_bg default
 /set weechat.bar.status.color_fg darkgray
 /set weechat.bar.status.color_delim blue
+/set weechat.bar.status.items "[buffer_plugin],buffer_number+:+buffer_name+{buffer_nicklist_count}+buffer_filter,[lag],[hotlist],completion,scroll"
 /set weechat.color.chat_nick_colors "001,002,003,004,005,006,012,013,025,059,060,065,069,096"
 # /set weechat.color.status_data_msg !blue
 /set weechat.color.status_data_msg darkgray
@@ -92,11 +92,19 @@
 # Server {{{
 /set weechat.network.gnutls_ca_file "/etc/ssl/certs/ca-certificates.crt"
 
-/server add fn "chat.freenode.net/7000"
+/server add fn chat.freenode.net/7000
 /set irc.server.fn.nicks "ldvx,|dvx"
 /set irc.server.fn.username "user"
 /set irc.server.fn.ssl "on"
 /set irc.server.fn.ssl_dhkey_size "1024"
+/set irc.server.fn.autojoin "#archlinux,#archlinux-offtopic,#weechat"
+
+/server add jb irc.geekshed.net
+/set irc.server.jb.autojoin "#jupiterbroadcasting"
+
+/server add im 127.0.0.1
+/set irc.server.im.nicks "IPoAC,IPoAC_"
+/set irc.server.im.username "IM"
 
 /server add znc.fn 192.168.0.5/1122
 /set irc.server.znc.fn.nicks "ldvx,|dvx"
@@ -105,41 +113,32 @@
 /set irc.server.znc.fn.ssl_cert "znc.pem"
 /set irc.server.znc.fn.ssl_verify "off"
 
-/server add znc.msn 192.168.0.5/1122
-/set irc.server.znc.msn.nicks "IPoAC,IPoAC_"
-/set irc.server.znc.msn.username "msn"
-/set irc.server.znc.msn.ssl "on"
-/set irc.server.znc.msn.ssl_cert "znc.pem"
-/set irc.server.znc.msn.ssl_verify "off"
-
-/server add jb irc.geekshed.net
-/set irc.server.jb.autojoin "#jupiterbroadcasting"
+/server add znc.im 192.168.0.5/1122
+/set irc.server.znc.im.nicks "IPoAC,IPoAC_"
+/set irc.server.znc.im.username "IM"
+/set irc.server.znc.im.ssl "on"
+/set irc.server.znc.im.ssl_cert "znc.pem"
+/set irc.server.znc.im.ssl_verify "off"
 # }}}
 ########################
 ### PLUGINS   config ###
 ########################
-# cd ~/.weechat/python/autoload/ && wget http://www.weechat.org/files/scripts/weeget.py
-/weeget install colorize_lines
-/weeget install colorize_nicks 
-/weeget install beep
-/weeget install text_replace.py
-/weeget install toggle_nicklist.py
-/weeget install go.py
+/script install colorize_lines.pl beep.pl colorize_nicks.py text_replace.py toggle_nicklist.py go.py
 /set plugins.var.python.toggle_nicklist.action "show"
 # while on the channel → /toggle_nicklist add
 /set plugins.var.python.colorize_nicks.min_nick_length 3
 /set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part"
 /set plugins.var.python.colorize_nicks.less_aggressive "on"
 /set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way"
-/set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,ty=thank you,wtf=what the freckles,alo=actual laughter occurred,iirc=if I remember correctly,<-=←,->=→"
+/set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,wtf=what the fruggles,iirc=if I remember correctly,nvm=nevermind,<-=←,->=→"
 /set plugins.var.perl.colorize_lines.own_lines on
-/set plugins.var.perl.colorize_lines.nicks "znc.msn.peks,znc.fn.phrik,znc.fn.falconindy,znc.fn.MrElendig,znc.fn.thestinger,znc.fn.Zhivago,znc.fn.FlashCode,znc.fn.weebot,znc.fn.vodik,znc.fn.tasidus"
+/set plugins.var.perl.colorize_lines.nicks "*.peks,*.phrik,*.falconindy,*.MrElendig,*.thestinger,*.Zhivago,*.FlashCode,*.weebot,*.vodik,*.tasidus"
 /set plugins.var.perl.colorize_lines.highlight off
 /set plugins.var.perl.beep.beep_command_pv "mpg123 ~/Archives/Audio/OST/GuiltyCrown/17-Genesis.mp3"
 /set plugins.var.perl.beep.beep_dcc "off"
-/set plugins.var.perl.beep.whitelist_channels "znc.fn.#weechat,znc.fn.##freebsd"
+/set plugins.var.perl.beep.whitelist_channels "*fn.#weechat,*fn.##freebsd"
 /set plugins.var.perl.beep.beep_trigger_pv "beep"
-/set plugins.var.perl.beep.whitelist_nicks "znc.msn.peks"
+/set plugins.var.perl.beep.whitelist_nicks "*im.peks"
 /set plugins.var.perl.beep.bell_always "pv"
 /set plugins.var.python.go.color_name "black,default"
 /set plugins.var.python.go.color_name_highlight "red,default"
