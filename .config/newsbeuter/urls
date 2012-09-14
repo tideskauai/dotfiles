@@ -32,8 +32,8 @@ http://cacm.acm.org/blogs/blog-cacm.rss programming CS
 http://feeds.feedburner.com/blogspot/gJZg programming CS
 
 http://e.meneame.net/rss2.php?meta=0 news
-#http://feeds.feedburner.com/obamaworld "world news"
-#http://www.nytimes.com/services/xml/rss/nyt/GlobalHome.xml "world news"
+http://feeds.feedburner.com/obamaworld "world news"
+http://www.nytimes.com/services/xml/rss/nyt/GlobalHome.xml "world news"
 http://feeds.arstechnica.com/arstechnica/tech-policy "world news"
 
 http://feeds.feedburner.com/gaussianos science math
