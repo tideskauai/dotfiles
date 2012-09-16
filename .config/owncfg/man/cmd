@@ -50,4 +50,6 @@ fusermount -u .m1
 # Find files larger than 1G in current dir
     find . -type f -size +1G
 
+# Run the command inside <(...), connect the ouput to a temporary pipe file and
+# give that as an argument
 vimdiff -R <(command1) <(command2)
