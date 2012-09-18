@@ -12,6 +12,7 @@
 /filter add bitlbee irc.znc.msn.&bitlbee irc_mode *
 /filter add noise * nick_phrik,nick_nathan28,nick_masterkorp,nick_rabbitear,nick_Nuked,nick_Aut0Exec *
 /set aspell.check.default_dict "en,es" 
+/aspell enable
 /set weechat.look.paste_bracketed on
 /set weechat.look.paste_max_lines 0
 /key unbind meta-m
@@ -19,7 +20,10 @@
 /key unbind ctrl-J
 /key unbind ctrl-N
 /key unbind ctrl-P
-/alias su /window scroll_unread
+/key unbind meta2-15~
+/key unbind meta2-17~
+/alias wu /window scroll_unread
+/alias wr /layout apply windows
 /set irc.ctcp.version = ""
 /set irc.look.buffer_switch_autojoin off
 /set irc.look.display_old_topic off
