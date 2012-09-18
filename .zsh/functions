@@ -31,3 +31,11 @@ share() {
         echo "Usage: share file-to-share"
     fi
 }
+
+JB() {
+    for i in {0..50}
+    do
+        mplayer http://jblive.fm
+        sleep 1
+    done
+}

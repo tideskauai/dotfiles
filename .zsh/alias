@@ -7,6 +7,12 @@ alias -s gz='tar -xzvf'
 alias -s bz2='tar -xjvf'
 alias -g L='| less'
 
+alias cdcs='cd ~/Archives/eLearn'
+alias cdman='cd ~/.config/owncfg/man'
+alias cd.dot='cd ~/.dotfiles && git status'
+
+alias notes="vim ~/.config/owncfg/txt/NOTES"
+
 alias ls='ls -FNh --tabsize=0 --color=auto --show-control-chars --group-directories-first'
 alias ls-l='ls -lha'
 alias ls-d='ls -lhrt' # sort by date
@@ -17,12 +23,7 @@ alias mv='mv -i'
 alias rm='rm -I'
 alias du='du -h'
 alias diff='colordiff'
-alias cdcs='cd ~/Archives/eLearn'
-alias cdman='cd ~/.config/owncfg/man'
-alias cd.dot='cd ~/.dotfiles && git status'
-alias notes="vim ~/.config/owncfg/txt/NOTES"
 alias pacu="sudo pacman -Syu"
 alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias myip="curl ifconfig.me/ip"
 alias skype="xhost +local: && su csgn -c skype"
-alias jb="mplayer http://jblive.fm"
