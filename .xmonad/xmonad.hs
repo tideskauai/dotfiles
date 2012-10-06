@@ -101,7 +101,6 @@ myManageHook = (composeAll . concat $
             , className =? "Chromium"   --> insertPosition End Older <+> doShift "web" -- (4)
             , className =? "Pavucontrol" --> insertPosition End Older <+> doShift "im" -- (4)
             , className =? "Pidgin" --> insertPosition End Older <+> doShift "im" -- (4)
-            , className =? "Skype" --> insertPosition End Older <+> doShift "im" -- (4)
             , fmap ("LibreOffice" `isInfixOf`) className --> doShift "doc" -- (6)
             , className =? "Epdfview"   --> doShift "doc"
             , className =? "Okular"   --> doShift "doc"
@@ -111,6 +110,7 @@ myManageHook = (composeAll . concat $
             , className =? "Vlc"    --> doShift "8"
             , className =? "Hamster-time-tracker" --> doShift "NSP"
             , className =? "Osmo" --> doShift "NSP"
+            , className =? "Skype" --> doShift "NSP"
             , className =? "trayer" --> doIgnore
             , className =? "URxvt" --> insertPosition Below Newer -- (4)
             , className =? "Gtkdialog" --> doFloat
