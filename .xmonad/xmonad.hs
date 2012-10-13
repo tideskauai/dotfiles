@@ -205,7 +205,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-S-f", safeSpawn "pcmanfm" [])
     , ("M5-S-v", safeSpawn "VirtualBox" [])
     , ("M5-c", safeSpawn "chromium" ["--incognito"])
-    , ("M5-w", safeSpawn "v4l2ucp" [])
+    , ("M5-w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
     , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch) --query the web(selected text)
     
