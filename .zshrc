@@ -71,7 +71,7 @@ case $OSTYPE in
         source $HOME/.zsh/alias
         source $HOME/.zsh/functions
         # Don't store commands with sudo in the history
-        function zshaddhistory() { [[ $1 != *sudo* ]] }
+        function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
         ;;
     freebsd*)
         source $HOME/.zsh/alias-fbsd
