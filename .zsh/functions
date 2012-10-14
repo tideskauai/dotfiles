@@ -10,18 +10,6 @@ pacs() {
         -e 's#^.*/.* [0-9].*#\\033[0;36m&\\033[0;37m#g' )"
 }
 
-rcd() {
-    if (($# == 0)); then
-        ls --color /etc/rc.d
-        echo "Running daemons:"
-        ls /run/daemons
-    elif (($# == 2)); then
-        sudo /etc/rc.d/$2 $1
-    else
-        echo "Invalid number of arguments"
-    fi
-}
-
 share() {
     if (($# == 1)); then
         dir=${TMPDIR:-/tmp}/share-$$; mkdir "$dir" || error
