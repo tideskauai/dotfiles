@@ -1,7 +1,7 @@
 #!/bin/bash
 
 back_up_files=(~/Archives ~/Downloads ~/build ~/dev ~/themes ~/VMs \
-    ~/.ssh ~/.config/owncfg ~/.themes ~/.icons ~/.mozilla \
+    ~/.ssh ~/.dotfiles ~/.themes ~/.icons ~/.mozilla \
     ~/.local ~/.gist-vim ~/.kde4)
 back_up_etc_files=(iptables ssh X11 modules-load.d bitlbee \
     hostname hosts locale.conf locale.gen makepkg.conf \
