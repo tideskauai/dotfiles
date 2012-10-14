@@ -1,5 +1,0 @@
-#compdef pwrman
-
-_arguments "1:Options:(shutdown restart)"
-
-# vim: set ts=2 sw=2 ft=sh noet:
