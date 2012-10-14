@@ -3,7 +3,7 @@
 #------------------------------
 export EDITOR="vim"
 export VISUAL="vim"
-export PATH="${PATH}:${HOME}/.config/owncfg/bin"
+export PATH="${PATH}:${HOME}/dev/bin"
 export PAGER="less"
 # Add custom completition scripts
 fpath=(~/.zsh/autocompletitions $fpath)

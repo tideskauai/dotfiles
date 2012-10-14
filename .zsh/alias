@@ -8,7 +8,7 @@ alias -s bz2='tar -xjvf'
 alias -g L='| less'
 
 alias cdcs='cd ~/Archives/eLearn'
-alias cdman='cd ~/.config/owncfg/man'
+alias cdman='cd ~/Archives/man'
 alias cd.dot='cd ~/.dotfiles && git status'
 
 alias notes="vim ~/.config/owncfg/txt/NOTES"

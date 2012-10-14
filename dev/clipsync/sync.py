@@ -9,8 +9,8 @@ import subprocess
 # bytes(s, encoding=...) and str(b, encoding=...), respectively.
 input = bytes.decode(subprocess.check_output(["/usr/bin/xclip", "-o"]))
 
-directory = os.path.dirname(__file__)
-xsel = open(directory + "/../txt/CMD", "r+")
+directory = os.environ['HOME']
+xsel = open(directory + "/Archives/txt/CMD", "r+")
 
 if input:
 

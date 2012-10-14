@@ -26,12 +26,6 @@
 !.config/openbox
 !.config/cower
 !.config/newsbeuter
-!.config/owncfg
-.config/owncfg/*
-!.config/owncfg/man
-!.config/owncfg/bin
-!.config/owncfg/xmobar
-!.config/owncfg/clipsync
 
 .vim/.netrwhist
 .vim/backup
