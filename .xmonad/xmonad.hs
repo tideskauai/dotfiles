@@ -210,13 +210,14 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
     , ("M5-p", safeSpawn "pavucontrol" [])
+    , ("M5-d", safeSpawn "dropboxd" [])
     , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch) --query the web(selected text)
     
     --launching
     , ("M-<Return>", spawnShell) -- launch shell in topic (1)
     , ("M-p", shellPrompt myXPConfig)
-    , ("M-x", safeSpawn "bash" ["/home/shivalva/.config/owncfg/clipsync/dmenu.sh"])
-    , ("M-S-x", safeSpawn "python" ["/home/shivalva/.config/owncfg/clipsync/sync.py"])
+    , ("M-x", safeSpawn "bash" ["/home/shivalva/dev/clipsync/dmenu.sh"])
+    , ("M-S-x", safeSpawn "python" ["/home/shivalva/dev/clipsync/sync.py"])
     , ("M-z", appendFilePrompt myXPConfig "/home/shivalva/Archives/txt/NOTES")
     
     --killing
