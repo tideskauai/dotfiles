@@ -3,6 +3,9 @@
 back_up_files=(~/Archives ~/Downloads ~/build ~/dev ~/themes ~/VMs \
     ~/.ssh ~/.config/owncfg ~/.themes ~/.icons ~/.mozilla \
     ~/.local ~/.gist-vim ~/.kde4)
+back_up_etc_files=(iptables ssh X11 hostname hosts locale.conf \
+        makepkg.conf mkinitcpio.conf pacman.conf resolv.conf sysctl.conf \
+        timezone vconsole.conf localtime)
 back_up_dir="/home/shivalva/Archives/backup"
 back_up_internalhdd="/media/sdc1"
 back_up_externalhdd="/mnt/backup/rsync"
@@ -41,7 +44,7 @@ elif [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
 # Backup/sync $back_up_files to $back_up_externalhdd
 elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
     # Does $back_up_externalhdd exist?
-    if [ -d "$back_up_externalhdd" ];then
+    if [ -d "$back_up_externalhdd" ]; then
         for i in "${back_up_files[@]}"; do
             rsync -aPh --delete --delete-excluded "$i" "$back_up_externalhdd"
         done
@@ -50,42 +53,46 @@ elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
         echo "Dir $back_up_externalhdd does not exist"
     fi
 
+# Backup /etc files to $back_up_dir/etc
+elif [[ $1 = "--etc" ]]; then
+    # Specify which files in /etc I want to backup
+    if [ -d "$back_up_dir/etc" ]; then
+        for i in "${back_up_etc_files[@]}"; do
+            rsync -aPh --delete --delete-excluded "/etc/$i" "$back_up_dir/etc"
+        done
+    else
+        echo "$back_up_dir/etc does not exist, please create it"
+    fi
+
 # Backup single file to specified dir in $back_up_dir
 elif [ -n "$1" ] && [ -f "$1" ]; then
     if [ -d "$back_up_dir" ]; then
 
         date=$(date "+%G-%j-%H%M%S")
         file_name=$(basename "$1")
-        dir_name=$(dirname "$1")
-        dir_name=${dir_name#$HOME/}
-
-        # What to do if we run the script on the same dir as file
-        if [[ $dir_name == "." ]]; then
-            echo "We are on the same dir as the file"
-            dir_name=$(pwd)
-            dir_name=${dir_name#$HOME/}
-        fi
-        # What to do if we backup a file that's under $HOME (1 level depth)
-        # E.g. $HOME/1_level_depth_file
-        if [[ $dir_name == $HOME ]]; then
-            echo "File is in home"
-            cp "$1" "$back_up_dir/$date-$file_name"
-            echo "$file_name -> Backed up to: $back_up_dir/$date-$file_name"
-        # What to do if the dir does not exist
-        elif [ ! -d "$back_up_dir/$dir_name/" ]; then
-            # We don't care about symlinks when copying
-            echo "Dir does not exist. Let's create it"
-            pushd . > /dev/null
-            cd "$back_up_dir"
-            mkdir -p $dir_name
-            popd > /dev/null
-            cp "$1" "$back_up_dir/$dir_name/$date-$file_name"
-            echo "$file_name -> Backed up to: $back_up_dir/$dir_name/$date-$file_name"
-        # What to do if dir exists
+        resolved_path=$(realpath "$1")
+        # We were asked to backup a file that is in our home directory
+        if [[ $resolved_path =~ "$HOME" ]]; then
+            dir_name=${resolved_path#$HOME/}
+            dir_name=${dir_name%$file_name}
+            # What to do if the dir does not exist
+            if [ ! -d "$back_up_dir/$dir_name/" ]; then
+                echo "Dir does not exist. Let's create it"
+                pushd . > /dev/null
+                cd "$back_up_dir"
+                mkdir -p $dir_name
+                popd > /dev/null
+                cp "$1" "$back_up_dir/$dir_name$date-$file_name"
+                echo "$file_name was backed up to: $back_up_dir/$dir_name$date-$file_name"
+            # What to do if dir exists
+            else
+                echo "Dir exists, just copy the file"
+                cp "$1" "$back_up_dir/$dir_name$date-$file_name"
+                echo "$file_name was backed up to: $back_up_dir/$dir_name$date-$file_name"
+            fi
+        # We were asked to backup a file that is not in our home directory
         else
-            echo "Dir exists, just copy the file"
-            cp "$1" "$back_up_dir/$dir_name/$date-$file_name"
-            echo "$file_name -> Backed up to: $back_up_dir/$dir_name/$date-$file_name"
+            echo "Error: The specified backup file doe not reside inside your home directory"
         fi
     else
         echo "$back_up_dir Does not exist"
@@ -97,5 +104,6 @@ else
         $script_name --internalhdd (-i) \tTo sync files with internal hdd.\n \
         $script_name --externalhdd (-e) \tTo sync files with external hdd.\n \
         $script_name --remote (-r) \t\tTo sync files remotely (eee host).\n \
+        $script_name --etc          \t\tTo sync /etc files to \$back_up_dir/etc.\n \
         $script_name \$filename \t\tTo backup single file to \$back_up_dir.\n"
 fi
