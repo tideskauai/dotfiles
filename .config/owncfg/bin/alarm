@@ -26,8 +26,8 @@ alarm()
 
     while true; do
 
-        sleep $d1 && mplayer -really-quiet ~/.config/owncfg/sounds/monsterkill.mp3 \
-            && sleep $d2 && mplayer -really-quiet ~/.config/owncfg/sounds/ludicrouskill.mp3
+        sleep $d1 && mplayer -really-quiet ~/Archives/Audio/Alarms/monsterkill.mp3 \
+            && sleep $d2 && mplayer -really-quiet ~/Archives/Audio/Alarms/ludicrouskill.mp3
 
     done
 }
@@ -48,7 +48,7 @@ if (($# == 1)); then
     elif [[ $1 = *[smhd] ]]; then
         delay=$1
         sleep $delay && mplayer -loop 9999 \
-            -really-quiet ~/.config/owncfg/sounds/alert1.mp3
+            -really-quiet ~/Archives/Audio/Alarms/alert1.mp3
 
     else
         usage
