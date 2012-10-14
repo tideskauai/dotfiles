@@ -139,6 +139,7 @@ myWorkspaces = [ "web", "im", "dev", "doc", "5", "6", "7", "8", "9", "NSP"]
 myLayout = customLayout
 customLayout =  onWorkspace "web" fsLayout $
                 onWorkspace "im" imLayout $
+                onWorkspace "dev" devLayout $
                 onWorkspace "doc" fsLayout $
                 onWorkspace "8" fsLayout $
                 standardLayouts
@@ -153,6 +154,7 @@ customLayout =  onWorkspace "web" fsLayout $
     
     fsLayout = full ||| tiled
     imLayout = full ||| rmtiled
+    devLayout = full ||| rmtiled
 
 --prompt theme
 myXPConfig = defaultXPConfig {  font = "terminus"
@@ -207,6 +209,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-c", safeSpawn "chromium" ["--incognito"])
     , ("M5-w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
+    , ("M5-p", safeSpawn "pavucontrol" [])
     , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch) --query the web(selected text)
     
     --launching
