@@ -10,7 +10,7 @@
 /filter add join_quit *,!irc.znc.im.*,!irc.im.* irc_quit,irc_join,irc_part *
 /filter add irc_clean * irc_470,irc_324,irc_328,irc_329,irc_332,irc_333,irc_372,irc_376 *
 /filter add bitlbee irc.znc.im.&bitlbee,irc.im.&bitlbee irc_mode *
-/filter add noise * nick_phrik,nick_nathan28,nick_masterkorp,nick_rabbitear,nick_Nuked,nick_Aut0Exec *
+/filter add noise * nick_phrik,nick_nathan28,nick_masterkorp,nick_rabbitear,nick_Nuked,nick_Aut0Exec,nick_CryptoNaut *
 /set aspell.check.default_dict "en,es" 
 /aspell enable
 /set weechat.look.paste_bracketed on
@@ -134,7 +134,7 @@
 /set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part"
 /set plugins.var.python.colorize_nicks.less_aggressive "on"
 /set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way"
-/set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,wtf=what the fruggles,iirc=if I remember correctly,nvm=nevermind,<-=←,->=→"
+/set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,<-=←,->=→"
 /set plugins.var.perl.colorize_lines.own_lines on
 /set plugins.var.perl.colorize_lines.nicks "*.peks,*.phrik,*.falconindy,*.MrElendig,*.thestinger,*.Zhivago,*.FlashCode,*.weebot,*.vodik,*.tasidus,jb.Allan"
 /set plugins.var.perl.colorize_lines.highlight off
