@@ -1,0 +1,40 @@
+# Commands I run after fresh installation
+sudo systemctl enable dhcpcd@eth0.service
+sudo systemctl enable iptables.service
+sudo systemctl enable ntpd.service
+sudo systemctl enable bitlbee.socket
+sudo systemctl mask ctrl-alt-del.target
+
+# Enable a service
+sudo systemctl enable <unit>
+# Disable a service
+sudo systemctl disable <unit>
+
+# Start a unit
+sudo systemctl start <unit>
+# Stop a unit
+sudo systemctl stop <unit>
+
+# Recursively show content of select linux control group hierarchy in a tree
+systemd-cgls
+
+# Power management
+systemctl reboot
+systemctl poweroff
+systemctl halt
+systemctl suspend
+systemctl hibernate
+
+# Show systemd journal
+journalctl
+# Show messages by a specific process
+journalctl _PID=<pid_number>
+# Show messages by a specific executable
+journalctl /path/to/executable
+
+# Misc
+systemd-analyze
+systemd-analyze blame
+loginctl
+loginctl show-session <session_number>
+# systemctl enable systemd-readahead-collect.service systemd-readahead-replay.service
