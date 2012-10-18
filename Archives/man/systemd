@@ -1,5 +1,5 @@
 # Commands I run after fresh installation
-sudo systemctl enable dhcpcd@eth0.service
+sudo systemctl enable netcfg@mynetwork.service
 sudo systemctl enable iptables.service
 sudo systemctl enable ntpd.service
 sudo systemctl enable bitlbee.socket
