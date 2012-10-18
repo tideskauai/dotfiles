@@ -8,7 +8,8 @@
 /set weechat.look.jump_current_to_previous_buffer off
 /set weechat.completion.partial_completion_command_arg on
 /filter add join_quit *,!irc.znc.im.*,!irc.im.* irc_quit,irc_join,irc_part *
-/filter add irc_clean * irc_470,irc_324,irc_328,irc_329,irc_332,irc_333,irc_372,irc_376 *
+/filter add names *,!irc.znc.im.*,!irc.im.* irc_366 *
+/filter add irc_clean * irc_470,irc_324,irc_328,irc_329,irc_333,irc_372,irc_376 *
 /filter add bitlbee irc.znc.im.&bitlbee,irc.im.&bitlbee irc_mode *
 /filter add noise * nick_phrik,nick_nathan28,nick_masterkorp,nick_rabbitear,nick_Nuked,nick_Aut0Exec,nick_CryptoNaut *
 /set aspell.check.default_dict "en,es" 
@@ -88,7 +89,7 @@
 /set irc.color.item_channel_modes black
 /set irc.color.input_nick black
 /set weechat.color.separator 60
-/set irc.look.nick_color_force "MrElendig:3;falconindy:4;gffa:4;peks:5;vodik:59;Allan:59;thestinger:60;phrik:96;weebot:96"
+/set irc.look.nick_color_force "MrElendig:3;Mion:3;falconindy:4;gffa:4;peks:5;vodik:59;Allan:59;thestinger:60;phrik:96;weebot:96"
 
 ######################
 ### Server configs ###
@@ -136,7 +137,7 @@
 /set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way,[tm]=™,[r]=®"
 /set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,<-=←,->=→,asap=as soon as possible"
 /set plugins.var.perl.colorize_lines.own_lines on
-/set plugins.var.perl.colorize_lines.nicks "*.peks,*.phrik,*.falconindy,*.MrElendig,*.thestinger,*.Zhivago,*.FlashCode,*.weebot,*.vodik,*.tasidus,jb.Allan"
+/set plugins.var.perl.colorize_lines.nicks "*.peks,*.phrik,*.falconindy,*.MrElendig,*.Mion,*.thestinger,*.Zhivago,*.FlashCode,*.weebot,*.vodik,*.tasidus,jb.Allan"
 /set plugins.var.perl.colorize_lines.highlight off
 /set plugins.var.perl.beep.beep_command_pv "mpg123 ~/Archives/Audio/OST/GuiltyCrown/17-Genesis.mp3"
 /set plugins.var.perl.beep.beep_dcc "off"
