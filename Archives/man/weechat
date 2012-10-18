@@ -22,8 +22,9 @@
 /key unbind ctrl-P
 /key unbind meta2-15~
 /key unbind meta2-17~
-/alias wu /window scroll_unread
+/key bind meta-c /close
 /alias wr /layout apply windows
+/alias im /query -server im
 /set irc.ctcp.version = ""
 /set irc.look.buffer_switch_autojoin off
 /set irc.look.display_old_topic off
@@ -49,8 +50,8 @@
 /set weechat.look.read_marker_string "─"
 /set weechat.color.chat_prefix_suffix "234"
 /set weechat.color.chat_read_marker "236"
-/set weechat.color.chat_nick_offline "234"
-/set weechat.color.chat_nick_offline_highlight "234"
+/set weechat.color.chat_nick_offline "236"
+/set weechat.color.chat_nick_offline_highlight "236"
 /set weechat.look.color_inactive_buffer "on"
 /set weechat.color.chat_inactive_buffer "235"
 /set weechat.look.hotlist_sort  group_number_asc
@@ -66,7 +67,6 @@
 /set weechat.bar.status.color_delim blue
 /set weechat.bar.status.items "[buffer_plugin],buffer_number+:+buffer_name+{buffer_nicklist_count}+buffer_filter,[lag],[hotlist],completion,scroll"
 /set weechat.color.chat_nick_colors "001,002,003,004,005,006,012,013,025,059,060,065,069,096"
-# /set weechat.color.status_data_msg !blue
 /set weechat.color.status_data_msg darkgray
 /set weechat.color.status_count_highlight red
 /set weechat.color.status_name darkgray
@@ -133,8 +133,8 @@
 /set plugins.var.python.colorize_nicks.min_nick_length 3
 /set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part"
 /set plugins.var.python.colorize_nicks.less_aggressive "on"
-/set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way"
-/set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,<-=←,->=→"
+/set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way,[tm]=™,[r]=®"
+/set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,<-=←,->=→,asap=as soon as possible"
 /set plugins.var.perl.colorize_lines.own_lines on
 /set plugins.var.perl.colorize_lines.nicks "*.peks,*.phrik,*.falconindy,*.MrElendig,*.thestinger,*.Zhivago,*.FlashCode,*.weebot,*.vodik,*.tasidus,jb.Allan"
 /set plugins.var.perl.colorize_lines.highlight off
