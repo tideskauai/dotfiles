@@ -23,7 +23,7 @@
 /key unbind ctrl-P
 /key unbind meta2-15~
 /key unbind meta2-17~
-/key bind meta-c /close
+/key bind meta-` /buffer close
 /alias wr /layout apply windows
 /alias im /query -server im
 /set irc.ctcp.version = ""
