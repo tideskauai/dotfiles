@@ -26,6 +26,7 @@
 !.config/openbox
 !.config/cower
 !.config/newsbeuter
+!.config/luakit
 
 .vim/.netrwhist
 .vim/backup
