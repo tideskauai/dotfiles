@@ -14,7 +14,8 @@ import XMonad.Util.EZConfig --easy M-key like bindings
 
 -- actions and prompts
 import XMonad.Actions.GridSelect
-import XMonad.Actions.CycleWS --toggleWS (5)
+-- import XMonad.Actions.CycleWS --toggleWS (5)
+import XMonad.Actions.GroupNavigation --toggle between windows (6)
 import XMonad.Actions.CopyWindow --copy win to workspaces (2)
 import XMonad.Actions.FocusNth --focus nth window in current workspace (3)
 import XMonad.Prompt
@@ -64,6 +65,7 @@ myConfig = defaultConfig { focusFollowsMouse = False
                            , keys = myKeys
                            , layoutHook = myLayout
                            , manageHook = myManageHook
+                           , logHook = historyHook -- (6)
                          }
 
 -- Declarations
@@ -99,6 +101,7 @@ myManageHook :: ManageHook
 myManageHook = (composeAll . concat $
             [[ className =? "Firefox"    --> doShift "web"
             , className =? "Chromium"   --> insertPosition End Older <+> doShift "web" -- (4)
+            , className =? "luakit"   --> insertPosition End Older <+> doShift "web" -- (4)
             , className =? "Pavucontrol" --> insertPosition End Older <+> doShift "im" -- (4)
             , className =? "Pidgin" --> insertPosition End Older <+> doShift "im" -- (4)
             , fmap ("LibreOffice" `isInfixOf`) className --> doShift "doc" -- (6)
@@ -142,6 +145,7 @@ customLayout =  onWorkspace "web" fsLayout $
                 onWorkspace "dev" devLayout $
                 onWorkspace "doc" fsLayout $
                 onWorkspace "8" fsLayout $
+                onWorkspace "9" fsLayout $
                 standardLayouts
     where
     standardLayouts = tiled ||| Mirror tiled ||| full
@@ -153,7 +157,7 @@ customLayout =  onWorkspace "web" fsLayout $
     full = named "[]" $ noBorders Full
     
     fsLayout = full ||| tiled
-    imLayout = full ||| rmtiled
+    imLayout = rmtiled ||| full
     devLayout = full ||| rmtiled
 
 --prompt theme
@@ -188,7 +192,8 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myKeys conf = mkKeymap conf $ [
     --Making Caps Lock useful, editing of ~/.xmodmap required
       ("M3-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
-    , ("M3-s", toggleWS' ["NSP"]) -- toggle between workspaces (5)
+    --, ("M3-s", toggleWS' ["NSP"]) -- toggle between workspaces (5)
+    , ("M3-s", nextMatch History (className =? "URxvt")) --Toggle between windows (6)
     , ("M3-f", focusUrgent) -- go to urgent window
     , ("M3-q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig) --query the web
     , ("M3-k", killAllOtherCopies) -- Kill all copied windows (2)
@@ -198,20 +203,22 @@ myKeys conf = mkKeymap conf $ [
     , ("M3-S--", safeSpawn "amixer" ["-q","set","Master","4%+"])
     , ("M3-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
     , ("M3-z", goToSelected defaultGSConfig { gs_cellwidth = 250 })
-    --Making Ctrl_R useful, editing of ~/.xmodmap required
+    --Making menu_key useful, editing of ~/.xmodmap required
     , ("M5-<Return>", changeDir myXPConfig) --change the dir of the topic (1)
     , ("M5-=", safeSpawn "ncmpcpp" ["toggle"])
     , ("M5--", safeSpawn "ncmpcpp" ["next"])
     , ("M5-S--", safeSpawn "ncmpcpp" ["prev"])
     , ("M5-f", safeSpawn "firefox" [])
+    , ("M5-c", safeSpawn "chromium" ["--incognito"])
+    , ("M5-l", safeSpawn "luakit" [])
     , ("M5-S-f", safeSpawn "pcmanfm" [])
     , ("M5-S-v", safeSpawn "VirtualBox" [])
-    , ("M5-c", safeSpawn "chromium" ["--incognito"])
     , ("M5-w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
     , ("M5-p", safeSpawn "pavucontrol" [])
     , ("M5-d", safeSpawn "dropboxd" [])
-    , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch) --query the web(selected text)
+    --query the web with the selected text
+    , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch)
     
     --launching
     , ("M-<Return>", spawnShell) -- launch shell in topic (1)
