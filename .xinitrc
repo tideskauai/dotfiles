@@ -5,6 +5,9 @@ if [ -f $HOME/.xmodmap ]; then
     xmodmap ~/.xmodmap
 fi
 
+# fonts
+xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
+
 # Start custom settings for urxvt
 xrdb -merge ~/.Xresources
 
