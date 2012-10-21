@@ -7,6 +7,10 @@ Xft.hintstyle: hintfull
 Xft.autohint: false
 Xft.lcdfilter: lcddefault
 
+! --[Cursor theme ]-----------------------------------------
+Xcursor.theme: Vanilla-DMZ
+Xcursor.size:  24
+
 ! --[ URxvt - General ]-------------------------------------
 URxvt.loginShell:false
 URxvt.scrollBar:false
@@ -18,8 +22,8 @@ URxvt.underlinecolor: #999999
 URxvt.fading:   25%
 URxvt.dynamicColors: on
 URxvt.internalborder: 0
-URxvt.font: xft:DejaVuSansMono:pixelsize=18
-URxvt.boldFont: xft:DejaVuSansMono:pixelsize=18:bold
+URxvt.font: -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
+URxvt.boldFont: -*-dina-bold-r-*-*-16-*-*-*-*-*-*-*
 URxvt.cutchars: "()*,<>[]{}|'"
 URxvt.print-pipe: cat >/tmp/xxx
 URxvt.visualBell: false
@@ -31,9 +35,10 @@ URxvt.scrollTtyOutput: false
 URxvt.scrollTtyKeypress: true
 
 ! --[ URxvt - Change fonts on the fly ]---------------------
-URxvt.keysym.M-C-1: command:\033]710;-*-dina-medium-r-*-*-13-*-*-*-*-*-*-*\007\033]711;-*-dina-bold-r-*-*-13-*-*-*-*-*-*-*\007
-URxvt.keysym.M-C-2: command:\033]710;-*-terminus-*-*-*-*-20-*-*-*-*-*-*-*\007\033]711;-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*\007
-URxvt.keysym.M-C-3: command:\033]710;xft:DejaVuSansMono:pixelsize=18\007\033]711;xft:DejaVuSansMono:pixelsize=18:bold\007
+URxvt.keysym.M-C-1: command:\033]710;-*-dina-medium-r-*-*-16-*-*-*-*-*-*-*\007\033]711;-*-dina-bold-r-*-*-16-*-*-*-*-*-*-*\007
+URxvt.keysym.M-C-2: command:\033]710;xft:DejaVuSansMono:pixelsize=14\007\033]711;xft:DejaVuSansMono:pixelsize=14:bold\007
+URxvt.keysym.M-C-3: command:\033]710;xft:DejaVuSansMono:pixelsize=16\007\033]711;xft:DejaVuSansMono:pixelsize=16:bold\007
+URxvt.keysym.M-C-4: command:\033]710;xft:DejaVuSansMono:pixelsize=18\007\033]711;xft:DejaVuSansMono:pixelsize=18:bold\007
 
 ! --[ URxvt - URL/Clipboard Handling ]----------------------
 URxvt.perl-ext-common: default,url-select
