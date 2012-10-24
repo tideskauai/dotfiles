@@ -11,14 +11,17 @@
 .mpd/mpdstate
 .ncmpcpp/error.log
 
-.mutt/cache
-.mutt/gmail
+.mutt/*
+!.mutt/colors.muttrc
+!.mutt/muttrc
 
 .xmonad/*
 !.xmonad/xmonad.hs
 !.xmonad/lib
 
 .config/*
+!.config/user-dirs.dirs
+!.config/user-dirs.locale
 !.config/termite.cfg
 !.config/pystartup
 !.config/xcolors
