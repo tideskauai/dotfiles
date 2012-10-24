@@ -1,3 +1,5 @@
+# [passwd]
+source "gpg2 -dq ~/.mutt/my-pwds.gpg |"
 # [colors]
 source ~/.mutt/colors.muttrc
 
