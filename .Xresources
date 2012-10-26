@@ -25,7 +25,7 @@ URxvt.internalborder: 0
 URxvt.font: -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
 URxvt.boldFont: -*-dina-bold-r-*-*-16-*-*-*-*-*-*-*
 URxvt.cutchars: "()*,<>[]{}|'"
-URxvt.print-pipe: cat >/tmp/xxx
+URxvt.print-pipe: cat >$(mktemp $HOME/Archives/txt/urxvt.XXXXX)
 URxvt.visualBell: false
 URxvt.urgentOnBell: true
 URxvt.iso14755: false
