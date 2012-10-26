@@ -27,3 +27,11 @@ JB() {
         sleep 1
     done
 }
+
+notes() {
+    if (($# == 0)); then
+        vim ~/Archives/txt/NOTES
+    elif (($# == 1)); then
+        cat ~/Archives/txt/NOTES
+    fi
+}

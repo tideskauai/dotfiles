@@ -12,8 +12,6 @@ alias cdman='cd ~/Archives/man'
 alias cd.dot='cd ~/.dotfiles && git status'
 alias cdpodcasts='cd ~/Archives/Audio/Podcasts'
 
-alias notes="vim ~/Archives/txt/NOTES"
-
 alias ls='ls -FNh --tabsize=0 --color=auto --show-control-chars --group-directories-first'
 alias ls-l='ls -lha'
 alias ls-d='ls -lhrt' # sort by date
