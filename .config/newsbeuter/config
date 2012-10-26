@@ -7,7 +7,7 @@ articlelist-format "%f %3i - %t"
 articlelist-title-format  "%N %V - Articles in feed %T (%u unread, %t total)"
 
 max-items 100
-browser firefox
+browser luakit
 save-path ~/Downloads/articles
 download-path ~/Downloads
 
