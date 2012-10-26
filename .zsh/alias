@@ -10,6 +10,7 @@ alias -g L='| less'
 alias cdcs='cd ~/Archives/eLearn'
 alias cdman='cd ~/Archives/man'
 alias cd.dot='cd ~/.dotfiles && git status'
+alias cdpodcasts='cd ~/Archives/Audio/Podcasts'
 
 alias notes="vim ~/Archives/txt/NOTES"
 
