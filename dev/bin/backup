@@ -3,30 +3,25 @@
 back_up_files=(~/Archives ~/Downloads ~/build ~/dev ~/themes ~/VMs \
     ~/.ssh ~/.dotfiles ~/.themes ~/.icons ~/.mozilla \
     ~/.local ~/.gist-vim ~/.kde4)
-back_up_etc_files=(iptables ssh X11 modules-load.d bitlbee \
-    network.d conf.d \
-    hostname hosts locale.conf locale.gen makepkg.conf \
-    mkinitcpio.conf pacman.conf resolv.conf sysctl.conf \
-    timezone vconsole.conf localtime fstab)
 back_up_dir="/home/shivalva/Archives/backup"
 back_up_internalhdd="/media/sdc1"
-back_up_externalhdd="/mnt/backup/rsync"
+back_up_externalhdd="/mnt/backup"
 script_name=$(basename "$0")
-remote_host="eee"
-
-# Backup/sync ~/.config to a remote host
-if [[ $1 = "-r" || $1 = "--remote" ]]; then
-    rsync -aPh --delete -e ssh ~/.config/owncfg --exclude 'txt' $remote_host:.config
 
 # Backup/sync $back_up_files to $back_up_internalhdd
-elif [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
+if [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
     mounted=$(mountpoint $back_up_internalhdd)
     if [ -n "$mounted" ]; then
         # Is $back_up_internalhdd a mountpoint?
         if [[ $mounted =~ "is a mountpoint" ]]; then
+            # Is $back_up_internalhdd mounted as read-only?
+            if [[ $(grep $back_up_internalhdd /proc/mounts) =~ "ro," ]]; then
+                echo "$back_up_internalhdd is mounted as read-only, remounting as read-write"
+                sudo mount -o remount,rw $back_up_internalhdd
+            fi
             echo "Backing up in local disk"
             for i in "${back_up_files[@]}"; do
-                rsync -aPh --delete --delete-excluded --exclude 'win-xp/Snapshots' "$i" ${back_up_internalhdd}/backup/rsync
+                rdiff-backup -v5 --print-statistics "$i" ${back_up_internalhdd}/backup/rdiff-backup/"$i"
             done
 
         # If $back_up_internalhdd is not a mountpoint, mount it and backup/sync $back_up_files
@@ -34,11 +29,15 @@ elif [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
             echo "Dir not mounted, mounting now..."
             sudo mount /dev/sdc1 $back_up_internalhdd && \
             for i in "${back_up_files[@]}"; do
-                rsync -aPh --delete --delete-excluded --exclude 'win-xp/Snapshots' "$i" ${back_up_internalhdd}/backup/rsync
-            done && \
-            sleep 4s && sudo umount $back_up_internalhdd
+                rdiff-backup -v5 --print-statistics "$i" ${back_up_internalhdd}/backup/rdiff-backup/"$i"
+            done && sleep 5s
+            # List increments of backups
+            # rdiff-backup --list-increments ${back_up_internalhdd}/backup/rdiff-backup
+            # Remove backups older than 1 year
+            # rdiff-backup --force --remove-older-than 1Y ${back_up_internalhdd}
         fi
-
+    echo "Remounting $back_up_internalhdd as read-only"
+    sudo mount -o remount,ro $back_up_internalhdd
     else
         echo "Couldn't find the backup directory"
     fi
@@ -47,10 +46,16 @@ elif [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
 elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
     # Does $back_up_externalhdd exist?
     if [ -d "$back_up_externalhdd" ]; then
-        for i in "${back_up_files[@]}"; do
-            rsync -aPh --delete --delete-excluded "$i" "$back_up_externalhdd"
-        done
-
+        # Check if /media/sdc1 is mounted, if not mount in read-only mode
+        mounted=$(mountpoint $back_up_internalhdd)
+        if [ -n "$mounted" ]; then
+            if [[ $mounted =~ "is a mountpoint" ]]; then
+                rsync -aPh --delete --delete-excluded ${back_up_internalhdd}/backup/rdiff-backup \
+                    ${back_up_externalhdd}
+            else
+                echo "Dir $back_up_internalhdd" is not mounted
+            fi
+        fi
     else
         echo "Dir $back_up_externalhdd does not exist"
     fi
@@ -59,9 +64,7 @@ elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
 elif [[ $1 = "--etc" ]]; then
     # Specify which files in /etc I want to backup
     if [ -d "$back_up_dir/etc" ]; then
-        for i in "${back_up_etc_files[@]}"; do
-            rsync -aPh --delete --delete-excluded "/etc/$i" "$back_up_dir/etc"
-        done
+        rsync -aPh --delete --delete-excluded "/etc/" "$back_up_dir/etc"
     else
         echo "$back_up_dir/etc does not exist, please create it"
     fi
@@ -105,7 +108,6 @@ else
     printf "Usage:\n \
         $script_name --internalhdd (-i) \tTo sync files with internal hdd.\n \
         $script_name --externalhdd (-e) \tTo sync files with external hdd.\n \
-        $script_name --remote (-r) \t\tTo sync files remotely (eee host).\n \
         $script_name --etc          \t\tTo sync /etc files to \$back_up_dir/etc.\n \
         $script_name \$filename \t\tTo backup single file to \$back_up_dir.\n"
 fi
