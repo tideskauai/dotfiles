@@ -1,15 +1,3 @@
-#############
-### Setup ###
-#############
-- git clone https://github.com/ballmerpeak/dotfiles.git
-- cd dotfiles
-- ./dotfiles.py -v
-
-#############
-### Usage ###
-#############
-
-
 # To add files.
 	git add f files_to_add 
 # To untrack files (does not delete the file)
@@ -23,14 +11,3 @@
 # For renames:
 	git add -f file_renamed
 	git commit --dry-run -a
-
-####################
-### Workflow     ###
-### for 2 people ###
-####################
-
--(B) git clone https://github.com/ballmerpeak/dotfiles.git
--(B) git remote rm origin
--(B) git remote add origin git@github.com:ballmerpeak/dotfiles.git
--(B) git push
--(A) git pull

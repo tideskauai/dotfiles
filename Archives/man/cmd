@@ -37,6 +37,12 @@ fusermount -u .m1
     Cannot: link dirs, cross FS boundaries.
 # }}}
 
+# Enable connection manually {{{
+1) ip link set eth0 up
+2) ip addr add 192.168.1.2/24 dev eth0
+3) ip route add default via 192.168.1.1
+# }}}
+
 # Disable touchpad
     synclient TouchpadOff=1
 # Windows file sharing stuff

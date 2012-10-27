@@ -18,12 +18,16 @@
 /set weechat.look.paste_max_lines 0
 /key unbind meta-m
 /key unbind meta-=
+/key unbind meta-x
 /key unbind ctrl-J
 /key unbind ctrl-N
 /key unbind ctrl-P
 /key unbind meta2-15~
 /key unbind meta2-17~
 /key bind meta-` /buffer close
+/key bind meta-= /filter toggle noise
+/key bind meta2-17~ /input zoom_merged_buffer
+/key bind ` /go
 /alias wr /layout apply windows
 /alias im /query -server im
 /set irc.ctcp.version = ""
@@ -47,7 +51,8 @@
 /set weechat.look.prefix_quit "←"
 /set weechat.look.item_buffer_filter "⚑"
 /set weechat.look.prefix_action "⚡"
-/set weechat.look.prefix_suffix "╡"
+/set weechat.look.prefix_suffix "|"
+/set weechat.look.prefix_align_more "›"
 /set weechat.look.read_marker_string "─"
 /set weechat.color.chat_prefix_suffix "234"
 /set weechat.color.chat_read_marker "236"
@@ -131,15 +136,15 @@
 /script install colorize_lines.pl beep.pl colorize_nicks.py text_replace.py toggle_nicklist.py go.py
 /set plugins.var.python.toggle_nicklist.action "show"
 # while on the channel → /toggle_nicklist add
-/set plugins.var.python.colorize_nicks.min_nick_length 3
+/set plugins.var.python.colorize_nicks.min_nick_length 2
 /set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part"
-/set plugins.var.python.colorize_nicks.less_aggressive "on"
+/set plugins.var.python.colorize_nicks.greedy_matching "off"
 /set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way,[tm]=™,[r]=®"
 /set plugins.var.python.text_replace.replacement_words "lol=laughing out loud,brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,<-=←,->=→,asap=as soon as possible"
 /set plugins.var.perl.colorize_lines.own_lines on
 /set plugins.var.perl.colorize_lines.nicks "*.peks,*.phrik,*.falconindy,*.MrElendig,*.Mion,*.thestinger,*.Zhivago,*.FlashCode,*.weebot,*.vodik,*.tasidus,jb.Allan"
 /set plugins.var.perl.colorize_lines.highlight off
-/set plugins.var.perl.beep.beep_command_pv "mpg123 ~/Archives/Audio/OST/GuiltyCrown/17-Genesis.mp3"
+/set plugins.var.perl.beep.beep_command_pv "mpg123 ~/Archives/Audio/Alarms/prepare.mp3"
 /set plugins.var.perl.beep.beep_dcc "off"
 /set plugins.var.perl.beep.whitelist_channels "*fn.#weechat,*fn.##freebsd"
 /set plugins.var.perl.beep.beep_trigger_pv "beep"
