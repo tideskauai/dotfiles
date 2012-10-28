@@ -30,11 +30,11 @@ if [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
             sudo mount /dev/sdc1 $back_up_internalhdd && \
             for i in "${back_up_files[@]}"; do
                 rdiff-backup -v5 --print-statistics "$i" ${back_up_internalhdd}/backup/rdiff-backup/"$i"
+                # List increments of backups
+                # rdiff-backup --list-increments ${back_up_internalhdd}/backup/rdiff-backup/"$i"
+                # Remove backups older than 1 year
+                # rdiff-backup --force --remove-older-than 1Y ${back_up_internalhdd}/rdiff-backup/"$i"
             done && sleep 5s
-            # List increments of backups
-            # rdiff-backup --list-increments ${back_up_internalhdd}/backup/rdiff-backup
-            # Remove backups older than 1 year
-            # rdiff-backup --force --remove-older-than 1Y ${back_up_internalhdd}
         fi
     echo "Remounting $back_up_internalhdd as read-only"
     sudo mount -o remount,ro $back_up_internalhdd
