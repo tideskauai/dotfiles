@@ -23,3 +23,5 @@
     merge = refs/heads/master
 [github]
 	user = ballmerpeak
+[push]
+	default = simple
