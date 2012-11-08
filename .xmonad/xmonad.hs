@@ -100,8 +100,8 @@ urgentConfig = UrgencyConfig { suppressWhen = Focused, remindWhen = Dont }
 myManageHook :: ManageHook
 myManageHook = (composeAll . concat $
             [[ className =? "Firefox"    --> doShift "web"
+            , className =? "Dwb" --> doShift "web"
             , className =? "Chromium"   --> insertPosition End Older <+> doShift "web" -- (4)
-            , className =? "luakit"   --> insertPosition End Older <+> doShift "web" -- (4)
             , className =? "Pavucontrol" --> insertPosition End Older <+> doShift "im" -- (4)
             , className =? "Pidgin" --> insertPosition End Older <+> doShift "im" -- (4)
             , fmap ("LibreOffice" `isInfixOf`) className --> doShift "doc" -- (6)
@@ -210,7 +210,6 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-S--", safeSpawn "ncmpcpp" ["prev"])
     , ("M5-f", safeSpawn "firefox" [])
     , ("M5-c", safeSpawn "chromium" ["--incognito"])
-    , ("M5-l", safeSpawn "luakit" [])
     , ("M5-S-f", safeSpawn "pcmanfm" [])
     , ("M5-S-v", safeSpawn "VirtualBox" [])
     , ("M5-w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
@@ -257,6 +256,7 @@ myKeys conf = mkKeymap conf $ [
     --quit, or restart
     , ("M-S-e", io (exitWith ExitSuccess)) -- exit WM
     , ("M-S-r", restart "xmonad" True) -- restart WM
+    , ("M-S-o", safeSpawn "systemctl" ["poweroff"]) -- turn off computer
     ]
 
     -- mod-[1..9],       Switch to workspace N
