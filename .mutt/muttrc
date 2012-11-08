@@ -40,6 +40,7 @@ set sort = 'threads'    # sort by threads
 set sort_aux = 'date'   # sort threads by date
 set pager_stop          # don't go to next message automatically
 set tilde               # show tilde like in vim
+set include=ask-no      # do not include copy of original message in reply
 unset markers           # no ugly plus signs
 unset mark_old          # read/new is good enough for me
 unset sort_re           # always thread
@@ -53,9 +54,10 @@ set quote_regexp = "^([ \t]*[>])+"
 # [bindings]
 bind pager,index ! noop
 bind pager,index <F1> noop
-bind pager d noop
+bind pager,index d noop
 bind pager D noop
-bind index d noop
+bind pager n noop
+bind pager N noop
 bind index q noop
 bind index h noop
 bind index \# noop # breaks subthread
@@ -64,7 +66,8 @@ bind index v noop
 bind editor <space> noop
 
 bind pager i toggle-quoted  # (do|do not) show quoted text
-bind pager / search
+bind pager / search-reverse
+bind pager <Esc>/ search
 bind pager <up> previous-line
 bind pager <down> next-line
 bind pager k previous-line
@@ -83,9 +86,16 @@ bind index _ collapse-thread    # In index, collapse current thread
 bind index - collapse-all       # In index, collapse all threads
 bind index gg first-entry
 bind index G last-entry
+bind index / search-reverse
+bind index <Esc>/ search
+bind index <EsC>n toggle-new
+bind index n search-next
+bind index N search-opposite
 
 # [macros]
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager gp "<change-folder>=peka<enter>" "Go to peka"
 macro index,pager gA "<change-folder>=Arch/Arch-dev<enter>" "Go to all arch-dev"
 macro index,pager ga "<change-folder>=Arch/Arch-general<enter>" "Go to arch-general"
+# Mark all messages in a mailbox as read by pressing esc+m
+macro index <Esc>m "T~N<enter>;WNT~O<enter>;WO\CT~A<enter>" "mark all messages read"
