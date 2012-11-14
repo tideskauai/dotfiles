@@ -1,0 +1,12 @@
+# Note: I do not care about portability at this time,
+# so most of the time will use bashisms and follow
+# bad portability practices. These notes reflect
+# that line of thought.
+# List of relevant URLs {{{
+1) http://stackoverflow.com/questions/2188199/bash-double-or-single-bracket-parentheses-curly-braces
+2) http://mywiki.wooledge.org/Bashism
+3) http://www.tldp.org/LDP/abs/html/abs-guide.html
+# }}}
+
+# Do not do list
+1) Do not use backticks (i.e. `cmd`). Use $(cmd) instead

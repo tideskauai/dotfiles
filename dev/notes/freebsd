@@ -1,15 +1,22 @@
 #####################################
-### FreeBSD management            ###
+### FreeBSD notes                 ###
 #####################################
 # Package system:
     - pkg_add -r $package
     - pkg_delete $package
 # List files owned by $package
     - pkg_info -L $package
-# Check for updates: 
-    - pkg_version -vl '<'
 # List which package owns a file.
     - pkg_info -W $file
+# List all installed packages
+    - pkg_info
+# Check for updates: 
+    - pkg_version -vl '<'
+# Check for dependencies and delete those
+# not needed
+    - pkg_cutleaves
+# Update FBSD components
+    - freebsd-update
 
 # Ports: 
     - whereis $package
@@ -19,13 +26,10 @@
 # Ports updating:
 #   Run extract after fetch if being run for the first time.
     - portsnap fetch update
-
 # Update all ports (Asks and tells which packages need updating):
     - portmaster -a
-
 # To list all processes that are viewing files in a dir
     - fstat -f /var/log
-
 # Show ports and their processes:
     - sockstat
 
@@ -36,6 +40,7 @@ chflags schg #This is like chattr -i
 pciconf -l -v #This is like lspci
 usbconfig #This is like lsusb
 kldload ./module.ko  #This is like modprobe
+truss #Strace
 
 #####################################
 ### Wireless stuff for my netbook ###
