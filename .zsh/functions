@@ -35,3 +35,12 @@ notes() {
         cat ~/Archives/txt/NOTES
     fi
 }
+rss() {
+    if (($# == 0)); then
+        newsbeuter
+    elif (($# == 1)); then
+        newsbeuter \
+        -u ~/.config/newsbeuter/urls-weekly \
+        -c ~/.local/share/newsbeuter/cache-weekly.db
+    fi
+}
