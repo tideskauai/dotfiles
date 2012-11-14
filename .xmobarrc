@@ -1,8 +1,12 @@
 Config { font = "-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*"
        , bgColor = "#161616"
        , fgColor = "#4d4d4d"
+       , border = NoBorder
+       , borderColor = "#000000"
        , position = Top
 	   , lowerOnStart = True
+       , hideOnStart = False
+       , persistent = True
        , commands = [ Run Network "eth0" ["-L","0","-H","32","--normal","#429942","--high","#A36666"] 50
 					, Run MultiCpu ["-t","Cpu:<total0> <total1>","-L","10","-H","50","--normal","#429942","--high","#A36666"] 10
 	   				, Run Memory ["-t", "Mem:<usedratio>%"] 10
