@@ -25,11 +25,10 @@
 !.config/termite.cfg
 !.config/pystartup
 !.config/xcolors
-!.config/gtk-3.0
+!.config/gtk-3.0/settings.ini
 !.config/openbox
 !.config/cower
 !.config/newsbeuter
-!.config/luakit
 !.config/fontconfig
 
 .vim/.netrwhist
