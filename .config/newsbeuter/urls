@@ -1,50 +1,17 @@
-http://feeds2.feedburner.com/braingle/all fun
-http://www.feedrinse.com/services/channel/?chanurl=b3fc1af6e5ec4b3837768e7d315486ee fun
-http://feeds2.feedburner.com/JupiterBroadcasting fun podcast
+http://www.tomshardware.com/feeds/rss2/tom-s-hardware-us-components,18-1-1.xml hardware Daily
+http://www.osnews.com/files/recent.xml hardware Daily
+http://www.xbitlabs.com/misc/rss/ hardware Daily
 
-http://www.feedrinse.com/services/channel/?chanurl=c0db9795c12e142029a3d98109b9a5e4 courses
+http://feeds.arstechnica.com/arstechnica/askars technology Daily
 
-http://www.tomshardware.com/feeds/rss2/tom-s-hardware-us-components,18-1-1.xml hardware
-http://www.osnews.com/files/recent.xml hardware
-http://www.xbitlabs.com/misc/rss/ hardware
+http://www.reddit.com/r/linux+techsnap+freebsd+bsd+archlinux+opensource+xmonad+linuxquestions+linuxadmin+programming/.rss "open source" Daily
+http://rss.feedsportal.com/c/32569/f/491734/index.rss "open source" Daily
+http://www.linuxtoday.com/biglt.rss "open source" Daily
+http://lwn.net/headlines/newrss "open source" Daily
+http://planet.archlinux.org/atom.xml "open source" Daily
+http://feeds.feedburner.com/TheGeekStuff "open source" Daily
+http://www.ibm.com/developerworks/views/linux/rss/libraryview.jsp?site_id=1&contentarea_by=Linux&topic_by=&product_by=&type_by=Tutorials&search_by=&industry_by=&sort_by=Date&series_title_by= "open source" Daily
 
-http://feeds.arstechnica.com/arstechnica/askars technology
+http://feeds.feedburner.com/darknethackers security Daily
 
-http://www.reddit.com/r/linux+techsnap+freebsd+bsd+archlinux+opensource+xmonad+linuxquestions+linuxadmin+programming/.rss "open source"
-http://rss.feedsportal.com/c/32569/f/491734/index.rss "open source"
-http://www.linuxtoday.com/biglt.rss "open source"
-http://lwn.net/headlines/newrss "open source"
-http://planet.archlinux.org/atom.xml "open source"
-http://feeds.feedburner.com/TheGeekStuff "open source"
-http://www.ibm.com/developerworks/views/linux/rss/libraryview.jsp?site_id=1&contentarea_by=Linux&topic_by=&product_by=&type_by=Tutorials&search_by=&industry_by=&sort_by=Date&series_title_by= "open source"
-
-http://feeds.feedburner.com/darknethackers security
-
-http://feeds.feedburner.com/catonmat programming
-http://terrytao.wordpress.com/feed/ programming CS
-http://blog.computationalcomplexity.org/feeds/posts/default?alt=rss programming CS
-http://feeds.feedburner.com/daniel-lemire/atom programming CS
-http://rjlipton.wordpress.com/feed/ programming CS
-http://lambda-the-ultimate.org/rss.xml programming CS
-http://cacm.acm.org/blogs/blog-cacm.rss programming CS
-http://feeds.feedburner.com/blogspot/gJZg programming CS
-
-http://e.meneame.net/rss2.php?meta=0 news
-http://feeds.feedburner.com/obamaworld "world news"
-http://www.nytimes.com/services/xml/rss/nyt/GlobalHome.xml "world news"
-http://feeds.arstechnica.com/arstechnica/tech-policy "world news"
-
-http://feeds.feedburner.com/gaussianos science math
-http://feeds.feedburner.com/ProblemasMatemticos science math
-http://solumate.blogspot.com/feeds/posts/default science math
-http://blogs.elpais.com/apuntes-cientificos-mit/atom.xml science
-http://feeds2.feedburner.com/CienciaKanija science
-http://vicente1064.blogspot.com/feeds/posts/default science
-http://feeds.feedburner.com/historiasdelaciencia science
-http://labellateoria.blogspot.com/feeds/posts/default science
-http://feeds.feedburner.com/eliatron science
-http://feeds.feedburner.com/naukas science
-http://www.quo.es/rss/feed/ciencia science
-http://blogs.eldiariomontanes.es/scientia-mater/feed/ science
-http://feeds2.feedburner.com/ElTamiz science
-http://lapizarradeyuri.blogspot.com/feeds/posts/default science
+http://e.meneame.net/rss2.php?meta=0 news Daily
