@@ -197,7 +197,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M3-f", focusUrgent) -- go to urgent window
     , ("M3-k", killAllOtherCopies) -- Kill all copied windows (2)
     , ("M3-a t", safeSpawn "amixer" ["-q","set","Master","toggle"])
-    , ("M3-a b", safeSpawn "amixer" ["-c1","set","Beep", "toggle"])
+    , ("M3-a b", safeSpawn "amixer" ["-c0","set","Beep", "toggle"])
     , ("M3-a -", safeSpawn "amixer" ["-q","set","Master","15%-"])
     , ("M3-a =", safeSpawn "amixer" ["-q","set","Master","15%+"])
     , ("M3-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
