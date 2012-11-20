@@ -1,22 +1,9 @@
 #------------------------------
-# Variables
+# Completition
 #------------------------------
-export EDITOR="vim"
-export VISUAL="vim"
-export PATH="${PATH}:${HOME}/dev/bin"
-export PAGER="less"
 # Add custom completition scripts
 fpath=(~/.zsh/autocompletitions $fpath)
-# For the interactive python interpreter
-export PYTHONSTARTUP="${HOME}/.config/pystartup"
-# Color man pages
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
+source $HOME/.zsh/completition
 
 #-----------------------------
 # Dircolors
@@ -57,11 +44,6 @@ setopt nomatch              # Print error when pattern for filename generates
 #setopt nonomatch            # Don't print error on non matched patterns
 setopt notify               # Report status of background jobs immediately
 setopt noclobber            # Requires >! to overwrite existing files
-
-#------------------------------
-# Completition 
-#------------------------------
-source $HOME/.zsh/completition
 
 #------------------------------
 # Alias stuff
