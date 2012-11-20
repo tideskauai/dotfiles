@@ -4,6 +4,7 @@
 *.o
 *.zcache
 *todo.txt
+*bookmarks
 
 .mpd/mpd.db
 .mpd/mpd.log
