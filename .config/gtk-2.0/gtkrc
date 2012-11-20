@@ -1,0 +1,14 @@
+# -- THEME AUTO-WRITTEN DO NOT EDIT
+include "/home/shivalva/.themes/Zukitwo-Dark/gtk-2.0/gtkrc"
+
+style "user-font" {
+	font_name = "Sans 8"
+}
+
+widget_class "*" style "user-font"
+
+gtk-font-name="Sans 8"
+
+include "/home/shivalva/.config/gtkrc.mine"
+
+# -- THEME AUTO-WRITTEN DO NOT EDIT
