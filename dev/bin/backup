@@ -3,10 +3,57 @@
 back_up_files=(~/Archives ~/Downloads ~/build ~/dev ~/themes ~/VMs \
     ~/.ssh ~/.dotfiles ~/.themes ~/.icons ~/.mozilla \
     ~/.local ~/.gist-vim ~/.kde4)
+back_up_etc_files=(iptables ssh X11 modules-load.d \
+    bitlbee conf.d udev hostname hosts locale.conf \
+    locale.gen makepkg.conf pacman.conf resolv.conf \
+    sysctl.conf timezone vconsole.conf localtime)
 back_up_dir="/home/shivalva/Archives/backup"
 back_up_internalhdd="/media/sdc1"
 back_up_externalhdd="/mnt/backup"
 script_name=$(basename "$0")
+
+usage ()
+{
+    printf "Usage:\n \
+        $script_name --internalhdd (-i) \tTo sync files with internal hdd.\n \
+        $script_name --externalhdd (-e) \tTo sync files with external hdd.\n \
+        $script_name --etc          \t\tTo sync /etc files to \$back_up_dir/etc.\n \
+        $script_name \$filename \t\tTo backup single file to \$back_up_dir.\n"
+}
+
+backup_my_files ()
+{
+    for i in "${back_up_files[@]}"; do
+        case "$i" in
+            ~/Archives)
+                rdiff-backup -v5 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                ;;
+            ~/dev)
+                printf "\n \
+                    ###############################\n \
+                    #### Backing up dev folder ####\n \
+                    ###############################\n"
+                rdiff-backup -v5 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                rdiff-backup --force --remove-older-than 2Y "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                rdiff-backup --list-increments "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                printf "\n \
+                    ###############################\n \
+                    #### Backing up dev folder ####\n \
+                    ###############################\n"
+                ;;
+            ~/VMs)
+                rdiff-backup -v5 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                ;;
+            *)
+                rdiff-backup -v5 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                rdiff-backup --force --remove-older-than 1M "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                ;;
+        esac
+    done
+}
+
 
 # Backup/sync $back_up_files to $back_up_internalhdd
 if [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
@@ -16,30 +63,22 @@ if [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
         if [[ $mounted =~ "is a mountpoint" ]]; then
             # Is $back_up_internalhdd mounted as read-only?
             if [[ $(grep $back_up_internalhdd /proc/mounts) =~ "ro," ]]; then
-                echo "$back_up_internalhdd is mounted as read-only, remounting as read-write"
+                printf "$back_up_internalhdd is mounted as read-only, remounting as read-write\n"
                 sudo mount -o remount,rw $back_up_internalhdd
             fi
-            echo "Backing up in local disk"
-            for i in "${back_up_files[@]}"; do
-                rdiff-backup -v5 --print-statistics "$i" ${back_up_internalhdd}/backup/rdiff-backup/"$i"
-            done
-
+            printf "Backing up in local disk\n"
+            backup_my_files
         # If $back_up_internalhdd is not a mountpoint, mount it and backup/sync $back_up_files
         else
-            echo "Dir not mounted, mounting now..."
+            printf "Dir not mounted, mounting now...\n"
             sudo mount /dev/sdc1 $back_up_internalhdd && \
-            for i in "${back_up_files[@]}"; do
-                rdiff-backup -v5 --print-statistics "$i" ${back_up_internalhdd}/backup/rdiff-backup/"$i"
-                # List increments of backups
-                # rdiff-backup --list-increments ${back_up_internalhdd}/backup/rdiff-backup/"$i"
-                # Remove backups older than 1 year
-                # rdiff-backup --force --remove-older-than 1Y ${back_up_internalhdd}/rdiff-backup/"$i"
-            done && sleep 5s
+            backup_my_files
+            sleep 5s
         fi
-    echo "Remounting $back_up_internalhdd as read-only"
+    printf "Remounting $back_up_internalhdd as read-only\n"
     sudo mount -o remount,ro $back_up_internalhdd
     else
-        echo "Couldn't find the backup directory"
+        printf "Couldn't find the backup directory\n"
     fi
 
 # Backup/sync $back_up_files to $back_up_externalhdd
@@ -53,20 +92,22 @@ elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
                 rsync -aPh --delete --delete-excluded ${back_up_internalhdd}/backup/rdiff-backup \
                     ${back_up_externalhdd}
             else
-                echo "Dir $back_up_internalhdd" is not mounted
+                printf "Dir $back_up_internalhdd is not mounted\n"
             fi
         fi
     else
-        echo "Dir $back_up_externalhdd does not exist"
+        printf "Dir $back_up_externalhdd does not exist\n"
     fi
 
 # Backup /etc files to $back_up_dir/etc
 elif [[ $1 = "--etc" ]]; then
     # Specify which files in /etc I want to backup
     if [ -d "$back_up_dir/etc" ]; then
-        rsync -aPh --delete --delete-excluded "/etc/" "$back_up_dir/etc"
+        for i in "${back_up_etc_files[@]}"; do
+            rsync -aPh --delete --delete-excluded "/etc/"$i"" "$back_up_dir/etc"
+        done
     else
-        echo "$back_up_dir/etc does not exist, please create it"
+        printf "$back_up_dir/etc does not exist, please create it\n"
     fi
 
 # Backup single file to specified dir in $back_up_dir
@@ -82,32 +123,28 @@ elif [ -n "$1" ] && [ -f "$1" ]; then
             dir_name=${dir_name%$file_name}
             # What to do if the dir does not exist
             if [ ! -d "$back_up_dir/$dir_name/" ]; then
-                echo "Dir does not exist. Let's create it"
+                printf "Dir does not exist. Let's create it\n"
                 pushd . > /dev/null
                 cd "$back_up_dir"
                 mkdir -p $dir_name
                 popd > /dev/null
                 cp "$1" "$back_up_dir/$dir_name$date-$file_name"
-                echo "$file_name was backed up to: $back_up_dir/$dir_name$date-$file_name"
+                printf "$file_name was backed up to: $back_up_dir/$dir_name$date-$file_name\n"
             # What to do if dir exists
             else
-                echo "Dir exists, just copy the file"
+                printf "Dir exists, just copy the file\n"
                 cp "$1" "$back_up_dir/$dir_name$date-$file_name"
-                echo "$file_name was backed up to: $back_up_dir/$dir_name$date-$file_name"
+                printf "$file_name was backed up to: $back_up_dir/$dir_name$date-$file_name\n"
             fi
         # We were asked to backup a file that is not in our home directory
         else
-            echo "Error: The specified backup file doe not reside inside your home directory"
+            printf "Error: The specified backup file doe not reside inside your home directory\n"
         fi
     else
-        echo "$back_up_dir Does not exist"
+        printf "$back_up_dir Does not exist\n"
     fi
 
 # No valid arguments were given, so display a help
 else 
-    printf "Usage:\n \
-        $script_name --internalhdd (-i) \tTo sync files with internal hdd.\n \
-        $script_name --externalhdd (-e) \tTo sync files with external hdd.\n \
-        $script_name --etc          \t\tTo sync /etc files to \$back_up_dir/etc.\n \
-        $script_name \$filename \t\tTo backup single file to \$back_up_dir.\n"
+    usage
 fi
