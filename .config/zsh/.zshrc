@@ -3,7 +3,7 @@
 #------------------------------
 # Add custom completition scripts
 fpath=(~/.zsh/autocompletitions $fpath)
-source $HOME/.zsh/completition
+source $XDG_CONFIG_HOME/zsh/completition
 
 #-----------------------------
 # Dircolors
@@ -48,18 +48,10 @@ setopt noclobber            # Requires >! to overwrite existing files
 #------------------------------
 # Alias stuff
 #------------------------------
-case $OSTYPE in
-    linux*)
-        source $HOME/.zsh/alias
-        source $HOME/.zsh/functions
-        # Don't store commands with sudo in the history
-        function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
-        ;;
-    freebsd*)
-        source $HOME/.zsh/alias-fbsd
-        source $HOME/.zsh/functions-fbsd
-        ;;
-esac
+source $XDG_CONFIG_HOME/zsh/alias
+source $XDG_CONFIG_HOME/zsh/functions
+# Don't store commands with sudo in the history
+function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
 
 #------------------------------
 # Window title

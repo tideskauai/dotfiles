@@ -33,6 +33,7 @@
 !.config/newsbeuter
 !.config/fontconfig
 !.config/git
+!.config/zsh
 
 .vim/.netrwhist
 .vim/backup
