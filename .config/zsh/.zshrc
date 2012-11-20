@@ -2,7 +2,7 @@
 # Completition
 #------------------------------
 # Add custom completition scripts
-fpath=(~/.zsh/autocompletitions $fpath)
+fpath=($XDG_CONFIG_HOME/zsh/autocompletitions $fpath)
 source $XDG_CONFIG_HOME/zsh/completition
 
 #-----------------------------
