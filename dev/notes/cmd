@@ -10,25 +10,18 @@ tcpdump -s 0 -w - port <port> | tcpdump -r - -A
 (A) ssh -f -N -R 65001:localhost:22 bpeak@bpeak-ip
 (B) ssh alice@localhost -p 8888
 
-####################################
-## Kill tcp/udp ports            ###
-####################################
+# Kill tcp/udp ports {{{
 fuser -k <port>/tcp
 fuser -k <port>/udp
+# }}}
 
-####################################
-## sshfs                         ###
-####################################
-# {{{
+# sshfs {{{
 sshfs user@192.168.1.103:/M1 .m1 
 thunar ~/.m1
 fusermount -u .m1
 # }}}
 
-####################################
-## symlinks                      ###
-####################################
-# {{{
+# Symlinks {{{
 (1) soft link: ln -s $path_to_file $link_name
 (2) hard link: ln $path_to_file $link_name
 

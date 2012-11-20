@@ -11,19 +11,21 @@ xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 # Start custom settings for urxvt
 xrdb -merge ~/.Xresources
 
-# Start the trayer
-trayer --edge top \
-    --align center \
-    --SetDockType true \
-    --SetPartialStrut true \
-    --width 3 \
-    --height 2 \
-    --transparent true \
-    --alpha 0 \
-    --tint '0x161616' &
+## Start the trayer
+#trayer --edge top \
+#    --align center \
+#    --SetDockType true \
+#    --SetPartialStrut true \
+#    --width 3 \
+#    --height 2 \
+#    --transparent true \
+#    --alpha 0 \
+#    --tint '0x161616' &
 
 # Let's set a pointer
 xsetroot -cursor_name left_ptr
 
 # Launch xmonad
 exec xmonad
+# Launch i3
+# exec i3

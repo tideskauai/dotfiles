@@ -13,7 +13,6 @@
 /filter add bitlbee irc.znc.im.&bitlbee,irc.im.&bitlbee irc_mode *
 /filter add noise * nick_phrik,nick_nathan28,nick_masterkorp,nick_rabbitear,nick_Nuked,nick_Aut0Exec,nick_CryptoNaut *
 /set aspell.check.default_dict "en,es" 
-/aspell enable
 /set weechat.look.paste_bracketed on
 /set weechat.look.paste_max_lines 0
 /key unbind meta-m
@@ -24,9 +23,10 @@
 /key unbind ctrl-P
 /key unbind meta2-15~
 /key unbind meta2-17~
+/key bind meta-c /aspell toggle
 /key bind meta-` /buffer close
 /key bind meta-= /filter toggle noise
-/key bind meta2-17~ /input zoom_merged_buffer
+/key bind meta2-15~ /input zoom_merged_buffer
 /key bind ` /go
 /alias wr /layout apply windows
 /alias im /query -server im
@@ -77,7 +77,7 @@
 /set weechat.bar.status.color_bg default
 /set weechat.bar.status.color_fg darkgray
 /set weechat.bar.status.color_delim blue
-/set weechat.bar.status.items "[buffer_plugin],buffer_number+:+buffer_name+{buffer_nicklist_count}+buffer_filter,[lag],[hotlist],completion,scroll"
+/set weechat.bar.status.items "[buffer_plugin],buffer_number+:+buffer_name+{buffer_nicklist_count}+buffer_filter,[lag],[hotlist],completion,scroll,[aspell_suggest]"
 /set weechat.color.chat_nick_colors "001,002,003,004,005,006,012,013,025,059,060,065,069,096"
 /set weechat.color.status_data_msg darkgray
 /set weechat.color.status_count_highlight red
