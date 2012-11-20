@@ -14,7 +14,7 @@ import XMonad.Util.EZConfig --easy M-key like bindings
 
 -- actions and prompts
 import XMonad.Actions.GridSelect
--- import XMonad.Actions.CycleWS --toggleWS (5)
+import XMonad.Actions.CycleWS --toggleWS (5)
 import XMonad.Actions.GroupNavigation --toggle between windows (6)
 import XMonad.Actions.CopyWindow --copy win to workspaces (2)
 import XMonad.Actions.FocusNth --focus nth window in current workspace (3)
@@ -192,59 +192,53 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myKeys conf = mkKeymap conf $ [
     --Making Caps Lock useful, editing of ~/.xmodmap required
       ("M3-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
-    --, ("M3-s", toggleWS' ["NSP"]) -- toggle between workspaces (5)
-    , ("M3-s", nextMatch History (className =? "URxvt")) --Toggle between windows (6)
+    , ("M3-q", toggleWS' ["NSP"]) -- toggle between workspaces (5)
+    , ("M3-w", nextMatch History (className =? "URxvt")) --Toggle between windows (6)
     , ("M3-f", focusUrgent) -- go to urgent window
-    , ("M3-q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig) --query the web
     , ("M3-k", killAllOtherCopies) -- Kill all copied windows (2)
-    , ("M3-=", safeSpawn "amixer" ["-q","set","Master","toggle"])
-    , ("M3-0", safeSpawn "amixer" ["-c0","set","Beep", "toggle"])
-    , ("M3--", safeSpawn "amixer" ["-q","set","Master","4%-"])
-    , ("M3-S--", safeSpawn "amixer" ["-q","set","Master","4%+"])
+    , ("M3-a t", safeSpawn "amixer" ["-q","set","Master","toggle"])
+    , ("M3-a b", safeSpawn "amixer" ["-c1","set","Beep", "toggle"])
+    , ("M3-a -", safeSpawn "amixer" ["-q","set","Master","15%-"])
+    , ("M3-a =", safeSpawn "amixer" ["-q","set","Master","15%+"])
     , ("M3-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
     , ("M3-z", goToSelected defaultGSConfig { gs_cellwidth = 250 })
+
     --Making menu_key useful, editing of ~/.xmodmap required
     , ("M5-<Return>", changeDir myXPConfig) --change the dir of the topic (1)
-    , ("M5-=", safeSpawn "ncmpcpp" ["toggle"])
-    , ("M5--", safeSpawn "ncmpcpp" ["next"])
-    , ("M5-S--", safeSpawn "ncmpcpp" ["prev"])
-    , ("M5-f", safeSpawn "firefox" [])
-    , ("M5-c", safeSpawn "chromium" ["--incognito"])
+    , ("M5-m t", safeSpawn "ncmpcpp" ["toggle"])
+    , ("M5-m n", safeSpawn "ncmpcpp" ["next"])
+    , ("M5-m p", safeSpawn "ncmpcpp" ["prev"])
+    , ("M5-b f", safeSpawn "firefox" [])
+    , ("M5-b c", safeSpawn "chromium" ["--incognito"])
+    , ("M5-b d", safeSpawn "dwb" [])
     , ("M5-S-f", safeSpawn "pcmanfm" [])
     , ("M5-S-v", safeSpawn "VirtualBox" [])
     , ("M5-w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
-    , ("M5-p", safeSpawn "pavucontrol" [])
     , ("M5-d", safeSpawn "dropboxd" [])
-    --query the web with the selected text
-    , ("M5-q", SM.submap $ searchEngineMap $ S.selectSearch)
-    
+
+    --query the web
+    , ("M-q q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
+    , ("M-q p", SM.submap $ searchEngineMap $ S.selectSearch)
     --launching
     , ("M-<Return>", spawnShell) -- launch shell in topic (1)
     , ("M-p", shellPrompt myXPConfig)
     , ("M-x", safeSpawn "bash" ["/home/shivalva/dev/clipsync/dmenu.sh"])
     , ("M-S-x", safeSpawn "python" ["/home/shivalva/dev/clipsync/sync.py"])
     , ("M-z", appendFilePrompt myXPConfig "/home/shivalva/Archives/txt/NOTES")
-    
     --killing
     , ("M-S-c", kill)
-    
     --layouts
     , ("M-<Space>", sendMessage NextLayout)
     , ("M-S-<Space>", sendMessage FirstLayout)
-    
     --floating layer stuff
     , ("M-t", withFocused $ windows . W.sink)
-    
     --focus
     , ("M-<Tab>", windows W.focusDown)
-    
     --swapping
     , ("M-S-<Return>", windows W.shiftMaster)
     , ("M-S-j", windows W.swapDown  )
     , ("M-S-k", windows W.swapUp    )
-    
-    
     --resizing
     , ("M-h", sendMessage Shrink)
     , ("M-l", sendMessage Expand)
@@ -252,13 +246,11 @@ myKeys conf = mkKeymap conf $ [
     , ("M-k", sendMessage MirrorExpand)
     , ("M-,", sendMessage (IncMasterN 1)) -- inc win # in master area
     , ("M-.", sendMessage (IncMasterN (-1))) -- dec win # in master area
-    
     --quit, or restart
     , ("M-S-e", io (exitWith ExitSuccess)) -- exit WM
     , ("M-S-r", restart "xmonad" True) -- restart WM
     , ("M-S-o", safeSpawn "systemctl" ["poweroff"]) -- turn off computer
     ]
-
     -- mod-[1..9],       Switch to workspace N
     -- mod-shift-[1..9], Move client to workspace N
     -- mod3-[1..9],      Copy windows to workspace N (1)
