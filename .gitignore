@@ -32,6 +32,7 @@
 !.config/cower
 !.config/newsbeuter
 !.config/fontconfig
+!.config/git
 
 .vim/.netrwhist
 .vim/backup
