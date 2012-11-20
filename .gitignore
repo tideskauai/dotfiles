@@ -3,6 +3,7 @@
 *.hi
 *.o
 *.zcache
+*.zcompdump
 *todo.txt
 *bookmarks
 
