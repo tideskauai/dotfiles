@@ -56,7 +56,7 @@ backup_my_files ()
     done
 }
 
-# Print help if incorrect number of arguments is given
+# Print help if incorrect number of arguments are given
 if (($# != 1)); then
     usage
 
