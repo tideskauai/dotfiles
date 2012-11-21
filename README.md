@@ -1,5 +1,3 @@
-This repo contains configuration files. 
-
 # Steps to follow
     git clone https://github.com/ballmerpeak/dotfiles.git ~/.dotfiles
     cd ~/.dotfiles
