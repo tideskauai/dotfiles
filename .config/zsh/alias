@@ -1,10 +1,8 @@
-alias -s png=mirage
-alias -s jpg=mirage
-alias -s gif=mirage
-alias -s html=firefox
-alias -s pdf=epdfview
+alias -s zip='unzip'
+alias -s rar='unrar x'
 alias -s gz='tar -xzvf'
 alias -s bz2='tar -xjvf'
+alias -s xz='tar -Jxf'
 alias -g L='| less'
 
 alias cdcs='cd ~/Archives/eLearn'
@@ -14,12 +12,11 @@ alias cdpodcasts='cd ~/Archives/Audio/Podcasts'
 
 alias ls='ls -FNh --tabsize=0 --color=auto --show-control-chars --group-directories-first'
 alias ls-l='ls -lha'
-alias ls-d='ls -lhrt' # sort by date
+alias ls-d='ls -lhrt'
 alias mv='mv -i'
 alias rm='rm -I'
 alias du='du -h'
 alias diff='colordiff'
 alias pacu="sudo pacman -Syu"
-alias sprunge="curl -F 'sprunge=<-' http://sprunge.us"
 alias myip="curl ifconfig.me/ip"
 alias skype="xhost +local: && su skype -c skype"
