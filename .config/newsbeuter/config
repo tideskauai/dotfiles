@@ -8,7 +8,7 @@ articlelist-title-format  "%N %V - Articles in feed %T (%u unread, %t total)"
 
 max-items 100
 browser firefox
-save-path ~/Downloads/articles
+save-path ~/Archives/articles
 download-path ~/Downloads
 
 show-read-articles yes
