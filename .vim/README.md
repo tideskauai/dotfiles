@@ -1,5 +1,3 @@
-Here are my vim config files.
-
 Plugins
 -------
 
