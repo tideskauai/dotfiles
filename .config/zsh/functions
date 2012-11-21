@@ -29,18 +29,28 @@ JB() {
 }
 
 notes() {
-    if (($# == 0)); then
+    if (($# > 1 )); then
+        echo "Invalid number of arguments were given"
+    elif (($# == 0)); then
         vim ~/Archives/txt/NOTES
-    elif (($# == 1)); then
+    elif [[ $1 = "-o" ]]; then
         cat ~/Archives/txt/NOTES
+    else
+        echo "Write notes to edit notes"
+        echo "Write notes -o to output notes"
     fi
 }
 rss() {
-    if (($# == 0)); then
+    if (($# > 1 )); then
+        echo "Invalid number of arguments were given"
+    elif (($# == 0)); then
         newsbeuter
-    elif (($# == 1)); then
+    elif [[ $1 = "-w" ]]; then
         newsbeuter \
         -u ~/.config/newsbeuter/urls-weekly \
         -c ~/.local/share/newsbeuter/cache-weekly.db
+    else
+        echo "Write rss to launch newsbeuter with daily based feeds"
+        echo "Write rss -w to launch newsbeuter with weekly based feeds"
     fi
 }
