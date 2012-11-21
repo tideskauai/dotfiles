@@ -5,7 +5,6 @@
 *.zcache
 *.zcompdump
 *todo.txt
-*bookmarks
 
 .mpd/mpd.db
 .mpd/mpd.log
@@ -27,14 +26,15 @@
 !.config/termite.cfg
 !.config/pystartup
 !.config/xcolors
-!.config/gtk-2.0
-!.config/gtk-3.0
+!.config/gtk-2.0/gtkrc
+!.config/gtk-3.0/settings.ini
 !.config/openbox
 !.config/cower
 !.config/newsbeuter
 !.config/fontconfig
 !.config/git
 !.config/zsh
+!.config/i3
 
 .vim/.netrwhist
 .vim/backup
