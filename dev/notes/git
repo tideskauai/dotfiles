@@ -11,3 +11,16 @@
 # For renames:
 	git add -f file_renamed
 	git commit --dry-run -a
+
+# You want to undo the last commit, but keep
+# the changes (e.g. do not change the files)
+git reset --soft "HEAD^"
+
+# You want to undo the last commit, but DO NOT
+# keep the changes (e.g. files will change to their
+# state before the commit)
+git reset --hard "HEAD^"
+
+# Destroyed a commit, but need it after all
+1) git reflog
+2) git checkout -b someNewBranchName shaYouDestroyed
