@@ -15,6 +15,8 @@ script_name=$(basename "$0")
 usage ()
 {
     printf "Usage:\n \
+        Only one argument may be used at a time.\n \
+        $script_name --help        (-h) \tPrint this message.\n \
         $script_name --internalhdd (-i) \tTo sync files with internal hdd.\n \
         $script_name --externalhdd (-e) \tTo sync files with external hdd.\n \
         $script_name --etc          \t\tTo sync /etc files to \$back_up_dir/etc.\n \
@@ -54,9 +56,12 @@ backup_my_files ()
     done
 }
 
+# Print help if incorrect number of arguments is given
+if (($# != 1)); then
+    usage
 
 # Backup/sync $back_up_files to $back_up_internalhdd
-if [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
+elif [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
     mounted=$(mountpoint $back_up_internalhdd)
     if [ -n "$mounted" ]; then
         # Is $back_up_internalhdd a mountpoint?
@@ -143,6 +148,10 @@ elif [ -n "$1" ] && [ -f "$1" ]; then
     else
         printf "$back_up_dir Does not exist\n"
     fi
+
+# Print the help if requested
+elif [[ $1 = "-h" || $1 = "--help" ]]; then
+    usage
 
 # No valid arguments were given, so display a help
 else 
