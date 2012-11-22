@@ -22,6 +22,8 @@
     :g/^\s*$/d 
 - replace all instances of string1 with string2
     :%s/string1/string2/gc
+- change delimeter to avoid having to escape
+    :%s,/old_word/,new_word,gc
 - insert a blank line every 5 lines
     :%s/\v(.*\n){5}/&\r 
 - save file if root permissions are required
