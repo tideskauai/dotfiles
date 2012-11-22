@@ -116,8 +116,8 @@ elif [[ $1 = "--etc" ]]; then
     fi
 
 # Backup single file to specified dir in $back_up_dir
-elif [ -n "$1" ] && [ -f "$1" ]; then
-    if [ -d "$back_up_dir" ]; then
+elif [[ -n "$1" ]] && [[ -f "$1" ]]; then
+    if [[ -d "$back_up_dir" ]]; then
 
         date=$(date "+%G-%j-%H%M%S")
         file_name=$(basename "$1")
@@ -127,7 +127,7 @@ elif [ -n "$1" ] && [ -f "$1" ]; then
             dir_name=${resolved_path#$HOME/}
             dir_name=${dir_name%$file_name}
             # What to do if the dir does not exist
-            if [ ! -d "$back_up_dir/$dir_name/" ]; then
+            if [[ ! -d "$back_up_dir/$dir_name/" ]]; then
                 printf "Dir does not exist. Let's create it\n"
                 pushd . > /dev/null
                 cd "$back_up_dir"
