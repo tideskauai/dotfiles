@@ -28,27 +28,23 @@ backup_my_files ()
     for i in "${back_up_files[@]}"; do
         case "$i" in
             ~/Archives)
-                rdiff-backup -v5 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                printf "\n#### Backing up $i ####\n"
+                rdiff-backup -v3 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
             ~/dev)
-                printf "\n \
-                    ###############################\n \
-                    #### Backing up dev folder ####\n \
-                    ###############################\n"
-                rdiff-backup -v5 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                printf "\n#### Backing up $i ####\n"
+                rdiff-backup -v3 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 rdiff-backup --force --remove-older-than 2Y "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 rdiff-backup --list-increments "$back_up_internalhdd"/backup/rdiff-backup/"$i"
-                printf "\n \
-                    ###############################\n \
-                    #### Backing up dev folder ####\n \
-                    ###############################\n"
                 ;;
             ~/VMs)
-                rdiff-backup -v1 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                printf "\n#### Backing up $i ####\n"
+                rdiff-backup -v2 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
             *)
+                printf "\n#### Backing up $i ####\n"
                 rdiff-backup -v3 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 rdiff-backup --force --remove-older-than 1M "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
