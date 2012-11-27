@@ -36,8 +36,7 @@ URxvt.scrollTtyKeypress: true
 
 ! --[ URxvt - Change fonts on the fly ]---------------------
 URxvt.keysym.M-C-1: command:\033]710;-*-dina-medium-r-*-*-16-*-*-*-*-*-*-*\007\033]711;-*-dina-bold-r-*-*-16-*-*-*-*-*-*-*\007
-URxvt.keysym.M-C-2: command:\033]710;xft:Monofur:pixelsize=18\007\033]711;xft:Monofur:pixelsize=18:bold\007
-URxvt.keysym.M-C-3: command:\033]710;xft:DejaVuSansMono:pixelsize=18\007\033]711;xft:DejaVuSansMono:pixelsize=18:bold\007
+URxvt.keysym.M-C-2: command:\033]710;xft:DejaVuSansMono:pixelsize=18\007\033]711;xft:DejaVuSansMono:pixelsize=18:bold\007
 
 
 ! --[ URxvt - URL/Clipboard Handling ]----------------------
