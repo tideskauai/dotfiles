@@ -11,6 +11,7 @@ back_up_dir="$HOME/Archives/backup"
 back_up_internalhdd="/media/sdc1"
 back_up_externalhdd="/mnt/backup"
 script_name=$(basename "$0")
+partition="sdb1"
 
 usage ()
 {
@@ -72,7 +73,7 @@ elif [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
         # If $back_up_internalhdd is not a mountpoint, mount it and backup/sync $back_up_files
         else
             printf "Dir not mounted, mounting now...\n"
-            sudo mount /dev/sdc1 $back_up_internalhdd && \
+            sudo mount /dev/$partition $back_up_internalhdd && \
             backup_my_files
             sleep 5s
         fi
@@ -86,7 +87,7 @@ elif [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
 elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
     # Does $back_up_externalhdd exist?
     if [ -d "$back_up_externalhdd" ]; then
-        # Check if /media/sdc1 is mounted, if not mount in read-only mode
+        # Check if $back_up_internalhdd is mounted, if not mount in read-only mode
         mounted=$(mountpoint $back_up_internalhdd)
         if [ -n "$mounted" ]; then
             if [[ $mounted =~ "is a mountpoint" ]]; then
