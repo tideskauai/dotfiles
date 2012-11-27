@@ -24,3 +24,7 @@ git reset --hard "HEAD^"
 # Destroyed a commit, but need it after all
 1) git reflog
 2) git checkout -b someNewBranchName shaYouDestroyed
+
+# After cloning, to be able to push into my repo
+1) git remote rm origin
+2) git remote add origin git@github.com:ballmerpeak/dotfiles.git
