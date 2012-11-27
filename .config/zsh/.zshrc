@@ -50,7 +50,7 @@ setopt noclobber            # Requires >! to overwrite existing files
 #------------------------------
 source $XDG_CONFIG_HOME/zsh/alias
 source $XDG_CONFIG_HOME/zsh/functions
-# Don't store commands with sudo in the history
+# Don't store commands with sudo or cd in the history
 function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
 
 #------------------------------
