@@ -11,9 +11,6 @@ xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 # Start custom settings for urxvt
 xrdb -merge ~/.Xresources
 
-# Temporary
-xrandr --output CRT1 --mode 1024x768
-
 ## Start the trayer
 #trayer --edge top \
 #    --align center \
