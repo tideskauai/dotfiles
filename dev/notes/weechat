@@ -7,7 +7,8 @@
 /set weechat.look.day_change off
 /set weechat.look.jump_current_to_previous_buffer off
 /set weechat.completion.partial_completion_command_arg on
-/filter add join_quit *,!irc.znc.im.*,!irc.im.* irc_quit,irc_join,irc_part *
+/filter add join_quit *,!irc.im.* irc_quit,irc_join,irc_part *
+/filter add join_quit_im irc.im.* irc_quit,irc_join,irc_part *
 /filter add names *,!irc.znc.im.*,!irc.im.* irc_366 *
 /filter add irc_clean * irc_470,irc_324,irc_328,irc_329,irc_333,irc_372,irc_376 *
 /filter add bitlbee irc.znc.im.&bitlbee,irc.im.&bitlbee irc_mode *
@@ -15,6 +16,18 @@
 /set aspell.check.default_dict "en,es" 
 /set weechat.look.paste_bracketed on
 /set weechat.look.paste_max_lines 1
+/set irc.ctcp.version = ""
+/set irc.look.display_old_topic off
+/set weechat.look.buffer_notify_default highlight
+/set weechat.look.save_config_on_exit off
+/set weechat.look.color_nick_offline on
+/set weechat.look.window_separator_vertical off
+/set weechat.look.window_separator_horizontal off
+/set weechat.bar.input.size 0
+/set weechat.bar.input.size_max 2
+# }}}
+
+# Keybinds/aliases {{{
 /key unbind meta-m
 /key unbind meta-=
 /key unbind meta-x
@@ -30,24 +43,12 @@
 /key bind ` /go
 /alias wr /layout apply windows
 /alias im /query -server im
-/set irc.ctcp.version = ""
-/set irc.look.buffer_switch_autojoin off
-/set irc.look.display_old_topic off
-/set weechat.look.buffer_notify_default highlight
-/set weechat.look.save_config_on_exit off
-/set weechat.look.color_nick_offline on
-/set weechat.look.window_separator_vertical off
-/set weechat.look.window_separator_horizontal off
-/set weechat.bar.input.size 0
-/set weechat.bar.input.size_max 2
 # }}}
 
 ######################
 ### Look settings  ###
 ######################
 /set weechat.look.prefix_align none
-# /set irc.look.nick_prefix "‹"
-# /set irc.look.nick_suffix "›"
 /set irc.look.nick_suffix " »"
 # /set irc.color.nick_prefix 4
 /set irc.color.nick_suffix 4
@@ -145,7 +146,7 @@
 /set plugins.var.python.colorize_nicks.min_nick_length 2
 /set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part"
 /set plugins.var.python.colorize_nicks.greedy_matching "off"
-/set plugins.var.python.text_replace.replacement_pairs "<3=♥,`c=°C,btw=by the way,[tm]=™,[r]=®"
+/set plugins.var.python.text_replace.replacement_pairs "`c=°C,btw=by the way,[tm]=™,[r]=®"
 /set plugins.var.python.text_replace.replacement_words "brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,<-=←,->=→,asap=as soon as possible"
 /set plugins.var.perl.colorize_lines.own_lines on
 /set plugins.var.perl.colorize_lines.nicks "*.phrik,*.falconindy,*.MrElendig,*.Mion,*.thestinger,*.Zhivago,*.FlashCode,*.weebot,*.vodik,*.tasidus,jb.Allan"
