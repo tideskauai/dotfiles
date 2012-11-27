@@ -4,7 +4,7 @@ umask 077
 # Constant environment variables {{{
 export EDITOR="vim"
 export VISUAL="vim"
-export PATH="${PATH}:${HOME}/dev/bin"
+export PATH="${PATH}:${HOME}/dev/bin:${HOME}/.cabal/bin"
 export PAGER="less"
 
 # Color man pages
