@@ -139,7 +139,7 @@
 ########################
 ### PLUGINS   config ###
 ########################
-/script install colorize_lines.pl beep.pl colorize_nicks.py text_replace.py toggle_nicklist.py go.py zerotab.py
+/script install colorize_lines.pl beep.pl colorize_nicks.py text_replace.py toggle_nicklist.py go.py
 /set plugins.var.python.toggle_nicklist.action "show"
 # while on the channel → /toggle_nicklist add
 /set plugins.var.python.colorize_nicks.min_nick_length 2
