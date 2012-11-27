@@ -208,7 +208,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-m t", safeSpawn "ncmpcpp" ["toggle"])
     , ("M5-m n", safeSpawn "ncmpcpp" ["next"])
     , ("M5-m p", safeSpawn "ncmpcpp" ["prev"])
-    , ("M5-b f", safeSpawn "firefox" [])
+    , ("M5-f", safeSpawn "firefox" [])
     , ("M5-b c", safeSpawn "chromium" ["--incognito"])
     , ("M5-b d", safeSpawn "dwb" [])
     , ("M5-S-f", safeSpawn "pcmanfm" [])
@@ -223,9 +223,9 @@ myKeys conf = mkKeymap conf $ [
     --launching
     , ("M-<Return>", spawnShell) -- launch shell in topic (1)
     , ("M-p", shellPrompt myXPConfig)
-    , ("M-x", safeSpawn "bash" ["/home/shivalva/dev/clipsync/dmenu.sh"])
-    , ("M-S-x", safeSpawn "python" ["/home/shivalva/dev/clipsync/sync.py"])
-    , ("M-z", appendFilePrompt myXPConfig "/home/shivalva/Archives/txt/NOTES")
+    , ("M-x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
+    , ("M-S-x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
+    , ("M-z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
     --killing
     , ("M-S-c", kill)
     --layouts

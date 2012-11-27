@@ -7,7 +7,7 @@ back_up_etc_files=(iptables ssh X11 modules-load.d \
     bitlbee conf.d udev hostname hosts locale.conf \
     locale.gen makepkg.conf pacman.conf resolv.conf \
     sysctl.conf timezone vconsole.conf localtime)
-back_up_dir="/home/shivalva/Archives/backup"
+back_up_dir="$HOME/Archives/backup"
 back_up_internalhdd="/media/sdc1"
 back_up_externalhdd="/mnt/backup"
 script_name=$(basename "$0")
