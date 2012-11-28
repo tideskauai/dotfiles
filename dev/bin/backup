@@ -4,9 +4,10 @@ back_up_files=(~/Archives ~/Downloads ~/dev ~/themes ~/VMs \
     ~/.ssh ~/.dotfiles ~/.themes ~/.mozilla \
     ~/.local)
 back_up_etc_files=(iptables ssh X11 modules-load.d \
-    bitlbee conf.d systemd udev hostname hosts locale.conf \
-    locale.gen makepkg.conf pacman.conf resolv.conf \
-    sysctl.conf timezone vconsole.conf localtime)
+    bitlbee conf.d systemd udev default \
+    hostname hosts locale.conf locale.gen makepkg.conf \
+    pacman.conf resolv.conf sysctl.conf timezone vconsole.conf \
+    localtime adjtime)
 back_up_dir="$HOME/Archives/backup"
 back_up_internalhdd="/media/sdc1"
 back_up_externalhdd="/mnt/backup"
