@@ -1,7 +1,3 @@
-# Set secure umask
-umask 077
-
-# Constant environment variables {{{
 export EDITOR="vim"
 export VISUAL="vim"
 export PATH="${PATH}:${HOME}/dev/bin:${HOME}/.cabal/bin"
@@ -32,4 +28,3 @@ export KDEHOME=$XDG_CONFIG_HOME/kde4
 
 # For the interactive python interpreter
 export PYTHONSTARTUP=$XDG_CONFIG_HOME/pystartup
-# }}}
