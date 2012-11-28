@@ -22,7 +22,7 @@ bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
 #------------------------------
-# Misc options
+# Settings
 #------------------------------
 MAILCHECK=0                 # Disable mail checking
 HISTFILE=~/.histfile        # The file to store the history
@@ -46,12 +46,15 @@ setopt notify               # Report status of background jobs immediately
 setopt noclobber            # Requires >! to overwrite existing files
 
 #------------------------------
-# Alias stuff
+# Misc
 #------------------------------
-source $XDG_CONFIG_HOME/zsh/alias
-source $XDG_CONFIG_HOME/zsh/functions
+
 # Don't store commands with sudo or cd in the history
 function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
+
+# Load function and alias files
+source $XDG_CONFIG_HOME/zsh/alias
+source $XDG_CONFIG_HOME/zsh/functions
 
 #------------------------------
 # Window title

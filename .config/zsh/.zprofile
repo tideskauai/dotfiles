@@ -1,3 +1,6 @@
+# Set secure umask: 700 dirs / 700 files
+umask 077
+
 export EDITOR="vim"
 export VISUAL="vim"
 export PATH="${PATH}:${HOME}/dev/bin:${HOME}/.cabal/bin"

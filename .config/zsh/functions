@@ -54,3 +54,10 @@ rss() {
         echo "Write rss -w to launch newsbeuter with weekly based feeds"
     fi
 }
+sudo() {
+    old=$(umask)
+    # 775 dirs / 664 files
+    umask 022
+    command sudo "$@"
+    umask $old
+}
