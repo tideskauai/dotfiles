@@ -48,12 +48,6 @@
 ######################
 ### Look settings  ###
 ######################
-/set weechat.look.prefix_align none
-/set irc.look.nick_suffix " »"
-# /set irc.color.nick_prefix 4
-/set irc.color.nick_suffix 4
-/set irc.look.item_nick_modes off
-/set irc.look.item_channel_modes off
 /set weechat.look.prefix_join "→"
 /set weechat.look.prefix_quit "←"
 /set weechat.look.item_buffer_filter "⚑"
@@ -61,6 +55,11 @@
 /set weechat.look.prefix_suffix "|"
 /set weechat.look.prefix_align_more "›"
 /set weechat.look.read_marker_string "─"
+/set irc.look.nick_suffix " »"
+/set weechat.look.prefix_align none
+/set irc.color.nick_suffix 4
+/set irc.look.item_nick_modes off
+/set irc.look.item_channel_modes off
 /set weechat.color.chat_prefix_suffix "234"
 /set weechat.color.chat_read_marker "236"
 /set weechat.color.chat_nick_offline "236"
@@ -78,7 +77,7 @@
 /set weechat.bar.status.color_bg default
 /set weechat.bar.status.color_fg darkgray
 /set weechat.bar.status.color_delim blue
-/set weechat.bar.status.items "[buffer_plugin],buffer_number+:+buffer_name+{buffer_nicklist_count}+buffer_filter,[lag],[hotlist],completion,scroll,[aspell_suggest]"
+/set weechat.bar.status.items "[buffer_plugin],buffer_number+:+buffer_name+{buffer_nicklist_count}+buffer_filter,[lag],[hotlist],completion,scroll"
 /set weechat.color.chat_nick_colors "001,002,003,004,005,006,012,013,025,059,060,065,069,096"
 /set weechat.color.status_data_msg darkgray
 /set weechat.color.status_count_highlight red
@@ -137,6 +136,7 @@
 /set irc.server.znc.im.ssl_cert "znc.pem"
 /set irc.server.znc.im.ssl_verify "off"
 # }}}
+
 ########################
 ### PLUGINS   config ###
 ########################
@@ -154,9 +154,6 @@
 /set plugins.var.perl.beep.beep_dcc "off"
 /set plugins.var.perl.beep.whitelist_channels "*fn.#weechat,*fn.##freebsd"
 /set plugins.var.perl.beep.bell_always "pv"
-/set plugins.var.perl.beep.beep_command_pv "mpg123 ~/Archives/Audio/Alarms/prepare.mp3"
-/set plugins.var.perl.beep.beep_trigger_pv "beep"
-/set plugins.var.perl.beep.whitelist_nicks "*im.peks"
 /set plugins.var.python.go.color_name "black,default"
 /set plugins.var.python.go.color_name_highlight "red,default"
 /set plugins.var.python.go.color_name_highlight_selected "red,default"
