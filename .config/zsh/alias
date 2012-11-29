@@ -19,4 +19,4 @@ alias du='du -h'
 alias diff='colordiff'
 alias pacu="sudo pacman -Syu"
 alias myip="curl ifconfig.me/ip"
-alias skype="xhost +local: && su skype -c skype"
+#alias skype="xhost +local: && su skype -c skype"
