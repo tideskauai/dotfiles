@@ -190,24 +190,17 @@ searchEngineMap method = M.fromList $
 
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myKeys conf = mkKeymap conf $ [
-    --Making Caps Lock useful, editing of ~/.xmodmap required
-      ("M3-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
-    , ("M3-q", toggleWS' ["NSP"]) -- toggle between workspaces (5)
-    , ("M3-w", nextMatch History (className =? "URxvt")) --Toggle between windows (6)
-    , ("M3-f", focusUrgent) -- go to urgent window
-    , ("M3-k", killAllOtherCopies) -- Kill all copied windows (2)
-    , ("M3-a t", safeSpawn "amixer" ["-q","set","Master","toggle"])
-    , ("M3-a b", safeSpawn "amixer" ["-c0","set","Beep", "toggle"])
-    , ("M3-a -", safeSpawn "amixer" ["-q","set","Master","15%-"])
-    , ("M3-a =", safeSpawn "amixer" ["-q","set","Master","15%+"])
-    , ("M3-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
-    , ("M3-z", goToSelected defaultGSConfig { gs_cellwidth = 250 })
-
-    --Making menu_key useful, editing of ~/.xmodmap required
+    --Making use of multimedia keys
+      ("<XF86AudioMute>", safeSpawn "amixer" ["-q","set","Master","toggle"])
+    , ("<XF86AudioLowerVolume>", safeSpawn "amixer" ["-q","set","Master","15%-"])
+    , ("<XF86AudioRaiseVolume>", safeSpawn "amixer" ["-q","set","Master","15%+"])
+    , ("<XF86AudioPlay>", safeSpawn "ncmpcpp" ["play"])
+    , ("<XF86AudioStop>", safeSpawn "ncmpcpp" ["stop"])
+    , ("<XF86AudioNext>", safeSpawn "ncmpcpp" ["next"])
+    , ("<XF86AudioPrev>", safeSpawn "ncmpcpp" ["prev"])
+    --Making right windows key useful.
+    --Editing of ~/.xmodmap required
     , ("M5-<Return>", changeDir myXPConfig) --change the dir of the topic (1)
-    , ("M5-m t", safeSpawn "ncmpcpp" ["toggle"])
-    , ("M5-m n", safeSpawn "ncmpcpp" ["next"])
-    , ("M5-m p", safeSpawn "ncmpcpp" ["prev"])
     , ("M5-b c", safeSpawn "chromium" ["--incognito"])
     , ("M5-b d", safeSpawn "dwb" [])
     , ("M5-S-f", safeSpawn "pcmanfm" [])
@@ -215,17 +208,25 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
     , ("M5-d", safeSpawn "dropboxd" [])
-
+    , ("M5-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
+    , ("M5-x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
+    , ("M5-S-x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
+    , ("M5-z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
     --query the web
-    , ("M-q q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
-    , ("M-q p", SM.submap $ searchEngineMap $ S.selectSearch)
+    , ("M5-q q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
+    , ("M5-q p", SM.submap $ searchEngineMap $ S.selectSearch)
+
     --launching
     , ("M-<Return>", spawnShell) -- launch shell in topic (1)
-    , ("M-p", shellPrompt myXPConfig)
+    , ("M-S-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     , ("M-f", safeSpawn "firefox" [])
-    , ("M-x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
-    , ("M-S-x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
-    , ("M-z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
+    --actions
+    , ("M-q", toggleWS' ["NSP"]) -- toggle between workspaces (5)
+    , ("M-w", nextMatch History (className =? "URxvt")) --Toggle between windows (6)
+    , ("M-p", shellPrompt myXPConfig)
+    , ("M-a f", focusUrgent) -- go to urgent window
+    , ("M-a k", killAllOtherCopies) -- Kill all copied windows (2)
+    , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
     --killing
     , ("M-S-c", kill)
     --layouts
@@ -251,14 +252,14 @@ myKeys conf = mkKeymap conf $ [
     , ("M-S-r", restart "xmonad" True) -- restart WM
     , ("M-S-o", safeSpawn "systemctl" ["poweroff"]) -- turn off computer
     ]
-    -- mod-[1..9],       Switch to workspace N
-    -- mod-shift-[1..9], Move client to workspace N
-    -- mod3-[1..9],      Copy windows to workspace N (1)
+    -- mod-[1..9],          Switch to workspace N
+    -- mod-shift-[1..9],    Move client to workspace N
+    -- mod5-shift-[1..9],   Copy windows to workspace N (1)
     ++ [(m ++ k, windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) $ map show [1..9]
-        , (f, m) <- [(W.greedyView, "M-"), (W.shift, "M-S-"), (copy, "M3-")]
+        , (f, m) <- [(W.greedyView, "M-"), (W.shift, "M-S-"), (copy, "M5-S-")]
     ]
-    -- mod5-[1..9],     Switch to window N (3)
+    -- mod5-[1..9],         Switch to window N (3)
     ++ [(("M5-" ++ show k), focusNth i)
         | (i, k) <- zip [0 .. 8] [1..9]
     ]
