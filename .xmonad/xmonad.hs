@@ -213,20 +213,20 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-S-x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     , ("M5-z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
     --query the web
-    , ("M5-q q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
-    , ("M5-q p", SM.submap $ searchEngineMap $ S.selectSearch)
+    , ("M5-q 1", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
+    , ("M5-q 2", SM.submap $ searchEngineMap $ S.selectSearch)
 
     --launching
     , ("M-<Return>", spawnShell) -- launch shell in topic (1)
-    , ("M-S-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     , ("M-f", safeSpawn "firefox" [])
     --actions
     , ("M-q", toggleWS' ["NSP"]) -- toggle between workspaces (5)
     , ("M-w", nextMatch History (className =? "URxvt")) --Toggle between windows (6)
     , ("M-p", shellPrompt myXPConfig)
     , ("M-a f", focusUrgent) -- go to urgent window
-    , ("M-a k", killAllOtherCopies) -- Kill all copied windows (2)
     , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
+    , ("M-a k", killAllOtherCopies) -- Kill all copied windows (2)
+    , ("M-a <Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     --killing
     , ("M-S-c", kill)
     --layouts
