@@ -42,6 +42,7 @@
 /key bind meta2-15~ /input zoom_merged_buffer
 /key bind ` /go
 /alias wr /layout apply windows
+/alias wsh /window splith 80
 /alias im /query -server im
 /alias otrc /quote PRIVMSG ROOT :otr connect
 /alias otrd /quote PRIVMSG ROOT :otr disconnect
