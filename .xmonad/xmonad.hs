@@ -194,7 +194,7 @@ myKeys conf = mkKeymap conf $ [
       ("<XF86AudioMute>", safeSpawn "amixer" ["-q","set","Master","toggle"])
     , ("<XF86AudioLowerVolume>", safeSpawn "amixer" ["-q","set","Master","15%-"])
     , ("<XF86AudioRaiseVolume>", safeSpawn "amixer" ["-q","set","Master","15%+"])
-    , ("<XF86AudioPlay>", safeSpawn "ncmpcpp" ["play"])
+    , ("<XF86AudioPlay>", safeSpawn "ncmpcpp" ["toggle"])
     , ("<XF86AudioStop>", safeSpawn "ncmpcpp" ["stop"])
     , ("<XF86AudioNext>", safeSpawn "ncmpcpp" ["next"])
     , ("<XF86AudioPrev>", safeSpawn "ncmpcpp" ["prev"])
