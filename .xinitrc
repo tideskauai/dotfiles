@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Start custom bind of keys
-if [ -f $HOME/.xmodmap ]; then
-    xmodmap ~/.xmodmap
+if [ -f $XDG_CONFIG_HOME/xmodmap ]; then
+    xmodmap $XDG_CONFIG_HOME/xmodmap
 fi
 
 # fonts
