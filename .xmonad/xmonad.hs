@@ -203,8 +203,8 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-<Return>", changeDir myXPConfig) --change the dir of the topic (1)
     , ("M5-b c", safeSpawn "chromium" ["--incognito"])
     , ("M5-b d", safeSpawn "dwb" [])
-    , ("M5-S-f", safeSpawn "pcmanfm" [])
-    , ("M5-S-v", safeSpawn "VirtualBox" [])
+    , ("M5-f", safeSpawn "pcmanfm" [])
+    , ("M5-v", safeSpawn "VirtualBox" [])
     , ("M5-w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
     , ("M5-d", safeSpawn "dropboxd" [])
@@ -226,7 +226,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M-a f", focusUrgent) -- go to urgent window
     , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
     , ("M-a k", killAllOtherCopies) -- Kill all copied windows (2)
-    , ("M-a <Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
+    , ("M-a s", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     --killing
     , ("M-S-c", kill)
     --layouts
