@@ -212,16 +212,16 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
     , ("M5-S-x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     , ("M5-z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
-    --query the web
-    , ("M5-q 1", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
-    , ("M5-q 2", SM.submap $ searchEngineMap $ S.selectSearch)
 
     --launching
     , ("M-<Return>", spawnShell) -- launch shell in topic (1)
     , ("M-f", safeSpawn "firefox" [])
+    --query the web
+    , ("M-q q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
+    , ("M-q p", SM.submap $ searchEngineMap $ S.selectSearch)
     --actions
-    , ("M-q", toggleWS' ["NSP"]) -- toggle between workspaces (5)
-    , ("M-w", nextMatch History (className =? "URxvt")) --Toggle between windows (6)
+    , ("M-w", toggleWS' ["NSP"]) -- toggle between workspaces (5)
+    , ("M-e", nextMatch History (className =? "URxvt")) --Toggle between windows (6)
     , ("M-p", shellPrompt myXPConfig)
     , ("M-a f", focusUrgent) -- go to urgent window
     , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
