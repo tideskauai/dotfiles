@@ -41,7 +41,6 @@
 /key bind meta-= /filter toggle noise
 /key bind meta2-15~ /input zoom_merged_buffer
 /key bind ` /go
-/alias wr /layout apply windows
 /alias wsh /window splith 80
 /alias im /query -server im
 /alias otrc /quote PRIVMSG ROOT :otr connect
@@ -150,7 +149,7 @@
 /set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part"
 /set plugins.var.python.colorize_nicks.greedy_matching "off"
 /set plugins.var.python.text_replace.replacement_pairs "celsius=°C,btw=by the way,[tm]=™,[r]=®"
-/set plugins.var.python.text_replace.replacement_words "brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,<-=←,->=→,asap=as soon as possible"
+/set plugins.var.python.text_replace.replacement_words "brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,asap=as soon as possible,:p=,:P=,<-=←,->=→"
 /set plugins.var.perl.colorize_lines.own_lines on
 /set plugins.var.perl.colorize_lines.nicks "*.phrik,*.falconindy,*.MrElendig,*.Mion,*.thestinger,*.Zhivago,*.FlashCode,*.weebot,*.vodik,*.tasidus,jb.Allan"
 /set plugins.var.perl.colorize_lines.highlight off
