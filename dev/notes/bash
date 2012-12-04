@@ -6,7 +6,17 @@
 1) http://stackoverflow.com/questions/2188199/bash-double-or-single-bracket-parentheses-curly-braces
 2) http://mywiki.wooledge.org/Bashism
 3) http://www.tldp.org/LDP/abs/html/abs-guide.html
+4) http://wiki.bash-hackers.org/syntax/words
+5) http://mywiki.wooledge.org/Quotes
+
+[1] http://mywiki.wooledge.org/BashFAQ/031
+[1] http://mywiki.wooledge.org/BashGuide/TestsAndConditionals
 # }}}
 
 # Do not do list
 1) Do not use backticks (i.e. `cmd`). Use $(cmd) instead
+2) Do not use [ .. ] in bash, only use in sh [1]
+
+# notes
+1) Consistenly use (( )) to test numbers or arithmetic, and [[ ]] to test strings or files
+

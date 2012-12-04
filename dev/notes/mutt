@@ -1,6 +1,0 @@
-# To tag all messages containing certain message
-T 
-# To perform an action -this case delete- in all tagged messages
-;D
-# To delete thread
-^D

@@ -1,7 +1,5 @@
-about:config
-
-plugins.click_to_play -> true
-plugins.hide_infobar_for_missing_plugin -> true
-browser.search.defaulenginename -> DuckDuckGo
-
 about:permissions
+about:config
+    plugins.click_to_play -> true
+    plugins.hide_infobar_for_missing_plugin -> true
+    browser.search.defaulenginename -> DuckDuckGo
