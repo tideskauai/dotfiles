@@ -29,10 +29,10 @@
 systemctl enable network
 # }}}
 sudo systemctl enable iptables.service
-sudo systemctl enable ntpd.service
 sudo systemctl enable bitlbee.socket
 sudo systemctl mask ctrl-alt-del.target
 sudo systemctl enable lvm
+sudo systemctl enable chrony.service
 
 # Enable a service
 sudo systemctl enable <unit>
