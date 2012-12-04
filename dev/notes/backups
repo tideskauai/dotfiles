@@ -1,11 +1,21 @@
-Differential:
-
-Incremental:
-
-Full Backup:
-
-
-Tools:
+# Tools {{{
 rdiff-backup
 rsync
 bacula
+# }}}
+
+# Full Backup:
+It is the simplest form of a backup, since all it does is to copy files from $SOURCE to $DESTINATION.
+Pros: Easy and quick to restore.
+Cons: Most time consuming, most space-intensive, less flexible.
+
+# Differential:
+A differential backup only backs-up the _files_ that have changed since the last full backup. 
+Pros: Less space-intensive
+Cons:
+
+# Incremental:
+An incremental backup only backs-up the _changes_ that have changed since last backup. All backups depend
+upon each other, so if one of the incremental or full backup gets deleted, restoring becomes impossible.
+Pros: Least space-intensive.
+Cons: Hard and slow to restore, reliability.
