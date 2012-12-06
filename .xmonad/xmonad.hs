@@ -47,10 +47,29 @@ main :: IO ()
 main = xmonad =<< statusBar cmd pp kb conf
     where
         uhook = withUrgencyHookC NoUrgencyHook urgentConfig
+        --Command to launch the bar
         cmd = "bash -c \"tee >(xmobar -x0) | xmobar -x1\""
+        --Custom pp, determines what is being written to the bar
         pp = myPP
+        --Keybinding to toggle the gap for the bar
         kb = toggleStrutsKey
+        --Main configuration
         conf = uhook myConfig
+
+-------------------------------------------------------------------------------
+--- xmobar various settings ---
+-------------------------------------------------------------------------------
+--Urgent notification
+urgentConfig = UrgencyConfig { suppressWhen = Focused, remindWhen = Dont }
+--Looks settings
+myPP = xmobarPP { ppCurrent = xmobarColor colorBlueAlt ""
+                  , ppTitle =  shorten 50
+                  , ppSep =  " <fc=#a488d9>:</fc> "
+                  , ppUrgent = xmobarColor "" colorPink
+                  , ppSort = fmap (.scratchpadFilterOutWorkspace) getSortByIndex
+                }
+--Toggle key
+toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
 -------------------------------------------------------------------------------
 --- Configs ---
@@ -68,7 +87,7 @@ myConfig = defaultConfig { focusFollowsMouse = False
                            , logHook = historyHook -- (6)
                          }
 
--- Declarations
+--Declarations
 colorBlack      = "#000000"
 colorBlackAlt   = "#040404"
 colorGray       = "#444444"
@@ -92,9 +111,6 @@ colorFocusedBorder  = colorGranate
 myTerminal      = "urxvt"
 myBorderWidth   = 1
 myModMask = mod4Mask
-
--- urgent notification
-urgentConfig = UrgencyConfig { suppressWhen = Focused, remindWhen = Dont }
 
 --hooks
 myManageHook :: ManageHook
@@ -124,15 +140,6 @@ myManageHook = (composeAll . concat $
 
 manageScratchPad :: ManageHook
 manageScratchPad = scratchpadManageHook (W.RationalRect (1/4) (1/4) (1/2) (1/2))
-
-
---bar looks (xmobar)
-myPP = xmobarPP { ppCurrent = xmobarColor colorBlueAlt ""
-                  , ppTitle =  shorten 50
-                  , ppSep =  " <fc=#a488d9>:</fc> "
-                  , ppUrgent = xmobarColor "" colorPink
-                  , ppSort = fmap (.scratchpadFilterOutWorkspace) getSortByIndex
-                }
 
 --topics or workspaces
 myWorkspaces :: [WorkspaceId]
@@ -177,7 +184,7 @@ myXPConfig = defaultXPConfig {  font = "terminus"
 -------------------------------------------------------------------------------
 --- Keys ---
 -------------------------------------------------------------------------------
---Search the web: M + q + search engine
+--Search the web: mod + (q OR p) + search engine
 searchEngineMap method = M.fromList $
     [ ((0, xK_d), method S.dictionary)
     , ((0, xK_t), method S.thesaurus)
@@ -187,8 +194,6 @@ searchEngineMap method = M.fromList $
     , ((0, xK_q), method $ S.searchEngine "duckduckgo" "https://duckduckgo.com/?q=")
     ]
 
-
-toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 myKeys conf = mkKeymap conf $ [
     --Making use of multimedia keys
       ("<XF86AudioMute>", safeSpawn "amixer" ["-q","set","Master","toggle"])
@@ -200,7 +205,7 @@ myKeys conf = mkKeymap conf $ [
     , ("<XF86AudioPrev>", safeSpawn "ncmpcpp" ["prev"])
     --Making right windows key useful.
     --Editing of ~/.xmodmap required
-    , ("M5-<Return>", changeDir myXPConfig) --change the dir of the topic (1)
+    , ("M5-<Return>", changeDir myXPConfig) --Change the dir of the topic (1)
     , ("M5-b c", safeSpawn "chromium" ["--incognito"])
     , ("M5-b d", safeSpawn "dwb" [])
     , ("M5-f", safeSpawn "pcmanfm" [])
@@ -214,18 +219,18 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
 
     --launching
-    , ("M-<Return>", spawnShell) -- launch shell in topic (1)
+    , ("M-<Return>", spawnShell) --Launch shell in topic (1)
     , ("M-f", safeSpawn "firefox" [])
     --query the web
     , ("M-q q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
     , ("M-q p", SM.submap $ searchEngineMap $ S.selectSearch)
     --actions
-    , ("M-w", toggleWS' ["NSP"]) -- toggle between workspaces (5)
-    , ("M-e", nextMatch History (className =? "URxvt")) --Toggle between windows (6)
+    , ("M-w", toggleWS' ["NSP"]) --Toggle between workspaces (5)
+    , ("M-e", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
     , ("M-p", shellPrompt myXPConfig)
-    , ("M-a f", focusUrgent) -- go to urgent window
+    , ("M-a f", focusUrgent) --Go to urgent window
     , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
-    , ("M-a k", killAllOtherCopies) -- Kill all copied windows (2)
+    , ("M-a k", killAllOtherCopies) --Kill all copied windows (2)
     , ("M-a s", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     --killing
     , ("M-S-c", kill)
@@ -245,12 +250,12 @@ myKeys conf = mkKeymap conf $ [
     , ("M-l", sendMessage Expand)
     , ("M-j", sendMessage MirrorShrink)
     , ("M-k", sendMessage MirrorExpand)
-    , ("M-,", sendMessage (IncMasterN 1)) -- inc win # in master area
-    , ("M-.", sendMessage (IncMasterN (-1))) -- dec win # in master area
+    , ("M-,", sendMessage (IncMasterN 1)) --Inc win # in master area
+    , ("M-.", sendMessage (IncMasterN (-1))) --Dec win # in master area
     --quit, or restart
-    , ("M-S-e", io (exitWith ExitSuccess)) -- exit WM
-    , ("M-S-r", restart "xmonad" True) -- restart WM
-    , ("M-S-o", safeSpawn "systemctl" ["poweroff"]) -- turn off computer
+    , ("M-S-e", io (exitWith ExitSuccess)) --Exit X
+    , ("M-S-r", restart "xmonad" True) --Restart WM
+    , ("M-S-o", safeSpawn "systemctl" ["poweroff"]) --Turn off computer
     ]
     -- mod-[1..9],          Switch to workspace N
     -- mod-shift-[1..9],    Move client to workspace N
