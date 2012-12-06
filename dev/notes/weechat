@@ -116,9 +116,11 @@
 /set irc.server.fn.ssl "on"
 /set irc.server.fn.ssl_dhkey_size "1024"
 /set irc.server.fn.autojoin "#archlinux,#archlinux-offtopic,#weechat"
+/set weechat.notify.irc.server.fn none
 
-/server add jb irc.geekshed.net
-/set irc.server.jb.autojoin "#jupiterbroadcasting"
+/server add geekshed irc.geekshed.net
+/set irc.server.geekshed.autojoin "#jupiterbroadcasting"
+/set weechat.notify.irc.server.geekshed none
 
 /server add im 127.0.0.1
 /set irc.server.im.nicks "IPoAC,IPoAC_"
@@ -130,6 +132,7 @@
 /set irc.server.znc.fn.ssl "on"
 /set irc.server.znc.fn.ssl_cert "znc.pem"
 /set irc.server.znc.fn.ssl_verify "off"
+/set weechat.notify.irc.server.znc.fn none
 
 /server add znc.im 192.168.0.5/1122
 /set irc.server.znc.im.nicks "IPoAC,IPoAC_"
