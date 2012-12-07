@@ -12,6 +12,11 @@
 .mpd/mpdstate
 .ncmpcpp/error.log
 
+.vim/.netrwhist
+.vim/backup
+.vim/swap
+.vim/bundle
+
 .mutt/*
 !.mutt/colors.muttrc
 !.mutt/muttrc
@@ -26,19 +31,14 @@
 !.config/termite.cfg
 !.config/pystartup
 !.config/xmodmap
-
-!.config/xcolors
 !.config/gtk-2.0/gtkrc
 !.config/gtk-3.0/settings.ini
-!.config/openbox
+
+!.config/xcolors
 !.config/cower
 !.config/newsbeuter
 !.config/fontconfig
 !.config/git
 !.config/zsh
 !.config/i3
-
-.vim/.netrwhist
-.vim/backup
-.vim/swap
-.vim/bundle
+!.config/youtube-viewer
