@@ -184,7 +184,7 @@ myXPConfig = defaultXPConfig {  font = "terminus"
 -------------------------------------------------------------------------------
 --- Keys ---
 -------------------------------------------------------------------------------
---Search the web: mod + (q OR p) + search engine
+--Search the web: mod + (s OR S-s) + search engine
 searchEngineMap method = M.fromList $
     [ ((0, xK_d), method S.dictionary)
     , ((0, xK_t), method S.thesaurus)
@@ -221,12 +221,12 @@ myKeys conf = mkKeymap conf $ [
     --launching
     , ("M-<Return>", spawnShell) --Launch shell in topic (1)
     , ("M-f", safeSpawn "firefox" [])
-    --query the web
-    , ("M-q q", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
-    , ("M-q p", SM.submap $ searchEngineMap $ S.selectSearch)
+    --search the web
+    , ("M-s", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
+    , ("M-S-s", SM.submap $ searchEngineMap $ S.selectSearch)
     --actions
-    , ("M-w", toggleWS' ["NSP"]) --Toggle between workspaces (5)
-    , ("M-e", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
+    , ("M-q", toggleWS' ["NSP"]) --Toggle between workspaces (5)
+    , ("M-w", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
     , ("M-p", shellPrompt myXPConfig)
     , ("M-a f", focusUrgent) --Go to urgent window
     , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
