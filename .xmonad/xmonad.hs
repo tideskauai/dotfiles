@@ -204,7 +204,8 @@ myKeys conf = mkKeymap conf $ [
     , ("<XF86AudioPrev>", safeSpawn "ncmpcpp" ["prev"])
     --Making right windows key useful.
     --Editing of ~/.xmodmap required
-    , ("M5-<Return>", changeDir myXPConfig) --Change the dir of the topic (1)
+    --Launch a scratchpad
+    , ("M5-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     , ("M5-b c", safeSpawn "chromium" ["--incognito"])
     , ("M5-b d", safeSpawn "dwb" [])
     , ("M5-f", safeSpawn "pcmanfm" [])
@@ -220,17 +221,18 @@ myKeys conf = mkKeymap conf $ [
     --launching
     , ("M-<Return>", spawnShell) --Launch shell in topic (1)
     , ("M-f", safeSpawn "firefox" [])
+    , ("M-p", shellPrompt myXPConfig)
     --search the web
     , ("M-s", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
     , ("M-S-s", SM.submap $ searchEngineMap $ S.selectSearch)
     --actions
-    , ("M-q", toggleWS' ["NSP"]) --Toggle between workspaces (5)
-    , ("M-w", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
-    , ("M-p", shellPrompt myXPConfig)
     , ("M-a f", focusUrgent) --Go to urgent window
     , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
     , ("M-a k", killAllOtherCopies) --Kill all copied windows (2)
-    , ("M-a s", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
+    , ("M-a t", changeDir myXPConfig) --Change the dir of the topic (1)
+    --navigation of windows/workspaces
+    , ("M-q", toggleWS' ["NSP"]) --Toggle between workspaces (5)
+    , ("M-w", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
     --killing
     , ("M-S-c", kill)
     --layouts
