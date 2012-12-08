@@ -19,7 +19,6 @@ URxvt.cursorColor:  #370074
 URxvt.cursorColor2: #ff00f6
 URxvt.highlightColor:#444444
 URxvt.underlinecolor: #999999
-URxvt.fading:   25%
 URxvt.dynamicColors: on
 URxvt.internalborder: 0
 URxvt.font: -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
@@ -50,13 +49,3 @@ URxvt.depth: 32
 URxvt.background: #0A0A0A
 URxvt.foreground: #999999
 #include ".config/xcolors/jwr-dark"
-!#include ".config/xcolors/dwmrob"
-!#include ".config/xcolors/derp"
-!#include ".config/xcolors/digerati"
-!#include ".config/xcolors/gnometerm"
-!#include ".config/xcolors/jasonwryan"
-!#include ".config/xcolors/phrak1"
-!#include ".config/xcolors/rezza"
-!#include ".config/xcolors/rydgel"
-!#include ".config/xcolors/tango"
-!#include ".config/xcolors/zenburn"
