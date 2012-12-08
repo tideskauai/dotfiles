@@ -102,12 +102,12 @@ colorMagenta    = "#a488d9"
 colorMagentaAlt = "#7965ac"
 colorDarkMagenta= "#8e82a2"
 colorBlue       = "#98a7b6"
-colorBlueAlt    = "#598691"
+colorBlueAlt    = "#5d7caf"
 colorDarkBlue   = "#464a4a"
 colorGranate    = "#410039"
 colorPink       = "#ff6ffa"
 colorNormalBorder   = colorDarkGray
-colorFocusedBorder  = colorGranate
+colorFocusedBorder  = colorDarkBlue
 myTerminal      = "urxvt"
 myBorderWidth   = 1
 myModMask = mod4Mask
@@ -127,13 +127,12 @@ myManageHook = (composeAll . concat $
             , className =? "MPlayer"    --> doShift "8"
             , className =? "mplayer2"    --> doShift "8"
             , className =? "Vlc"    --> doShift "8"
+            , className =? "Skype" --> doShift "9"
             , className =? "Hamster-time-tracker" --> doShift "NSP"
             , className =? "Osmo" --> doShift "NSP"
-            , className =? "Skype" --> doShift "NSP"
             , className =? "trayer" --> doIgnore
             , className =? "URxvt" --> insertPosition Below Newer -- (4)
             , className =? "Gtkdialog" --> doFloat
-            , className =? "V4l2ucp" --> doFloat
             , className =? "Firefox" <&&> resource =? "Download" --> doFloat
             , fmap ("Call with" `isInfixOf`) title --> doFloat -- (6)
             ]]) <+> manageScratchPad
@@ -160,7 +159,7 @@ customLayout =  onWorkspace "web" fsLayout $
     rt = ResizableTall 1 (2/100) (1/2) []
     tiled = named "[]=" $ smartBorders rt    
     mtiled = named "M[]=" $ smartBorders $ Mirror rt
-    rmtiled = named "RM[]=" $ noBorders $ reflectVert mtiled
+    rmtiled = named "RM[]=" $ smartBorders $ reflectVert mtiled
     full = named "[]" $ noBorders Full
     
     fsLayout = full ||| tiled
