@@ -214,9 +214,6 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
     , ("M5-d", safeSpawn "dropboxd" [])
     , ("M5-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
-    , ("M5-x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
-    , ("M5-S-x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
-    , ("M5-z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
 
     --launching
     , ("M-<Return>", spawnShell) --Launch shell in topic (1)
@@ -230,6 +227,9 @@ myKeys conf = mkKeymap conf $ [
     , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
     , ("M-a k", killAllOtherCopies) --Kill all copied windows (2)
     , ("M-a t", changeDir myXPConfig) --Change the dir of the topic (1)
+    , ("M-a z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
+    , ("M-a x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
+    , ("M-S-a x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     --navigation of windows/workspaces
     , ("M-q", toggleWS' ["NSP"]) --Toggle between workspaces (5)
     , ("M-w", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
