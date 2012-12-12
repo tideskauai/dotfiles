@@ -12,7 +12,7 @@
 /filter add names *,!irc.znc.im.*,!irc.im.* irc_366 *
 /filter add irc_clean * irc_470,irc_324,irc_328,irc_329,irc_333,irc_372,irc_376 *
 /filter add bitlbee irc.znc.im.&bitlbee,irc.im.&bitlbee irc_mode *
-/filter add noise * nick_phrik,nick_nathan28,nick_masterkorp,nick_rabbitear,nick_Nuked,nick_Aut0Exec,nick_CryptoNaut *
+/filter add noise * nick_phrik,nick_nathan28,nick_masterkorp,nick_rabbitear,nick_Nuked,nick_Aut0Exec *
 /set aspell.check.default_dict "en,es" 
 /set weechat.look.paste_bracketed on
 /set weechat.look.paste_max_lines 1
@@ -25,6 +25,7 @@
 /set weechat.look.window_separator_horizontal off
 /set weechat.bar.input.size 0
 /set weechat.bar.input.size_max 2
+/set weechat.look.mouse off
 # }}}
 
 # Keybinds/aliases {{{
@@ -115,7 +116,7 @@
 /set irc.server.fn.username "user"
 /set irc.server.fn.ssl "on"
 /set irc.server.fn.ssl_dhkey_size "1024"
-/set irc.server.fn.autojoin "#archlinux,#archlinux-offtopic,#weechat"
+/set irc.server.fn.autojoin "#archlinux,#archlinux-offtopic,##archlinux-otaku,#weechat"
 /set weechat.notify.irc.server.fn none
 
 /server add geekshed irc.geekshed.net
