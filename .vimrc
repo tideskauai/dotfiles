@@ -1,10 +1,10 @@
 " Notes: you are suggested to see
 "        http://vimdoc.sourceforge.net/htmldoc/options.html
 "        for more information.
-set nocompatible
-"Calling pathogen
-call pathogen#infect()
 
+set nocompatible
+"Call pathogen
+call pathogen#infect()
 colorscheme dc2
 syntax on
 set number
@@ -12,12 +12,27 @@ set cursorline
 "The VIM software has had several remote vulnerabilities
 "discovered within VIM's modeline support.
 set nomodeline
+"allows you to switch from an unsaved buffer without saving it first
+set hidden
+"completition
+set ofu=syntaxcomplete#Complete
+"keep attributes of original file
+set backupcopy=yes
+"store backups under ~/.vim/backup
+set backupdir=$HOME/.vim/backup
+"keep swap under ~/.vim/swap
+set directory=~/.vim/swap
+"disable beeps
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+      autocmd GUIEnter * set visualbell t_vb=
+endif
 
-"indentation
+" Indentation
+"-----------------------
 if has("autocmd")
     filetype plugin indent on
 endif
-"set cindent
 "how many spaces we want for tabs
 set tabstop=4
 "amount of whitespace to insert using
@@ -26,24 +41,6 @@ set shiftwidth=4
 set softtabstop=4
 "replace tabs for spaces
 set expandtab
-
-"allows you to switch from an unsaved buffer without saving it first
-set hidden
-
-"completition
-set ofu=syntaxcomplete#Complete
-
-"keep attributes of original file
-set backupcopy=yes
-"store backups under ~/.vim/backup
-set backupdir=$HOME/.vim/backup
-"keep swaps under ~/.vim/swap
-set directory=~/.vim/swap
-"disable beeps
-set noerrorbells visualbell t_vb=
-if has('autocmd')
-      autocmd GUIEnter * set visualbell t_vb=
-endif
 
 " Code folding
 "--------------------------
@@ -57,12 +54,14 @@ endif
 " Mail
 "--------------------------
 autocmd FileType mail,human set formatoptions+=t textwidth=72
+
 " Python stuff
 "--------------------------
 autocmd FileType python let python_highlight_all = 1
 autocmd FileType python let python_slow_sync = 1
 autocmd FileType python set expandtab shiftwidth=4 softtabstop=4
 autocmd FileType python set completeopt=preview
+autocmd FileType python setl nosmartindent
 
 " Binds
 "--------------------------

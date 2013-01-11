@@ -1,0 +1,24 @@
+# References {{{
+http://www.ibm.com/developerworks/linux/library/l-roadmap2/index.html
+# }}}
+# List of tools {{{
+lscpu
+# }}}
+# Notes related to general GNU/Linux system administration
+
+# Hard and symbolic links {{{
+A hard link can only reference files that are in the same file system. It provides
+a reference to the file's physical index (inode). Hard links do not break when you
+move the original file around because the hard links point to file's physical data
+rather than its location in the file structure. Users are not required to have access
+rights to the original file in order to use the link. If original file gets deleted,
+all hard links will become broken.
+
+A symlink, or symbolic link, points to the file's location in the file system. Symlinks
+can be in other file systems, and even point to files in a remote file system. The user
+is required to have access rights to the original file in order to access/use the symlink.
+If original file gets deleted, all symlinks become broken.
+
+By default "ln" will make a hard link. 
+To make symlinks, "ln -s" is required.
+# }}}

@@ -12,7 +12,7 @@ Install
 -------
 
 ````
-mkdir -p ~/.vim/{autoload,bundle,backup} && \
+mkdir -p ~/.vim/{autoload,bundle,backup,swap} && \
 cd ~/.vim/autoload && \
 wget https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
