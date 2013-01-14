@@ -11,11 +11,11 @@ usage ()
 
     alarm 1m 5m
     \tWill make alarm1 sound in 1 minute, and then, after 5 minutes
-    \talarm2 will sound. This runs and a loop 9999 times.
+    \talarm2 will sound. This runs a loop 9999 times.
 
     alarm kill
-    \tWill kill the script when it goes into the 9999 repetitions loop
-    \tafter using the alarm 1m 5m option."
+    \tWill kill the script when it finishes its loop of 9999 repetitions.
+    \tUse only after the \"alarm 1m 5m\" option."
 }
 
 
@@ -23,18 +23,14 @@ alarm()
 {
     d1=$1
     d2=$2
-
     while true; do
-
         sleep $d1 && mplayer -really-quiet ~/Archives/Audio/Alarms/monsterkill.mp3 \
             && sleep $d2 && mplayer -really-quiet ~/Archives/Audio/Alarms/ludicrouskill.mp3
-
     done
 }
 
 
 if (($# == 1)); then
-
     if [[ $1 = "kill" ]]; then
         pid=$(pgrep -f "$0 ")
         if [[ -n "$pid" ]]; then
@@ -43,26 +39,23 @@ if (($# == 1)); then
         else
             echo "script wasn't running"
         fi
-
-
+    # Case for when we're given only one argument, and the argument
+    # is a number followed by s, m, h, or d (seconds, minutes, hours, days)
     elif [[ $1 = *[smhd] ]]; then
         delay=$1
         sleep $delay && mplayer -loop 9999 \
             -really-quiet ~/Archives/Audio/Alarms/alert1.mp3
-
     else
         usage
     fi
 
 elif (($# == 2)); then
-
     if [[ $1 = "-v" ]]; then
         delay=$2
         sleep $delay && echo -e \\a
-
+    # Case for the "alarm 1m 5m" option
     elif [[ $1 = *[smhd] && $2 = *[smhd] ]]; then
         alarm $1 $2 &
-
     else
         usage
     fi
