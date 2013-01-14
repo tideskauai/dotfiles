@@ -74,4 +74,4 @@ search-highlight-colors black yellow bold
 highlight all "https?://[^ ]+" blue default
 highlight article "^(Feed|Title|Author|Link|Date):.+" black default
 highlight-article "link =~ \"reddit.com/r/programming\"" blue default
-highlight-article "link =~ \"reddit.com/r/(linuxquestions|techsnap|archlinux|opensource|linux4noobs|xmonad)/\"" color238 default
+highlight-article "link =~ \"reddit.com/r/(technology|linuxquestions|techsnap|archlinux|opensource|linux4noobs|xmonad)/\"" color238 default
