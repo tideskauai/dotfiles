@@ -109,6 +109,7 @@
 ### Server configs ###
 ######################
 # Server {{{
+/server del freenode
 /set weechat.network.gnutls_ca_file "/etc/ssl/certs/ca-certificates.crt"
 
 /server add fn chat.freenode.net/7000

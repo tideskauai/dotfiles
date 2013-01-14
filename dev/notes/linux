@@ -1,5 +1,14 @@
+# RHCSA {{{
+http://www.ibm.com/developerworks/linux/library/l-lpic1-v3-map/index.html#101-103
+http://www.ibm.com/developerworks/linux/tutorials/l-lpic2211/
+http://www.ibm.com/developerworks/linux/
+http://www.amazon.com/Hands--Guide-Red-Hat-Exams/dp/0321767950/
+ACLs, LUKS, SeLinux
+# }}}
+
 # References {{{
 http://www.ibm.com/developerworks/linux/library/l-roadmap2/index.html
+http://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/
 # }}}
 # List of tools {{{
 lscpu
@@ -21,4 +30,22 @@ If original file gets deleted, all symlinks become broken.
 
 By default "ln" will make a hard link. 
 To make symlinks, "ln -s" is required.
+# }}}
+# Networking {{{
+
+# iproute2 (replaces net-tools)
+1) ip link set eth0 up
+2) ip addr add 192.168.1.2/24 dev eth0
+3) ip route add default via 192.168.1.254
+# Depecrated net-tools
+1) ipconfig eth0 192.168.1.2 netmask 255.255.255.0 up
+2) route add default gw 192.168.1.254
+# iproute2 vs net-tools table
+
+    arp -> ip neighbor
+    ifconfig -> ip addr, ip link
+    iwconfig -> iw
+    netstat -> ss
+    route -> ip route
+
 # }}}

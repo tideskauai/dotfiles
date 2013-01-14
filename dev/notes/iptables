@@ -14,7 +14,7 @@ DROP:   Drops packets without further notice
 sudo iptables -nvL
 # List loaded iptables modules
 sudo cat /proc/net/ip_tables_matches
-# Redirects 123 to 124
+# Redirects port 123 to 124
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 123 -j REDIRECT --to-port 124
 # Redirects incoming packets to another host
 iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 8888 -j DNAT --to-destination 192.168.0.4:8888

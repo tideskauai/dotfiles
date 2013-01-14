@@ -1,44 +1,28 @@
-####################################
-## Trace and view network traffic ##
-####################################
-tcpdump -s 0 -w - port <port> | tcpdump -r - -A
-
-####################################
-## Reverse SSH                   ###
-####################################
+# Reverse SSH
 # (A) = Alice (B) = Ballmerpeak
 (A) ssh -f -N -R 65001:localhost:22 bpeak@bpeak-ip
 (B) ssh alice@localhost -p 8888
-
-# Kill tcp/udp ports {{{
+# Trace and view network traffic
+tcpdump -s 0 -w - port <port> | tcpdump -r - -A
+# Kill tcp/udp ports
 fuser -k <port>/tcp
 fuser -k <port>/udp
-# }}}
-
-# sshfs {{{
-sshfs user@192.168.1.103:/M1 .m1 
-thunar ~/.m1
-fusermount -u .m1
-# }}}
-
-# Enable connection manually {{{
-1) ip link set eth0 up
-2) ip addr add 192.168.1.2/24 dev eth0
-3) ip route add default via 192.168.1.254
-# }}}
+# Windows file sharing notes
+sudo mount -t cifs //ip/folder /mnt
+nbtscan 192.168.0.2-9
+smbtree
 
 # Disable touchpad
-    synclient TouchpadOff=1
-# Windows file sharing stuff
-    sudo mount -t cifs //ip/folder /mnt
-    nbtscan 192.168.0.2-9
-    smbtree
+synclient TouchpadOff=1
+
 # Send an email from command line
-    echo "Sending file" | mutt -a pleh.zip -s "attachment" recipientemail@gmail.com
+echo "Sending file" | mutt -a pleh.zip -s "attachment" recipientemail@gmail.com
+
 # Get output of command in English
-    LC_ALL=C <command>
+LC_ALL=C <command>
+
 # Find files larger than 1G in current dir
-    find . -type f -size +1G
+find . -type f -size +1G
 
 # Run the command inside <(...), connect the ouput to a temporary pipe file and
 # give that as an argument
