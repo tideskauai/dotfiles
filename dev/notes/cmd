@@ -46,5 +46,5 @@ find . -type f -size +1G
 # give that as an argument
 vimdiff -R <(command1) <(command2)
 
-# Specify date and time
+# Set date and time
 timedatectl set-time "2013-01-09 18:55:00"
