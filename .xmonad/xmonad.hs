@@ -218,6 +218,7 @@ myKeys conf = mkKeymap conf $ [
     --launching
     , ("M-<Return>", spawnShell) --Launch shell in topic (1)
     , ("M-f", safeSpawn "firefox" [])
+    , ("M-S-f", safeSpawn "firefox" ["-p"])
     , ("M-p", shellPrompt myXPConfig)
     --search the web
     , ("M-s", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
