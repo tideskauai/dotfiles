@@ -8,14 +8,14 @@ if (($# == 1)) && [[ $1 = *[smhd] ]]; then
 elif (($# == 1)) && [[ $1 = "-r" ]]; then
     xset s on && xset +dpms
 
-elif (($# == 2)) && [[ $1 = "-s" ]] && [[ $2 = *[smhd] ]]; then
-    xset s off && xset -dpms && sleep "$1" || xset s on && xset +dpms
-    pwrman suspend
-    xlock -mode blank >/dev/null 2>&1
+elif (($# == 2)) && [[ $1 = "-p" ]] && [[ $2 = *[smhd] ]]; then
+    # The output of "loginctl show-session $XDG_SESSION_ID" should say
+    # Remote=no and Active=yes for the following command to work properly
+    xset s off && xset -dpms && sleep "$2" && systemctl poweroff
 
 else
     printf "Use h for hours, m for minutes, and s for seconds.\n\n \
         $script_name 1h \tTo turn off power saving for one hour. \n \
-        $script_name -s 1h \tTo turn off power saving for one hour, then suspend computer.\n \
+        $script_name -p 1h \tTo turn off power saving for one hour, then poweroff computer.\n \
         $script_name -r \tRestores power savings to normal state.\n"
 fi
