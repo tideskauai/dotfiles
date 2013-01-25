@@ -34,23 +34,23 @@ backup_my_files ()
         case "$i" in
             ~/Archives)
                 printf "\n#### Backing up $i ####\n"
-                symlink_backup_workaround $i
+                symlink_backup_workaround "$i"
                 rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
             ~/dev)
                 printf "\n#### Backing up $i ####\n"
-                symlink_backup_workaround $i
+                symlink_backup_workaround "$i"
                 rdiff-backup --force --remove-older-than 2Y "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 rdiff-backup --list-increments "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
             ~/VMs)
                 printf "\n#### Backing up $i ####\n"
-                symlink_backup_workaround $i
+                symlink_backup_workaround "$i"
                 rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
             *)
                 printf "\n#### Backing up $i ####\n"
-                symlink_backup_workaround $i
+                symlink_backup_workaround "$i"
                 rdiff-backup --force --remove-older-than 1M "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
         esac
