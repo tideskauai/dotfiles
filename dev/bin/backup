@@ -23,7 +23,9 @@ usage ()
         $script_name --internalhdd (-i) \tTo sync files with internal hdd.\n \
         $script_name --externalhdd (-e) \tTo sync files with external hdd.\n \
         $script_name --etc          \t\tTo sync /etc files to \$back_up_dir/etc.\n \
-        $script_name \$filename \t\tTo backup single file to \$back_up_dir.\n"
+        $script_name \$filename \t\tTo backup single file to \$back_up_dir.\n\n \
+        To restore a backup use: \n \
+        rdiff-backup --restore-as-of now \$backed_up_dir \$local_dir\n"
 }
 
 backup_my_files ()
