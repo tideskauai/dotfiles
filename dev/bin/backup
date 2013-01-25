@@ -34,27 +34,45 @@ backup_my_files ()
         case "$i" in
             ~/Archives)
                 printf "\n#### Backing up $i ####\n"
-                rdiff-backup -v3 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                symlink_backup_workaround $i
                 rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
             ~/dev)
                 printf "\n#### Backing up $i ####\n"
-                rdiff-backup -v3 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                symlink_backup_workaround $i
                 rdiff-backup --force --remove-older-than 2Y "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 rdiff-backup --list-increments "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
             ~/VMs)
                 printf "\n#### Backing up $i ####\n"
-                rdiff-backup -v2 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                symlink_backup_workaround $i
                 rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
             *)
                 printf "\n#### Backing up $i ####\n"
-                rdiff-backup -v3 --print-statistics "$i" "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                symlink_backup_workaround $i
                 rdiff-backup --force --remove-older-than 1M "$back_up_internalhdd"/backup/rdiff-backup/"$i"
                 ;;
         esac
     done
+}
+
+symlink_backup_workaround ()
+{
+    # rdiff-backup will return "fatal error source is not a directory" if the directory we're backing up
+    # is a symlink, so we will work around this issue by moving to the directory if it's a symlink and
+    # backing up everything that's inside the dir.
+    # source: http://old.nabble.com/Fatal-Error:-Source-is-not-a-directory-td23145518.html
+    if [ -h $1 ]; then
+        # Redirect STDOUT to /dev/null
+        pushd $(pwd) > /dev/null
+        cd "$1"
+        rdiff-backup -v3 --print-statistics . "$back_up_internalhdd"/backup/rdiff-backup/"$1"
+        # Redirect STDOUT to /dev/null
+        popd > /dev/null
+    else
+        rdiff-backup -v2 --print-statistics "$1" "$back_up_internalhdd"/backup/rdiff-backup/"$1"
+    fi
 }
 
 # Print help if incorrect number of arguments are given
