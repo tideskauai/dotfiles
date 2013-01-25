@@ -210,7 +210,6 @@ myKeys conf = mkKeymap conf $ [
     , ("M5-b d", safeSpawn "dwb" [])
     , ("M5-f", safeSpawn "pcmanfm" [])
     , ("M5-v", safeSpawn "VirtualBox" [])
-    , ("M5-w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
     , ("M5-d", safeSpawn "dropboxd" [])
     , ("M5-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
@@ -218,7 +217,9 @@ myKeys conf = mkKeymap conf $ [
     --launching
     , ("M-<Return>", spawnShell) --Launch shell in topic (1)
     , ("M-f", safeSpawn "firefox" [])
-    , ("M-S-f", safeSpawn "firefox" ["-p"])
+    , ("M-S-f 0", safeSpawn "firefox" ["-p"])
+    , ("M-S-f 1", safeSpawn "firefox" ["-p", "Primary"])
+    , ("M-S-f 2", safeSpawn "firefox" ["-p", "Secundary"])
     , ("M-p", shellPrompt myXPConfig)
     --search the web
     , ("M-s", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
@@ -229,6 +230,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M-a k", killAllOtherCopies) --Kill all copied windows (2)
     , ("M-a t", changeDir myXPConfig) --Change the dir of the topic (1)
     , ("M-a z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
+    , ("M-a w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M-a x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
     , ("M-S-a x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     --navigation of windows/workspaces
