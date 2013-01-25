@@ -5,10 +5,6 @@
 set nocompatible
 "Call pathogen
 call pathogen#infect()
-colorscheme dc2
-syntax on
-set number
-set cursorline
 "The VIM software has had several remote vulnerabilities
 "discovered within VIM's modeline support.
 set nomodeline
@@ -27,6 +23,20 @@ set noerrorbells visualbell t_vb=
 if has('autocmd')
       autocmd GUIEnter * set visualbell t_vb=
 endif
+
+" Theme settings
+"-----------------------
+"Highlight unwanted spaces
+autocmd colorscheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+"Set colorscheme
+set t_Co=256
+colorscheme dc2
+syntax on
+set number
+set cursorline
+" set colorcolumn=80
+" highlight colorcolumn ctermbg=233
 
 " Indentation
 "-----------------------
