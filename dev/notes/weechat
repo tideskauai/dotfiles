@@ -30,6 +30,7 @@
 
 # Keybinds/aliases {{{
 /key unbind meta-m
+/key unbind meta-s
 /key unbind meta-=
 /key unbind meta-x
 /key unbind ctrl-J
@@ -37,7 +38,6 @@
 /key unbind ctrl-P
 /key unbind meta2-15~
 /key unbind meta2-17~
-/key bind meta-c /aspell toggle
 /key bind meta-` /buffer close
 /key bind meta-= /filter toggle noise
 /key bind meta2-15~ /input zoom_merged_buffer
@@ -113,12 +113,24 @@
 /set weechat.network.gnutls_ca_file "/etc/ssl/certs/ca-certificates.crt"
 
 /server add fn chat.freenode.net/7000
-/set irc.server.fn.nicks "ldvx,|dvx"
+/set irc.server.fn.nicks ""
 /set irc.server.fn.username "user"
 /set irc.server.fn.ssl "on"
 /set irc.server.fn.ssl_dhkey_size "1024"
-/set irc.server.fn.autojoin "#archlinux,#archlinux-offtopic,##archlinux-otaku,#weechat"
+/set irc.server.fn.autojoin ""
+/set irc.server.fn.sasl_username ""
+/set irc.server.fn.sasl_password ""
 /set weechat.notify.irc.server.fn none
+
+/server add fn2 chat.freenode.net/7000
+/set irc.server.fn2.nicks ""
+/set irc.server.fn2.username "user"
+/set irc.server.fn2.ssl "on"
+/set irc.server.fn2.ssl_dhkey_size "1024"
+/set irc.server.fn2.autojoin ""
+/set irc.server.fn2.sasl_username ""
+/set irc.server.fn2.sasl_password ""
+/set weechat.notify.irc.server.fn2 none
 
 /server add geekshed irc.geekshed.net
 /set irc.server.geekshed.autojoin "#jupiterbroadcasting"
@@ -129,7 +141,7 @@
 /set irc.server.im.username "IM"
 
 /server add znc.fn 192.168.0.5/1122
-/set irc.server.znc.fn.nicks "ldvx,|dvx"
+/set irc.server.znc.fn.nicks ""
 /set irc.server.znc.fn.username "fn"
 /set irc.server.znc.fn.ssl "on"
 /set irc.server.znc.fn.ssl_cert "znc.pem"
@@ -154,7 +166,7 @@
 /set plugins.var.python.colorize_nicks.ignore_tags "irc_join,irc_quit,irc_part"
 /set plugins.var.python.colorize_nicks.greedy_matching "off"
 /set plugins.var.python.text_replace.replacement_pairs "celsius=°C,btw=by the way,[tm]=™,[r]=®"
-/set plugins.var.python.text_replace.replacement_words "brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,asap=as soon as possible,:p=,:P=,<-=←,->=→"
+/set plugins.var.python.text_replace.replacement_words "brb=be right back,bbl=be back later,ty=thank you,yw=you are welcome,ttyl=talk to you later,imo=in my opinion,iirc=if I remember correctly,afaik=as far as I know,idk=I don't know,nvm=nevermind,asap=as soon as possible,sth=something,ppl=people,:p=,:P=,<-=←,->=→"
 /set plugins.var.perl.colorize_lines.own_lines on
 /set plugins.var.perl.colorize_lines.nicks "*.phrik,*.falconindy,*.MrElendig,*.Mion,*.thestinger,*.Zhivago,*.FlashCode,*.weebot,*.vodik,*.tasidus,jb.Allan"
 /set plugins.var.perl.colorize_lines.highlight off
