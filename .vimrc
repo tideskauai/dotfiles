@@ -28,6 +28,7 @@ endif
 "-----------------------
 "Highlight unwanted spaces
 autocmd colorscheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhitespace /\s\+$/
 "Set colorscheme
 set t_Co=256
