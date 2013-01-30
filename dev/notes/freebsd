@@ -1,6 +1,7 @@
 #####################################
 ### FreeBSD notes                 ###
 #####################################
+# Note: Learn pkgng instead of pkg_add
 # Package system:
     - pkg_add -r $package
     - pkg_delete $package
@@ -10,7 +11,7 @@
     - pkg_info -W $file
 # List all installed packages
     - pkg_info
-# Check for updates: 
+# Check for updates:
     - pkg_version -vl '<'
 # Check for dependencies and delete those
 # not needed
@@ -18,7 +19,7 @@
 # Update FBSD components
     - freebsd-update
 
-# Ports: 
+# Ports:
     - whereis $package
     - cd /usr/ports/whatever
     - make install clean

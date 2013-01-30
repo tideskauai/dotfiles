@@ -12,8 +12,8 @@
 /filter add names *,!irc.znc.im.*,!irc.im.* irc_366 *
 /filter add irc_clean * irc_470,irc_324,irc_328,irc_329,irc_333,irc_372,irc_376 *
 /filter add bitlbee irc.znc.im.&bitlbee,irc.im.&bitlbee irc_mode *
-/filter add noise * nick_phrik,nick_nathan28,nick_rabbitear,nick_Nuked,nick_Aut0Exec,nick_scj *
-/set aspell.check.default_dict "en,es" 
+/filter add noise * nick_phrik,nick_nathan28,nick_rabbitear_sdf,nick_Nuked,nick_Aut0Exec,nick_scj *
+/set aspell.check.default_dict "en,es"
 /set weechat.look.paste_bracketed on
 /set weechat.look.paste_max_lines 1
 /set irc.ctcp.version = ""
