@@ -1,7 +1,4 @@
-####################################
-###### Plug-ins               ######
-####################################
-# {{{
+# Plug-ins {{{
 :Gist -p (private pastes)
 :Gist -l (list my gists)
 :Gist -a (post as anonymous)
@@ -16,43 +13,41 @@
 ####################################
 ###### Vim commands           ######
 ####################################
-- delete all lines containing text pattern
-    :g/text pattern/d 
-- delete all blank lines
-    :g/^\s*$/d 
-- replace all instances of string1 with string2
+# Delete all lines containing text pattern
+    :g/text pattern/d
+# Delete all blank lines
+    :g/^\s*$/d
+# Replace all instances of string1 with string2
     :%s/string1/string2/gc
-- change delimeter to avoid having to escape
+# Change delimeter to avoid having to escape
     :%s,/old_word/,new_word,gc
-- insert a blank line every 5 lines
-    :%s/\v(.*\n){5}/&\r 
-- save file if root permissions are required
-    :w !sudo tee % 
-- to edit a file
+# Insert a blank line every 5 lines
+    :%s/\v(.*\n){5}/&\r
+# Save file if root permissions are required
+    :w !sudo tee %
+# To edit a file
     :e <filename>
-- to close other windows
+# To close other windows
     :only
 
 ####################################
 ###### Vim keybings           ######
 ####################################
-- Go back and forth to misspelled words
-    [s 
-    ]s 
-
-- Completition
+# Go back and forth to misspelled words
+    [s
+    ]s
+# Completition
     ctrl+n:         insert the next matching word
     ctrl+p:         insert the previous matching word
     ctrl+x ctrl+l:  line completition
     ctrl+x ctrl+o:  omni completition
     ctrl+x ctrl+n:  keyword local completition (beginning)
     ctrl+x ctrl+p:  keyword local completition (ending)
-
-- To unfold
+# To unfold
     zi:     Unfold
     zc:     Fold
     za:     Toggle
-- To fix text wrapping
+# To fix text wrapping
     qqip
-    
+
 Check plugin-ins: a.vim, vim-conque

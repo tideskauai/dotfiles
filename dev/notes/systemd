@@ -1,4 +1,7 @@
-# Commands I run after fresh installation
+# Resources {{{
+http://0pointer.de/blog/projects/socket-activated-containers.html
+# }}}
+# Commands I run after fresh installation {{{
 # network settings {{{
 # In /etc/conf.d/network
     interface=eth0
@@ -33,6 +36,7 @@ sudo systemctl enable bitlbee.socket
 sudo systemctl mask ctrl-alt-del.target
 sudo systemctl enable lvm
 sudo systemctl enable chrony.service
+# }}}
 
 # Enable a service
 sudo systemctl enable <unit>
@@ -64,6 +68,5 @@ journalctl /path/to/executable
 # Misc
 systemd-analyze
 systemd-analyze blame
-loginctl
-loginctl show-session <session_number>
+loginctl show-session $XDG_SESSION_ID
 # systemctl enable systemd-readahead-collect.service systemd-readahead-replay.service
