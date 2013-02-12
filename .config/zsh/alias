@@ -6,7 +6,7 @@ alias -s xz='tar -Jxf'
 alias -g L='| less'
 
 alias cdcs='cd ~/Archives/eLearn'
-alias cdnotes='cd ~/dev/notes'
+alias cdnotes='cd ~/dev/notes && git status'
 alias cd.dot='cd ~/.dotfiles && git status'
 alias cdpodcasts='cd ~/Archives/Audio/Podcasts'
 
