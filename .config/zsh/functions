@@ -20,14 +20,6 @@ share() {
     fi
 }
 
-JB() {
-    for i in {0..50}
-    do
-        mplayer http://jblive.fm
-        sleep 1
-    done
-}
-
 notes() {
     if (($# > 1 )); then
         echo "Invalid number of arguments were given"
@@ -40,6 +32,7 @@ notes() {
         echo "Write notes -o to output notes"
     fi
 }
+
 rss() {
     if (($# > 1 )); then
         echo "Invalid number of arguments were given"
@@ -54,6 +47,7 @@ rss() {
         echo "Write rss -w to launch newsbeuter with weekly based feeds"
     fi
 }
+
 sudo() {
     old=$(umask)
     # 775 dirs / 664 files
