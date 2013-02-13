@@ -4,12 +4,6 @@ alias -s gz='tar -xzvf'
 alias -s bz2='tar -xjvf'
 alias -s xz='tar -Jxf'
 alias -g L='| less'
-
-alias cdcs='cd ~/Archives/eLearn'
-alias cdnotes='cd ~/dev/notes && git status'
-alias cd.dot='cd ~/.dotfiles && git status'
-alias cdpodcasts='cd ~/Archives/Audio/Podcasts'
-
 alias ls='ls -FNh --tabsize=0 --color=auto --show-control-chars --group-directories-first'
 alias ls-l='ls -lha'
 alias ls-d='ls -lhrt'
@@ -19,3 +13,8 @@ alias du='du -h'
 alias diff='colordiff'
 alias pacu="sudo pacman -Syu"
 alias myip="curl ifconfig.me/ip"
+
+alias cdcs='cd ~/Archives/eLearn'
+alias cdnotes='cd ~/dev/notes'
+alias cd.dot='cd ~/.dotfiles'
+alias cdpodcasts='cd ~/Archives/Audio/Podcasts'

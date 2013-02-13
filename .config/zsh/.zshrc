@@ -1,8 +1,9 @@
 #------------------------------
 # Completition
 #------------------------------
-# Add custom completition scripts
-fpath=($XDG_CONFIG_HOME/zsh/autocompletitions $fpath)
+# Add custom completition and git scripts
+fpath=($XDG_CONFIG_HOME/zsh/autocompletitions $XDG_CONFIG_HOME/zsh/functions $fpath)
+autoload -U $XDG_CONFIG_HOME/zsh/functions/*(:t)
 source $XDG_CONFIG_HOME/zsh/completition
 
 #-----------------------------
@@ -16,7 +17,7 @@ export LS_COLORS
 #------------------------------
 stty -ixon #disables ctrl+q and ctrl+s for pause&unpause
 bindkey -e
-bindkey ' ' magic-space # also do history expansion on space     
+bindkey ' ' magic-space # also do history expansion on space
 bindkey "^[[3~" delete-char
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
@@ -52,15 +53,18 @@ setopt noclobber            # Requires >! to overwrite existing files
 # Don't store commands with sudo or cd in the history
 function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
 
-# Load function and alias files
-source $XDG_CONFIG_HOME/zsh/alias
-source $XDG_CONFIG_HOME/zsh/functions
+# Source functions and alias files if our hostname
+# is 0xbeef
+if [[ $HOST == "0xbeef" ]]; then
+    source $XDG_CONFIG_HOME/zsh/alias-0xbeef
+    source $XDG_CONFIG_HOME/zsh/functions-0xbeef
+fi
 
 #------------------------------
 # Window title
 #------------------------------
 if [[ $TERM = rxvt* ]]; then
-    precmd () { print -Pn "\e]0;%n@%M [%~]\a" } 
+    precmd () { print -Pn "\e]0;%n@%M [%~]\a" }
     preexec () { print -Pn "\e]0;%n@%M [%~] ($1)\a" }
 fi
 
@@ -69,13 +73,14 @@ fi
 #------------------------------
 # set up colors
 autoload -U colors && colors
+# Allow for functions in the prompt
 setopt prompt_subst
 
 for COLOR in RED GREEN YELLOW WHITE BLACK CYAN BLUE PURPLE; do
     eval PR_$COLOR='%{$fg[${(L)COLOR}]%}'
     eval PR_BRIGHT_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
-done 
-PR_RESET="%{${reset_color}%}"; 
+done
+PR_RESET="%{${reset_color}%}";
 
 precmd(){
 
@@ -87,5 +92,17 @@ precmd(){
     fi
 }
 
+
+# Source of git prompt code:
+# http://sebastiancelis.com/2009/11/16/zsh-prompt-git-users/
+# Enable auto-execution of functions.
+typeset -ga preexec_functions
+typeset -ga precmd_functions
+typeset -ga chpwd_functions
+# Append git functions needed for prompt.
+preexec_functions+='preexec_update_git_vars'
+precmd_functions+='precmd_update_git_vars'
+chpwd_functions+='chpwd_update_git_vars'
+
 PROMPT='%F{green}%n%F{blue} in [${PR_PWDCOLOR}%~$PR_RESET%F{blue}] %F{red}→$PR_RESET '
-RPROMPT='%F{black}[%T]$PR_RESET'
+RPROMPT='$(prompt_git_info)$PR_RESET %F{black}[%T]$PR_RESET'
