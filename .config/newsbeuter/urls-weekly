@@ -1,8 +1,11 @@
 http://feeds2.feedburner.com/braingle/all fun
+http://aprenderingles-sila.com/feed/ fun
 http://gdata.youtube.com/feeds/base/users/newegg/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile fun
 http://gdata.youtube.com/feeds/base/users/minutephysics/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile fun
-http://feeds2.feedburner.com/JupiterBroadcasting fun
-http://hackerpublicradio.org/hpr_rss.php fun
+
+http://feeds2.feedburner.com/JupiterBroadcasting podcast
+http://hackerpublicradio.org/hpr_rss.php podcast
+http://hak5.org/category/episodes/feed podcast
 
 http://www.feedrinse.com/services/channel/?chanurl=c0db9795c12e142029a3d98109b9a5e4 courses
 
@@ -35,7 +38,4 @@ http://feeds2.feedburner.com/ElTamiz science
 http://www.lapizarradeyuri.com/feed/ science
 
 http://serverfault.com/feeds/featured admin
-
-http://gallir.wordpress.com/feed/ misc
-
-http://aprenderingles-sila.com/feed/ learn
+http://gallir.wordpress.com/feed/ admin programming CS
