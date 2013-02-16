@@ -79,7 +79,7 @@ myConfig = defaultConfig { focusFollowsMouse = False
                            , workspaces    = myWorkspaces
                            , modMask       = myModMask
                            , borderWidth   = myBorderWidth
-                           , normalBorderColor = colorNormalBorder 
+                           , normalBorderColor = colorNormalBorder
                            , focusedBorderColor = colorFocusedBorder
                            , keys = myKeys
                            , layoutHook = myLayout
@@ -157,11 +157,11 @@ customLayout =  onWorkspace "web" fsLayout $
     standardLayouts = tiled ||| Mirror tiled ||| full
 
     rt = ResizableTall 1 (2/100) (1/2) []
-    tiled = named "[]=" $ smartBorders rt    
+    tiled = named "[]=" $ smartBorders rt
     mtiled = named "M[]=" $ smartBorders $ Mirror rt
     rmtiled = named "RM[]=" $ smartBorders $ reflectVert mtiled
     full = named "[]" $ noBorders Full
-    
+
     fsLayout = full ||| tiled
     imLayout = rmtiled ||| full
     devLayout = full ||| rmtiled
@@ -202,18 +202,17 @@ myKeys conf = mkKeymap conf $ [
     , ("<XF86AudioStop>", safeSpawn "ncmpcpp" ["stop"])
     , ("<XF86AudioNext>", safeSpawn "ncmpcpp" ["next"])
     , ("<XF86AudioPrev>", safeSpawn "ncmpcpp" ["prev"])
-    --Making right windows key useful.
-    --Editing of ~/.xmodmap required
-    --Launch a scratchpad
-    , ("M5-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
-    , ("M5-b c", safeSpawn "chromium" ["--incognito"])
-    , ("M5-b d", safeSpawn "dwb" [])
-    , ("M5-f", safeSpawn "pcmanfm" [])
-    , ("M5-v", safeSpawn "VirtualBox" [])
-    , ("M5-t", safeSpawn "osmo" [] >> safeSpawn "hamster-time-tracker" [])
-    , ("M5-d", safeSpawn "dropboxd" [])
-    , ("M5-l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
-
+    --actions/launching
+    , ("M-a p", safeSpawn "pcmanfm" [])
+    , ("M-a f", focusUrgent) --Go to urgent window
+    , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
+    , ("M-a k", killAllOtherCopies) --Kill all copied windows (2)
+    , ("M-a t", changeDir myXPConfig) --Change the dir of the topic (1)
+    , ("M-a z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
+    , ("M-a w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
+    , ("M-a l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
+    , ("M-a x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
+    , ("M-S-a x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     --launching
     , ("M-<Return>", spawnShell) --Launch shell in topic (1)
     , ("M-f", safeSpawn "firefox" [])
@@ -225,15 +224,6 @@ myKeys conf = mkKeymap conf $ [
     --search the web
     , ("M-s", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
     , ("M-S-s", SM.submap $ searchEngineMap $ S.selectSearch)
-    --actions
-    , ("M-a f", focusUrgent) --Go to urgent window
-    , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
-    , ("M-a k", killAllOtherCopies) --Kill all copied windows (2)
-    , ("M-a t", changeDir myXPConfig) --Change the dir of the topic (1)
-    , ("M-a z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
-    , ("M-a w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
-    , ("M-a x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
-    , ("M-S-a x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     --navigation of windows/workspaces
     , ("M-q", toggleWS' ["NSP"]) --Toggle between workspaces (5)
     , ("M-w", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
@@ -261,6 +251,11 @@ myKeys conf = mkKeymap conf $ [
     , ("M-S-e", io (exitWith ExitSuccess)) --Exit X
     , ("M-S-r", restart "xmonad" True) --Restart WM
     , ("M-S-o", safeSpawn "systemctl" ["poweroff"]) --Turn off computer
+
+    --Making right windows key useful.
+    --Editing of ~/.xmodmap required
+    --Launch a scratchpad
+    , ("M5-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     ]
     -- mod-[1..9],          Switch to workspace N
     -- mod-shift-[1..9],    Move client to workspace N
