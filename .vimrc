@@ -91,6 +91,7 @@ map <leader>2 "+p
 nmap <leader>l :set list!<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>f :ls<CR>:b<space>
+nnoremap <leader>s :set nospell!<CR>
 
 " Invisible chars
 "--------------------------
