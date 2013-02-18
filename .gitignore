@@ -17,10 +17,6 @@
 .vim/swap
 .vim/bundle
 
-.mutt/*
-!.mutt/colors.muttrc
-!.mutt/muttrc
-
 .xmonad/*
 !.xmonad/xmonad.hs
 !.xmonad/lib
@@ -42,3 +38,8 @@
 !.config/zsh
 !.config/i3
 !.config/youtube-viewer
+
+!.config/mutt
+.config/mutt/*
+!.config/mutt/muttrc
+!.config/mutt/colors.muttrc

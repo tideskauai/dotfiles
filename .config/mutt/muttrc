@@ -1,14 +1,14 @@
 # [passwd]
-source "gpg2 -dq ~/.mutt/my-pwds.gpg |"
+source "gpg2 -dq $XDG_CONFIG_HOME/mutt/my-pwds.gpg |"
 # [colors]
-source ~/.mutt/colors.muttrc
+source $XDG_CONFIG_HOME/mutt/colors.muttrc
 
 # [external]
 set editor="vim -c \"set spell spelllang=en,es\""
 set ispell = "aspell -e -c" # use aspell as ispell
 
 # [Gmail]
-source ~/.mutt/gmail
+source $XDG_CONFIG_HOME/mutt/gmail
 #set from = ""
 #set realname = ""
 #set imap_user = ""
@@ -77,7 +77,7 @@ bind pager G bottom
 
 bind index D delete-message
 bind index Q quit
-bind index k previous-thread    # In index, go to prev thread 
+bind index k previous-thread    # In index, go to prev thread
 bind index j next-thread        # In index, go to next thread
 bind index K previous-unread
 bind index J next-unread

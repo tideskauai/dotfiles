@@ -49,15 +49,12 @@ setopt noclobber            # Requires >! to overwrite existing files
 #------------------------------
 # Misc
 #------------------------------
-
-# Don't store commands with sudo or cd in the history
-function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
-
-# Source functions and alias files if our hostname
-# is 0xbeef
 if [[ $HOST == "0xbeef" ]]; then
+    # Source functions and alias files if our hostname is 0xbeef
     source $XDG_CONFIG_HOME/zsh/alias-0xbeef
     source $XDG_CONFIG_HOME/zsh/functions-0xbeef
+    # Don't store commands with sudo or cd in the history
+    function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
 fi
 
 #------------------------------
@@ -91,7 +88,6 @@ precmd(){
         PR_PWDCOLOR="${PR_BRIGHT_RED}"
     fi
 }
-
 
 # Source of git prompt code:
 # http://sebastiancelis.com/2009/11/16/zsh-prompt-git-users/
