@@ -33,6 +33,7 @@ set message_cachedir =~/.cache/mutt/bodies
 set certificate_file =$XDG_CONFIG_HOME/mutt/certificates
 set imap_keepalive = 300
 set mail_check = 120
+set timeout = 30
 set beep_new            # bell on new mail
 set move = no           # stop asking to move read messages to mbox
 set sort = 'threads'    # sort by threads
