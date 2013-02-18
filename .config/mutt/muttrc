@@ -1,6 +1,5 @@
-# [passwd]
+# [passwd and colors]
 source "gpg2 -dq $XDG_CONFIG_HOME/mutt/my-pwds.gpg |"
-# [colors]
 source $XDG_CONFIG_HOME/mutt/colors.muttrc
 
 # [external]
@@ -29,9 +28,9 @@ set folder = "imaps://imap.gmail.com:993"
 set record="/dev/null" # where to save sent messages
 set spoolfile = "+INBOX"
 set postponed ="+[Gmail]/Drafts"
-set header_cache =~/.mutt/cache/headers
-set message_cachedir =~/.mutt/cache/bodies
-set certificate_file =~/.mutt/certificates
+set header_cache =~/.cache/mutt/headers
+set message_cachedir =~/.cache/mutt/bodies
+set certificate_file =$XDG_CONFIG_HOME/mutt/certificates
 set imap_keepalive = 300
 set mail_check = 120
 set beep_new            # bell on new mail
