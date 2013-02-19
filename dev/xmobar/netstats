@@ -1,7 +1,14 @@
 #!/bin/bash
+shopt -s extglob
 
-received=$(cat /sys/class/net/eth0/statistics/rx_bytes)
-transferred=$(cat /sys/class/net/eth0/statistics/tx_bytes)
+net_interfaces=(/sys/class/net/!(lo))
 
-echo -n "<fc=#5d7caf>$(( $received/1024/1024 )) </fc>MB "
-echo "<fc=#FBA4A8>$(( $transferred/1024/1024 )) </fc>MB"
+for i in $net_interfaces; do
+    received=$(cat $i/statistics/rx_bytes)
+    transferred=$(cat $i/statistics/tx_bytes)
+
+    # The ${i##*/} is for substring removal.
+    # I.e. eth0 instead of /sys/class/net/eth0
+    echo -n "${i##*/}:<fc=#5d7caf> $(( $received/1024/1024 )) </fc>MiB"
+    echo "<fc=#FBA4A8> $(( $transferred/1024/1024 )) </fc>MiB"
+done
