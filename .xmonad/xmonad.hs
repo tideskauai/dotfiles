@@ -148,13 +148,13 @@ myWorkspaces = [ "web", "im", "dev", "doc", "5", "6", "7", "8", "9", "NSP"]
 myLayout = customLayout
 customLayout =  onWorkspace "web" fsLayout $
                 onWorkspace "im" imLayout $
-                onWorkspace "dev" devLayout $
+                onWorkspace "dev" fsLayout $
                 onWorkspace "doc" fsLayout $
                 onWorkspace "8" fsLayout $
                 onWorkspace "9" fsLayout $
                 standardLayouts
     where
-    standardLayouts = tiled ||| Mirror tiled ||| full
+    standardLayouts = tiled ||| mtiled ||| full
 
     rt = ResizableTall 1 (2/100) (1/2) []
     tiled = named "[]=" $ smartBorders rt
@@ -164,7 +164,6 @@ customLayout =  onWorkspace "web" fsLayout $
 
     fsLayout = full ||| tiled
     imLayout = rmtiled ||| full
-    devLayout = full ||| rmtiled
 
 --prompt theme
 myXPConfig = defaultXPConfig {  font = "terminus"
