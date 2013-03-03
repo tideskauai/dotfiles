@@ -24,10 +24,15 @@ export GZIP=-9 \
   XZ_OPT=-9
 
 # Set location of gtk2 gtkrc (also needed for Qt's gtk style)
-export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
+export GTK2_RC_FILES=$HOME/.config/gtk-2.0/gtkrc
 
 # Set location for kde4 files
-export KDEHOME=$XDG_CONFIG_HOME/kde4
+export KDEHOME=$HOME/.config/kde4
 
 # For the interactive python interpreter
-export PYTHONSTARTUP=$XDG_CONFIG_HOME/pystartup
+export PYTHONSTARTUP=$HOME/.config/pystartup
+
+# Temporary XDG fix
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-"$HOME/.config"}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-"$HOME/.local/share"}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-"$HOME/.cache"}

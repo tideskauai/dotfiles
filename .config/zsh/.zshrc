@@ -2,9 +2,9 @@
 # Completition
 #------------------------------
 # Add custom completition and git scripts
-fpath=($XDG_CONFIG_HOME/zsh/autocompletitions $XDG_CONFIG_HOME/zsh/functions $fpath)
-autoload -U $XDG_CONFIG_HOME/zsh/functions/*(:t)
-source $XDG_CONFIG_HOME/zsh/completition
+fpath=($HOME/.config/zsh/autocompletitions $HOME/.config/zsh/functions $fpath)
+autoload -U $HOME/.config/zsh/functions/*(:t)
+source $HOME/.config/zsh/completition
 
 #-----------------------------
 # Dircolors
@@ -51,8 +51,8 @@ setopt noclobber            # Requires >! to overwrite existing files
 #------------------------------
 if [[ $HOST == "0xbeef" ]]; then
     # Source functions and alias files if our hostname is 0xbeef
-    source $XDG_CONFIG_HOME/zsh/alias-0xbeef
-    source $XDG_CONFIG_HOME/zsh/functions-0xbeef
+    source $HOME/.config/zsh/alias-0xbeef
+    source $HOME/.config/zsh/functions-0xbeef
     # Don't store commands with sudo or cd in the history
     function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
 fi
