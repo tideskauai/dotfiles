@@ -1,4 +1,4 @@
-! Last updated : Sun Feb 24 2013 06:52:50 GMT-0500 (EST)
+! Last updated : Mon Feb 25 2013 23:15:25 GMT-0500 (EST)
 &ad_box_
 &ad_channel=
 &ad_classid=
@@ -1327,6 +1327,7 @@
 /banners/ads-
 /banners/adv_
 /banners/affiliate/*
+/banners/googlebanner
 /banners/promo/*
 /banners_rotation.
 /bannerscript/*
@@ -6211,6 +6212,7 @@ _a468x60.
 ##.ad-update
 ##.ad-vert
 ##.ad-vtu
+##.ad-wide
 ##.ad-widget-list
 ##.ad-with-us
 ##.ad-zone
@@ -6763,6 +6765,7 @@ _a468x60.
 ##.ads_320
 ##.ads_337x280
 ##.ads_3col
+##.ads_728
 ##.ads_728x90
 ##.ads_amazon
 ##.ads_amazon_outer
@@ -8908,7 +8911,7 @@ _a468x60.
 ~kizi.com,~playedonline.com###PreRollAd
 ~isource.com###TopAd
 ~fropper.com,~themonthly.com.au###ad-container
-~exec-appointments.com###ad-content
+exec-appointments.com,gumtree.co.nz,gumtree.com,gumtree.com.au,gumtree.pl,signatus.eu#@##ad-content
 ~apnaohio.com,~miradiorumba.com###ad-header
 ~egreetings.com###ad-header-728x90
 ~elle.com###ad-leaderboard
@@ -9035,15 +9038,17 @@ morningstar.se,zootoo.com#@##top_ad
 ~bash.fm##.ad-block
 bukkit.org,go.com,sc2mapster.com#@#.ad-box
 assetbar.com,o2.pl#@#.ad-button
-~auctionstealer.com,~dealsonwheels.com,~mutualofomaha.com##.ad-content
+auctionstealer.com,dealsonwheels.com,mutualofomaha.com,signatus.eu#@#.ad-content
 ~jobmail.co.za,~odysseyware.com##.ad-display
 ~yahoo.com##.ad-enabled
 ~dublinairport.com,~yahoo.com##.ad-holder
 ~recycler.com##.ad-img
+queer.pl#@#.ad-item
 ~businessinsider.com##.ad-leaderboard
 ~jerseyinsight.com##.ad-left
 ~guloggratis.dk##.ad-links
 ~jerseyinsight.com##.ad-right
+signatus.eu#@#.ad-section
 ~asterisk.org##.ad-sidebar
 ~10tv.com##.ad-square
 ~jobmail.co.za,~version2.dk##.ad-text
@@ -9056,7 +9061,7 @@ assetbar.com,o2.pl#@#.ad-button
 ~harpers.org##.ad300
 itavisen.no,trutower.com#@#.ad468
 ~parade.com##.ad728
-~ecmweb.com##.ad728x90
+ecmweb.com,rasmussenreports.com#@#.ad728x90
 ~abcfamily.go.com##.adBlock
 ~ksl.com##.adBox
 ~slashcontrol.com,~superbikeplanet.com##.adDiv
@@ -9104,8 +9109,11 @@ archiwumallegro.pl#@#.adcont
 ~bipbip.co.il,~clickindia.com##.adlist
 ~bipbip.co.il##.adpic
 ~tomwans.com##.adright
+queer.pl#@#.ads-col
 ~celogeek.com,~checkrom.com##.ads-item
+queer.pl#@#.ads-list
 ~apple.com##.ads-section
+queer.pl#@#.ads-top
 jw.org#@#.adsBlock
 ~download.cnet.com##.ads_catDiv
 ~santabanta.com##.ads_div
@@ -9308,6 +9316,7 @@ third-party,domain=101cargames.com|3news.co.nz|49ers.com|atlantafalcons.com|azca
 ||adimise.com^$third-party
 ||adimpact.com^$third-party
 ||adimperia.com^$third-party
+||adinch.com^$third-party
 ||adinterax.com^$third-party
 ||adireland.com^$third-party
 ||adisfy.com^$third-party
@@ -9617,6 +9626,7 @@ third-party
 ||bfast.com^$third-party
 ||bidvertiser.com^$third-party
 ||biemedia.com^$third-party
+||bijscode.com^$third-party
 ||bimlocal.com^$third-party
 ||bin-layer.de^$third-party
 ||bin-layer.ru^$third-party
@@ -11168,7 +11178,7 @@ domain=themoscownews.com
 ||banner.europacasino.com^
 ||banner.telefragged.com^
 ||banner.titancasino.com^
-||banner2.casino.com^
+||banner2.casino.com^$third-party
 ||bbcchannels.com/workspace/uploads/
 ||beachcamera.com/assets/banners/
 ||bee4.biz/banners/
@@ -14121,6 +14131,7 @@ domain=dailymotion.com
 ||turboimagehost.com/p.js
 ||turner.com/si/*/ads/
 domain=pgatour.com
+||tuspics.net/onlyPopupOnce.js
 ||tvcatchup.com/wowee/
 ||tvducky.com/imgs/graboid.
 ||tvguide.com^*/ecommerce/
@@ -14404,6 +14415,7 @@ domain=simophone.com
 
 
 domain=4fuckr.com
+domain=fiberupload.net
 domain=tusfiles.net
 domain=allanalpass.com|any.gs|dyo.gs|linkbucks.com|qqc.co|ultrafiles.net|yyv.co
 domain=hnmovies.com
@@ -14966,6 +14978,7 @@ accuweather.com###googleContainer
 achieve360points.com###a1
 achieve360points.com###a3
 actiontrip.com###banner300
+adage.com###interstitial
 adcrun.ch##.fly_frame
 add-anime.net##.ad
 add-anime.net##img[width="728"][height="90"]
@@ -15975,6 +15988,7 @@ daparto.de###leaderboard
 daringfireball.net###SidebarTheDeck
 darkhorizons.com###content-island
 dashhacks.com###banner
+datafilehost.com##a[href^="http://lp.ncdownloader.com/"]
 datafilehost.com##a[href^="http://lp.wxdownloadmanager.com/"]
 dataopedia.com##.container_banner
 datpiff.com###leaderboard
@@ -16162,6 +16176,7 @@ downloadhelper.net##a[href^="/liutilities.php"]
 downloadhelper.net##a[href^="free-driver-scan.php"]
 downloadhelper.net##a[href^="http://www.downloadhelper.net/do-goto-site.php?url=http%3A%2F%2Fwww.shareasale.com"]
 downloadhelper.net##a[href^="http://www.secrethelper.net/affclick/"]
+downloadhelper.net##div[style="width:300px; height:250px;"]
 downloadsquad.com###topleader-wrap
 downloadsquad.com##.medrect
 downloadstube.org###alternative_download + a[onclick]
@@ -19062,6 +19077,7 @@ richkent.com###phone
 richkent.com##a[href^="http://richkent.com/uses/"]
 rinkworks.com##table[style="float: right; border: 1px solid red; width: 250px; padding: 10px; margin: 10px;"]
 rivals.com###thecontainer
+rlsbb.com##a[href="http://trailerhell.com/make_money.html"]
 rlsbb.com##a[href^="http://netload.in/index.php?refer_id="]
 rlsbb.com##a[href^="http://zevera.com/"]
 rlslog.net###bglink
@@ -19439,7 +19455,6 @@ spectator.org##.ad
 spectrum.ieee.org###whtpprs
 speedmonkey.net##div[style="width:960px;height:110px;text-align:center"]
 speedtest.net##.lbc
-speedtv.com###left_row2
 speedtv.com##.ad
 speedtv.com##.takeover_link
 speedyshare.com###gad1
@@ -20160,13 +20175,16 @@ ukzambians.co.uk##.ad-5
 ukzambians.co.uk##.ad-6
 ulmb.com##.ad
 ulsterherald.com##.sponsered_links
+ultimate-guitar.com##.ad_header_noad
 ultimate-guitar.com##.ads
 ultimate-guitar.com##.b[align="center"][width="100%"][valign="middle"][height="130"]
 ultimate-guitar.com##.b[style="height:110px; vertical-align:middle; text-align:center"]
+ultimate-guitar.com##.left_article_cont
 ultimate-guitar.com##.pca
 ultimate-guitar.com##.pca2
 ultimate-guitar.com##a[href*="=http://www.jamplay.com/"]
 ultimate-guitar.com##a[href^="http://www.guitarmatcher.com/"]
+ultimate-guitar.com##a[href^="http://www.ultimate-guitar.com/follow_me.php?ug_from=main&url=http://click.linksynergy.com/fs-bin/click?id="]
 ultimate-guitar.com##a[href^="http://www.ultimate-guitar.com/xtra/click_"]
 ultimate-guitar.com##table[width="100%"][style="table-layout: fixed;"] > tbody > tr[style="height: 2px"] > td[valign="top"] > div[style="position: relative;"]
 ultimate-guitar.com##table[width="300"][height="250"]
@@ -20576,6 +20594,7 @@ worthplaying.com##.ad
 wow-professions.com###block-block-40
 wow-professions.com##div[style="background-color: #FFFFE0; border: solid 1px #B5B5B5; padding: 13px;"]
 wow.com###topleader-wrap
+wow.com##.SLL
 wow.com##.medrect
 wowhead.com##.block-bg
 wowhead.com##.home-skin
@@ -20824,7 +20843,6 @@ rapid8.com##c + script + div[id]
 urlink.at##table[width="100%"] > tbody > tr > td[align="center"] > :nth-child(8)
 urlink.at##table[width="100%"] > tbody > tr > td[align="center"] > :nth-child(9)
 webtoolhub.com##.adBlockCurtain
-youwatch.org###yca0
 1-toons.com##table[style="width:840px; border 1px solid #C0C0C0; background-color:#0F0F0F; margin:0 auto;"]
 264porn.blogspot.com##[width="728"][height="90"]
 3dtale.com##table[style="width:840px; border 1px solid #C0C0C0; background-color:#0F0F0F; margin:0 auto;"]
@@ -21318,7 +21336,7 @@ yumymilf.com##.bottom-banner
 @@||archaeologydataservice.ac.uk/images/ads_$image
 @@||area51.stackexchange.com/ads/$image
 @@||as.medscape.com/html.ng/transactionid%$subdocument,domain=medscape.com
-@@||as.webmd.com/html.ng/transactionid=$object-subrequest,subdocument
+@@||as.webmd.com/html.ng/transactionid=$object-subrequest,script,subdocument
 @@||assiniboine.mb.ca/files/intrasite_ads/
 @@||asterisk.org/sites/asterisk/files/mce_files/graphics/ads/ad-training.png
 @@||astw.adgear.com/assets/*.mp3?ag_r=$object-subrequest,domain=teamradio.ca
@@ -21326,8 +21344,8 @@ yumymilf.com##.bottom-banner
 @@||athena365.com/web/components/ads/rma.html
 @@||att.com/images/*/admanager/
 @@||auditude.com/adserver?$object-subrequest,domain=majorleaguegaming.com
-@@||auditude.com/crossdomain.xml$object-subrequest,domain=ap.org|channel5.com|dramafever.com|fandango.com|leagueoflegends.com|majorleaguegaming.com|newsinc.com|teamliquid.net
-@@||auditude.com^*/auditudeadunit.swf$object-subrequest,domain=ap.org|dramafever.com|leagueoflegends.com|majorleaguegaming.com|newsinc.com|teamliquid.net
+@@||auditude.com/crossdomain.xml$object-subrequest,domain=ap.org|channel5.com|dramafever.com|fandango.com|globo.com|leagueoflegends.com|majorleaguegaming.com|newsinc.com|teamliquid.net
+@@||auditude.com^*/auditudeadunit.swf$object-subrequest,domain=ap.org|dramafever.com|globo.com|leagueoflegends.com|majorleaguegaming.com|newsinc.com|teamliquid.net
 @@||auditude.com^*/auditudebrightcoveplugin.swf$object-subrequest,domain=channel5.com
 @@||auditude.com^*/auditudeosmfproxyplugin.swf$object-subrequest,domain=dramafever.com|majorleaguegaming.com
 @@||autotrader.co.nz/data/adverts/$image
@@ -22015,9 +22033,7 @@ yumymilf.com##.bottom-banner
 @@||freeproxylists.co^*/adframe.js
 @@||freesportsbet.com/js/advertisement.js
 @@||gallery.aethereality.net/advertisement.js
-@@||gamecopyworld.com/games/blk/$script
-@@||gamecopyworld.com^*/advertisement.js
-@@||gamecopyworld.com^*/bbad.js
+@@||gamecopyworld.com/games/bb/$script
 @@||gdataonline.com/exp/textad.js
 @@||hackers.co.id/adframe/adframe.js
 @@||hexawebhosting.com/adcode.js
@@ -22153,7 +22169,6 @@ yumymilf.com##.bottom-banner
 @@||flumotion.com/play/player?*/300x250-$subdocument,domain=flaixfm.cat
 @@||fotojorgen.no/images/*/webadverts/
 @@||haberler.com/video-haber/adsense_news_politics.swf?$object
-@@||hebbes.be^*/AdsImages/$image,~third-party
 @@||honfoglalo.hu/aagetad.php?$subdocument
 @@||hry.cz/ad/adcode.js
 @@||islafenice.net^*/adsense.js
@@ -22177,6 +22192,7 @@ yumymilf.com##.bottom-banner
 @@||ptchan.net/imagens/banner.php
 @@||ptcliente.pt/App_Themes/Default/Img/ad_$image
 @@||publicidad.eluniversal.com.mx/RealMedia/ads/adstream_nx.ads/$object-subrequest
+@@||reklama.hiking.sk/openx_new/www/delivery/spcjs.php?id=*&target=_blank$script,domain=mapy.hiking.sk
 @@||rentalsystems.com/advert_price_imbed.asp?$subdocument
 @@||ring.bg/adserver/adall.php?*&video_on_page=1
 @@||run.admost.com/adx/get.ashx?z=*&accptck=true&nojs=1

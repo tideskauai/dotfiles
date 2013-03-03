@@ -1,4 +1,4 @@
-! Last updated : Sun Feb 24 2013 06:52:59 GMT-0500 (EST)
+! Last updated : Mon Feb 25 2013 23:15:24 GMT-0500 (EST)
 -xtcore.js
 .sitecatalyst.js
 .usertracking_script.js
@@ -1383,6 +1383,7 @@ third-party
 ||divolution.com^$third-party
 ||dk-statistik.de^$third-party
 ||dreamcounter.de^$third-party
+||durocount.com^$third-party
 ||eanalyzer.de^$third-party
 ||easytracking.de^$third-party
 ||econda-monitor.de^$third-party
