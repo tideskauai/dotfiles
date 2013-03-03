@@ -1,7 +1,9 @@
 http://feeds2.feedburner.com/braingle/all fun
 http://aprenderingles-sila.com/feed/ fun
+http://aprendeinglessila.com/feed/ fun
 http://gdata.youtube.com/feeds/base/users/newegg/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile fun
 http://gdata.youtube.com/feeds/base/users/minutephysics/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile fun
+http://www.reddit.com/r/LifeProTips/.rss fun
 
 http://feeds2.feedburner.com/JupiterBroadcasting podcast
 http://hackerpublicradio.org/hpr_rss.php podcast
@@ -20,7 +22,6 @@ http://cacm.acm.org/blogs/blog-cacm.rss programming cs
 http://feeds.feedburner.com/blogspot/gJZg programming cs
 
 http://feeds.feedburner.com/obamaworld "world news"
-http://www.nytimes.com/services/xml/rss/nyt/GlobalHome.xml "world news"
 http://feeds.arstechnica.com/arstechnica/tech-policy "world news"
 
 http://feeds.feedburner.com/gaussianos science math
@@ -39,4 +40,5 @@ http://feeds2.feedburner.com/ElTamiz science
 http://www.lapizarradeyuri.com/feed/ science
 
 http://serverfault.com/feeds/featured admin
+http://www.reddit.com/r/homelab/.rss admin
 http://gallir.wordpress.com/feed/ admin programming CS
