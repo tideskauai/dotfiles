@@ -1,7 +1,10 @@
-# Steps to follow
-    git clone https://github.com/ballmerpeak/dotfiles.git ~/.dotfiles
-    cd ~/.dotfiles
-    ~/.dotfiles.py -v
+# Info
+Feel free to use and modify anything on this repo as you wish.
 
-# Warning
-If you run dotfiles.py -o and you have files in ~/.config, those configs will be deleted.
+# How to clon the repo
+    git clone https://github.com/ballmerpeak/dotfiles.git ~/.dotfiles
+
+# Dependencies
+dev/clipsync requires xclip and dmenu
+dev/bin/alarm requires mplayer
+dev/bin/backup requires rsync
