@@ -1,4 +1,4 @@
-! Last updated : Mon Feb 25 2013 23:15:24 GMT-0500 (EST)
+! Last updated : Tue Mar 05 2013 10:13:51 GMT-0500 (EST)
 &ad_height=
 &ad_id=
 &ad_number=
@@ -6347,6 +6347,7 @@ image,~image
 @@||mobithinking.com/sites/all/modules/noncore/ad/serve.php?$domain=mobithinking.com
 @@||mobithinking.com/sites/mobithinking.com/files/*_banner_ad_$domain=mobithinking.com
 @@||mochiads.com/ctr/*.swf?$domain=gamesforwork.com
+@@||msads.net/adbar/products/*/adbar.js$domain=mail.live.com
 @@||msi.com/pic/banner/
 @@||music-tags.com/tagengine/www/delivery/fl.js$domain=blastro.com
 @@||music-tags.com/tagengine/www/delivery/spcjs.php$domain=blastro.com
@@ -19414,6 +19415,7 @@ f1fanatic.co.uk###mpu
 facebook.com###fbPhotoSnowliftAdsSide
 facebook.com###home_sponsor_nile
 facebook.com###home_stream > .uiUnifiedStory[data-ft*="\",\"ei\":\""]
+facebook.com###home_stream > .uiUnifiedStory[data-ft*="\"ei\":\""]
 facebook.com###MessagingNetegoWrapper
 facebook.com###pagelet_ads_when_no_friend_list_suggestion
 facebook.com##.-cx-PRIVATE-fbAdUnit__root
