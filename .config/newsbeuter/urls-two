@@ -1,15 +1,4 @@
-http://feeds2.feedburner.com/braingle/all fun
-http://aprendeinglessila.com/feed/ fun
-http://gdata.youtube.com/feeds/base/users/theRadBrad/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile fun
-http://gdata.youtube.com/feeds/base/users/newegg/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile fun
-http://gdata.youtube.com/feeds/base/users/minutephysics/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile fun
-http://www.reddit.com/r/LifeProTips/.rss fun
-
-http://feeds2.feedburner.com/JupiterBroadcasting podcast
-http://hackerpublicradio.org/hpr_rss.php podcast
-http://hak5.org/category/episodes/feed podcast
-
-http://www.feedrinse.com/services/channel/?chanurl=c0db9795c12e142029a3d98109b9a5e4 courses
+http://feeds2.feedburner.com/braingle/all learn
 
 http://www.reddit.com/r/programming+compsci+learnprogramming+Python+C_Programming+c_language/.rss programming cs
 http://feeds.feedburner.com/catonmat programming cs
@@ -20,9 +9,6 @@ http://rjlipton.wordpress.com/feed/ programming cs
 http://lambda-the-ultimate.org/rss.xml programming cs
 http://cacm.acm.org/blogs/blog-cacm.rss programming cs
 http://feeds.feedburner.com/blogspot/gJZg programming cs
-
-http://feeds.feedburner.com/obamaworld "world news"
-http://feeds.arstechnica.com/arstechnica/tech-policy "world news"
 
 http://feeds.feedburner.com/gaussianos science math
 http://feeds.feedburner.com/ProblemasMatemticos science math
@@ -38,7 +24,3 @@ http://www.quo.es/rss/feed/ciencia science
 http://blogs.eldiariomontanes.es/scientia-mater/feed/ science
 http://feeds2.feedburner.com/ElTamiz science
 http://www.lapizarradeyuri.com/feed/ science
-
-http://serverfault.com/feeds/featured admin
-http://www.reddit.com/r/homelab/.rss admin
-http://gallir.wordpress.com/feed/ admin programming CS

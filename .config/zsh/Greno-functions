@@ -37,14 +37,20 @@ rss() {
     if (($# > 1 )); then
         echo "Invalid number of arguments were given"
     elif (($# == 0)); then
+        dtach -A $XDG_RUNTIME_DIR/newsbeuter \
         newsbeuter
-    elif [[ $1 = "-w" ]]; then
+    elif [[ $1 = "1" ]]; then
+        dtach -A $XDG_RUNTIME_DIR/newsbeuter-one \
         newsbeuter \
-        -u ~/.config/newsbeuter/urls-weekly \
-        -c ~/.local/share/newsbeuter/cache-weekly.db
+        -u ~/.config/newsbeuter/urls-one \
+        -c ~/.local/share/newsbeuter/cache-one.db
+    elif [[ $1 = "2" ]]; then
+        dtach -A $XDG_RUNTIME_DIR/newsbeuter-two \
+        newsbeuter \
+        -u ~/.config/newsbeuter/urls-two \
+        -c ~/.local/share/newsbeuter/cache-two.db
     else
-        echo "Write rss to launch newsbeuter with daily based feeds"
-        echo "Write rss -w to launch newsbeuter with weekly based feeds"
+        echo "Valid arguments are none, 1, and 2"
     fi
 }
 
