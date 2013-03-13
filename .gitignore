@@ -39,9 +39,6 @@
 !.config/i3
 !.config/youtube-viewer
 
-!.config/dwb
-.config/dwb/default
-
 !.config/mutt
 .config/mutt/*
 !.config/mutt/muttrc

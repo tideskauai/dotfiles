@@ -1,4 +1,4 @@
-! Last updated : Tue Mar 05 2013 10:13:51 GMT-0500 (EST)
+! Last updated : Mon Mar 11 2013 18:48:03 GMT-0400 (EDT)
 -xtcore.js
 .sitecatalyst.js
 .usertracking_script.js
@@ -53,6 +53,7 @@
 /baynote.js
 /baynote/*
 /baynoteobserver/*
+/bbtstats/pixel.gif?
 /beacon?
 /bh_counter.js
 /bitrix/spread.php?
@@ -151,6 +152,7 @@
 /ga.php?utmac=$image
 /ga.pl?utmac=$image
 /ga/trackevent.
+/ga2.aspx?utmac=$image
 /ga_dualcode_tracking.
 /ga_event_tracking.
 /ga_header.
@@ -214,6 +216,7 @@
 /ipixel?spacedesc=
 /iqtm.js
 /istat.aspx?
+/ivw.php
 /ivwanalytics.swf?
 /ivwbox/*
 /IVWTracker.swf
@@ -927,6 +930,7 @@ third-party
 ||mathtag.com^$third-party
 ||maxtracker.net^$third-party
 ||maxymiser.com^$third-party
+||measure.ly^$third-party
 ||measuremap.com^$third-party
 ||mediaforgews.com^$third-party
 ||mega-stats.com^$third-party
@@ -942,6 +946,7 @@ third-party
 ||mm7.net^$third-party
 ||mmetrix.mobi^$third-party
 ||mmi-agency.com^$third-party
+||mobalyzer.net^$third-party
 ||mochibot.com^$third-party
 ||monetate.net^$third-party
 ||mongoosemetrics.com^$third-party
@@ -1206,6 +1211,7 @@ third-party
 ||tracking202.com^$third-party
 ||trackinglabs.com^$third-party
 ||trackset.com^$third-party
+||trackword.biz^$third-party
 ||trackyourstats.com^$third-party
 ||tradescape.biz^$third-party
 ||trafficby.net^$third-party
@@ -1435,6 +1441,7 @@ third-party
 ||intelliad.de^$third-party
 ||interaktiv-net.de^$third-party
 ||interhits.de^$third-party
+||ioam.de^$third-party
 ||ipcount.net^$third-party
 ||ipcounter.de^$third-party
 ||ipcounter.net^$third-party
@@ -2095,6 +2102,7 @@ third-party
 ||forms.aweber.com^*/displays.htm?id=
 ||freedom.com^*/analytic/
 ||freedom.com^*/analytics/
+||freegeoip.net/json/?callback=$third-party
 ||futureus.com^*/nedstat.js
 ||fwix.com^*/trackclicks_
 ||fyre.co^*/tracking/
@@ -2141,6 +2149,8 @@ third-party
 ||imgfarm.com/images/trk/myexcitetr.gif?
 ||imghostsrc.com/counter.php?
 ||impi.tv/trackvideo.aspx?
+||infogr.am/logger.php?
+||infusionsoft.com^*/getTrackingCode?
 ||inq.com/tagserver/tracking/
 ||insights.gravity.com^
 ||instantservice.com/geoipapi.js?
@@ -2636,6 +2646,7 @@ third-party
 ||zs.dhl.de^
 ||analytics.traidnt.net^
 ||01net.com/track/
+||affiliation.planethoster.info^$third-party
 ||atout.email-match.com^$third-party
 ||e.funnymel.com^$third-party
 ||free.fr/cgi-bin/wwwcount.cgi?
@@ -2748,6 +2759,7 @@ third-party
 ||webbificio.com/wm.asp?
 ||websolutions.it/statistiche/
 ||wmtools.it/wmtcounter.php?
+||199.116.177.156^$domain=~fc2.jp.ip
 ||analyzer51.fc2.com^
 ||counter2.blog.livedoor.com^
 ||lcs.livedoor.net^
@@ -2843,6 +2855,7 @@ third-party
 ||top.elec.ru^
 ||top.sec.uz^
 ||traktor.ru^*/counter.php?
+||viewstat.promoblocks.ru^
 ||wapson.ru/counter.php?
 ||webtop.org.ru/counter.cgi/
 ||wmtools.ru/counter.php?
@@ -2883,6 +2896,7 @@ third-party
 ||a7.org/infol.php?
 ||abc.net.au/counters/
 ||abebooks.com/timer.gif?
+||acookie.alibaba.com^
 ||acronymfinder.com/~/st/af.js
 ||addresses.com/track_event.php?
 ||adf.ly/omni*.swf
@@ -3562,6 +3576,7 @@ third-party
 ||st.mirror.co.uk^
 ||st.virginmedia.com^
 ||startpage.com/do/adviewtrack.pl?
+||stat.alibaba.com^
 ||stat.dealtime.com^
 ||statesmanjournal.com^*/articlepageview.php?
 ||static.ow.ly^*/click.gz.js
@@ -3647,11 +3662,13 @@ third-party
 ||tinypic.com/track.php?
 ||topix.com/t6track/
 ||total.shanghaidaily.com^
+||tracelog.www.alibaba.com^
 ||tracer.perezhilton.com^
 ||track.cbs.com^
 ||track.ft.com^
 ||track.fxstreet.com^
 ||track.gawker.com^
+||track.netzero.net^
 ||track.ning.com^
 ||tracker.anandtech.com^
 ||tracker.calameo.com^
@@ -3992,6 +4009,7 @@ third-party
 ||preisvergleich.de/setcookie/
 ||prisma.de/cgi-bin/ivw2.cgi?
 ||proactive.base.de^
+||prophet.heise.de^
 ||putpat.tv/tracking?
 ||quoka.de^*/wtlog_02.js
 ||reisetagebuch24.de/modules/starstats/logvisit.aspx?
@@ -4096,6 +4114,7 @@ third-party
 ||counter.sina.com.cn/moodq?
 ||cri.cn/a1.js
 ||cri.cn/wrating.js
+||dc.letv.com^
 ||dj.renren.com^
 ||ftchinese.com/log/new_log.php?
 ||hk.ndx.nextmedia.com^
@@ -4104,6 +4123,7 @@ third-party
 ||pingjs.qq.com^
 ||rgd.com.cn/counter/
 ||s.renren.com^
+||sclick.baidu.com^
 ||sharpdaily.hk/ajax/addlog/?
 ||sinajs.cn/open/analytics/
 ||soufun.com/click/
@@ -4207,6 +4227,7 @@ third-party
 ||fujitv.co.jp/pc/space.gif?
 ||ginsara.jp^*/acclog.cgi?
 ||goo.ne.jp^*/vltracedmd.js
+||i2i.jp/bin/
 ||imgstat.ameba.jp^
 ||mainichi.jp^*/null.gif?
 ||visit.geocities.jp^
@@ -4401,6 +4422,7 @@ third-party
 @@||metal-hammer.de/resources/js/webtrekk.js
 @@||o2.de/resource/js/tracking/ntpagetag.js
 @@||real.de/fileadmin/template/javascript/emos2.js
+@@||rollingstone.de/resources/js/webtrekk.js
 @@||rover.ebay.com/ar/1/75997/4?mpt=*&size=300x250&adid=$image,domain=millionenklick.web.de
 @@||scorecardresearch.com/beacon.js$domain=spielen.com
 @@||scorecardresearch.com/crossdomain.xml$object-subrequest,domain=web.de

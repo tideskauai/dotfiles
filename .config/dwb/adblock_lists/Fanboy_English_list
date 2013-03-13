@@ -1,4 +1,4 @@
-! Last updated : Tue Mar 05 2013 10:13:51 GMT-0500 (EST)
+! Last updated : Mon Mar 11 2013 18:48:04 GMT-0400 (EDT)
 &ad_height=
 &ad_id=
 &ad_number=
@@ -2988,6 +2988,7 @@ third-party,domain=101cargames.com|3news.co.nz|abc.go.com|abcnews.go.com|atlanta
 ||adcloud.net^$third-party
 ||adcolo.com^$third-party
 ||adcron.com^$third-party
+||addelive.com^$third-party
 ||addiply.com^$third-party
 ||addroid.com^$third-party
 ||addynamics.eu^$third-party
@@ -3369,6 +3370,7 @@ third-party
 ||blamcity.com^$third-party
 ||blinkadr.com^$third-party
 ||blinkx.com/f2/overlays/
+||blockmetrics.com^$third-party
 ||blogads.com^$third-party
 ||blogbannerexchange.com^$third-party
 ||blogclans.com^$third-party
@@ -4542,6 +4544,7 @@ third-party
 ||traff-advertazer.com^$third-party
 ||traffic-supremacy.com^$third-party
 ||trafficbroker.com^$third-party
+||trafficfactory.biz^$third-party
 ||trafficforce.com^$third-party
 ||trafficmp.com^$third-party
 ||trafficrevenue.net^$third-party
@@ -5705,30 +5708,12 @@ third-party
 image,~image
 image,~image
 image,~image
-third-party
-image,~image
-image,~image
-image,~image
-image,~image
 image,~image
 third-party
 image,~image
 image,~image
 image,~image
 image,~image
-image,~image
-image,~image
-image,~image
-image,~image
-image,~image
-image,~image
-image,~image
-image,~image
-image,~image
-image,~image
-image,~image
-image,~image
-third-party
 image,~image
 third-party
 image,~image
@@ -5749,6 +5734,25 @@ image,~image
 image,~image
 third-party
 image,~image
+third-party
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+image,~image
+third-party
+image,~image
 image,~image
 image,~image
 image,~image
@@ -5780,6 +5784,7 @@ image,~image
 image,~image
 image,~image
 image,~image
+third-party
 image,~image
 image,~image
 image,~image
@@ -6597,6 +6602,7 @@ image,~image
 @@||fileice.net/js/advertisement.js
 @@||freesportsbet.com/js/advertisement.js
 @@||gamecopyworld.com^*/advertisement.js
+@@||gamecopyworld.com^*/bbad1.js
 @@||gameshark.com/images/ads/
 @@||googleusercontent.com/h/www.minecraftplaza.com/wp-content/plugins/no-adblock/$domain=minecraftplaza.com
 @@||hackers.co.id/adframe/adframe.js
@@ -17402,6 +17408,9 @@ zuzandra.com##.jx-bar
 1337x.org##.directDL
 1337x.org##.usenetDw
 148apps.com##.advnote
+1channel.ch##.movie_version_link > a[onclick="return addHit('0', '1')"]
+1channel.ch##.quality_sponsored
+1channel.ch##a[href^="http://tour.affbuzzads.com/"]
 1tvlive.in###layer2
 24wrestling.com###other-news
 2dopeboyz.com##.cmn728x90
@@ -18523,6 +18532,7 @@ clicktogive.com##.leaderboard
 climateprogress.org###advertisement
 clip.dj###ad1
 clipmarks.com###Panel
+clipnabber.com###leaderboard
 cloudpro.co.uk###sidebar-first-inner
 cnbc.com###cnbc300x250
 cnbc.com###compAdvertisement
@@ -20336,6 +20346,7 @@ hplusmagazine.com###bottom
 hsj.org###dnn_ctl00_Ad2Pane
 hsj.org##.ML_L1_ArticleAds
 hsmemes.com##.ad
+hubpages.com##.moduleAmazon
 huffingtonpost.com###page-header
 huffingtonpost.com##.linked_sponsored_entry
 huffingtonpost.com##.presented-by
@@ -21504,7 +21515,9 @@ movie25.com##a[href^="http://movie25.com/play/"]
 movie25.com##div[style="margin-top:5px;font-size:16px;font-weight:bold;text-decoration:underline"]
 movie2k.be##a[href^="http://www.graboid.com/affiliates/"]
 movie2k.to###ball
+movie2k.to###ssplug
 movie2k.to##a[href="http://www.movie2k.to/ab/"]
+movie2k.to##div[style="min-height:170px;"] > span[style="font-size:18px;"] + .moviedescription + br + div
 moviecarpet.com###top728
 moviecarpet.com##.post-top
 moviecarpet.com##div[style="clear:both; width:100%; padding:30px; height:250px"]
