@@ -6,5 +6,7 @@ Feel free to use and modify anything on this repo as you wish.
 
 # Dependencies
 dev/clipsync requires xclip and dmenu
+
 dev/bin/alarm requires mplayer
+
 dev/bin/backup requires rsync
