@@ -5,8 +5,6 @@ Feel free to use and modify anything on this repo as you wish.
     git clone https://github.com/ballmerpeak/dotfiles.git ~/.dotfiles
 
 # Dependencies
-dev/clipsync requires xclip and dmenu
-
-dev/bin/alarm requires mplayer
-
-dev/bin/backup requires rsync
+dev/clipsync requires xclip and dmenu <br />
+dev/bin/alarm requires mplayer <br />
+dev/bin/backup requires rsync <br />
