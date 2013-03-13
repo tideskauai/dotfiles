@@ -1,9 +1,9 @@
 if [[ -z $DISPLAY && $(tty) = /dev/tty1 ]]; then
 
-#    if [[ $HOST = "0xbeef" ]]; then
-#        keychain id_rsa.eee
-#        source ~/.keychain/$HOST-sh
-#    fi
+   # if [[ $HOST = "Greno" ]]; then
+   #     keychain id_ecdsa.Edinburgh
+   #     source ~/.keychain/$HOST-sh
+   # fi
 
     exec startx
     # exec startx &> ~/Archives/txt/xlog

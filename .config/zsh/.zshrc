@@ -49,10 +49,11 @@ setopt noclobber            # Requires >! to overwrite existing files
 #------------------------------
 # Misc
 #------------------------------
-if [[ $HOST == "0xbeef" ]]; then
+if [[ $HOST == "Greno" ]]; then
     # Source functions and alias files if our hostname is 0xbeef
-    source $HOME/.config/zsh/alias-0xbeef
-    source $HOME/.config/zsh/functions-0xbeef
+    source $HOME/.config/zsh/Greno-alias
+    source $HOME/.config/zsh/Greno-alias-cd
+    source $HOME/.config/zsh/Greno-functions
     # Don't store commands with sudo or cd in the history
     function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
 fi
