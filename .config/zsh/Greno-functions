@@ -34,9 +34,7 @@ notes() {
 }
 
 rss() {
-    if (($# > 1 )); then
-        echo "Invalid number of arguments were given"
-    elif (($# == 0)); then
+    if (($# == 0)); then
         dtach -A $XDG_RUNTIME_DIR/newsbeuter \
         newsbeuter
     elif [[ $1 = "1" ]]; then
