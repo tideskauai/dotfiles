@@ -80,7 +80,7 @@ inoremap <F1> <C-O>b
 nnoremap <F1> b
 inoremap <F2> <C-O>w
 nnoremap <F2> w
-nnoremap <F5> :set hlsearch! hlsearch?<CR>
+nnoremap <F4> :set hlsearch! hlsearch?<CR>
 nnoremap <F9> <C-^>
 
 " Mapleader
