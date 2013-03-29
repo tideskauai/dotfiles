@@ -10,7 +10,7 @@ back_up_etc_files=(iptables ssh X11 modules-load.d \
     pacman.conf resolv.conf sysctl.conf timezone vconsole.conf \
     localtime adjtime)
 back_up_dir="$HOME/Archives/backup"
-back_up_internalhdd="/media/sdc1"
+back_up_internalhdd="/media/sdb1"
 back_up_externalhdd="/mnt/backup"
 script_name=$(basename "$0")
 partition="sdb1"
