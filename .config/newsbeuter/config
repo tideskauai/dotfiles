@@ -16,7 +16,7 @@ show-read-feeds yes
 display-article-progress no
 
 auto-reload yes
-reload-time 30
+reload-time 60
 suppress-first-reload yes
 
 #################################################################################
