@@ -59,3 +59,15 @@ sudo() {
     command sudo "$@"
     umask $old
 }
+
+re-dhcpcd() {
+    net_interface="eth0"
+    if [[ -n $(pgrep dhcp) ]]; then
+        echo "dhcpcd is running."
+        sudo dhcpcd -d -k $net_interface
+        sudo dhcpcd -d $net_interface
+    else
+        echo "dhcpcd is not running. Starting..."
+        sudo dhcpcd -d $net_interface
+    fi
+}
