@@ -202,8 +202,8 @@ myKeys conf = mkKeymap conf $ [
     , ("<XF86AudioNext>", safeSpawn "ncmpcpp" ["next"])
     , ("<XF86AudioPrev>", safeSpawn "ncmpcpp" ["prev"])
     --actions/launching
-    , ("M-a p", safeSpawn "pcmanfm" [])
-    , ("M-a f", focusUrgent) --Go to urgent window
+    , ("M-a f", safeSpawn "pcmanfm" []) --Launch file manager
+    , ("M-a u", focusUrgent) --Go to urgent window
     , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
     , ("M-a k", killAllOtherCopies) --Kill all copied windows (2)
     , ("M-a t", changeDir myXPConfig) --Change the dir of the topic (1)
@@ -225,16 +225,17 @@ myKeys conf = mkKeymap conf $ [
     , ("M-S-s", SM.submap $ searchEngineMap $ S.selectSearch)
     --navigation of windows/workspaces
     , ("M-q", toggleWS' ["NSP"]) --Toggle between workspaces (5)
-    , ("M-w", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
+    , ("M-<Tab>", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
     --killing
-    , ("M-S-c", kill)
+    , ("M-S-q", kill)
     --layouts
     , ("M-<Space>", sendMessage NextLayout)
     , ("M-S-<Space>", sendMessage FirstLayout)
     --floating layer stuff
     , ("M-t", withFocused $ windows . W.sink)
     --focus
-    , ("M-<Tab>", windows W.focusDown)
+    , ("M-j", windows W.focusDown)
+    , ("M-k", windows W.focusUp)
     --swapping
     , ("M-S-<Return>", windows W.shiftMaster)
     , ("M-S-j", windows W.swapDown  )
@@ -242,17 +243,17 @@ myKeys conf = mkKeymap conf $ [
     --resizing
     , ("M-h", sendMessage Shrink)
     , ("M-l", sendMessage Expand)
-    , ("M-j", sendMessage MirrorShrink)
-    , ("M-k", sendMessage MirrorExpand)
-    , ("M-,", sendMessage (IncMasterN 1)) --Inc win # in master area
-    , ("M-.", sendMessage (IncMasterN (-1))) --Dec win # in master area
+    , ("M-S-h", sendMessage MirrorShrink) --Dec win size in master area
+    , ("M-S-l", sendMessage MirrorExpand) --Inc win size in master are --Inc win size in master areaa
+    , ("M-S-,", sendMessage (IncMasterN 1)) --Inc win # in master area
+    , ("M-S-.", sendMessage (IncMasterN (-1))) --Dec win # in master area
     --quit, or restart
     , ("M-S-e", io (exitWith ExitSuccess)) --Exit X
     , ("M-S-r", restart "xmonad" True) --Restart WM
     , ("M-S-o", safeSpawn "systemctl" ["poweroff"]) --Turn off computer
 
     --Making right windows key useful.
-    --Editing of ~/.xmodmap required
+    --Editing of ~/.config/xmodmap required
     --Launch a scratchpad
     , ("M5-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     ]
@@ -263,6 +264,8 @@ myKeys conf = mkKeymap conf $ [
         | (i, k) <- zip (XMonad.workspaces conf) $ map show [1..9]
         , (f, m) <- [(W.greedyView, "M-"), (W.shift, "M-S-"), (copy, "M5-S-")]
     ]
+    --Making right windows key useful.
+    --Editing of ~/.config/xmodmap required
     -- mod5-[1..9],         Switch to window N (3)
     ++ [(("M5-" ++ show k), focusNth i)
         | (i, k) <- zip [0 .. 8] [1..9]
