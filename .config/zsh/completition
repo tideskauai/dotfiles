@@ -10,6 +10,7 @@ _force_rehash() {
 }
 
 zstyle ':completion:*' completer _oldlist _expand _force_rehash _complete _approximate
+zstyle ':completion:*' hosts off # Disable completition of hostnames
 zstyle ':completion:*:approximate:'    max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )' # allow one error for every three characters typed in approximate completer
 zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~' # don't complete backup files as executables
 zstyle ':completion:*:correct:*'       insert-unambiguous true             # start menu completion only if it could find no unambiguous initial string
@@ -25,7 +26,7 @@ zstyle ':completion:*:history-words'   remove-all-dups yes                 # ign
 zstyle ':completion:*:history-words'   stop yes
 zstyle ':completion:*'                 matcher-list 'm:{a-z}={A-Z}'        # match uppercase from lowercase
 zstyle ':completion:*:matches'         group 'yes'                         # separate matches into groups
-zstyle ':completion:*'                 group-name ''                      
+zstyle ':completion:*'                 group-name ''
 zstyle ':completion:*:messages'        format '%d'
 zstyle ':completion:*:options'         auto-description '%d'
 zstyle ':completion:*:options'         description 'yes'                   # describe options in full
@@ -50,5 +51,3 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-# Don't autocomplete hosts with scp
-zstyle ':completion::complete:scp:*' tag-order - '! hosts users'
