@@ -6,7 +6,7 @@ back_up_files=(~/Archives ~/Downloads ~/dev ~/themes ~/VMs \
 back_up_etc_files=(iptables ssh X11 modules-load.d \
     conf.d systemd udev default modprobe.d \
     chrony.conf \
-    hostname hosts locale.conf locale.gen makepkg.conf \
+    hostname hosts ethers locale.conf locale.gen makepkg.conf \
     pacman.conf resolv.conf sysctl.conf timezone vconsole.conf \
     localtime adjtime)
 back_up_dir="$HOME/Archives/backup"
