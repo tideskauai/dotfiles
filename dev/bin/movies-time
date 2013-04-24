@@ -6,7 +6,10 @@ if (($# == 1)) && [[ $1 = *[smhd] ]]; then
     xset s off && xset -dpms && sleep "$1" || xset s on && xset +dpms
 
 elif (($# == 1)) && [[ $1 = "-f" ]]; then
-    xset dpms force off
+    read -p "Do you really want to force the screen to turn off? [Y/n] " yes_or_no
+    if [[ "$yes_or_no" = "Y" ]]; then
+        xset dpms force off
+    fi
 
 elif (($# == 1)) && [[ $1 = "-r" ]]; then
     xset s on && xset +dpms
