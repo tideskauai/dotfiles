@@ -1,9 +1,32 @@
 #------------------------------
-# Completition
+# Host specific and base bits
 #------------------------------
-# Add custom completition and git scripts
-fpath=($HOME/.config/zsh/autocompletitions $HOME/.config/zsh/functions $fpath)
-autoload -U $HOME/.config/zsh/functions/*(:t)
+if [[ $HOST == "Greno" ]]; then
+    # Add custom completition and git scripts
+    fpath=($HOME/.config/zsh/autocompletitions $HOME/.config/zsh/functions $fpath)
+    autoload -U $HOME/.config/zsh/functions/*(:t)
+    # Source of git prompt code:
+    # http://sebastiancelis.com/2009/11/16/zsh-prompt-git-users/
+    # Enable auto-execution of functions.
+    typeset -ga preexec_functions
+    typeset -ga precmd_functions
+    typeset -ga chpwd_functions
+    # Append git functions needed for prompt.
+    preexec_functions+='preexec_update_git_vars'
+    precmd_functions+='precmd_update_git_vars'
+    chpwd_functions+='chpwd_update_git_vars'
+
+    # Source functions and aliases if our hostname is Greno
+    source $HOME/.config/zsh/Greno-alias
+    source $HOME/.config/zsh/Greno-functions
+    # Don't store commands with sudo or cd in the history
+    function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
+fi
+
+# Load base aliases and functions
+source $HOME/.config/zsh/base-alias
+source $HOME/.config/zsh/base-functions
+# Load completition settings
 source $HOME/.config/zsh/completition
 
 #-----------------------------
@@ -47,18 +70,6 @@ setopt notify               # Report status of background jobs immediately
 setopt noclobber            # Requires >! to overwrite existing files
 
 #------------------------------
-# Misc
-#------------------------------
-if [[ $HOST == "Greno" ]]; then
-    # Source functions and alias files if our hostname is 0xbeef
-    source $HOME/.config/zsh/Greno-alias
-    source $HOME/.config/zsh/Greno-alias-cd
-    source $HOME/.config/zsh/Greno-functions
-    # Don't store commands with sudo or cd in the history
-    function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
-fi
-
-#------------------------------
 # Window title
 #------------------------------
 if [[ $TERM = rxvt* ]]; then
@@ -90,16 +101,8 @@ precmd(){
     fi
 }
 
-# Source of git prompt code:
-# http://sebastiancelis.com/2009/11/16/zsh-prompt-git-users/
-# Enable auto-execution of functions.
-typeset -ga preexec_functions
-typeset -ga precmd_functions
-typeset -ga chpwd_functions
-# Append git functions needed for prompt.
-preexec_functions+='preexec_update_git_vars'
-precmd_functions+='precmd_update_git_vars'
-chpwd_functions+='chpwd_update_git_vars'
-
 PROMPT='%F{green}%n%F{blue} in [${PR_PWDCOLOR}%~$PR_RESET%F{blue}] %F{red}#$PR_RESET '
-RPROMPT='$(prompt_git_info)$PR_RESET %F{black}[%T]$PR_RESET'
+# Only show an RPROMPT if our hostname is Greno
+if [[ $HOST == "Greno" ]]; then
+    RPROMPT='$(prompt_git_info)$PR_RESET %F{black}[%T]$PR_RESET'
+fi

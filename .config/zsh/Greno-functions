@@ -1,17 +1,3 @@
-cd() {
-    builtin cd $@; ls
-}
-
-share() {
-    if (($# == 1)) && [[ -e $1 ]]; then
-        dir=${TMPDIR:-/tmp}/share-$$; mkdir "$dir" || error
-        cp "$1" $dir
-        pushd $dir && python -m http.server 65001; popd && rm -ri "$dir"
-    else
-        echo "Usage: share file-to-share"
-    fi
-}
-
 notes() {
     if (($# > 1 )); then
         echo "Invalid number of arguments were given"
@@ -41,25 +27,5 @@ rss() {
         -c ~/.local/share/newsbeuter/cache-two.db
     else
         echo "Valid arguments are none, 1, and 2"
-    fi
-}
-
-sudo() {
-    old=$(umask)
-    # 775 dirs / 664 files
-    umask 022
-    command sudo "$@"
-    umask $old
-}
-
-re-dhcpcd() {
-    net_interface="eth0"
-    if [[ -n $(pgrep dhcp) ]]; then
-        echo "dhcpcd is running."
-        sudo dhcpcd -d -k $net_interface
-        sudo dhcpcd -d $net_interface
-    else
-        echo "dhcpcd is not running. Starting..."
-        sudo dhcpcd -d $net_interface
     fi
 }
