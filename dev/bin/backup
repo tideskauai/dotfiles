@@ -8,7 +8,7 @@ back_up_etc_files=(iptables ssh X11 modules-load.d \
     chrony.conf \
     hostname hosts ethers locale.conf locale.gen makepkg.conf \
     pacman.conf resolv.conf sysctl.conf timezone vconsole.conf \
-    localtime adjtime)
+    localtime adjtime minirc.dfl)
 back_up_dir="$HOME/Archives/backup"
 back_up_internalhdd="/media/sdb1"
 back_up_externalhdd="/mnt/backup"
