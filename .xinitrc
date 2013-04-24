@@ -21,6 +21,9 @@ xrdb -merge ~/.Xresources
 # Let's set a pointer
 xsetroot -cursor_name left_ptr
 
+# Let's start udiskie (udisks wrapper)
+udiskie &
+
 # Launch xmonad
 exec xmonad
 # Launch i3
