@@ -46,6 +46,7 @@ URxvt.url-select.launcher: firefox
 
 ! --[ URxvt - colors ]--------------------------------------
 URxvt.depth: 32
-URxvt.background: #0A0A0A
+!URxvt.background: #0A0A0A
+URxvt.background: #000000
 URxvt.foreground: #999999
 #include ".config/xcolors/jwr-dark"
