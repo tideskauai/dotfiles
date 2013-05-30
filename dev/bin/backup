@@ -3,8 +3,8 @@
 back_up_files=(~/Archives ~/Downloads ~/dev ~/themes ~/VMs \
     ~/.ssh ~/.dotfiles ~/.themes ~/.mozilla \
     ~/.local)
-back_up_etc_files=(iptables ssh X11 modules-load.d \
-    conf.d systemd udev default modprobe.d \
+back_up_etc=(iptables ssh X11 modules-load.d \
+    conf.d systemd udev default modprobe.d qemu \
     chrony.conf \
     hostname hosts ethers locale.conf locale.gen makepkg.conf \
     pacman.conf resolv.conf sysctl.conf timezone vconsole.conf \
@@ -113,7 +113,7 @@ elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
         mounted=$(mountpoint $back_up_internalhdd)
         if [ -n "$mounted" ]; then
             if [[ $mounted =~ "is a mountpoint" ]]; then
-                rsync -aPh --delete --delete-excluded ${back_up_internalhdd}/backup/rdiff-backup \
+                rsync --archive --human-readable --progress --delete --delete-excluded ${back_up_internalhdd}/backup/rdiff-backup \
                     ${back_up_externalhdd}
             else
                 printf "Dir $back_up_internalhdd is not mounted\n"
@@ -127,8 +127,8 @@ elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
 elif [[ $1 = "--etc" ]]; then
     # Specify which files in /etc I want to backup
     if [ -d "$back_up_dir/etc" ]; then
-        for i in "${back_up_etc_files[@]}"; do
-            rsync -aPh --delete --delete-excluded "/etc/"$i"" "$back_up_dir/etc"
+        for i in "${back_up_etc[@]}"; do
+            rsync --archive --human-readable --progress --perms -gX --delete --delete-excluded "/etc/"$i"" "$back_up_dir/etc"
         done
     else
         printf "$back_up_dir/etc does not exist, please create it\n"
