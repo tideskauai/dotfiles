@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+bridge_name="br0"
+network_config_file="/etc/conf.d/network"
+# Format of network_config_file:
+# interface=eth0
+# address=192.168.1.200
+# netmask=24
+# broadcast=192.168.1.255
+# gateway=192.168.1.1
+
+
+if [[ -r "$network_config_file" ]]; then
+    interface=$(grep interface $network_config_file |cut -d= -f2)
+    address=$(grep address $network_config_file |cut -d= -f2)
+    netmask=$(grep netmask $network_config_file |cut -d= -f2)
+    gateway=$(grep gateway $network_config_file |cut -d= -f2)
+    if [[ -n "$interface" && -n "$address" && -n "$gateway" && -n "$netmask" ]]; then
+        if [[ -n "$(ls /sys/class/net|grep $bridge_name)" ]]; then
+            read -p "A bridge already exists, do you want to delete it and revert to unbridged setup? [Y/n] " yes_or_no
+            if [[ "$yes_or_no" = "Y" ]]; then
+                sudo brctl delif $bridge_name $interface
+                sudo ip link set dev $bridge_name down
+                sudo brctl delbr $bridge_name
+                sudo ip addr flush dev $interface
+                sudo ip addr add $address/$netmask dev $interface
+                sudo ip route add default via $gateway
+            else
+                echo "Nothing to do. Exit"
+            fi
+        else
+            echo "Flushing $interface and bringing up $bridge_name"
+            sudo ip addr flush $interface
+            sudo brctl addbr $bridge_name
+            sudo brctl addif $bridge_name $interface
+            sudo ip link set dev $bridge_name up
+            sudo ip addr add $address/$netmask dev $bridge_name
+            sudo ip route add default via $gateway
+            echo "You might want want to consider running:"
+            echo 'cd /proc/sys/net/bridge && for f in bridge-nf-*; do echo 0 |sudo tee $f; done'
+        fi
+    else
+        echo "There was an error with parsing $network_config_file"
+    fi
+else
+    echo "Proceeding is not possible as $network_config_file does not exist"
+fi
