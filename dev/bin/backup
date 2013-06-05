@@ -4,11 +4,10 @@ back_up_files=(~/Archives ~/Downloads ~/dev ~/themes ~/VMs \
     ~/.ssh ~/.dotfiles ~/.themes ~/.mozilla \
     ~/.local)
 back_up_etc=(iptables ssh X11 modules-load.d \
-    conf.d systemd udev default modprobe.d qemu \
-    chrony.conf \
-    hostname hosts ethers locale.conf locale.gen makepkg.conf \
-    pacman.conf resolv.conf sysctl.conf timezone vconsole.conf \
-    localtime adjtime minirc.dfl)
+    conf.d systemd udev default modprobe.d qemu lxc \
+    chrony.conf hostname hosts ethers locale.conf locale.gen \
+    makepkg.conf pacman.conf resolv.conf sysctl.conf timezone \
+    vconsole.conf localtime adjtime minirc.dfl)
 back_up_dir="$HOME/Archives/backup"
 back_up_internalhdd="/media/sdb1"
 back_up_externalhdd="/mnt/backup"
