@@ -5,14 +5,14 @@ if [ -f $HOME/.config/xmodmap ]; then
     xmodmap $HOME/.config/xmodmap
 fi
 
-# start gnome-keyring
+# Start gnome-keyring
 eval `gnome-keyring-daemon`
 export GNOME_KEYRING_PID
 export GNOME_KEYRING_SOCKET
 export SSH_AUTH_SOCK
 export GPG_AGENT_INFO
 
-# fonts
+# Fonts
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 
 # Start custom settings for urxvt

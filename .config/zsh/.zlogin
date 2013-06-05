@@ -6,5 +6,5 @@ if [[ -z $DISPLAY && $(tty) = /dev/tty1 ]]; then
    # fi
 
     exec startx
-    # exec startx &> ~/Archives/txt/xlog
+    # exec startx &>> ~/Archives/txt/xlog
 fi
