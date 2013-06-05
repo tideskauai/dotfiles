@@ -3,7 +3,7 @@ umask 077
 
 export EDITOR="vim"
 export VISUAL="vim"
-export PATH="${PATH}:${HOME}/dev/bin:${HOME}/.cabal/bin"
+export PATH="${PATH}:${HOME}/dev/bin:${HOME}/.cabal/bin:${HOME}/.gem/ruby/2.0.0/bin"
 export PAGER="less"
 
 # Color man pages
