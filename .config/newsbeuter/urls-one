@@ -1,55 +1,56 @@
-http://feeds2.feedburner.com/braingle/all learn
 
-http://www.reddit.com/r/programming+compsci+learnprogramming+Python+C_Programming+c_language/.rss programming cs
-http://feeds.feedburner.com/catonmat programming cs
-http://terrytao.wordpress.com/feed/ programming cs
-http://blog.computationalcomplexity.org/feeds/posts/default?alt=rss programming cs
-http://feeds.feedburner.com/daniel-lemire/atom programming cs
-http://rjlipton.wordpress.com/feed/ programming cs
-http://lambda-the-ultimate.org/rss.xml programming cs
-http://cacm.acm.org/blogs/blog-cacm.rss programming cs
-http://feeds.feedburner.com/blogspot/gJZg programming cs
+http://www.reddit.com/r/programming+compsci+learnprogramming+Python+C_Programming+c_language/.rss A-feed programming cs
+http://feeds.feedburner.com/catonmat A-feed programming cs
+http://terrytao.wordpress.com/feed/ A-feed programming cs
+http://blog.computationalcomplexity.org/feeds/posts/default?alt=rss A-feed programming cs
+http://feeds.feedburner.com/daniel-lemire/atom A-feed programming cs
+http://rjlipton.wordpress.com/feed/ A-feed programming cs
+http://lambda-the-ultimate.org/rss.xml A-feed programming cs
+http://cacm.acm.org/blogs/blog-cacm.rss A-feed programming cs
+http://feeds.feedburner.com/blogspot/gJZg A-feed programming cs
 
-http://feeds.feedburner.com/gaussianos science math
-http://feeds.feedburner.com/ProblemasMatemticos science math
-http://solumate.blogspot.com/feeds/posts/default science math
-http://blogs.elpais.com/apuntes-cientificos-mit/atom.xml science
-http://feeds2.feedburner.com/CienciaKanija science
-http://vicente1064.blogspot.com/feeds/posts/default science
-http://feeds.feedburner.com/historiasdelaciencia science
-http://labellateoria.blogspot.com/feeds/posts/default science
-http://feeds.feedburner.com/eliatron science
-http://feeds.feedburner.com/naukas science
-http://www.quo.es/rss/feed/ciencia science
-http://blogs.eldiariomontanes.es/scientia-mater/feed/ science
-http://feeds2.feedburner.com/ElTamiz science
-http://www.lapizarradeyuri.com/feed/ science
+http://feeds.feedburner.com/gaussianos A-feed science math
+http://feeds.feedburner.com/ProblemasMatemticos A-feed science math
+http://solumate.blogspot.com/feeds/posts/default A-feed science math
+http://blogs.elpais.com/apuntes-cientificos-mit/atom.xml A-feed science
+http://feeds2.feedburner.com/CienciaKanija A-feed science
+http://vicente1064.blogspot.com/feeds/posts/default A-feed science
+http://feeds.feedburner.com/historiasdelaciencia A-feed science
+http://labellateoria.blogspot.com/feeds/posts/default A-feed science
+http://feeds.feedburner.com/eliatron A-feed science
+http://feeds.feedburner.com/naukas A-feed science
+http://www.quo.es/rss/feed/ciencia A-feed science
+http://blogs.eldiariomontanes.es/scientia-mater/feed/ A-feed science
+http://feeds2.feedburner.com/ElTamiz A-feed science
+http://www.lapizarradeyuri.com/feed/ A-feed science
 
-http://serverfault.com/feeds/featured stackexchange
-http://superuser.com/feeds/month stachexchange
-http://unix.stackexchange.com/feeds/featured stackexchange
-http://math.stackexchange.com/feeds/month stackexchange
-http://cstheory.stackexchange.com/feeds/month stackexchange
+http://serverfault.com/feeds/featured A-feed stackexchange
+http://superuser.com/feeds/month A-feed stachexchange
+http://unix.stackexchange.com/feeds/featured A-feed stackexchange
+http://math.stackexchange.com/feeds/month A-feed stackexchange
+http://cstheory.stackexchange.com/feeds/month A-feed stackexchange
 
-http://blog.pfsense.org/?feed=rss2 admin
-http://planetsysadmin.com/rss20.xml admin
+http://blog.pfsense.org/?feed=rss2 A-feed admin
+http://planetsysadmin.com/rss20.xml A-feed admin
 
-http://feeds.feedburner.com/arabesqueblog blog
-http://planet.freedesktop.org/atom.xml blog
-http://feeds.feedburner.com/linuxcommando blog
+http://feeds.feedburner.com/arabesqueblog A-feed blog
+http://planet.freedesktop.org/atom.xml A-feed blog
+http://feeds.feedburner.com/linuxcommando A-feed blog
 
-http://www.schneier.com/blog/atom.xml security
-http://aprendeinglessila.com/feed/ fun
-http://gdata.youtube.com/feeds/base/users/minutephysics/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile fun
-http://mundowdg.com/blog/feed/ fun
+http://www.schneier.com/blog/atom.xml B-feed security
 
-http://feeds.feedburner.com/techsnapogg podcast
-http://hackerpublicradio.org/hpr_rss.php podcast
+http://aprendeinglessila.com/feed/ B-feed fun
+http://feeds2.feedburner.com/braingle/all B-feed fun
+http://gdata.youtube.com/feeds/base/users/minutephysics/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile B-feed fun
+http://mundowdg.com/blog/feed/ B-feed fun
 
-http://www.feedrinse.com/services/channel/?chanurl=c0db9795c12e142029a3d98109b9a5e4 courses
+http://feeds.feedburner.com/techsnapogg B-feed podcast
+http://hackerpublicradio.org/hpr_rss.php B-feed podcast
 
-http://feeds.feedburner.com/obamaworld "world news"
-http://feeds.arstechnica.com/arstechnica/tech-policy "world news"
+http://www.feedrinse.com/services/channel/?chanurl=c0db9795c12e142029a3d98109b9a5e4 B-feed courses
 
-http://www.reddit.com/r/homelab/.rss admin
-http://gallir.wordpress.com/feed/ admin
+http://feeds.feedburner.com/obamaworld B-feed "world news"
+http://feeds.arstechnica.com/arstechnica/tech-policy B-feed "world news"
+
+http://www.reddit.com/r/homelab/.rss B-feed admin
+http://gallir.wordpress.com/feed/ B-feed admin
