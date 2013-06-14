@@ -81,6 +81,7 @@ nnoremap <F1> b
 inoremap <F2> <C-O>w
 nnoremap <F2> w
 nnoremap <F4> :set hlsearch! hlsearch?<CR>
+inoremap <F9> <C-O><C-^>
 nnoremap <F9> <C-^>
 
 " Mapleader
