@@ -2,18 +2,19 @@
 
 win7="$HOME/VMs/win7-overlay.qcow2"
 ram="-m 2G"
-vnc="-daemonize -vnc 127.0.0.1:1 -k en-us"
+kbLayout="en-us"
+vnc="-daemonize -vnc 127.0.0.1:1 -k $kbLayout"
 net="-net nic,macaddr=DE:AD:BE:EF:00:01 -net bridge,br=br0,helper=/usr/lib/qemu/qemu-bridge-helper"
 
 if [[ -z "$1" ]]; then
-    qemu-system-x86_64 -enable-kvm $ram $vnc $win7
+    qemu-system-x86_64 -enable-kvm $ram $win7 &
 else
     case "$1" in
         -a | --audio)
             export QEMU_AUDIO_DRV=sdl
             export SDL_AUDIODRIVER=alsa
             # qemu-system-x86_64 -enable-kvm $ram -soundhw hda $vnc $win7
-            qemu-system-x86_64 -enable-kvm $ram -device intel-hda -device hda-duplex $vnc $win7
+            qemu-system-x86_64 -enable-kvm $ram -device intel-hda -device hda-duplex $win7 &
             ;;
         -b | --bridge)
             echo "You will need to create a bridge and modify /etc/qemu/bridge.conf"
@@ -26,14 +27,17 @@ else
             echo "====================================================="
             echo "= Use tcpdump -ni tap0 to debug connectivity        ="
             echo "====================================================="
-            qemu-system-x86_64 -enable-kvm $ram $net $vnc $win7
+            qemu-system-x86_64 -enable-kvm $ram $net $vnc $win7 &
+            ;;
+        -v | --vnc)
+            qemu-system-x86_64 -enable-kvm $ram $vnc $win7 &
             ;;
         -h | --help)
             echo "Valid args: -b, --bridge, -a, --audio, none(defaults)"
             ;;
         *)
             echo "Invalid argument, try again."
-            echo "Valid args: -b, --bridge, -a, --audio, none(defaults)"
+            echo "Valid args: -b, --bridge, -a, --audio, -v, --vnc, none(defaults)"
             ;;
     esac
 fi
