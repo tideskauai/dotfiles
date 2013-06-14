@@ -133,6 +133,7 @@ myManageHook = (composeAll . concat $
             , className =? "trayer" --> doIgnore
             , className =? "URxvt" --> insertPosition Below Newer -- (4)
             , className =? "Gtkdialog" --> doFloat
+            , className =? "Gimp" --> doFloat
             , className =? "Firefox" <&&> resource =? "Download" --> doFloat
             , fmap ("Call with" `isInfixOf`) title --> doFloat -- (6)
             ]]) <+> manageScratchPad
@@ -211,6 +212,8 @@ myKeys conf = mkKeymap conf $ [
     , ("M-S-a x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     --launching
     , ("M-<Return>", spawnShell) --Launch shell in topic (1)
+    --Launch a scratchpad
+    , ("M-<Backspace>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     , ("M-f", safeSpawn "firefox" [])
     , ("M-S-f 0", safeSpawn "firefox" ["-p"])
     , ("M-S-f 1", safeSpawn "firefox" ["-p", "Primary"])
@@ -248,11 +251,6 @@ myKeys conf = mkKeymap conf $ [
     , ("M-S-e", io (exitWith ExitSuccess)) --Exit X
     , ("M-S-r", restart "xmonad" True) --Restart WM
     , ("M-S-o", safeSpawn "systemctl" ["poweroff"]) --Turn off computer
-
-    --Making right windows key useful.
-    --Editing of ~/.config/xmodmap required
-    --Launch a scratchpad
-    , ("M5-<Return>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     ]
     -- mod-[1..9],          Switch to workspace N
     -- mod-shift-[1..9],    Move client to workspace N
