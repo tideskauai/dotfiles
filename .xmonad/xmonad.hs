@@ -215,10 +215,10 @@ myKeys conf = mkKeymap conf $ [
     --Launch a scratchpad
     , ("M-<Backspace>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
     , ("M-f", safeSpawn "firefox" [])
-    , ("M-S-f 0", safeSpawn "firefox" ["-p"])
-    , ("M-S-f 1", safeSpawn "firefox" ["-p", "Primary"])
-    , ("M-S-f 2", safeSpawn "firefox" ["-p", "Secundary"])
-    , ("M-S-f 3", safeSpawn "firefox" ["-p", "Locked"])
+    , ("M-S-f 0", safeSpawn "firefox" ["-P"])
+    , ("M-S-f 1", safeSpawn "firefox" ["--no-remote", "-P", "Primary"])
+    , ("M-S-f 2", safeSpawn "firefox" ["--no-remote", "-P", "Secundary"])
+    , ("M-S-f 3", safeSpawn "firefox" ["--no-remote", "-P", "Locked"])
     , ("M-p", shellPrompt myXPConfig)
     --search the web
     , ("M-s", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
