@@ -1,4 +1,3 @@
-
 http://www.reddit.com/r/programming+compsci+learnprogramming+Python+C_Programming+c_language/.rss A-feed programming cs
 http://feeds.feedburner.com/catonmat A-feed programming cs
 http://terrytao.wordpress.com/feed/ A-feed programming cs
@@ -9,9 +8,9 @@ http://lambda-the-ultimate.org/rss.xml A-feed programming cs
 http://cacm.acm.org/blogs/blog-cacm.rss A-feed programming cs
 http://feeds.feedburner.com/blogspot/gJZg A-feed programming cs
 
-http://feeds.feedburner.com/gaussianos A-feed science math
-http://feeds.feedburner.com/ProblemasMatemticos A-feed science math
-http://solumate.blogspot.com/feeds/posts/default A-feed science math
+http://feeds.feedburner.com/gaussianos A-feed science
+http://feeds.feedburner.com/ProblemasMatemticos A-feed science
+http://solumate.blogspot.com/feeds/posts/default A-feed science
 http://blogs.elpais.com/apuntes-cientificos-mit/atom.xml A-feed science
 http://feeds2.feedburner.com/CienciaKanija A-feed science
 http://vicente1064.blogspot.com/feeds/posts/default A-feed science
@@ -30,13 +29,6 @@ http://unix.stackexchange.com/feeds/featured A-feed stackexchange
 http://math.stackexchange.com/feeds/month A-feed stackexchange
 http://cstheory.stackexchange.com/feeds/month A-feed stackexchange
 
-http://blog.pfsense.org/?feed=rss2 A-feed admin
-http://planetsysadmin.com/rss20.xml A-feed admin
-
-http://feeds.feedburner.com/arabesqueblog A-feed blog
-http://planet.freedesktop.org/atom.xml A-feed blog
-http://feeds.feedburner.com/linuxcommando A-feed blog
-
 http://www.schneier.com/blog/atom.xml B-feed security
 
 http://aprendeinglessila.com/feed/ B-feed fun
@@ -52,5 +44,14 @@ http://www.feedrinse.com/services/channel/?chanurl=c0db9795c12e142029a3d98109b9a
 http://feeds.feedburner.com/obamaworld B-feed "world news"
 http://feeds.arstechnica.com/arstechnica/tech-policy B-feed "world news"
 
+http://blog.pfsense.org/?feed=rss2 B-feed admin
+http://planetsysadmin.com/rss20.xml B-feed admin
 http://www.reddit.com/r/homelab/.rss B-feed admin
 http://gallir.wordpress.com/feed/ B-feed admin
+http://feeds.feedburner.com/saynotomicrosoft B-feed admin
+http://linuxsuperuser07.blogspot.com/feeds/posts/default?alt=rss B-feed admin
+http://feeds.feedburner.com/arabesqueblog B-feed admin
+http://planet.freedesktop.org/atom.xml B-feed admin
+http://feeds.feedburner.com/linuxcommando B-feed admin
+
+http://webstersprodigy.net/feed/ B-feed security
