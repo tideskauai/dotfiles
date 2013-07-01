@@ -55,6 +55,7 @@ set quote_regexp = "^([ \t]*[>])+"
 bind pager,index ! noop
 bind pager,index <F1> noop
 bind pager,index d noop
+bind pager,index t noop # Don't need to tag
 bind pager D noop
 bind pager n noop
 bind pager N noop
