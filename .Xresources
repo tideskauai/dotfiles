@@ -1,5 +1,6 @@
 ! --[ Font Rendering ]-------------------------------------
-Xft.dpi: 91.79
+/* Xft.dpi: 91.79 */
+Xft.dpi: 120
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
