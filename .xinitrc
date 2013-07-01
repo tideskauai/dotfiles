@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # Start custom bind of keys
-if [ -f $HOME/.config/xmodmap ]; then
-    xmodmap $HOME/.config/xmodmap
-fi
+# if [ -f $HOME/.config/xmodmap ]; then
+#     xmodmap $HOME/.config/xmodmap
+# fi
 
 # Start gnome-keyring
 eval `gnome-keyring-daemon`
@@ -22,7 +22,7 @@ xrdb -merge ~/.Xresources
 xsetroot -cursor_name left_ptr
 
 # Let's start udiskie (udisks wrapper)
-udiskie &
+udiskie -s &
 
 # Launch xmonad
 exec xmonad
