@@ -31,7 +31,7 @@ alarm()
 
 
 if (($# == 1)); then
-    if [[ $1 = "kill" ]]; then
+    if [[ $1 == "kill" ]]; then
         pid=$(pgrep -f "$0 ")
         if [[ -n "$pid" ]]; then
             echo "killing pids: $pid"
@@ -41,7 +41,7 @@ if (($# == 1)); then
         fi
     # Case for when we're given only one argument, and the argument
     # is a number followed by s, m, h, or d (seconds, minutes, hours, days)
-    elif [[ $1 = *[smhd] ]]; then
+    elif [[ $1 == *[smhd] ]]; then
         delay=$1
         sleep $delay && mplayer -loop 9999 \
             -really-quiet ~/Archives/Audio/Alarms/alert1.mp3
@@ -50,11 +50,11 @@ if (($# == 1)); then
     fi
 
 elif (($# == 2)); then
-    if [[ $1 = "-v" ]]; then
+    if [[ $1 == "-v" ]]; then
         delay=$2
         sleep $delay && echo -e \\a
     # Case for the "alarm 1m 5m" option
-    elif [[ $1 = *[smhd] && $2 = *[smhd] ]]; then
+    elif [[ $1 == *[smhd] && $2 == *[smhd] ]]; then
         alarm $1 $2 &
     else
         usage

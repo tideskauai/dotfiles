@@ -6,7 +6,7 @@ kbLayout="en-us"
 vnc="-daemonize -vnc 127.0.0.1:1 -k $kbLayout"
 net="-net nic,macaddr=DE:AD:BE:EF:00:01 -net bridge,br=br0,helper=/usr/lib/qemu/qemu-bridge-helper"
 
-if [[ -z "$1" ]]; then
+if [[ -z $1 ]]; then
     qemu-system-x86_64 -enable-kvm $ram $win7 &
 else
     case "$1" in
@@ -23,7 +23,7 @@ else
             echo "3) sudo brctl addif br0 eth0"
             echo "4) sudo dhcpcd br0"
             echo "5) sudo dnsmasq --dhcp-range=192.168.11.111,192.168.11.222,255.255.255.0,2h --interface=tap0"
-            echo '6) cd /proc/sys/net/bridge && for f in bridge-nf-*; do echo 0 |sudo tee $f; done' # CHECK ME, may need fixing
+            echo '6) cd /proc/sys/net/bridge && for f in bridge-nf-*; do echo 0 | sudo tee $f; done'
             echo "====================================================="
             echo "= Use tcpdump -ni tap0 to debug connectivity        ="
             echo "====================================================="

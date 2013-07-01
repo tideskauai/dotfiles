@@ -1,0 +1,185 @@
+#!/usr/bin/env bash
+
+# http://www.frozentux.net/iptables-tutorial/iptables-tutorial.html
+# https://wiki.archlinux.org/index.php/Simple_stateful_firewall
+# http://www.thegeekstuff.com/2012/08/iptables-log-packets/
+# http://www.thegeekstuff.com/2011/02/iptables-add-rule/
+# http://thelowedown.wordpress.com/2008/07/03/iptables-how-to-use-the-limits-module/
+# http://www.linuxtopia.org/Linux_Firewall_iptables/x6193.html
+usage() {
+    echo -e "Valid arguments: [-d | --default]
+    \t\t [-l | --logging]
+    \t\t [-o | --open]
+    \t\t [-f | --facebook]
+    \t\t [-m | --mac]
+    \t\t [--commit]
+    \t\t [--restore]
+    \t\t [--list]
+    \t\t [--logged-output]"
+}
+
+PORTNUMBER="8080"
+ARG_NUMBER="$#"
+ETHERS_FILE="/etc/ethers"
+
+##################
+### Checks     ###
+##################
+if [[ -z $(lsattr $(readlink -f "$0") | cut -d' ' -f1 |grep i) ]]; then
+    echo "The script does not have an immutable bit."
+    echo "You may want to set it to increase security."
+fi
+# Note: On Archlinux and Fedora /bin became a symlink to /usr/bin.
+# If this condition gets triggered and you have iptables installed check where
+# the binary is at.
+if [[ ! -x /usr/bin/iptables ]]; then
+    echo "This script heavily relies on iptables."
+    echo "Please install iptables before attempting to run this script"
+    exit
+fi
+##################
+### MAIN       ###
+##################
+
+if (($# != 0)); then
+    for arguments in "$@"
+    do
+        case $arguments in
+            -d | --default)
+                if [[ $1 == "-d" || "--default" ]] && (($ARG_NUMBER == $#)); then
+                    # Let's disable all current iptables rules
+                    echo "Flushing and deleting all the chains"
+                    sudo iptables -F
+                    sudo iptables -X
+                    echo "Setting default filter policy"
+                    sudo iptables -P FORWARD DROP
+                    sudo iptables -P INPUT DROP
+                    sudo iptables -P OUTPUT ACCEPT
+                    # We will need THESE CHAINS [1]
+                    sudo iptables -N TCP
+                    sudo iptables -N UDP
+                    # Allow traffic that belongs to established connections. Valid traffic that is related to these
+                    # connections such as ICMP errors or echo replies. ICMP Helps manage congestion and MTU.
+                    ###############################################
+                    ### This rule is crucial for this setup [2] ###
+                    ###############################################
+                    sudo iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+                    # Allow unlimited traffic on loopback(lo). Necessary for many apps and services.
+                    sudo iptables -A INPUT -i lo -j ACCEPT
+                    # Drop all traffic with an INVALID state match. Such as an invalid header or checksums, invalid
+                    # TCP flags, invalid ICMP messages, and out of sequence packets.
+                    sudo iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+                    # Allow pings, but limit how many can be done per minute. This setting is host based
+                    # Five pings in less than 2 seconds will get dropped
+                    sudo iptables -A INPUT -p icmp --icmp-type 8 -m recent --name ping_limiter --set
+                    sudo iptables -A INPUT -p icmp --icmp-type 8 -m recent --name ping_limiter --update --hitcount 6 --seconds 4 -j DROP
+                    sudo iptables -A INPUT -p icmp --icmp-type 8 -j ACCEPT
+                    # END OF ICMP SECTION
+                    ### # Accept ICMP echo requests (reply to pings). Only first package will count as NEW, the rest will be handled
+                    ### # by the RELATED, ESTABLISHED, rule.
+                    ### sudo iptables -A INPUT -p icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
+                    # Append OPEN chains to INPUT chain to handle all new incoming connections. Once a connection is accepted by
+                    # the OPEN chains, it is handled by RELATED,ESTABLISHED[2] traffic rule. [1]
+                    sudo iptables -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
+                    sudo iptables -A INPUT -p tcp --syn -m conntrack --ctstate NEW -j TCP
+                    # Reject TCP connections with TCP RST packets and UDP streams with ICMP port unreachable messages if the ports
+                    # are not open. This mimics default Linux behavior and it allows the sender to quickly close the connection and clean up.
+                    sudo iptables -A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable
+                    sudo iptables -A INPUT -p tcp -j REJECT --reject-with tcp-rst
+                    # For other protocols, we add a final rule to the INPUT chain to reject all remaining incoming traffic with icmp protocol unreachable messages.
+                    # This mimics Linux default behavior.
+                    sudo iptables -A INPUT -j REJECT --reject-with icmp-proto-unreachable
+                else
+                    echo "The -d argument can only be run one time and as the first argument"
+                fi
+                shift
+                ;;
+            -l | --logging)
+                # Create a LOGDROPPED chain. Limit amount of logging that can be done.
+                # Log levels: emerg(0), alert(1), crit(2), error(3), warning(4), notice(5), info (6), debug (7)
+                echo "Enable logging for dropped packages"
+                sudo iptables -N LOGDROPPED
+                sudo iptables -A INPUT -j LOGDROPPED
+                sudo iptables -A LOGDROPPED -m limit --limit 1/minute --limit-burst 1 -j LOG --log-prefix "IPTABLES Dropped: " --log-level 7
+                sudo iptables -A LOGDROPPED -j DROP
+                shift
+                ;;
+            -o | --open)
+                echo "Which port number do you wish to open?"
+                echo "Press enter if you wish to use the default [$PORTNUMBER]"
+                read -p "Enter port: " specified_port
+                if [[ -n $specified_port ]]; then
+                    PORTNUMBER=$specified_port
+                fi
+                echo "Allowing incoming connections on port: $PORTNUMBER"
+                sudo iptables -A TCP -p tcp --dport "$PORTNUMBER" -j ACCEPT
+                # LOG all traffic for this open port. One log entry per minute.
+                sudo iptables -I INPUT 1 -p tcp --dport "$PORTNUMBER" -m limit --limit 1/minute --limit-burst 1 -j LOG --log-prefix "IPTABLES:"$PORTNUMBER": " --log-level 7
+                shift
+                ;;
+            -f | --facebook)
+                echo "Block facebook"
+                sudo iptables -A OUTPUT -d 31.13.64.0/18 -j REJECT
+                sudo iptables -A OUTPUT -d 66.220.144.0/20 -j REJECT
+                sudo iptables -A OUTPUT -d 69.171.224.0/19 -j REJECT
+                sudo iptables -A OUTPUT -d 69.63.176.0/20 -j REJECT
+                shift
+                ;;
+            -m | --mac)
+                if [[ -x /usr/bin/arptables ]] && [[ -r $ETHERS_FILE ]]; then
+                    echo "Block all traffic from a HOST with an unknown MAC (ARP spoofing prevention)"
+                    # Let us flush the ARP table first, then proceed to add new rules
+                    sudo arptables -F
+                    while read line; do
+                        CURR_MAC=$(echo $line|cut -d' ' -f1)
+                        CURR_IP=$(echo $line|cut -d' ' -f2)
+                        echo "Add rule with IP $CURR_IP and MAC $CURR_MAC"
+                        sudo arptables -A INPUT --source-ip $CURR_IP --source-mac ! $CURR_MAC -j DROP
+                    done < $ETHERS_FILE
+                else
+                    echo "You need to have arptables installed in order to be able to use this arg"
+                    echo "You also need to have /etc/ethers to load a list of HOSTS with their MAC"
+                fi
+                shift
+                ;;
+            --commit)
+                # Can only be the first or last argument
+                if (($# == 1)); then
+                    echo "WARNING: Commiting changes will overwride any existing configurations."
+                    read -p "Are you sure you want to commit the changes? [N/y]" yes_or_no
+                    if [[ $yes_or_no == "y" ]]; then
+                        echo "Saving the changes to /etc/iptables/iptables.rules"
+                        sudo sh -c 'iptables-save > /etc/iptables/iptables.rules'
+                    fi
+                fi
+                shift
+                ;;
+            --restore)
+                # Can only be the first or last argument
+                if (($# == 1)); then
+                    echo "Restoring settings from /etc/iptables/iptables.rules"
+                    sudo sh -c 'iptables-restore < /etc/iptables/iptables.rules'
+                fi
+                shift
+                ;;
+            --list)
+                sudo iptables -nvL
+                echo "#####################"
+                echo "## ARPTABLE RULES  ##"
+                echo "#####################"
+                sudo arptables -L
+                shift
+                ;;
+            --logged-output)
+                journalctl -f _TRANSPORT=kernel
+                shift
+                ;;
+            *)
+                usage
+                shift
+                ;;
+        esac
+    done
+else
+    usage
+fi

@@ -10,7 +10,7 @@ for i in $tasks_raw; do
     tasks=$(echo "$i" | cut -d '=' -f 1)
     tasks_status=$(echo "$i" | cut -d '=' -f 2)
 
-    if [[ $tasks_status = 0 ]]; then
+    if (($tasks_status == 0)); then
         tasks_status=$undone_code
     else
         tasks_status=$done_code

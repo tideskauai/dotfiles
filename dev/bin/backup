@@ -4,10 +4,10 @@ back_up_files=(~/Archives ~/Downloads ~/dev ~/themes ~/VMs \
     ~/.ssh ~/.dotfiles ~/.themes ~/.mozilla \
     ~/.local ~/.gem ~/.cabal)
 back_up_etc=(iptables ssh X11 modules-load.d \
-    conf.d systemd udev default modprobe.d qemu lxc \
+    conf.d systemd udev default modprobe.d qemu lxc sysctl.d \
     chrony.conf hostname hosts ethers locale.conf locale.gen \
     makepkg.conf pacman.conf resolv.conf sysctl.conf timezone \
-    vconsole.conf localtime adjtime minirc.dfl)
+    vconsole.conf localtime adjtime minirc.dfl arptables.conf)
 back_up_dir="$HOME/Archives/backup"
 back_up_internalhdd="/media/sdb1"
 back_up_externalhdd="/mnt/backup"
@@ -21,6 +21,7 @@ usage ()
         $script_name --help        (-h) \tPrint this message.\n \
         $script_name --internalhdd (-i) \tTo sync files with internal hdd.\n \
         $script_name --externalhdd (-e) \tTo sync files with external hdd.\n \
+        $script_name --a-to-b       \t\tTo rsync between two dirs.\n \
         $script_name --etc          \t\tTo sync /etc files to \$back_up_dir/etc.\n \
         $script_name \$filename \t\tTo backup single file to \$back_up_dir.\n\n \
         To restore a backup use: \n \
@@ -75,11 +76,15 @@ symlink_backup_workaround ()
 }
 
 # Print help if incorrect number of arguments are given
-if (($# != 1)); then
+if (($# != 1 && $# != 3)); then
+    usage
+
+# Print help if we're given 3 args and we're not using --a-to-b (as first arg)
+elif (($# == 3)) && [[ $1 != "--a-to-b" ]]; then
     usage
 
 # Backup/sync $back_up_files to $back_up_internalhdd
-elif [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
+elif [[ $1 == "-i" || $1 == "--internalhdd" ]]; then
     mounted=$(mountpoint $back_up_internalhdd)
     if [ -n "$mounted" ]; then
         # Is $back_up_internalhdd a mountpoint?
@@ -105,7 +110,7 @@ elif [[ $1 = "-i" || $1 = "--internalhdd" ]]; then
     fi
 
 # Backup/sync $back_up_files to $back_up_externalhdd
-elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
+elif [[ $1 == "-e" || $1 == "--externalhdd" ]]; then
     # Does $back_up_externalhdd exist?
     if [ -d "$back_up_externalhdd" ]; then
         # Check if $back_up_internalhdd is mounted, if not mount in read-only mode
@@ -123,14 +128,34 @@ elif [[ $1 = "-e" || $1 = "--externalhdd" ]]; then
     fi
 
 # Backup /etc files to $back_up_dir/etc
-elif [[ $1 = "--etc" ]]; then
+elif [[ $1 == "--etc" ]]; then
     # Specify which files in /etc I want to backup
     if [ -d "$back_up_dir/etc" ]; then
         for i in "${back_up_etc[@]}"; do
-            rsync --archive --human-readable --progress --perms -gX --delete --delete-excluded "/etc/"$i"" "$back_up_dir/etc"
+            rsync --archive --progress --human-readable --delete --delete-excluded "/etc/"$i"" "$back_up_dir/etc"
         done
     else
         printf "$back_up_dir/etc does not exist, please create it\n"
+    fi
+
+# Rsync between to directories
+elif [[ $1 == "--a-to-b" ]]; then
+    txt_red=$(tput setaf 1)
+    txt_reset=$(tput sgr0)
+    # Either of the following variations must be used (notice we omit dest on #2 on purpose)
+    # 1) <rsync_command> . /path/to/dest
+    # 2) <rsync_command> /path/to/src /path/to/
+    # Otherwise, we might end up moving files to an unintentional folder
+    rsync --archive --delete --delete-excluded --dry-run --out-format='%i %n%L' "$2" "$3"
+    echo "###########################"
+    echo "######### Warning #########"
+    echo "###########################"
+    echo "Files in $txt_red$(readlink -f $3)$txt_reset will be modified and potentially DELETED by the files in $txt_red$(readlink -f $2)$txt_reset"
+    read -p "Are you sure you want to make these changes? [N/y] " yes_or_no
+    if [[ $yes_or_no == "y" ]]; then
+        rsync --archive --progress --human-readable --delete --delete-excluded "$2" "$3"
+    else
+        echo "Changes not commited"
     fi
 
 # Backup single file to specified dir in $back_up_dir
@@ -168,10 +193,10 @@ elif [[ -n "$1" ]] && [[ -f "$1" ]]; then
     fi
 
 # Print the help if requested
-elif [[ $1 = "-h" || $1 = "--help" ]]; then
+elif [[ $1 == "-h" || $1 == "--help" ]]; then
     usage
 
 # No valid arguments were given, so display a help
-else 
+else
     usage
 fi
