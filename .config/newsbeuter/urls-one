@@ -1,3 +1,5 @@
+https://hacks.mozilla.org/feed/ A-feed "dev news/blog"
+
 http://www.reddit.com/r/programming+compsci+learnprogramming+Python+C_Programming+c_language/.rss A-feed programming cs
 http://feeds.feedburner.com/catonmat A-feed programming cs
 http://terrytao.wordpress.com/feed/ A-feed programming cs
@@ -36,9 +38,6 @@ http://feeds2.feedburner.com/braingle/all B-feed fun
 http://gdata.youtube.com/feeds/base/users/minutephysics/uploads?alt=rss&v=2&orderby=published&client=ytapi-youtube-profile B-feed fun
 http://mundowdg.com/blog/feed/ B-feed fun
 
-http://feeds.feedburner.com/techsnapogg B-feed podcast
-http://hackerpublicradio.org/hpr_rss.php B-feed podcast
-
 http://www.feedrinse.com/services/channel/?chanurl=c0db9795c12e142029a3d98109b9a5e4 B-feed courses
 
 http://feeds.feedburner.com/obamaworld B-feed "world news"
@@ -55,3 +54,4 @@ http://planet.freedesktop.org/atom.xml B-feed admin
 http://feeds.feedburner.com/linuxcommando B-feed admin
 
 http://webstersprodigy.net/feed/ B-feed security
+http://www.devttys0.com/feed/ B-feed security
