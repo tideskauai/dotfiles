@@ -10,7 +10,6 @@ back_up_etc=(iptables ssh X11 modules-load.d \
     vconsole.conf localtime adjtime minirc.dfl arptables.conf)
 back_up_dir="$HOME/Archives/backup"
 back_up_internalhdd="/media/sdb1"
-back_up_externalhdd="/mnt/backup"
 script_name=$(basename "$0")
 partition="sdb1"
 
@@ -20,7 +19,6 @@ usage ()
         Only one argument may be used at a time.\n \
         $script_name --help        (-h) \tPrint this message.\n \
         $script_name --internalhdd (-i) \tTo sync files with internal hdd.\n \
-        $script_name --externalhdd (-e) \tTo sync files with external hdd.\n \
         $script_name --a-to-b       \t\tTo rsync between two dirs.\n \
         $script_name --etc          \t\tTo sync /etc files to \$back_up_dir/etc.\n \
         $script_name \$filename \t\tTo backup single file to \$back_up_dir.\n\n \
@@ -107,24 +105,6 @@ elif [[ $1 == "-i" || $1 == "--internalhdd" ]]; then
     sudo mount -o remount,ro $back_up_internalhdd
     else
         printf "Couldn't find the backup directory\n"
-    fi
-
-# Backup/sync $back_up_files to $back_up_externalhdd
-elif [[ $1 == "-e" || $1 == "--externalhdd" ]]; then
-    # Does $back_up_externalhdd exist?
-    if [ -d "$back_up_externalhdd" ]; then
-        # Check if $back_up_internalhdd is mounted, if not mount in read-only mode
-        mounted=$(mountpoint $back_up_internalhdd)
-        if [ -n "$mounted" ]; then
-            if [[ $mounted =~ "is a mountpoint" ]]; then
-                rsync --archive --human-readable --progress --delete --delete-excluded ${back_up_internalhdd}/backup/rdiff-backup \
-                    ${back_up_externalhdd}
-            else
-                printf "Dir $back_up_internalhdd is not mounted\n"
-            fi
-        fi
-    else
-        printf "Dir $back_up_externalhdd does not exist\n"
     fi
 
 # Backup /etc files to $back_up_dir/etc
