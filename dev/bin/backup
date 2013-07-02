@@ -33,23 +33,23 @@ backup_my_files ()
             ~/Archives)
                 printf "\n#### Backing up $i ####\n"
                 symlink_backup_workaround "$i"
-                rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/"$i"
                 ;;
             ~/dev)
                 printf "\n#### Backing up $i ####\n"
                 symlink_backup_workaround "$i"
-                rdiff-backup --force --remove-older-than 2Y "$back_up_internalhdd"/backup/rdiff-backup/"$i"
-                rdiff-backup --list-increments "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                rdiff-backup --force --remove-older-than 2Y "$back_up_internalhdd"/backup/"$i"
+                rdiff-backup --list-increments "$back_up_internalhdd"/backup/"$i"
                 ;;
             ~/VMs)
                 printf "\n#### Backing up $i ####\n"
                 symlink_backup_workaround "$i"
-                rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                rdiff-backup --force --remove-older-than 2B "$back_up_internalhdd"/backup/"$i"
                 ;;
             *)
                 printf "\n#### Backing up $i ####\n"
                 symlink_backup_workaround "$i"
-                rdiff-backup --force --remove-older-than 1M "$back_up_internalhdd"/backup/rdiff-backup/"$i"
+                rdiff-backup --force --remove-older-than 1M "$back_up_internalhdd"/backup/"$i"
                 ;;
         esac
     done
@@ -65,11 +65,11 @@ symlink_backup_workaround ()
         # Redirect STDOUT to /dev/null
         pushd $(pwd) > /dev/null
         cd "$1"
-        rdiff-backup -v3 --print-statistics . "$back_up_internalhdd"/backup/rdiff-backup/"$1"
+        rdiff-backup -v3 --print-statistics . "$back_up_internalhdd"/backup/"$1"
         # Redirect STDOUT to /dev/null
         popd > /dev/null
     else
-        rdiff-backup -v2 --print-statistics "$1" "$back_up_internalhdd"/backup/rdiff-backup/"$1"
+        rdiff-backup -v2 --print-statistics "$1" "$back_up_internalhdd"/backup/"$1"
     fi
 }
 
