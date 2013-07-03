@@ -10,12 +10,15 @@ usage() {
     echo -e "Valid arguments: [-d | --default]
     \t\t [-l | --logging]
     \t\t [-o | --open]
-    \t\t [-f | --facebook]
     \t\t [-m | --mac]
+    \t\t [-f | --facebook]
+    \t\t [--undesired-sites]
+    \t\t [--bittorrent]
+    \t\t [--test-config]
     \t\t [--commit]
     \t\t [--restore]
     \t\t [--list]
-    \t\t [--logged-output]"
+    \t\t [--watch-logs]"
 }
 
 PORTNUMBER="8080"
@@ -27,7 +30,7 @@ ETHERS_FILE="/etc/ethers"
 ##################
 if [[ -z $(lsattr $(readlink -f "$0") | cut -d' ' -f1 |grep i) ]]; then
     echo "The script does not have an immutable bit."
-    echo "You may want to set it to increase security."
+    echo "You may want to set it to increase the difficulty of screwing something up."
 fi
 # Note: On Archlinux and Fedora /bin became a symlink to /usr/bin.
 # If this condition gets triggered and you have iptables installed check where
@@ -117,14 +120,6 @@ if (($# != 0)); then
                 sudo iptables -I INPUT 1 -p tcp --dport "$PORTNUMBER" -m limit --limit 1/minute --limit-burst 1 -j LOG --log-prefix "IPTABLES:"$PORTNUMBER": " --log-level 7
                 shift
                 ;;
-            -f | --facebook)
-                echo "Block facebook"
-                sudo iptables -A OUTPUT -d 31.13.64.0/18 -j REJECT
-                sudo iptables -A OUTPUT -d 66.220.144.0/20 -j REJECT
-                sudo iptables -A OUTPUT -d 69.171.224.0/19 -j REJECT
-                sudo iptables -A OUTPUT -d 69.63.176.0/20 -j REJECT
-                shift
-                ;;
             -m | --mac)
                 if [[ -x /usr/bin/arptables ]] && [[ -r $ETHERS_FILE ]]; then
                     echo "Block all traffic from a HOST with an unknown MAC (ARP spoofing prevention)"
@@ -142,6 +137,54 @@ if (($# != 0)); then
                 fi
                 shift
                 ;;
+            -f | --facebook)
+                # host facebook.com -> whois <facebook_ip> |grep CIDR
+                echo "Block facebook and facebook tracking across the web"
+                sudo iptables -A OUTPUT -d 31.13.64.0/18 -j REJECT
+                sudo iptables -A OUTPUT -d 66.220.144.0/20 -j REJECT
+                sudo iptables -A OUTPUT -d 69.171.224.0/19 -j REJECT
+                sudo iptables -A OUTPUT -d 69.63.176.0/20 -j REJECT
+                sudo iptables -A OUTPUT -d 173.252.64.0/18 -j REJECT
+                shift
+                ;;
+            --undesired-sites)
+                echo "Block undesired sites"
+                sudo iptables -A OUTPUT -m string --algo bm --string 'xvideos.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'tube8.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'beeg.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'eporner.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'tubepornstars.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'xhamster.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'orgasmatrix.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'redtube.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'pornohub.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'facebook.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'twitter.com' -j REJECT
+                shift
+                ;;
+            --bittorrent)
+                echo "Block torrent traffic"
+                sudo iptables -A OUTPUT -m string --algo bm --string "BitTorrent" -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string "BitTorrent protocol" -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string "peer_id=" -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string ".torrent" -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string "announce.php?passkey=" -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string "torrent" -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string "announce" -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string "info_hash" -j REJECT
+                shift
+                ;;
+            --test-config)
+                # This argument will restore your iptables rules after 2 minutes
+                if (($# == 1)) && (($# != $ARG_NUMBER)); then
+                    sudo sh -c "sleep 2m; iptables-restore < /etc/iptables/iptables.rules"
+                else
+                    echo "This option has to be both: a)The last arugment b)Not the only argument"
+                    echo "Restoring your iptables settings and quitting the script"
+                    sudo sh -c "iptables-restore < /etc/iptables/iptables.rules"
+                fi
+                exit
+                ;;
             --commit)
                 # Can only be the first or last argument
                 if (($# == 1)); then
@@ -151,14 +194,18 @@ if (($# != 0)); then
                         echo "Saving the changes to /etc/iptables/iptables.rules"
                         sudo sh -c 'iptables-save > /etc/iptables/iptables.rules'
                     fi
+                else
+                    echo "Error: Make sure that --commit is the first or last argument"
                 fi
                 shift
                 ;;
             --restore)
-                # Can only be the first or last argument
-                if (($# == 1)); then
+                # Can only be the first and only argument
+                if (($# == 1)) && (($# == $ARG_NUMBER)); then
                     echo "Restoring settings from /etc/iptables/iptables.rules"
                     sudo sh -c 'iptables-restore < /etc/iptables/iptables.rules'
+                else
+                    echo "Error: Make sure that --restore is the first and only argument"
                 fi
                 shift
                 ;;
@@ -170,7 +217,7 @@ if (($# != 0)); then
                 sudo arptables -L
                 shift
                 ;;
-            --logged-output)
+            --watch-logs)
                 journalctl -f _TRANSPORT=kernel
                 shift
                 ;;
