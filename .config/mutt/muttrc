@@ -98,5 +98,5 @@ macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager gp "<change-folder>=peka<enter>" "Go to peka"
 macro index,pager gA "<change-folder>=Arch/Arch-dev<enter>" "Go to all arch-dev"
 macro index,pager ga "<change-folder>=Arch/Arch-general<enter>" "Go to arch-general"
-# Mark all messages in a mailbox as read by pressing esc+m
-macro index <Esc>m "T~N<enter>;WNT~O<enter>;WO\CT~A<enter>" "mark all messages read"
+# Mark all messages in a mailbox as read by pressing esc+r
+macro index <Esc>r "T~N<enter>;WNT~O<enter>;WO\CT~A<enter>" "mark all messages read"
