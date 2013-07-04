@@ -7,18 +7,20 @@
 # http://thelowedown.wordpress.com/2008/07/03/iptables-how-to-use-the-limits-module/
 # http://www.linuxtopia.org/Linux_Firewall_iptables/x6193.html
 usage() {
-    echo -e "Valid arguments: [-d | --default]
-    \t\t [-l | --logging]
-    \t\t [-o | --open]
-    \t\t [-m | --mac]
-    \t\t [-f | --facebook]
-    \t\t [--undesired-sites]
-    \t\t [--bittorrent]
-    \t\t [--test-config]
-    \t\t [--commit]
-    \t\t [--restore]
-    \t\t [--list]
-    \t\t [--watch-logs]"
+cat <<EOF
+Valid arguments: [-d | --default]
+                 [-l | --logging]
+                 [-o | --open]
+                 [-m | --mac]
+                 [-f | --facebook]
+                 [--undesired-sites]
+                 [--bittorrent]
+                 [--test-config]
+                 [--commit]
+                 [--restore]
+                 [--list]
+                 [--watch-logs]
+EOF
 }
 
 PORTNUMBER="8080"
@@ -149,17 +151,17 @@ if (($# != 0)); then
                 ;;
             --undesired-sites)
                 echo "Block undesired sites"
-                sudo iptables -A OUTPUT -m string --algo bm --string 'xvideos.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'tube8.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'beeg.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'eporner.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'tubepornstars.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'xhamster.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'orgasmatrix.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'redtube.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'pornohub.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'facebook.com' -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string 'twitter.com' -j REJECT
+                sudo iptables -A OUTPUT -m string --algo bm --string 'xvideos.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'tube8.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'beeg.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'eporner.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'tubepornstars.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'xhamster.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'orgasmatrix.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'redtube.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'pornohub.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'facebook.com' -j REJECT --reject-with icmp-host-prohibited
+                sudo iptables -A OUTPUT -m string --algo bm --string 'twitter.com' -j REJECT --reject-with icmp-host-prohibited
                 shift
                 ;;
             --bittorrent)
