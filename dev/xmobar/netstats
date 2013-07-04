@@ -9,6 +9,6 @@ for i in $net_interfaces; do
 
     # The ${i##*/} is for substring removal.
     # I.e. eth0 instead of /sys/class/net/eth0
-    echo -n "${i##*/}:<fc=#5d7caf> $(( $received/1024/1024 )) </fc>MiB"
-    echo "<fc=#FBA4A8> $(( $transferred/1024/1024 )) </fc>MiB"
+    echo -n "${i##*/}:<fc=#5d7caf> $(($received/1024/1024)) </fc>MiB"
+    echo "<fc=#FBA4A8> $(($transferred/1024/1024)) </fc>MiB"
 done
