@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+if (($# == 0)); then
+    # Make an array with all the vim sockets we find in /var/run/user/<my_user_id>
+    dtach_socket_list=($(find $XDG_RUNTIME_DIR -maxdepth 1 -type s -iname 'vim-*'))
+    iter=${#dtach_socket_list[*]}
+
+    for i in $(seq 0 1 $(($iter-1))); do
+        echo -n "$i) "
+        echo ${dtach_socket_list[$i]}
+    done
+
+    read -p "Re-attach to: " given_number
+    # Only match numbers in the regex
+    # Also make sure the var is not empty
+    if [[ $given_number =~ ^[0-9]+$ ]] && [[ -n $given_number ]]; then
+        if (($given_number < $iter)); then
+            dtach -A "${dtach_socket_list[$given_number]}" vim
+        else
+            echo "The number you wrote is not a valid option"
+        fi
+    fi
+
+elif (($# == 1)) && [[ -f $1 ]]; then
+    dtach -A $XDG_RUNTIME_DIR/vim-$(basename "$1") vim "$@"
+fi
