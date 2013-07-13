@@ -13,8 +13,6 @@ Valid arguments: [-d | --default]
                  [-o | --open]
                  [-m | --mac]
                  [-f | --facebook]
-                 [--undesired-sites]
-                 [--bittorrent]
                  [--test-config]
                  [--commit]
                  [--restore]
@@ -147,33 +145,6 @@ if (($# != 0)); then
                 sudo iptables -A OUTPUT -d 69.171.224.0/19 -j REJECT
                 sudo iptables -A OUTPUT -d 69.63.176.0/20 -j REJECT
                 sudo iptables -A OUTPUT -d 173.252.64.0/18 -j REJECT
-                shift
-                ;;
-            --undesired-sites)
-                echo "Block undesired sites"
-                sudo iptables -A OUTPUT -m string --algo bm --string 'xvideos.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'tube8.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'beeg.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'eporner.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'tubepornstars.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'xhamster.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'orgasmatrix.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'redtube.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'pornohub.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'facebook.com' -j REJECT --reject-with icmp-host-prohibited
-                sudo iptables -A OUTPUT -m string --algo bm --string 'twitter.com' -j REJECT --reject-with icmp-host-prohibited
-                shift
-                ;;
-            --bittorrent)
-                echo "Block torrent traffic"
-                sudo iptables -A OUTPUT -m string --algo bm --string "BitTorrent" -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string "BitTorrent protocol" -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string "peer_id=" -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string ".torrent" -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string "announce.php?passkey=" -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string "torrent" -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string "announce" -j REJECT
-                sudo iptables -A OUTPUT -m string --algo bm --string "info_hash" -j REJECT
                 shift
                 ;;
             --test-config)
