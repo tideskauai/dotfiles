@@ -166,6 +166,7 @@ if (($# != 0)); then
                     if [[ $yes_or_no == "y" ]]; then
                         echo "Saving the changes to /etc/iptables/iptables.rules"
                         sudo sh -c 'iptables-save > /etc/iptables/iptables.rules'
+                        sudo sh -c 'arptables-save > /etc/arptables.conf'
                     fi
                 else
                     echo "Error: Make sure that --commit is the first or last argument"
