@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# Exit script if dtach is not installed
+if [[ ! -x /usr/bin/dtach ]]; then
+    echo "This script heavily relies on dtach"
+    echo "Please install dtach before attempting to run this script"
+    exit
+fi
+
+
 if (($# == 0)); then
     # Make an array with all the vim sockets we find in /var/run/user/<my_user_id>
     dtach_socket_list=($(find $XDG_RUNTIME_DIR -maxdepth 1 -type s -iname 'vim-*'))
@@ -21,6 +29,7 @@ if (($# == 0)); then
         fi
     fi
 
+#FIXME: What if user wants to give vim option parameters?
 elif (($# == 1)) && [[ -f $1 ]]; then
     dtach -A $XDG_RUNTIME_DIR/vim-$(basename "$1") vim "$@"
 fi
