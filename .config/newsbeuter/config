@@ -7,7 +7,7 @@ articlelist-format "%f %3i - %t"
 articlelist-title-format  "%N %V - Articles in feed %T (%u unread, %t total)"
 
 max-items 100
-browser "chromium --incognito"
+browser "firefox"
 save-path ~/Archives/articles
 download-path ~/Downloads
 

@@ -33,11 +33,10 @@ else
             qemu-system-x86_64 -enable-kvm $ram $vnc $win7 &
             ;;
         -h | --help)
-            echo "Valid args: -b, --bridge, -a, --audio, none(defaults)"
+            echo "Valid args: -b, --bridge, -a, --audio, -v, --vnc, none(defaults)"
             ;;
         *)
             echo "Invalid argument, try again."
-            echo "Valid args: -b, --bridge, -a, --audio, -v, --vnc, none(defaults)"
             ;;
     esac
 fi
