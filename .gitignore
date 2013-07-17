@@ -17,11 +17,11 @@
 .vim/swap
 .vim/bundle
 
-.xmonad/
+.xmonad/*
 !.xmonad/xmonad.hs
-!.xmonad/lib
+!.xmonad/lib/DynamicTopic.hs
 
-.config/
+.config/*
 !.config/user-dirs.dirs
 !.config/user-dirs.locale
 !.config/termite.cfg
