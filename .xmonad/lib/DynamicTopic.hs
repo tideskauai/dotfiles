@@ -23,7 +23,7 @@ topics :: Map String FilePath
 topics = M.fromList
     [ ("web", "Downloads")
     , ("im", "Downloads")
-    , ("dev", "dev/.learn")
+    , ("dev", "dev/academia")
     , ("doc", "Archives/eLearn")
     , ("8", "Archives/vids")
     ]
