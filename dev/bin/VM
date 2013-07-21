@@ -1,24 +1,49 @@
 #!/usr/bin/env bash
 
-#FIXME: Add code to make a list of all overlays in $HOME/VMs and start a VM
-# based on the selected overlay.
-
-win7="$HOME/VMs/win7-overlay.qcow2"
-# win7="$HOME/VMs/win7-overlay2.qcow2"
+selected_overlay=""
+vm_dir="$HOME/VMs/"
 ram="-m 2G"
-kbLayout="en-us"
-vnc="-daemonize -vnc 127.0.0.1:1 -k $kbLayout"
+vnc="-daemonize -vnc 127.0.0.1:1 -k en-us"
 net="-net nic,macaddr=DE:AD:BE:EF:00:01 -net bridge,br=br0,helper=/usr/lib/qemu/qemu-bridge-helper"
+#############################
+## Select an overlay image ##
+#############################
+overlay_array=($(find $vm_dir -maxdepth 1 -type f -iname '*overlay*'))
+iter=${#overlay_array[*]}
 
+for i in $(seq 0 1 $(($iter-1))); do
+    echo -n "$i) "
+    echo ${overlay_array[$i]}
+done
+read -p "Choose an overlay image: " given_number
+# Only match numbers in the regex
+# Also make sure the var is not empty
+if [[ $given_number =~ ^[0-9]+$ ]] && [[ -n $given_number ]]; then
+    if (($given_number < $iter)); then
+        selected_overlay="${overlay_array[$given_number]}"
+    else
+        echo "The number you wrote is not a valid option"
+        exit
+    fi
+fi
+# Exit if selected_overlay remains a null string
+if [[ -z $selected_overlay ]]; then
+    exit
+fi
+###########################
+## Do something with the ##
+## selected overlay      ##
+###########################
+# If $1 is a null string
 if [[ -z $1 ]]; then
-    qemu-system-x86_64 -enable-kvm $ram $win7 &
+    qemu-system-x86_64 -enable-kvm $ram $selected_overlay &
 else
     case "$1" in
         -a | --audio)
             export QEMU_AUDIO_DRV=sdl
             export SDL_AUDIODRIVER=alsa
-            # qemu-system-x86_64 -enable-kvm $ram -soundhw hda $vnc $win7
-            qemu-system-x86_64 -enable-kvm $ram -device intel-hda -device hda-duplex $win7 &
+            # qemu-system-x86_64 -enable-kvm $ram -soundhw hda $vnc $selected_overlay
+            qemu-system-x86_64 -enable-kvm $ram -device intel-hda -device hda-duplex $selected_overlay &
             ;;
         -b | --bridge)
             echo "You will need to create a bridge and modify /etc/qemu/bridge.conf"
@@ -31,10 +56,10 @@ else
             echo "====================================================="
             echo "= Use tcpdump -ni tap0 to debug connectivity        ="
             echo "====================================================="
-            qemu-system-x86_64 -enable-kvm $ram $net $vnc $win7 &
+            qemu-system-x86_64 -enable-kvm $ram $net $vnc $selected_overlay &
             ;;
         -v | --vnc)
-            qemu-system-x86_64 -enable-kvm $ram $vnc $win7 &
+            qemu-system-x86_64 -enable-kvm $ram $vnc $selected_overlay &
             ;;
         -h | --help)
             echo "Valid args: -b, --bridge, -a, --audio, -v, --vnc, none(defaults)"
