@@ -16,7 +16,7 @@ if [[ -r $network_config_file ]]; then
     netmask=$(grep netmask $network_config_file |cut -d= -f2)
     gateway=$(grep gateway $network_config_file |cut -d= -f2)
     if [[ -n $interface && -n $address && -n $gateway && -n $netmask ]]; then
-        if [[ -n "$(ls /sys/class/net|grep $bridge_name)" ]]; then
+        if [[ -n $(ls /sys/class/net|grep $bridge_name) ]]; then
             read -p "A bridge already exists, do you want to delete it and revert to unbridged setup? [Y/n] " yes_or_no
             if [[ $yes_or_no == "Y" ]]; then
                 sudo brctl delif $bridge_name $interface

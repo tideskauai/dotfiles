@@ -139,7 +139,7 @@ elif [[ $1 == "--a-to-b" ]]; then
     fi
 
 # Backup single file to specified dir in $back_up_dir
-elif [[ -n "$1" ]] && [[ -f "$1" ]]; then
+elif [[ -n $1 ]] && [[ -f $1 ]]; then
     if [[ -d "$back_up_dir" ]]; then
 
         date=$(date "+%G-%j-%H%M%S")
