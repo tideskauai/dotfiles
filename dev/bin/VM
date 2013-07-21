@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
+#FIXME: Add code to make a list of all overlays in $HOME/VMs and start a VM
+# based on the selected overlay.
+
 win7="$HOME/VMs/win7-overlay.qcow2"
+# win7="$HOME/VMs/win7-overlay2.qcow2"
 ram="-m 2G"
 kbLayout="en-us"
 vnc="-daemonize -vnc 127.0.0.1:1 -k $kbLayout"

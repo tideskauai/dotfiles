@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
-# Howto: You need to mkdir && touch all the files you wish to backup,
-# script will grab the list of all files under $backup_dir and scp them
-# from host.
+
+# Howto: You need to mkdir && touch all the files you wish to backup
+# in the path defined in backup_dir.
+# Explanation: This script will grab the list of all files under $backup_dir
+# and scp them from remote host(rhost).
+# FIXME: Instead of iteraing over the list of files to backup, thus, runnign scp
+# multiple times, run scp only one time with the list of all files to backup.
+
 backup_dir="$HOME/Archives/backup/OpenWRT"
-host="router"
-host_dir="/etc"
+rhost="router"
+rhost_dir="/etc"
 
 if [[ -d $backup_dir ]]; then
     pushd $backup_dir
     files=$(find . -type f -not -path "*.git*")
-    for f in $files; do sleep 2s; scp $host:$host_dir/"$f" "$f"; done
+    for f in $files; do sleep 2s; scp $rhost:$rhost_dir/"$f" "$f"; done
     popd
 else
     echo "The variable backup_dir does not contain a valid directory"
