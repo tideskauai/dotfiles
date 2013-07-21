@@ -27,6 +27,7 @@ List of plugins I use:
 
 Install as git submodule
 ------------------------
+```
 mkdir -p .vim/{autoload,bundle,backup,swap}
 git submodule add git://github.com/SirVer/ultisnips.git .vim/bundle/ultisnips
 git submodule add git://github.com/scrooloose/nerdtree.git .vim/bundle/nerdtree
@@ -34,7 +35,7 @@ git submodule add git://github.com/mattn/gist-vim .vim/bundle/gist-vim
 git submodule add git://github.com/mattn/webapi-vim .vim/bundle/webapi-vim
 git submodule add git://github.com/godlygeek/tabular.git .vim/bundle/tabular
 git submodule add git://github.com/tpope/vim-commentary.git .vim/bundle/vim-commentary
-
+```
 
 Update all/single vim plugins
 ----------------------
