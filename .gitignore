@@ -6,16 +6,15 @@
 **/.zcompdump
 **/todo.txt
 
-.mpd/mpd.db
-.mpd/mpd.log
-.mpd/mpd.pid
-.mpd/mpdstate
-.ncmpcpp/error.log
+.mpd/
+!.mpd/mpd.conf
+.ncmpcpp/
+!.ncmpcpp/config
+!.ncmpcpp/keys
 
 .vim/.netrwhist
 .vim/backup
 .vim/swap
-.vim/bundle
 
 .xmonad/*
 !.xmonad/xmonad.hs
