@@ -1,7 +1,7 @@
 # License
 Feel free to use and modify anything on this repo as you wish.
 
-# How to clon the repo
+# How to clone the repo
 `git clone https://github.com/ballmerpeak/dotfiles.git ~/.dotfiles`
 
 # Dependencies

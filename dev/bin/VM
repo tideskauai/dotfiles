@@ -28,6 +28,7 @@ if [[ $given_number =~ ^[0-9]+$ ]] && [[ -n $given_number ]]; then
 fi
 # Exit if selected_overlay remains a null string
 if [[ -z $selected_overlay ]]; then
+    echo "The var selected_overlay remains a null string"
     exit
 fi
 ###########################
