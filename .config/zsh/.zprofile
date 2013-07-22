@@ -32,10 +32,5 @@ export KDEHOME=$HOME/.config/kde4
 # For the interactive python interpreter
 export PYTHONSTARTUP=$HOME/.config/pystartup
 
-# Temporary XDG fix
-# export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-"$HOME/.config"}
-# export XDG_DATA_HOME=${XDG_DATA_HOME:-"$HOME/.local/share"}
-# export XDG_CACHE_HOME=${XDG_CACHE_HOME:-"$HOME/.cache"}
-
 # Let us store Gimp settings in $HOME/.config
 export GIMP2_DIRECTORY=$HOME/.config/gimp-2.8
