@@ -14,7 +14,7 @@ rhost_dir="/etc"
 if [[ -d $backup_dir ]]; then
     pushd $backup_dir
     files=$(find . -type f -not -path "*.git*")
-    for f in $files; do sleep 2s; scp $rhost:$rhost_dir/"$f" "$f"; done
+    for f in $files; do sleep 1s; scp "$rhost":"$rhost_dir"/"$f" "$f"; done
     popd
 else
     echo "The variable backup_dir does not contain a valid directory"
