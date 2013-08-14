@@ -208,6 +208,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M-a z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
     , ("M-a w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M-a l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
+    , ("M-S-a l", safeSpawn "bash" ["-c", "systemctl suspend && xlock"])
     , ("M-a x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
     , ("M-S-a x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     --launching
