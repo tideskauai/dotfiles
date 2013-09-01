@@ -11,7 +11,6 @@ cat <<EOF
 Valid arguments: [-d | --default]
                  [-l | --logging]
                  [-o | --open]
-                 [--open-srcip]
                  [-m | --mac]
                  [-f | --facebook]
                  [--test-config]
@@ -116,23 +115,10 @@ if (($# != 0)); then
                 if [[ -n $specified_port ]]; then
                     PORTNUMBER=$specified_port
                 fi
-                echo "Allowing incoming connections on port: $PORTNUMBER"
-                sudo iptables -A TCP -p tcp --dport "$PORTNUMBER" -j ACCEPT
-                # LOG all traffic for this open port. One log entry per minute.
-                sudo iptables -I INPUT 1 -p tcp --dport "$PORTNUMBER" -m limit --limit 1/minute --limit-burst 1 -j LOG --log-prefix "IPTABLES:"$PORTNUMBER": " --log-level 7
-                shift
-                ;;
-            --open-srcip)
-                echo "Which port number do you wish to open?"
-                echo "Press enter if you wish to use the default [$PORTNUMBER]"
-                read -p "Enter port: " specified_port
-                if [[ -n $specified_port ]]; then
-                    PORTNUMBER=$specified_port
-                fi
                 echo "Which IP(s) do you wish to allow?"
                 read -p "Enter IP: " specified_ip
                 if [[ -n $specified_ip ]]; then
-                    SRC_IP=$specified_ip
+                        SRC_IP=$specified_ip
                 fi
                 echo "Allowing incoming connections on port: $PORTNUMBER from IP(s): $SRC_IP"
                 sudo iptables -A TCP -p tcp -s $SRC_IP --dport "$PORTNUMBER" -j ACCEPT
