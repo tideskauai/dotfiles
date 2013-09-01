@@ -118,7 +118,7 @@ if (($# != 0)); then
                 echo "Which IP(s) do you wish to allow?"
                 read -p "Enter IP: " specified_ip
                 if [[ -n $specified_ip ]]; then
-                        SRC_IP=$specified_ip
+                    SRC_IP=$specified_ip
                 fi
                 echo "Allowing incoming connections on port: $PORTNUMBER from IP(s): $SRC_IP"
                 sudo iptables -A TCP -p tcp -s $SRC_IP --dport "$PORTNUMBER" -j ACCEPT
