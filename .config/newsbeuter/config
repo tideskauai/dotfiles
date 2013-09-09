@@ -1,4 +1,4 @@
-#################################################################################
+################################################################################
 ### http://www.readwriteweb.com/archives/6_ways_to_filter_your_rss_feeds.php  ###
 #################################################################################
 feed-sort-order firsttag
@@ -66,12 +66,16 @@ ignore-article "http://www.linuxtoday.com/biglt.rss" "link !~ \"developer\""
 #################################################################################
 ### Color settings                                                            ###
 #################################################################################
-color info cyan default
-color listnormal color244 default
-color listfocus red default
-search-highlight-colors black yellow bold
 highlight all "https?://[^ ]+" blue default
 highlight article "^(Feed|Title|Author|Link|Date):.+" black default
 highlight-article "link =~ \"reddit.com/r/(programming|netsec)\"" blue default
 highlight-article "link =~ \"reddit.com/r/compsci\"" color030 default
 highlight-article "link =~ \"reddit.com/r/(technology|linuxquestions|archlinux|opensource|linux4noobs|xmonad|learnprogramming|Privacy)/\"" color238 default
+color info cyan default
+color listnormal color244 default
+# color listnormal_unread color244 default
+color listfocus red default
+# color listfocus_unread red default
+# color background blue default
+# color article blue default
+search-highlight-colors black yellow bold
