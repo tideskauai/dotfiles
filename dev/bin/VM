@@ -82,4 +82,4 @@ fi
 
 # Select an overlay image and run the VM with it
 select_overlay
-qemu-system-x86_64 -enable-kvm $ram $selected_args &
+qemu-system-x86_64 -enable-kvm $ram $selected_args $selected_overlay &
