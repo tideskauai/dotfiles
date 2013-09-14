@@ -108,7 +108,8 @@ colorGranate    = "#410039"
 colorPink       = "#ff6ffa"
 colorNormalBorder   = colorDarkGray
 colorFocusedBorder  = colorDarkBlue
-myTerminal      = "urxvt"
+myTerminal      = "termite"
+myTerminal2     = "urxvt"
 myBorderWidth   = 1
 myModMask = mod4Mask
 
@@ -214,7 +215,7 @@ myKeys conf = mkKeymap conf $ [
     --launching
     , ("M-<Return>", spawnShell) --Launch shell in topic (1)
     --Launch a scratchpad
-    , ("M-<Backspace>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal})
+    , ("M-<Backspace>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal2})
     , ("M-f", safeSpawn "firefox" [])
     , ("M-S-f 0", safeSpawn "firefox" ["-P"])
     , ("M-S-f 1", safeSpawn "firefox" ["-P", "Primary"])
