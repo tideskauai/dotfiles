@@ -214,8 +214,8 @@ myKeys conf = mkKeymap conf $ [
     , ("M-S-a x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     --launching
     , ("M-<Return>", spawnShell) --Launch shell in topic (1)
-    --Launch a scratchpad
-    , ("M-<Backspace>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal2})
+    , ("M-S-<Backspace>", spawn myTerminal2) --Launch shell
+    , ("M-<Backspace>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal2}) --Launch scratchpad
     , ("M-f", safeSpawn "firefox" [])
     , ("M-S-f 0", safeSpawn "firefox" ["-P"])
     , ("M-S-f 1", safeSpawn "firefox" ["-P", "Primary"])

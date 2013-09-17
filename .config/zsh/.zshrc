@@ -19,8 +19,8 @@ if [[ $HOST == "Greno" ]]; then
     # Source functions and aliases if our hostname is Greno
     source $HOME/.config/zsh/Greno-alias
     source $HOME/.config/zsh/Greno-functions
-    # Don't store commands with sudo or cd in the history
-    function zshaddhistory() { [[ $1 != *(sudo|cd)* ]] }
+    # Don't store commands with sudo/cd/ls in the history
+    function zshaddhistory() { [[ $1 != *(sudo|cd|ls)* ]] }
 else
     # Load custom aliases and functions for our host
     # if $HOME/.config/zsh/$HOST-(alias and/or function) exists
