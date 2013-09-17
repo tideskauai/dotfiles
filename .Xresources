@@ -11,34 +11,10 @@ Xft.lcdfilter: lcddefault
 Xcursor.theme: Vanilla-DMZ
 Xcursor.size:  24
 
-! --[ xterm Settings  ]-------------------------------------
-xterm*foreground: #999999
-xterm*background: #000000
-xterm*color0: #333333
-xterm*color1: #8C4665
-xterm*color2: #287373
-xterm*color3: #7C7C99
-xterm*color4: #395573
-xterm*color5: #5E468C
-xterm*color6: #31658C
-xterm*color7: #899CA1
-xterm*color8: #3D3D3D
-xterm*color9: #BF4D80
-xterm*color10: #53A6A6
-xterm*color11: #9E9ECB
-xterm*color12: #477AB3
-xterm*color13: #7E62B3
-xterm*color14: #6096BF
-xterm*color15: #C0C0C0
-
 ! --[ URxvt - General ]-------------------------------------
 URxvt.loginShell:false
 URxvt.scrollBar:false
 URxvt.saveLines:5000
-URxvt.cursorColor:  #370074
-URxvt.cursorColor2: #ff00f6
-URxvt.highlightColor:#444444
-URxvt.underlinecolor: #999999
 URxvt.dynamicColors: on
 URxvt.internalborder: 0
 URxvt.font: -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
@@ -65,21 +41,45 @@ URxvt.underlineURLs:   true
 
 ! --[ URxvt - colors ]--------------------------------------
 URxvt.depth: 32
+URxvt.cursorColor:  #370074
+URxvt.cursorColor2: #ff00f6
+URxvt.highlightColor:#444444
+URxvt.underlinecolor: #999999
 URxvt.background: #000000
 URxvt.foreground: #999999
-*color0: #333333
-*color1: #8C4665
-*color2: #287373
-*color3: #7C7C99
-*color4: #395573
-*color5: #5E468C
-*color6: #31658C
-*color7: #899CA1
-*color8: #3D3D3D
-*color9: #BF4D80
-*color10: #53A6A6
-*color11: #9E9ECB
-*color12: #477AB3
-*color13: #7E62B3
-*color14: #6096BF
-*color15: #C0C0C0
+URxvt.color0: #333333
+URxvt.color1: #8C4665
+URxvt.color2: #287373
+URxvt.color3: #7C7C99
+URxvt.color4: #395573
+URxvt.color5: #5E468C
+URxvt.color6: #31658C
+URxvt.color7: #899CA1
+URxvt.color8: #3D3D3D
+URxvt.color9: #BF4D80
+URxvt.color10: #53A6A6
+URxvt.color11: #9E9ECB
+URxvt.color12: #477AB3
+URxvt.color13: #7E62B3
+URxvt.color14: #6096BF
+URxvt.color15: #C0C0C0
+
+! --[ xterm Settings  ]-------------------------------------
+xterm*foreground: #999999
+xterm*background: #000000
+xterm*color0: #333333
+xterm*color1: #8C4665
+xterm*color2: #287373
+xterm*color3: #7C7C99
+xterm*color4: #395573
+xterm*color5: #5E468C
+xterm*color6: #31658C
+xterm*color7: #899CA1
+xterm*color8: #3D3D3D
+xterm*color9: #BF4D80
+xterm*color10: #53A6A6
+xterm*color11: #9E9ECB
+xterm*color12: #477AB3
+xterm*color13: #7E62B3
+xterm*color14: #6096BF
+xterm*color15: #C0C0C0
