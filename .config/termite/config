@@ -31,7 +31,7 @@ browser = firefox
 
 # word characters used for word selection
 # (default if unset: all graphic non-punctuation/space characters)
-#word_chars = -A-Za-z0-9,./?%&#:_=+@~
+word_chars = -A-Za-z0-9,./?%&#:_=+@~
 
 [colors]
 # foreground = #dcdccc
