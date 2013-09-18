@@ -25,3 +25,5 @@
 	user = ballmerpeak
 [push]
 	default = simple
+[core]
+	excludesfile = /home/user01/.config/git/gitignore_global
