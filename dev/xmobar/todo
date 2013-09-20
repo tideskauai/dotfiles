@@ -1,21 +1,21 @@
 #!/bin/bash
 
 dir_name=$(dirname "$0")
-tasks_raw=$(cat $dir_name/todo.txt)
+file_with_tasks="$dir_name/todo.txt"
 tasks_array=();
 done_code="x"
 undone_code="<fc=#FBA4A8>x</fc>"
 
-for i in $tasks_raw; do
-    tasks=$(echo "$i" | cut -d '=' -f 1)
-    tasks_status=$(echo "$i" | cut -d '=' -f 2)
+while read line; do
+    tasks=$(echo "$line" | cut -d '=' -s -f 1)
+    tasks_status=$(echo "$line" | cut -d '=' -s -f 2)
 
-    if (($tasks_status == 0)); then
+    if [[ $tasks_status == 0 ]]; then
         tasks_status=$undone_code
     else
         tasks_status=$done_code
     fi
     tasks_array=("${tasks_array[@]}" "$tasks: $tasks_status");
-done
+done < $file_with_tasks
 
 echo "${tasks_array[@]}"
