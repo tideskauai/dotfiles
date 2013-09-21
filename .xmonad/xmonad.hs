@@ -1,5 +1,5 @@
 -- haskell
-import Data.List -- (6)
+import Data.List -- (1)
 
 import XMonad
 import qualified XMonad.StackSet as W
@@ -14,10 +14,10 @@ import XMonad.Util.EZConfig --easy M-key like bindings
 
 -- actions and prompts
 import XMonad.Actions.GridSelect
-import XMonad.Actions.CycleWS --toggleWS (5)
-import XMonad.Actions.GroupNavigation --toggle between windows (6)
-import XMonad.Actions.CopyWindow --copy win to workspaces (2)
-import XMonad.Actions.FocusNth --focus nth window in current workspace (3)
+import XMonad.Actions.CycleWS --toggleWS (2)
+import XMonad.Actions.GroupNavigation --toggle between windows (3)
+import XMonad.Actions.CopyWindow --copy win to workspaces (4)
+import XMonad.Actions.FocusNth --focus nth window in current workspace (5)
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.AppendFile
@@ -28,7 +28,7 @@ import qualified XMonad.Actions.Search as S
 -- hooks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.UrgencyHook
-import XMonad.Hooks.InsertPosition -- position and focus for new windows (4)
+import XMonad.Hooks.InsertPosition -- position and focus for new windows (6)
 
 -- layouts
 import XMonad.Layout.NoBorders
@@ -38,7 +38,7 @@ import XMonad.Layout.Named
 import XMonad.Layout.Reflect
 
 -- local libs
-import DynamicTopic -- (1)
+import DynamicTopic -- (7)
 
 -------------------------------------------------------------------------------
 ---- Main ---
@@ -84,7 +84,7 @@ myConfig = defaultConfig { focusFollowsMouse = False
                            , keys = myKeys
                            , layoutHook = myLayout
                            , manageHook = myManageHook
-                           , logHook = historyHook -- (6)
+                           , logHook = historyHook -- (1)
                          }
 
 --Declarations
@@ -116,15 +116,15 @@ myModMask = mod4Mask
 --hooks
 myManageHook :: ManageHook
 myManageHook = (composeAll . concat $
-            [[ className =? "Firefox"    --> doShift "web"
-            , className =? "Dwb" --> doShift "web"
-            , className =? "Chromium"   --> insertPosition End Older <+> doShift "web" -- (4)
-            , className =? "Pavucontrol" --> insertPosition End Older <+> doShift "im" -- (4)
-            , className =? "Pidgin" --> insertPosition End Older <+> doShift "im" -- (4)
-            , fmap ("LibreOffice" `isInfixOf`) className --> doShift "doc" -- (6)
+            [[ fmap ("crx_nck" `isInfixOf`) resource --> doShift "im" -- For a chromium extension (1)
+            , className =? "Pavucontrol" --> insertPosition End Older <+> doShift "im" -- (6)
+            , className =? "Pidgin" --> insertPosition End Older <+> doShift "im" -- (6)
+            , className =? "Firefox"    --> doShift "web"
+            , className =? "Firefox" <&&> resource =? "Download" --> doFloat
+            , className =? "Chromium"   --> insertPosition End Older <+> doShift "web" -- (6)
             , className =? "Epdfview"   --> doShift "doc"
             , className =? "Okular"   --> doShift "doc"
-            , className =? "VirtualBox" --> doShift "8"
+            , fmap ("libreoffice" `isInfixOf`) className --> doShift "doc" -- (1)
             , className =? "MPlayer"    --> doShift "8"
             , className =? "mplayer2"    --> doShift "8"
             , className =? "Vlc"    --> doShift "8"
@@ -132,11 +132,11 @@ myManageHook = (composeAll . concat $
             , className =? "Hamster-time-tracker" --> doShift "NSP"
             , className =? "Osmo" --> doShift "NSP"
             , className =? "trayer" --> doIgnore
-            , className =? "URxvt" --> insertPosition Below Newer -- (4)
+            , className =? "URxvt" --> insertPosition Below Newer -- (6)
+            , className =? "Termite" --> insertPosition Below Newer -- (6)
             , className =? "Gtkdialog" --> doFloat
             , className =? "Gimp" --> doFloat
-            , className =? "Firefox" <&&> resource =? "Download" --> doFloat
-            , fmap ("Call with" `isInfixOf`) title --> doFloat -- (6)
+            , fmap ("Call with" `isInfixOf`) title --> doFloat -- For skype (1)
             ]]) <+> manageScratchPad
 
 manageScratchPad :: ManageHook
@@ -204,8 +204,8 @@ myKeys conf = mkKeymap conf $ [
     , ("M-a f", safeSpawn "pcmanfm" []) --Launch file manager
     , ("M-a u", focusUrgent) --Go to urgent window
     , ("M-a g", goToSelected defaultGSConfig { gs_cellwidth = 250 })
-    , ("M-a k", killAllOtherCopies) --Kill all copied windows (2)
-    , ("M-a t", changeDir myXPConfig) --Change the dir of the topic (1)
+    , ("M-a k", killAllOtherCopies) --Kill all copied windows (4)
+    , ("M-a t", changeDir myXPConfig) --Change the dir of the topic (7)
     , ("M-a z", appendFilePrompt myXPConfig "/home/user01/Archives/txt/NOTES")
     , ("M-a w", safeSpawn "v4l2-ctl" ["-c", "exposure_auto=1", "-c", "exposure_absolute=22"])
     , ("M-a l", safeSpawn "xlock" ["-mode","blank","-geometry","1x1"])
@@ -213,7 +213,7 @@ myKeys conf = mkKeymap conf $ [
     , ("M-a x", safeSpawn "bash" ["/home/user01/dev/clipsync/dmenu.sh"])
     , ("M-S-a x", safeSpawn "python" ["/home/user01/dev/clipsync/sync.py"])
     --launching
-    , ("M-<Return>", spawnShell) --Launch shell in topic (1)
+    , ("M-<Return>", spawnShell) --Launch shell in topic (7)
     , ("M-S-<Backspace>", spawn myTerminal2) --Launch shell
     , ("M-<Backspace>", scratchpadSpawnAction defaultConfig  {terminal = myTerminal2}) --Launch scratchpad
     , ("M-f", safeSpawn "firefox" [])
@@ -227,8 +227,8 @@ myKeys conf = mkKeymap conf $ [
     , ("M-s", SM.submap $ searchEngineMap $ S.promptSearch myXPConfig)
     , ("M-S-s", SM.submap $ searchEngineMap $ S.selectSearch)
     --navigation of windows/workspaces
-    , ("M-q", toggleWS' ["NSP"]) --Toggle between workspaces (5)
-    , ("M-<Tab>", nextMatch History (className =? "URxvt")) -- Toggle between windows (6)
+    , ("M-q", toggleWS' ["NSP"]) --Toggle between workspaces (2)
+    , ("M-<Tab>", nextMatch History (className =? "URxvt")) -- Toggle between windows (3)
     --killing
     , ("M-S-q", kill)
     --layouts
@@ -257,14 +257,14 @@ myKeys conf = mkKeymap conf $ [
     ]
     -- mod-[1..9],          Switch to workspace N
     -- mod-shift-[1..9],    Move client to workspace N
-    -- mod5-shift-[1..9],   Copy windows to workspace N (1)
+    -- mod5-shift-[1..9],   Copy windows to workspace N (7)
     ++ [(m ++ k, windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) $ map show [1..9]
         , (f, m) <- [(W.greedyView, "M-"), (W.shift, "M-S-"), (copy, "M5-S-")]
     ]
     --Making right windows key useful.
     --Editing of ~/.config/xmodmap required
-    -- mod5-[1..9],         Switch to window N (3)
+    -- mod5-[1..9],         Switch to window N (5)
     ++ [(("M5-" ++ show k), focusNth i)
         | (i, k) <- zip [0 .. 8] [1..9]
     ]
