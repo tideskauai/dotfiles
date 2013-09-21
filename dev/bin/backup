@@ -1,5 +1,27 @@
 #!/bin/bash
 
+# Explanation: This script offers four ways of backing up data.
+#
+# The --internalhdd switch backs up all the files I have defined in the
+# back_up_files array (folder/files in my $HOME) to the path specified by
+# the variable back_up_internalhdd. It uses rdiff-backup for backing up
+# those files and depending on the folder different removal settings are used.
+#
+# The --etc switch backs up all the files I have defined in the back_up_etc
+# array to the path specified by the variable back_up_dir (in a folder called etc).
+# It uses rsync for backing up, and to keep a history of the changes I use
+# git (VCS) on $back_up_dir
+#
+# The switch --a-to-b allows me to rsync between two directories.
+#
+# The last way of backing up is by giving this script the path to a file as the 'first'
+# and only argument. It then copies that file to the path specified by the back_up_dir
+# variable. It only works inside of $HOME and keeps the folder structure. For example, if
+# we back up $HOME/Downloads/afile.txt, this script would save it in
+# $HOME/path/specified/by/back_up_dir/Downloads/2013-177-040133-afile.txt
+# A date is prepended to the file, 2013 is the year, 177 is the day of the year (0..356),
+# 04 is the hour, 01 is the minute, and 33 is the second at which it was saved.
+
 back_up_files=(~/Archives ~/Downloads ~/dev ~/themes ~/VMs \
     ~/.ssh ~/.dotfiles ~/.themes ~/.mozilla \
     ~/.local ~/.gem ~/.cabal)

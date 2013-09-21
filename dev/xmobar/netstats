@@ -1,4 +1,12 @@
 #!/bin/bash
+
+# This script outputs how much data I have received and transmitted since the interface
+# was brought up. Output looks like:
+# eth0:<fc=#5d7caf> 7508 </fc>MiB<fc=#FBA4A8> 334 </fc>MiB
+# xmobar replaces those color codes, so 7508 would look blue and 334 red. The first set
+# of digits shows us how much we have downloaded (7508MiB in our example), and the second
+# set of digits shows how much we have uploaded (334MiB in our example)
+
 shopt -s extglob
 
 net_interfaces=(/sys/class/net/!(lo))

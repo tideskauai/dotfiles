@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+
+# The todo program allows me to see in xmobar if I have completed a weekly task.
+# todo.py allows me to mark tasks as done or undone, or reset all tasks as undone.
+# The file containing all the tasks is todo.txt; it follows the format 'task_one=0'
+# where 0 means undone and 1 means done.
+#
+# Todo program consists of three files: todo.py, todo(bash script), and todo.txt.
+
 import sys
 import os
 import fileinput

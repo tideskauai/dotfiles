@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+# Explanation: This script allows me to use dtach with vim so that I may deatch and
+# re-attach later. By executing the script with no arguments a list of open sessions will
+# be displayed, like so:
+# > 0) /run/user/1000/vim-client.c
+# > 1) /run/user/1000/vim-server.c
+# > Re-attach to:
+# If we select 0 dtach will reattach us to the file with the name client.c that we were
+# previously editing. Running this script with a file name as 'first' and only argument
+# we open the file in vim with a dtach session.
+
 if (($# == 0)); then
     # Make an array with all the vim sockets we find in /var/run/user/<my_user_id>
     dtach_socket_list=($(find $XDG_RUNTIME_DIR -maxdepth 1 -type s -iname 'vim-*'))
