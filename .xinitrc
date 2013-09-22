@@ -16,7 +16,7 @@ export GPG_AGENT_INFO
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 
 # Start custom settings for urxvt
-xrdb -merge ~/.Xresources
+xrdb -merge ~/.config/Xresources
 
 # Let's set a pointer
 xsetroot -cursor_name left_ptr
