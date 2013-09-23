@@ -122,11 +122,11 @@ myManageHook = (composeAll . concat $
             , className =? "Firefox"    --> doShift "web"
             , className =? "Firefox" <&&> resource =? "Download" --> doFloat
             , className =? "Chromium"   --> insertPosition End Older <+> doShift "web" -- (6)
-            , className =? "Epdfview"   --> doShift "doc"
             , className =? "Okular"   --> doShift "doc"
             , fmap ("libreoffice" `isInfixOf`) className --> doShift "doc" -- (1)
             , className =? "MPlayer"    --> doShift "8"
             , className =? "mplayer2"    --> doShift "8"
+            , className =? "mpv"    --> doShift "8"
             , className =? "Vlc"    --> doShift "8"
             , className =? "Skype" --> doShift "9"
             , className =? "Hamster-time-tracker" --> doShift "NSP"
