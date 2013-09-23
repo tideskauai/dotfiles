@@ -1,11 +1,7 @@
 ! --[ Font Rendering ]-------------------------------------
 Xft.dpi: 120
 Xft.antialias: true
-Xft.rgba: rgb
-Xft.hinting: true
-Xft.hintstyle: hintfull
-Xft.autohint: true
-Xft.lcdfilter: lcddefault
+Xft.rgba: vrgb
 
 ! --[Cursor theme ]-----------------------------------------
 Xcursor.theme: Vanilla-DMZ
