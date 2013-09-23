@@ -14,15 +14,21 @@ export GPG_AGENT_INFO
 
 # Fonts
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
+# Turn the bell off
+xset -b
+# Let's set a pointer
+xsetroot -cursor_name left_ptr
 
 # Start custom settings for urxvt
 xrdb -merge ~/.config/Xresources
 
-# Let's set a pointer
-xsetroot -cursor_name left_ptr
-
 # Let's start udiskie (udisks wrapper)
 udiskie -s &
+
+# Use $XDG_RUNTIME_DIR for some folders
+mkdir -p $XDG_RUNTIME_DIR/{adobe,macromedia}
+ln -sfn $XDG_RUNTIME_DIR/adobe ~/.adobe
+ln -sfn $XDG_RUNTIME_DIR/macromedia ~/.macromedia
 
 # Launch xmonad OR i3
 exec xmonad
