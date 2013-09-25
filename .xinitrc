@@ -14,10 +14,10 @@ export GPG_AGENT_INFO
 
 # Fonts
 xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
-# Turn the bell off
-xset -b
 # Let's set a pointer
 xsetroot -cursor_name left_ptr
+# Turn the bell off
+xset -b
 
 # Start custom settings for urxvt
 xrdb -merge ~/.config/Xresources
