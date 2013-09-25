@@ -123,6 +123,7 @@ myManageHook = (composeAll . concat $
             , className =? "Firefox" <&&> resource =? "Download" --> doFloat
             , className =? "Chromium"   --> insertPosition End Older <+> doShift "web" -- (6)
             , className =? "Okular"   --> doShift "doc"
+            , className =? "MuPDF"   --> doShift "doc"
             , fmap ("libreoffice" `isInfixOf`) className --> doShift "doc" -- (1)
             , className =? "MPlayer"    --> doShift "8"
             , className =? "mplayer2"    --> doShift "8"
