@@ -13,6 +13,7 @@ Valid arguments: [-d | --default]
                  [-o | --open]
                  [-m | --mac]
                  [-f | --facebook]
+                 [--youtube]
                  [--test-config]
                  [--commit]
                  [--restore]
@@ -151,6 +152,12 @@ if (($# != 0)); then
                 sudo iptables -A OUTPUT -d 69.171.224.0/19 -j REJECT
                 sudo iptables -A OUTPUT -d 69.63.176.0/20 -j REJECT
                 sudo iptables -A OUTPUT -d 173.252.64.0/18 -j REJECT
+                shift
+                ;;
+            --youtube)
+                # Some ISPs make youtube crappy, let's try to rectify this
+                sudo iptables -A INPUT -s 173.194.55.0/24 -j REJECT
+                sudo iptables -A INPUT -s 206.111.0.0/16 -j REJECT
                 shift
                 ;;
             --test-config)
