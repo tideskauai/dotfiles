@@ -42,43 +42,36 @@ select_overlay() {
     fi
 }
 
-# If $1 is a null string run a VM with default settings
-if [[ -z $1 ]]; then
-    select_overlay
-    qemu-system-x86_64 -enable-kvm $ram $selected_overlay &
-    exit
-# Otherwise, create a string with the respective selected options
-else
-    for arguments in "$@"
-    do
-        case $arguments in
-            -a | --audio)
-                export QEMU_AUDIO_DRV=sdl
-                export SDL_AUDIODRIVER=alsa
-                selected_args+=" -device intel-hda -device hda-duplex"
-                ;;
-            -b | --bridge)
-                echo "Run the bridgemeup script before using this option"
-                echo "====================================================="
-                echo "= Use tcpdump -ni tap0 to debug connectivity        ="
-                echo "====================================================="
-                selected_args+=" -net nic,macaddr=DE:AD:BE:EF:00:01 -net bridge,br=br0,helper=/usr/lib/qemu/qemu-bridge-helper"
-                ;;
-            -v | --vnc)
-                echo "Use a VNC client (e.g. vinagre) to connect to your VM"
-                selected_args+=" -daemonize -vnc 127.0.0.1:1 -k en-us"
-                ;;
-            -h | --help)
-                usage
-                exit
-                ;;
-            *)
-                usage
-                exit
-                ;;
-        esac
-    done
-fi
+# Create an array with all the selected arguments
+for arguments in "$@"
+do
+    case $arguments in
+        -a | --audio)
+            export QEMU_AUDIO_DRV=sdl
+            export SDL_AUDIODRIVER=alsa
+            selected_args+=" -device intel-hda -device hda-duplex"
+            ;;
+        -b | --bridge)
+            echo "Run the bridgemeup script before using this option"
+            echo "====================================================="
+            echo "= Use tcpdump -ni tap0 to debug connectivity        ="
+            echo "====================================================="
+            selected_args+=" -net nic,macaddr=DE:AD:BE:EF:00:01 -net bridge,br=br0,helper=/usr/lib/qemu/qemu-bridge-helper"
+            ;;
+        -v | --vnc)
+            echo "Use a VNC client (e.g. vinagre) to connect to your VM"
+            selected_args+=" -daemonize -vnc 127.0.0.1:1 -k en-us"
+            ;;
+        -h | --help)
+            usage
+            exit
+            ;;
+        *)
+            usage
+            exit
+            ;;
+    esac
+done
 
 # Select an overlay image and run the VM with it
 select_overlay
