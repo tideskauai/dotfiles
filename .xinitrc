@@ -12,10 +12,11 @@ export GNOME_KEYRING_SOCKET
 export SSH_AUTH_SOCK
 export GPG_AGENT_INFO
 
-# Fonts
-xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 # Let's set a pointer
 xsetroot -cursor_name left_ptr
+
+# Fonts
+xset +dpms +fp /usr/share/fonts/local,/usr/share/fonts/artwiz-fonts
 # Turn the bell off
 xset -b
 
