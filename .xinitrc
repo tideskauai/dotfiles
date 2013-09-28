@@ -34,3 +34,4 @@ ln -sfn $XDG_RUNTIME_DIR/macromedia ~/.macromedia
 # Launch xmonad OR i3
 exec xmonad
 # exec i3
+# exec startxfce4
