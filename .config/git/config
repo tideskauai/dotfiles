@@ -26,4 +26,4 @@
 [push]
 	default = simple
 [core]
-	excludesfile = /home/user01/.config/git/gitignore_global
+	excludesfile = ~/.config/git/gitignore_global
